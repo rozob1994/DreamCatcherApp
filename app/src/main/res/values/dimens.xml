@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edt_title_size">15sp</dimen>
+    <dimen name="edt_txt_size">12sp</dimen>
+    <dimen name="guide_txt_size">8sp</dimen>
+    <dimen name="header_title_size">25sp</dimen>
+</resources>

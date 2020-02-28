@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    tools:context=".Activities.Login.LoginActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_main"
+        android:layout_width="550dp"
+        android:layout_height="550dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-270dp"
+        app:srcCompat="@drawable/dream_catcher_logo" />
+
+    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-50dp"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/header_title_size" />
+
+    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+        android:id="@+id/username_edt_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_title"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="50dp"
+        android:text="username or email"
+        android:textColor="@color/txt_glow"
+        android:textSize="@dimen/edt_title_size" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_txt_username"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/username_edt_txt_title"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/password"
+        android:hint="please enter your username or email"
+        android:paddingLeft="30dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/edt_text_color"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+        android:id="@+id/password_edt_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_txt_username"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:text="password"
+        android:textColor="@color/txt_glow"
+        android:textSize="@dimen/edt_title_size" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_txt_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/password_edt_txt_title"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/password"
+        android:hint="please enter your password"
+        android:paddingLeft="30dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/edt_text_color"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_txt_password"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal">
+
+        <RelativeLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login_accept"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_accept" />
+
+            <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btn_login_accept"
+                android:textColor="@color/white"
+                android:text="Accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login_decline"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_decline" />
+
+            <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btn_login_decline"
+                android:textColor="@color/white"
+                android:text="Decline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

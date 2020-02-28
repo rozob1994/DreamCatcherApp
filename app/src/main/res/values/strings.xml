@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">DreamCatcherApp</string>
+    <string name="dream_description_hint">Describe your dream as clearly as you can. You can extract Tags to keep track of all the details in your dreams.</string>
+    <string-array name="year">
+
+        <item>1990</item>
+        <item>1991</item>
+        <item>1992</item>
+        <item>1993</item>
+        <item>1994</item>
+        <item>1995</item>
+        <item>1996</item>
+        <item>1997</item>
+        <item>1998</item>
+        <item>1999</item>
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+
+    </string-array>
+
+    <string-array name="month">
+
+        <item>january</item>
+        <item>february</item>
+        <item>march</item>
+        <item>april</item>
+        <item>may</item>
+        <item>june</item>
+        <item>july</item>
+        <item>august</item>
+        <item>september</item>
+        <item>october</item>
+        <item>november</item>
+        <item>december</item>
+
+    </string-array>
+
+    <string-array name="day">
+
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+
+    </string-array>
+
+    <string-array name="gender">
+
+        <item>male</item>
+        <item>female</item>
+        <item>other</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dreams_package_description_input">testing the description layout testing the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layout</string>
+    <string name="dream_info_mood_hint">Slide the slider to choose between nightmare, bad dream, neutral, good dream and happy dream</string>
+    <string name="hint_people">Did your dream include familiar (or unfamiliar) faces?</string>
+    <string name="hint_names">Write down the Names of the people in your dream.</string>
+    <string name="title_people_feelings">Feelings towards these People:</string>
+    <string name="hint_feelings">How would you describe your feelings when you encountered them in your dream?</string>
+    <string name="hint_sound">Did you see colors or was it all grayed-out?</string>
+</resources>

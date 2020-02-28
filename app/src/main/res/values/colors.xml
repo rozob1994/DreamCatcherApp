@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="background_main">#3E3E3E</color>
+    <color name="white">#ffffff</color>
+    <color name="edt_text_color">#747474</color>
+    <color name="txt_glow">#00BCD4</color>
+    <color name="dreams_package">#303030</color>
+    <color name="day_light">#FFC107</color>
+</resources>

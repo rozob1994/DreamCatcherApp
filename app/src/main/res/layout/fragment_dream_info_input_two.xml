@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    tools:context=".Ui.Fragments.SleepDreamInput.Fragments.DreamInfoInputTwoFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_main"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="-200dp"
+        app:srcCompat="@drawable/dream_catcher_logo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rel_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:id="@+id/title_dream_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:text="DREAM INFO"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/header_title_size" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lin_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_main"
+                android:gravity=""
+                android:orientation="vertical">
+
+                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:id="@+id/title_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="40dp"
+                    android:text="Title"
+                    android:textColor="@color/txt_glow"
+                    android:textSize="@dimen/edt_title_size" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/password"
+                    android:hint="PLEASE ENTER THE TITLE"
+                    android:paddingLeft="33dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/edt_text_color"
+                    android:textSize="@dimen/edt_txt_size" />
+
+                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="40dp"
+                    android:text="Dream Description"
+                    android:textColor="@color/txt_glow"
+                    android:textSize="@dimen/edt_title_size" />
+
+                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"
+                    android:text="@string/dream_description_hint"
+                    android:textColor="@color/edt_text_color"
+                    android:textSize="@dimen/edt_txt_size" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="350dp"
+                    android:layout_height="400dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/password_big"
+                    android:gravity="top"
+                    android:hint="Describe your dream..."
+                    android:paddingLeft="20dp"
+                    android:paddingTop="25dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/edt_text_color"
+                    android:textSize="@dimen/edt_txt_size" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_tags_off"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_tags_off" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_login_accept"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button_accept" />
+
+                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_login_accept"
+                    android:layout_centerHorizontal="true"
+                    android:text="Accept"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
