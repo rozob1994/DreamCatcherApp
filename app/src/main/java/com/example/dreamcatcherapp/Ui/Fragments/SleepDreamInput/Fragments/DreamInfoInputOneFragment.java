@@ -74,7 +74,9 @@ public class DreamInfoInputOneFragment extends Fragment {
                 } else {
                     binding.linPositiveOn.setVisibility(View.VISIBLE);
                     binding.linNeutralOn.setVisibility(View.INVISIBLE);
+                    binding.linNeutralOff.setVisibility(View.VISIBLE);
                     binding.linNegativeOn.setVisibility(View.INVISIBLE);
+                    binding.linNegativeOff.setVisibility(View.VISIBLE);
                     binding.linPositiveOff.setVisibility(View.INVISIBLE);
                 }
 
@@ -108,7 +110,9 @@ public class DreamInfoInputOneFragment extends Fragment {
                 } else {
                     binding.linNeutralOn.setVisibility(View.VISIBLE);
                     binding.linPositiveOn.setVisibility(View.INVISIBLE);
+                    binding.linPositiveOff.setVisibility(View.VISIBLE);
                     binding.linNegativeOn.setVisibility(View.INVISIBLE);
+                    binding.linNegativeOff.setVisibility(View.VISIBLE);
                     binding.linNeutralOff.setVisibility(View.INVISIBLE);
                 }
             }
@@ -140,7 +144,9 @@ public class DreamInfoInputOneFragment extends Fragment {
                 } else {
                     binding.linNegativeOn.setVisibility(View.VISIBLE);
                     binding.linPositiveOn.setVisibility(View.INVISIBLE);
+                    binding.linPositiveOff.setVisibility(View.VISIBLE);
                     binding.linNeutralOn.setVisibility(View.INVISIBLE);
+                    binding.linNeutralOff.setVisibility(View.VISIBLE);
                     binding.linNegativeOff.setVisibility(View.INVISIBLE);
                 }
             }

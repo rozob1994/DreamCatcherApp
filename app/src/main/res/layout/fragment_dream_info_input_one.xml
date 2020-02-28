@@ -63,6 +63,7 @@
                     android:layout_height="wrap_content">
 
                     <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                        android:textFontWeight="600"
                         android:id="@+id/title_mood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -380,6 +381,7 @@
                         android:visibility="visible">
 
                         <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:textFontWeight="600"
                             android:id="@+id/title_people"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -429,6 +431,7 @@
                         android:layout_height="wrap_content">
 
                         <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:textFontWeight="600"
                             android:id="@+id/title_sound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -446,77 +449,15 @@
                             android:textColor="@color/edt_text_color"
                             android:textSize="@dimen/edt_txt_size" />
 
-                        <LinearLayout
-                            android:id="@+id/lin_sound_buttons_on"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/hint_sound"
-                            android:layout_marginTop="18dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
                             <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="160dp"
-                                android:layout_height="60dp"
-                                app:srcCompat="@drawable/button" />
+                                android:layout_below="@+id/hint_sound"
+                                android:layout_width="90dp"
+                                android:layout_height="30dp"
+                                app:srcCompat="@drawable/button"/>
 
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="160dp"
-                                android:layout_height="60dp"
-                                app:srcCompat="@drawable/button" />
-
-                        </LinearLayout>
 
                     </RelativeLayout>
                     //sound_section_off
-
-                    <RelativeLayout
-                        android:id="@+id/rel_sound_off"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                            android:id="@+id/title_sound_off"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Colors"
-                            android:textColor="@color/txt_glow"
-                            android:textSize="@dimen/edt_title_size" />
-
-                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                            android:id="@+id/hint_sound_off"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/title_sound_off"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/hint_sound"
-                            android:textColor="@color/edt_text_color"
-                            android:textSize="@dimen/edt_txt_size" />
-
-                        <RelativeLayout
-                            android:id="@+id/lin_sound_buttons_off"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_below="@+id/hint_sound_off"
-                            android:layout_marginTop="18dp"
-                            android:gravity="center">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/btn_colorful"
-                                android:layout_width="160dp"
-                                android:layout_height="60dp"
-                                app:srcCompat="@drawable/button" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/btn_grayscale"
-                                android:layout_toRightOf="@id/btn_colorful"
-                                android:layout_width="160dp"
-                                android:layout_height="60dp"
-                                app:srcCompat="@drawable/button" />
-
-                        </RelativeLayout>
-
-                    </RelativeLayout>
 
                 </RelativeLayout>
 

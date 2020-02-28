@@ -50,6 +50,7 @@
                 android:orientation="vertical">
 
                 <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:textFontWeight="600"
                     android:id="@+id/title_sub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
                     android:textSize="@dimen/edt_txt_size" />
 
                 <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                    android:textFontWeight="600"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
