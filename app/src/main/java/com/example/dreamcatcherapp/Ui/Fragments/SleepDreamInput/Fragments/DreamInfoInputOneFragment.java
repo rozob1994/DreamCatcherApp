@@ -168,6 +168,75 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[COLOR BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
+
+        //---------------------------SWITCHING COLORFUL BUTTON ON---------------------------//
+
+        binding.linColorfulOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linColorfulOn.getVisibility() == View.VISIBLE) {
+                    binding.linColorfulOn.setVisibility(View.INVISIBLE);
+                    binding.linColorfulOff.setVisibility(View.VISIBLE);
+                } else {
+                    binding.linColorfulOn.setVisibility(View.VISIBLE);
+                    binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
+                    binding.linGrayscaleOff.setVisibility(View.VISIBLE);
+                    binding.linColorfulOff.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING COLORFUL BUTTON OFF---------------------------//
+
+        binding.linColorfulOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linColorfulOff.getVisibility() == View.VISIBLE) {
+                    binding.linColorfulOff.setVisibility(View.INVISIBLE);
+                    binding.linColorfulOn.setVisibility(View.VISIBLE);
+                } else {
+                    binding.linColorfulOff.setVisibility(View.VISIBLE);
+                    binding.linColorfulOn.setVisibility(View.INVISIBLE);
+                    binding.linGrayscaleOff.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING GRAYSCALE BUTTON ON---------------------------//
+
+        binding.linGrayscaleOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linGrayscaleOn.getVisibility() == View.VISIBLE) {
+                    binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
+                    binding.linGrayscaleOff.setVisibility(View.VISIBLE);
+                } else {
+                    binding.linGrayscaleOn.setVisibility(View.VISIBLE);
+                    binding.linColorfulOn.setVisibility(View.INVISIBLE);
+                    binding.linColorfulOff.setVisibility(View.VISIBLE);
+                    binding.linGrayscaleOff.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING GRAYSCALE BUTTON OFF---------------------------//
+
+        binding.linGrayscaleOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linGrayscaleOff.getVisibility() == View.VISIBLE) {
+                    binding.linGrayscaleOff.setVisibility(View.INVISIBLE);
+                    binding.linGrayscaleOn.setVisibility(View.VISIBLE);
+                }else {
+                    binding.linGrayscaleOff.setVisibility(View.VISIBLE);
+                    binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
+                    binding.linColorfulOff.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         return view;
 
 
