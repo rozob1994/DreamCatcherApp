@@ -92,12 +92,13 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
-        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
 
-//************************************************************************************************************************************//
-//************************************************************************************************************************************//
-//************************************************************************************************************************************//
-//************************************************************************************************************************************//
+
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING POSITIVE BUTTON ON---------------------------//
 
@@ -221,6 +222,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
                     binding.linColorfulOff.setVisibility(View.INVISIBLE);
+
                 }
             }
         });
@@ -237,6 +239,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
                     binding.linColorfulOn.setVisibility(View.INVISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -254,6 +257,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linColorfulOn.setVisibility(View.INVISIBLE);
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.INVISIBLE);
+
                 }
             }
         });
@@ -270,6 +274,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
                     binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -342,6 +347,9 @@ public class DreamInfoInputOneFragment extends Fragment {
                 }
             }
         });
+
+
+
 
         return view;
 

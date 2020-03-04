@@ -1,16 +1,20 @@
 package com.example.dreamcatcherapp.Activities.Login;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.example.dreamcatcherapp.R;
+import com.example.dreamcatcherapp.databinding.ActivitySignUpBinding;
 
 public class signUpActivity extends AppCompatActivity {
-
+    ActivitySignUpBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+
+
     }
 }

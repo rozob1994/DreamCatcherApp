@@ -40,5 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
+
+
     }
 }

@@ -10,4 +10,6 @@
     <color name="dreams_package">#77303030</color>
     <color name="invisible">#00FFFFFF</color>
     <color name="day_light">#FFC107</color>
+    <color name="gray">#6A6A6A</color>
+    <color name="black">#000000</color>
 </resources>

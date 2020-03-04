@@ -1,610 +1,624 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/frame_sleep_info_input"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:blurkit="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_sleep_info_input"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_main"
     tools:context=".Ui.Fragments.SleepDreamInput.Fragments.SleepInfoInputFragment">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/rel_main"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-16dp"
-                android:background="@drawable/dreams_bg_shape"
-                android:backgroundTint="@color/txt_glow">
-
-                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                    android:id="@+id/title_dream_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="48dp"
-                    android:gravity="center_horizontal"
-                    android:text="SLEEP INFO"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/header_title_size" />
-
-            </RelativeLayout>
-
-            //overall input
-
-            <RelativeLayout
-                android:id="@+id/rel_overall_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="24dp">
-
-                sleep duration section
-
-                <RelativeLayout
-                    android:id="@+id/rel_sleep_duration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/title_sleep_duration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sleep Duration"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/hint_sleep_duration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_sleep_duration"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_sleep_duration"
-                        android:textColor="@color/edt_text_color"
-                        android:textSize="@dimen/hint_size" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/hint_sleep_duration"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
-                        android:gravity="center_horizontal">
-
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/edt_hours"
-                            android:layout_width="96dp"
-                            android:layout_height="32dp"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/password"
-                            android:hint="Hours"
-                            android:paddingLeft="8dp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/edt_text_color"
-                            android:textSize="@dimen/edt_txt_size" />
-
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/edt_minutes"
-                            android:layout_width="80dp"
-                            android:layout_height="32dp"
-                            android:layout_toRightOf="@id/edt_hours"
-                            android:background="@drawable/password"
-                            android:hint="Minutes"
-                            android:paddingLeft="8dp"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/edt_text_color"
-                            android:textSize="@dimen/edt_txt_size" />
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/separator_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rel_sleep_duration"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/layout_separator">
-
-                </View>
-
-                time of day section
-
-                <RelativeLayout
-                    android:id="@+id/rel_time_of_day"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/separator_one"
-                    android:layout_marginTop="16dp">
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/title_time_of_day"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Time of day"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/hint_time_of_day"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_time_of_day"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_time_of_day"
-                        android:textColor="@color/edt_text_color"
-                        android:textSize="@dimen/hint_size" />
-
-
-                    <RelativeLayout
-                        android:id="@+id/rel_time_of_day_buttons"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/hint_time_of_day"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
-                        android:gravity="center_horizontal">
-
-                        time of day buttons on
-
-                        <RelativeLayout
-                            android:id="@+id/rel_time_of_day_buttons_on"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:visibility="visible">
-
-                            <LinearLayout
-                                android:id="@+id/lin_day_on"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="16dp"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical"
-                                android:visibility="invisible">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/btn_day_on"
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:background="@drawable/button_day_on" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Day"
-                                    android:textColor="@color/day_light" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_night_on"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/lin_day_on"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical"
-                                android:visibility="invisible">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/btn_night_on"
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:background="@drawable/button_night_on" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Night"
-                                    android:textColor="@color/txt_glow" />
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                        time of day buttons off
-
-                        <RelativeLayout
-                            android:id="@+id/rel_time_of_day_buttons_off"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:id="@+id/lin_day_off"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="16dp"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/btn_day_off"
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:background="@drawable/button_day_off" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Day"
-                                    android:textColor="@color/edt_text_color" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_night_off"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/lin_day_off"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/btn_night_off"
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:background="@drawable/button_night_off" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Night"
-                                    android:textColor="@color/edt_text_color" />
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/separator_two"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rel_time_of_day"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/layout_separator">
-
-                </View>
-
-                today's physical activity
-
-                <RelativeLayout
-                    android:id="@+id/rel_todays_activity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/separator_two"
-                    android:layout_marginTop="16dp">
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/title_physical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Today’s physical activity"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/hint_physical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_physical"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_physical"
-                        android:textColor="@color/edt_text_color"
-                        android:textSize="@dimen/hint_size" />
-
-                    <RelativeLayout
-                        android:id="@+id/rel_slider_physical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/hint_physical"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape">
-
-                        <androidx.appcompat.widget.AppCompatSeekBar
-                            android:id="@+id/slider_physical"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:thumb="@drawable/ic_slider_thumb_bright"
-                            android:thumbOffset="-4dp" />
-
-                        <LinearLayout
-                            android:id="@+id/slider_physical_signs"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/slider_physical"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:id="@+id/lin_none"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="27dp"
-                                    android:layout_height="12dp"
-                                    android:layout_gravity="center_horizontal"
-                                    android:background="@drawable/stick_figure_1" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/sings_hint_none"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="None"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_usual"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="12.5dp"
-                                    android:layout_height="25dp"
-                                    android:background="@drawable/stick_figure_2" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/signs_hint_usual"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Usual"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_workout"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="25dp"
-                                    android:background="@drawable/stick_figure_3" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/signs_hint_workout"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Work-Out"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_excessive"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:background="@drawable/stick_figure_4" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/signs_hint_excessive"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Excessive"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/separator_three"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rel_todays_activity"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/layout_separator"></View>
-
-                today's food consumption
-
-                <RelativeLayout
-                    android:id="@+id/rel_todays_food_consumption"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/separator_three"
-                    android:layout_marginTop="16dp">
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/title_food"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_food"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                        android:id="@+id/hint_food"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_food"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_food"
-                        android:textColor="@color/edt_text_color"
-                        android:textSize="@dimen/hint_size" />
-
-                    <RelativeLayout
-                        android:id="@+id/rel_slider_food"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/hint_food"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape">
-
-                        <androidx.appcompat.widget.AppCompatSeekBar
-                            android:id="@+id/slider_food"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:thumb="@drawable/ic_slider_thumb_bright"
-                            android:thumbOffset="-4dp" />
-
-                        <LinearLayout
-                            android:id="@+id/slider_food_signs"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/slider_food"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:id="@+id/lin_low"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center_horizontal"
-                                    android:background="@drawable/apple" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/sings_hint_low"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Low"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_medium"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:background="@drawable/steak" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/signs_hint_medium"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Medium"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lin_high"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical">
-
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="30dp"
-                                    android:background="@drawable/hamburger_drink" />
-
-                                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
-                                    android:id="@+id/signs_hint_high"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="High"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sings_txt_size" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-            </RelativeLayout>
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="32dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_to_dream_input"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight="1"
+                <RelativeLayout
+                    android:id="@+id/rel_main"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="-16dp"
                     android:background="@drawable/dreams_bg_shape"
-                    android:backgroundTint="@color/txt_glow"
-                    android:text="To dream info"
-                    android:textColor="@color/white" />
+                    android:backgroundTint="@color/black">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_didnt_have_a_dream"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/dreams_bg_shape"
-                    android:backgroundTint="@color/txt_glow"
-                    android:text="I didn't have a dream"
-                    android:textColor="@color/white" />
+                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                        android:id="@+id/title_dream_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="48dp"
+                        android:gravity="center_horizontal"
+                        android:text="SLEEP INFO"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/header_title_size" />
+
+                </RelativeLayout>
+
+                //overall input
+
+                <RelativeLayout
+                    android:id="@+id/rel_overall_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="24dp">
+
+                    sleep duration section
+
+                    <RelativeLayout
+                        android:id="@+id/rel_sleep_duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/title_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sleep Duration"
+                            android:textColor="@color/txt_glow"
+                            android:textSize="@dimen/title_size" />
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/hint_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_sleep_duration"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/hint_sleep_duration"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/hint_size" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@id/hint_sleep_duration"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/dreams_bg_shape"
+                            android:backgroundTint="@color/black"
+                            android:backgroundTintMode="multiply"
+                            android:gravity="center_horizontal">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edt_hours"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/dreams_bg_shape"
+                                android:backgroundTint="@color/black"
+                                android:hint="Hours"
+                                android:paddingLeft="8dp"
+                                android:textColor="@color/white"
+                                android:textColorHighlight="@color/txt_glow"
+                                android:textColorHint="@color/gray"
+                                android:textSize="@dimen/edt_txt_size" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edt_minutes"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/edt_hours"
+                                android:background="@drawable/dreams_bg_shape"
+                                android:backgroundTint="@color/black"
+                                android:hint="Minutes"
+                                android:paddingLeft="8dp"
+                                android:textColor="@color/white"
+                                android:textColorHighlight="@color/txt_glow"
+                                android:textColorHint="@color/gray"
+                                android:textSize="@dimen/edt_txt_size" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/separator_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rel_sleep_duration"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/layout_separator">
+
+                    </View>
+
+                    time of day section
+
+                    <RelativeLayout
+                        android:id="@+id/rel_time_of_day"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_one"
+                        android:layout_marginTop="16dp">
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/title_time_of_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Time of day"
+                            android:textColor="@color/txt_glow"
+                            android:textSize="@dimen/title_size" />
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/hint_time_of_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_time_of_day"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/hint_time_of_day"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/hint_size" />
+
+
+                        <RelativeLayout
+                            android:id="@+id/rel_time_of_day_buttons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/hint_time_of_day"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/dreams_bg_shape"
+                            android:backgroundTint="@color/black"
+                            android:backgroundTintMode="multiply"
+                            android:gravity="center_horizontal">
+
+                            time of day buttons on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_time_of_day_buttons_on"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible">
+
+                                <LinearLayout
+                                    android:id="@+id/lin_day_on"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="16dp"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_day_on"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/button_day_on" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Day"
+                                        android:textColor="@color/day_light" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_night_on"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_day_on"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_night_on"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/button_night_on" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Night"
+                                        android:textColor="@color/txt_glow" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            time of day buttons off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_time_of_day_buttons_off"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/lin_day_off"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="16dp"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_day_off"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/button_day_off" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Day"
+                                        android:textColor="@color/gray" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_night_off"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_day_off"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_night_off"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/button_night_off" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Night"
+                                        android:textColor="@color/gray" />
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/separator_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rel_time_of_day"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/layout_separator">
+
+                    </View>
+
+                    today's physical activity
+
+                    <RelativeLayout
+                        android:id="@+id/rel_todays_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_two"
+                        android:layout_marginTop="16dp">
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/title_physical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Today’s physical activity"
+                            android:textColor="@color/txt_glow"
+                            android:textSize="@dimen/title_size" />
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/hint_physical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_physical"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/hint_physical"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/hint_size" />
+
+                        <RelativeLayout
+                            android:id="@+id/rel_slider_physical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/hint_physical"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/dreams_bg_shape"
+                            android:backgroundTint="@color/black"
+                            android:backgroundTintMode="multiply">
+
+                            <androidx.appcompat.widget.AppCompatSeekBar
+                                android:id="@+id/slider_physical"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:thumb="@drawable/ic_slider_thumb_bright"
+                                android:thumbOffset="-4dp" />
+
+                            <LinearLayout
+                                android:id="@+id/slider_physical_signs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/slider_physical"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/lin_none"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="27dp"
+                                        android:layout_height="12dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:background="@drawable/stick_figure_1" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/sings_hint_none"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="None"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_usual"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="12.5dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/stick_figure_2" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/signs_hint_usual"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Usual"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_workout"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/stick_figure_3" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/signs_hint_workout"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Work-Out"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_excessive"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/stick_figure_4" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/signs_hint_excessive"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Excessive"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/separator_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rel_todays_activity"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/layout_separator"></View>
+
+                    today's food consumption
+
+                    <RelativeLayout
+                        android:id="@+id/rel_todays_food_consumption"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separator_three"
+                        android:layout_marginTop="16dp">
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/title_food"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_food"
+                            android:textColor="@color/txt_glow"
+                            android:textSize="@dimen/title_size" />
+
+                        <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                            android:id="@+id/hint_food"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/title_food"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/hint_food"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/hint_size" />
+
+                        <RelativeLayout
+                            android:id="@+id/rel_slider_food"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/hint_food"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/dreams_bg_shape"
+                            android:backgroundTint="@color/black"
+                            android:backgroundTintMode="multiply">
+
+                            <androidx.appcompat.widget.AppCompatSeekBar
+                                android:id="@+id/slider_food"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:thumb="@drawable/ic_slider_thumb_bright"
+                                android:thumbOffset="-4dp" />
+
+                            <LinearLayout
+                                android:id="@+id/slider_food_signs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/slider_food"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/lin_low"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:background="@drawable/apple" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/sings_hint_low"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Low"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_medium"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/steak" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/signs_hint_medium"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Medium"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_high"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="30dp"
+                                        android:background="@drawable/hamburger_drink" />
+
+                                    <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                                        android:id="@+id/signs_hint_high"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="High"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/sings_txt_size" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="32dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_to_dream_input"
+                        android:layout_width="240dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/dreams_bg_shape"
+                        android:backgroundTint="@color/txt_glow"
+                        android:text="To dream info"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_marginTop="16dp"
+                        android:id="@+id/btn_didnt_have_a_dream"
+                        android:layout_width="240dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/dreams_bg_shape"
+                        android:backgroundTint="@color/txt_glow"
+                        android:text="I didn't have a dream"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+        </ScrollView>
 
-        </LinearLayout>
 
 
-    </ScrollView>
+
 </RelativeLayout>

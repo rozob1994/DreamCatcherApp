@@ -2,17 +2,13 @@ package com.example.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.dreamcatcherapp.Activities.ProfileActivity;
-import com.example.dreamcatcherapp.R;
 import com.example.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 
 /**
@@ -111,6 +107,8 @@ public class SleepInfoInputFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
 
         return view;
     }

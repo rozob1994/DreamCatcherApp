@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edt_title_size">15sp</dimen>
-    <dimen name="title_size">16sp</dimen>
+    <dimen name="title_size">18sp</dimen>
     <dimen name="hint_size">14sp</dimen>
     <dimen name="edt_txt_size">14sp</dimen>
     <dimen name="guide_txt_size">8sp</dimen>
     <dimen name="header_title_size">25sp</dimen>
     <dimen name="sings_txt_size">8sp</dimen>
+    <dimen name="level_size">45dp</dimen>
 </resources>
