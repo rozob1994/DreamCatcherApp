@@ -350,7 +350,6 @@ public class DreamInfoInputOneFragment extends Fragment {
 
 
 
-
         return view;
 
     }

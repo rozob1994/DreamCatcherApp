@@ -15,14 +15,14 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:layout_marginTop="-120dp"
-                android:background="@drawable/bg_gradient"
-                android:backgroundTint="@color/txt_glow"
                 android:id="@+id/rel_profile"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-120dp"
+                android:background="@drawable/bg_gradient"
+                android:backgroundTint="@color/txt_glow"
                 android:gravity="center_horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -36,7 +36,7 @@
                 </androidx.appcompat.widget.AppCompatImageView>
 
 
-                <com.phrenologue.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                     android:textColor="@color/txt_glow"
                     android:textSize="@dimen/title_size" />
 
-                <com.phrenologue.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_below="@id/user_title"
@@ -57,7 +57,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/dream_catcher_logo"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/txt_glow"
                     android:gravity="center"
                     android:text="1"
                     android:textColor="@color/white"
@@ -87,11 +87,11 @@
                     android:textSize="@dimen/edt_title_size" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_marginTop="16dp"
                     android:id="@+id/btn_stats"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_below="@+id/btn_dreams"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/txt_glow"
                     android:text="stats"

@@ -108,8 +108,6 @@ public class SleepInfoInputFragment extends Fragment {
             }
         });
 
-
-
         return view;
     }
 }
