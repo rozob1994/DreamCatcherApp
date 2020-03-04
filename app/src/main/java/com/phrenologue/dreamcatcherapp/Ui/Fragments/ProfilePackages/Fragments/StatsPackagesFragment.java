@@ -8,21 +8,19 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.phrenologue.dreamcatcherapp.Ui.Fragments.ProfilePackages.Adapter.StatsPackagesFragmentAdapter;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentStatsBinding;
+import com.phrenologue.dreamcatcherapp.Ui.Fragments.ProfilePackages.Adapter.StatsPackagesFragmentAdapter;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class StatsPackagesFragment extends Fragment {
 
-
-    private FragmentStatsBinding binding;
-
     public StatsPackagesFragment() {
 
     }
-
+    private FragmentStatsBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
