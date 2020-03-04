@@ -14,7 +14,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -40,14 +40,13 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/lin_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/rel_main"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="24dp"
-                    android:layout_marginTop="40dp"
                     android:layout_marginRight="24dp"
+                    android:id="@+id/lin_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/black"
                     android:backgroundTintMode="multiply"
@@ -68,7 +67,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/dreams_bg_shape"
-                        android:backgroundTint="@color/black"
+                        android:backgroundTint="@color/gray"
                         android:hint="Enter title..."
                         android:paddingLeft="16dp"
                         android:paddingTop="5dp"
@@ -89,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/dream_description_hint"
-                        android:textColor="@color/edt_text_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/hint_size" />
 
                     <androidx.appcompat.widget.AppCompatEditText

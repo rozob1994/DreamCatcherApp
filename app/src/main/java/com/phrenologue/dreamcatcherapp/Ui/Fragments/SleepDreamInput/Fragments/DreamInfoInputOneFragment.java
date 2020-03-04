@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 
 /**
@@ -222,7 +223,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
                     binding.linColorfulOff.setVisibility(View.INVISIBLE);
-
+                    binding.relColorOff.setBackgroundResource(R.drawable.bg_invisible);
                 }
             }
         });
@@ -257,7 +258,7 @@ public class DreamInfoInputOneFragment extends Fragment {
                     binding.linColorfulOn.setVisibility(View.INVISIBLE);
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.INVISIBLE);
-
+                    binding.relColorOff.setBackgroundResource(R.drawable.bg_invisible);
                 }
             }
         });

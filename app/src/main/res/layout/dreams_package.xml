@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:background="@drawable/dreams_bg_shape"
+    android:backgroundTint="@color/black"
     android:orientation="vertical"
     android:padding="16dp">
 
