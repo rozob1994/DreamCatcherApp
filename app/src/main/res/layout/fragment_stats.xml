@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     android:id="@+id/stats_fragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ui.Fragments.ProfilePackages.StatsPackagesFragment">
+    tools:context=".Ui.Fragments.ProfilePackages.Fragments.StatsPackagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stats_list"
+        android:id="@+id/stats_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-</FrameLayout>
+
+</RelativeLayout>

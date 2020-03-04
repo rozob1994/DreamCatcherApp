@@ -91,11 +91,9 @@
     </string-array>
 
     <string-array name="gender">
-
         <item>male</item>
         <item>female</item>
         <item>other</item>
-
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -107,4 +105,13 @@
     <string name="title_people_feelings">Feelings towards these People:</string>
     <string name="hint_feelings">How would you describe your feelings when you encountered them in your dream?</string>
     <string name="hint_sound">Did you see colors or was it all grayed-out?</string>
+    <string name="hint_sounds">Did you hear any sounds or was it a silent movie?</string>
+    <string name="hint_lucidity">How much did you feel in control and how clear was your dream?</string>
+    <string name="hint_physical">Slide the slider to choose either NONE, USUAL, WORK OUT or EXCESSIVE.</string>
+    <string name="hint_sleep_duration">How much did you sleep? (Hours and Minutes)</string>
+    <string name="hint_time_of_day">When did you sleep?</string>
+    <string name="title_food">Today\'s food consumption</string>
+    <string name="hint_food">Slide the slider to choose either LOW, MEDIUM or HIGH.</string>
+    <string name="hint_dream_description">Describe your dream...</string>
+
 </resources>

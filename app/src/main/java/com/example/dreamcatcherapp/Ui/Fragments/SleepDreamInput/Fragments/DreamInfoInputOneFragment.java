@@ -31,7 +31,6 @@ public class DreamInfoInputOneFragment extends Fragment {
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[PEOPLE BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
-
         //---------------------------SWITCHING PEOPLE BUTTON ON---------------------------//
 
         binding.btnPeopleOff.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +60,47 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
+
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[SOUNDS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
+        //---------------------------SWITCHING SOUNDS BUTTON On---------------------------//
+
+        binding.btnSoundsOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.relSoundsExpanded.getVisibility() == View.VISIBLE) {
+                    binding.relSoundsExpanded.setVisibility(View.GONE);
+                    binding.relSoundsClosed.setVisibility(View.VISIBLE);
+                } else {
+                    binding.relSoundsExpanded.setVisibility(View.VISIBLE);
+                    binding.relSoundsClosed.setVisibility(View.GONE);
+                }
+            }
+        });
+        //---------------------------SWITCHING SOUNDS BUTTON OFF---------------------------//
+
+        binding.btnSoundsOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.relSoundsClosed.getVisibility() == View.VISIBLE) {
+                    binding.relSoundsClosed.setVisibility(View.GONE);
+                    binding.relSoundsExpanded.setVisibility(View.VISIBLE);
+                } else {
+                    binding.relSoundsClosed.setVisibility(View.VISIBLE);
+                    binding.relSoundsExpanded.setVisibility(View.GONE);
+                }
+            }
+        });
+
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
+//************************************************************************************************************************************//
+
         //---------------------------SWITCHING POSITIVE BUTTON ON---------------------------//
+
         binding.linPositiveOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -237,8 +274,76 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
-        return view;
 
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MUSICAL BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
+        //---------------------------SWITCHING MUSICAL BUTTON ON---------------------------//
+
+        binding.linBtnMusicalOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.linBtnMusicalOn.getVisibility()==View.VISIBLE){
+                    binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
+                }else {
+                    binding.linBtnMusicalOn.setVisibility(View.VISIBLE);
+                    binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnMusicalOff.setVisibility(View.INVISIBLE);
+                    binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING MUSICAL BUTTON OFF---------------------------//
+
+        binding.linBtnMusicalOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linBtnMusicalOff.getVisibility()==View.VISIBLE){
+                    binding.linBtnMusicalOff.setVisibility(View.INVISIBLE);
+                    binding.linBtnMusicalOn.setVisibility(View.VISIBLE);
+                }else {
+                    binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
+                    binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING NON-MUSICAL BUTTON ON---------------------------//
+
+        binding.linBtnNonMusicalOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linBtnNonMusicalOn.getVisibility()==View.VISIBLE){
+                    binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
+                }else {
+                    binding.linBtnNonMusicalOn.setVisibility(View.VISIBLE);
+                    binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
+                    binding.linBtnNonMusicalOff.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        //---------------------------SWITCHING NON-MUSICAL BUTTON OFF---------------------------//
+
+        binding.linBtnNonMusicalOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.linBtnNonMusicalOff.getVisibility()==View.VISIBLE){
+                    binding.linBtnNonMusicalOff.setVisibility(View.INVISIBLE);
+                    binding.linBtnNonMusicalOn.setVisibility(View.VISIBLE);
+                }else {
+                    binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
+                    binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
+                    binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        return view;
 
     }
 }

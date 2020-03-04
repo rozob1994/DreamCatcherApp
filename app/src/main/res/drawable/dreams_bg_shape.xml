@@ -2,16 +2,16 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <corners
-        android:radius="8dp"
+        android:radius="16dp"
         />
     <solid
         android:color="@color/dreams_package"
         />
     <padding
-        android:top="5dp"
-        android:bottom="5dp"
-        android:right="5dp"
-        android:left="5dp"
+        android:top="8dp"
+        android:bottom="8dp"
+        android:right="8dp"
+        android:left="8dp"
         />
 
 

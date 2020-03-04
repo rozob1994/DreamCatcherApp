@@ -72,7 +72,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/dreams"
+                    android:id="@+id/btn_dreams"
                     android:layout_width="160dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="25dp"
@@ -82,10 +82,10 @@
                     android:textSize="@dimen/edt_title_size" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/stats"
+                    android:id="@+id/btn_stats"
                     android:layout_width="160dp"
                     android:layout_height="50dp"
-                    android:layout_toRightOf="@id/dreams"
+                    android:layout_toRightOf="@id/btn_dreams"
                     android:background="@drawable/button"
                     android:text="stats"
                     android:textColor="@color/txt_glow"
