@@ -36,7 +36,7 @@
                 </androidx.appcompat.widget.AppCompatImageView>
 
 
-                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.Ui.CostumeFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                     android:textColor="@color/txt_glow"
                     android:textSize="@dimen/title_size" />
 
-                <com.example.dreamcatcherapp.Ui.CostumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.Ui.CostumeFont.MoonTextView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_below="@id/user_title"
