@@ -41,7 +41,7 @@ public interface IPostService {
                                 @Nullable @Field("year") int year);
 
     @FormUrlEncoded
-    @POST("users/postsleep.php")
+    @POST("postsleep.php")
     Call<ResponseBody> postSleeps(@Nullable @Field("uid") int uid,
                                   @Nullable @Field("sleepDuration") String sleepDuration,
                                   @Nullable @Field("sleepTime") int sleepTime,

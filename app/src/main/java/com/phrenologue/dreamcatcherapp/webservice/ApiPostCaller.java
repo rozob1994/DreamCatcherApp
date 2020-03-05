@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.webservice;
 
+import android.util.Log;
+
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -34,6 +36,7 @@ public class ApiPostCaller {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.e("","");
                 try {
                     responseMessage.onSuccess(response.body().string());
                 } catch (JSONException e) {
