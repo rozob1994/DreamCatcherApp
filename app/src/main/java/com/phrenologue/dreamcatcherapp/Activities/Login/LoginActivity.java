@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.Activities.SleepDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLoginBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(Object response) throws JSONException {
                         user.setEmail(mail);
                         Log.e("","");
-                        Intent intent = new Intent(getApplicationContext(), signUpActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLoginDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),signUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
                 finish();
             }

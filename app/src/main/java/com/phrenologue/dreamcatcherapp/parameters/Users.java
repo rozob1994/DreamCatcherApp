@@ -12,9 +12,10 @@ import javax.inject.Inject;
 
 public class Users {
     private static Users instance = null;
-    private String providerUid;
     private String email;
-    private Integer uid;
+    private int uid;
+    int gender;
+    String username;
     private Dream dream;
     private Sleep sleep;
     private String password;
@@ -39,14 +40,6 @@ public class Users {
 
     public static void delUser(){
         instance = null;
-    }
-
-    public String getProviderUid() {
-        return providerUid;
-    }
-
-    public void setProviderUid(String providerUid) {
-        this.providerUid = providerUid;
     }
 
     public String getEmail() {

@@ -113,5 +113,15 @@
     <string name="title_food">Today\'s food consumption</string>
     <string name="hint_food">Slide the slider to choose either LOW, MEDIUM or HIGH.</string>
     <string name="hint_dream_description">Describe your dream...</string>
+    <string name="signUpHeader">Sign Up</string>
+    <string name="username_input_hint">username or email</string>
+    <string name="username_edtxt_hint">please enter your username or email</string>
+    <string name="password_edt_txt_title">password</string>
+    <string name="pass_edtxt_hint">please enter your password</string>
+    <string name="acceptBtn">Accept</string>
+    <string name="declineBtn">Decline</string>
+    <string name="field_not_filled_toast">Please fill all the required fields.</string>
+    <string name="taken_username_error">This username is already taken.</string>
+    <string name="connection_error">Connection error.</string>
 
 </resources>

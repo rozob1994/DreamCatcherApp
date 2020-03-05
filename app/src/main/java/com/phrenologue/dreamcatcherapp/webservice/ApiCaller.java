@@ -76,8 +76,8 @@ public class ApiCaller {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    responseMessage.onSuccess(response.body().toString());
-                } catch (JSONException e) {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
             }

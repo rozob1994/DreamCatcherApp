@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    tools:context=".Activities.Login.LoginActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_main"
+        android:layout_width="550dp"
+        android:layout_height="550dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-270dp"
+        app:srcCompat="@drawable/dream_catcher_logo" />
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/signUp_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-50dp"
+        android:text="@string/signUpHeader"
+        android:textColor="@color/white"
+        android:textSize="@dimen/header_title_size" />
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/username_edt_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signUp_title"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/username_input_hint"
+        android:textColor="@color/txt_glow"
+        android:textSize="@dimen/edt_title_size" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_txt_username"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/username_edt_txt_title"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/password"
+        android:hint="@string/username_edtxt_hint"
+        android:paddingLeft="30dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/edt_text_color"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/password_edt_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_txt_username"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/password_edt_txt_title"
+        android:textColor="@color/txt_glow"
+        android:textSize="@dimen/edt_title_size" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_txt_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/password_edt_txt_title"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/password"
+        android:hint="@string/pass_edtxt_hint"
+        android:paddingLeft="30dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/edt_text_color"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_txt_password"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal">
+
+        <RelativeLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_signUp_accept"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_accept" />
+
+            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btn_signUp_accept"
+                android:textColor="@color/white"
+                android:text="@string/acceptBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_signUp_decline"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_decline" />
+
+            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btn_signUp_decline"
+                android:textColor="@color/white"
+                android:text="@string/declineBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
