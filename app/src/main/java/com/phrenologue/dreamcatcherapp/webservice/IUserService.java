@@ -13,7 +13,6 @@ public interface IUserService {
     @GET("login.php")
     Call<ResponseBody> login(@Query("username") String user, @Query("password") String pass);
 
-    @GET("getposts.php")
 
 
     @FormUrlEncoded
