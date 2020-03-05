@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
 
@@ -37,7 +40,8 @@ public class SleepInfoInputFragment extends Fragment {
         binding = FragmentSleepInfoInputBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         Sleep sleep = Sleep.getInstance(); // Getting an instance of Sleep.class which is a singleton.
-
+        Dream dream = Dream.getInstance(); // Getting an instance of Dream.class to store PostId.
+        Date date = Date.getInstance(); // Getting an instance of Date.class to set today's date.
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING DAY BUTTON ON---------------------------//
@@ -135,7 +139,10 @@ public class SleepInfoInputFragment extends Fragment {
                     public void onSuccess(Object response) throws JSONException {
                         JSONObject jsonObject = new JSONObject(response.toString()); // Getting a JSONObject to store the response from the server in a string.
                         boolean status = jsonObject.getBoolean("status"); // Getting the result of the savePost method as a boolean (true/false).
+                        Log.e("","");
                         if (status) {
+                            date.setDateToday(); // Setting today's date in our instance of date.
+
                             Toast.makeText(getContext(),getString(R.string.sleepSaved),
                                     Toast.LENGTH_LONG).show();
                             Sleep.delSleep(); // Deleting the sleep instance, since the user doesn't want to add more info about it.
@@ -147,6 +154,7 @@ public class SleepInfoInputFragment extends Fragment {
 
                     @Override
                     public void onFailure(String errorMessage) { // In case of connection error.
+                        Log.e("","");
                         Toast.makeText(getContext(),"Error saving Sleep! Please try again later",
                                 Toast.LENGTH_LONG).show();
 

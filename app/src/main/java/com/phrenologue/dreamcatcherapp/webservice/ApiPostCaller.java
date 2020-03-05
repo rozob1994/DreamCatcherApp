@@ -2,6 +2,9 @@ package com.phrenologue.dreamcatcherapp.webservice;
 
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
+import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
 import org.json.JSONException;
 
@@ -17,6 +20,35 @@ public class ApiPostCaller {
     }
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
+
+    public void saveSleepSeparately(IResponseMessage responseMessage) {
+        Users user = Users.getInstance();
+        Sleep sleep = Sleep.getInstance();
+        Dream dream = Dream.getInstance();
+        Date date = Date.getInstance();
+        Call<ResponseBody> call = postService.postSleeps(user.getUid(), sleep.getDuration(),
+                sleep.getTime(), sleep.getPhysicalActivity(), sleep.getFoodConsumption(),
+                sleep.getSleepParalysis(), dream.getDreamChecklist().isRemembered(),
+                date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
+                date.getMonth(), date.getYear());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
 
     public void getDreamsDaily(IResponseMessage responseMessage) {
         Call<ResponseBody> call = postService.getDreamsDaily(Users.getInstance().getUid());

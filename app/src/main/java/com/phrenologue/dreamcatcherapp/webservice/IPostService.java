@@ -40,6 +40,22 @@ public interface IPostService {
                                 @Nullable @Field("month") int month,
                                 @Nullable @Field("year") int year);
 
+    @FormUrlEncoded
+    @POST("users/postsleep.php")
+    Call<ResponseBody> postSleeps(@Nullable @Field("uid") int uid,
+                                  @Nullable @Field("sleepDuration") String sleepDuration,
+                                  @Nullable @Field("sleepTime") int sleepTime,
+                                  @Nullable @Field("sleepPhysicalActivity") int sleepPhysicalActivity,
+                                  @Nullable @Field("sleepFoodConsumption") int sleepFoodConsumption,
+                                  @Nullable @Field("sleepParalysis") boolean sleepParalysis,
+                                  @Nullable @Field("dreamRemembered") boolean dreamRemembered,
+                                  @Nullable @Field("dayOfWeek") int dayOfWeek,
+                                  @Nullable @Field("dayOfMonth") int dayOfMonth,
+                                  @Nullable @Field("dayOfYear") int dayOfYear,
+                                  @Nullable @Field("weekOfMonth") int weekOfMonth,
+                                  @Nullable @Field("month") int month,
+                                  @Nullable @Field("year") int year);
+
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);
 
