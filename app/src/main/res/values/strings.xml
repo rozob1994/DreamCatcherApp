@@ -123,5 +123,14 @@
     <string name="field_not_filled_toast">Please fill all the required fields.</string>
     <string name="taken_username_error">This username is already taken.</string>
     <string name="connection_error">Connection error.</string>
+    <string name="loginTitle">Login</string>
+    <string name="username_or_email_title">username or email</string>
+    <string name="login_username_edtxt_hint">please enter your username or email</string>
+    <string name="password_edtxt_title">password</string>
+    <string name="pass_edtxt_hint">please enter your password</string>
+    <string name="acceptBtn">Accept</string>
+    <string name="signInBtn">Enter</string>
+    <string name="SignUpBtn">Register</string>
+    <string name="SignInBtn">Sign In</string>
 
 </resources>

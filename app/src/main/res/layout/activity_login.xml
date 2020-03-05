@@ -22,7 +22,7 @@
         android:layout_below="@+id/logo_main"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-50dp"
-        android:text="Login"
+        android:text="@string/loginTitle"
         android:textColor="@color/white"
         android:textSize="@dimen/header_title_size" />
 
@@ -33,7 +33,7 @@
         android:layout_below="@id/login_title"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="50dp"
-        android:text="username or email"
+        android:text="@string/username_or_email_title"
         android:textColor="@color/txt_glow"
         android:textSize="@dimen/edt_title_size" />
 
@@ -46,7 +46,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/password"
-        android:hint="please enter your username or email"
+        android:hint="@string/login_username_edtxt_hint"
         android:paddingLeft="30dp"
         android:paddingTop="2dp"
         android:textColor="@color/white"
@@ -60,7 +60,7 @@
         android:layout_below="@id/edt_txt_username"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
-        android:text="password"
+        android:text="@string/password_edtxt_title"
         android:textColor="@color/txt_glow"
         android:textSize="@dimen/edt_title_size" />
 
@@ -73,7 +73,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/password"
-        android:hint="please enter your password"
+        android:hint="@string/pass_edtxt_hint"
         android:paddingLeft="30dp"
         android:paddingTop="2dp"
         android:textColor="@color/white"
@@ -103,7 +103,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/btn_login_accept"
                 android:textColor="@color/white"
-                android:text="Accept"
+                android:text="@string/signInBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -125,7 +125,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/btn_login_decline"
                 android:textColor="@color/white"
-                android:text="Decline"
+                android:text="@string/SignUpBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
