@@ -32,19 +32,19 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Users user = Users.getInstance();
+                if ((binding.edtTxtUsername.getText() != null) & (binding.edtTxtPassword.getText() != null)) {
+                    String mail = binding.edtTxtUsername.getText().toString();
+                    String pass = binding.edtTxtPassword.getText().toString();
+                    user.generateUid();
 
-                String mail = binding.edtTxtUsername.getText().toString();
-                String pass = binding.edtTxtPassword.getText().toString();
-                user.generateUid();
-
-                ApiCaller apiCaller = new ApiCaller();
-                apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
+                    ApiCaller apiCaller = new ApiCaller();
+                    apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
                             JSONObject jsonObject = new JSONObject(response.toString());
                             boolean status = jsonObject.getBoolean("status");
                             Log.e("", "");
-                            if (status){
+                            if (status) {
                                 user.setEmail(mail);
                                 user.setPassword(pass);
                                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
@@ -67,13 +67,19 @@ public class SignUp extends AppCompatActivity {
                         }
                     });
 
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.field_not_filled_toast,
+                            Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
 
         binding.btnSignUpDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
