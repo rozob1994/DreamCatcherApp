@@ -130,5 +130,6 @@
     <string name="signInBtn">Enter</string>
     <string name="SignUpBtn">Register</string>
     <string name="SignInBtn">Sign In</string>
+    <string name="sleepSaved">Sleep saved!</string>
 
 </resources>

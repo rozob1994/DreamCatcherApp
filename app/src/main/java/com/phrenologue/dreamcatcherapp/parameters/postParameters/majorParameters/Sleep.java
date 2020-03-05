@@ -5,10 +5,11 @@ import androidx.annotation.Nullable;
 public class Sleep {
     private static Sleep instance = null;
     private String duration = "";
-    private int time = 0; // time of the day
+    private int time = 0;  // 0 = no input, 1 = day, 2 = night
     private int physicalActivity = 0;
     private int foodConsumption = 0;
     private boolean sleepParalysis = false;
+
 
 
     private Sleep() {
@@ -47,6 +48,7 @@ public class Sleep {
     }
 
     public void setTime(int time) {
+
         this.time = time;
     }
 

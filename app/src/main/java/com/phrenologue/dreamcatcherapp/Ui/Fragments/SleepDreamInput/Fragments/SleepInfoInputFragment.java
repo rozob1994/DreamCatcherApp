@@ -5,11 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
+import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +34,9 @@ public class SleepInfoInputFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= FragmentSleepInfoInputBinding.inflate(inflater,container,false);
-        View view= binding.getRoot();
-
+        binding = FragmentSleepInfoInputBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        Sleep sleep = Sleep.getInstance(); // Getting an instance of Sleep.class which is a singleton.
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
@@ -37,7 +45,8 @@ public class SleepInfoInputFragment extends Fragment {
         binding.linDayOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.linDayOn.getVisibility()==View.VISIBLE){
+                sleep.setTime(1); // Setting sleep's time to day.
+                if (binding.linDayOn.getVisibility() == View.VISIBLE) {
                     binding.linDayOn.setVisibility(View.INVISIBLE);
                     binding.linDayOff.setVisibility(View.VISIBLE);
                 } else {
@@ -54,7 +63,8 @@ public class SleepInfoInputFragment extends Fragment {
         binding.linDayOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.linDayOff.getVisibility()==View.VISIBLE){
+                sleep.setTime(0); // Deleting sleep's time.
+                if (binding.linDayOff.getVisibility() == View.VISIBLE) {
                     binding.linDayOff.setVisibility(View.INVISIBLE);
                     binding.linDayOn.setVisibility(View.VISIBLE);
                 } else {
@@ -72,7 +82,8 @@ public class SleepInfoInputFragment extends Fragment {
         binding.linNightOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.linNightOn.getVisibility()==View.VISIBLE){
+                sleep.setTime(2); // Setting sleep's time to night.
+                if (binding.linNightOn.getVisibility() == View.VISIBLE) {
                     binding.linNightOn.setVisibility(View.INVISIBLE);
                     binding.linNightOff.setVisibility(View.VISIBLE);
                 } else {
@@ -89,7 +100,8 @@ public class SleepInfoInputFragment extends Fragment {
         binding.linNightOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.linNightOff.getVisibility()==View.VISIBLE){
+                sleep.setTime(0); // Deleting sleep's time.
+                if (binding.linNightOff.getVisibility() == View.VISIBLE) {
                     binding.linNightOff.setVisibility(View.INVISIBLE);
                     binding.linNightOn.setVisibility(View.VISIBLE);
                 } else {
@@ -100,11 +112,48 @@ public class SleepInfoInputFragment extends Fragment {
             }
         });
 
+        binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String duration = binding.edtHours.getText().toString() +" Hours "+
+                        binding.edtMinutes.getText().toString() + " Min. "; // Storing sleep duration as a single string, before moving forward to dream input.
+                sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class, before moving forward to dream input.
+
+
+            }
+        });
+
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getActivity(), ProfileActivity.class);
-                startActivity(intent);
+                String duration = binding.edtHours.getText().toString() +
+                        binding.edtMinutes.getText().toString(); // Storing sleep duration as a single string.
+                sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
+                ApiCaller apiCaller = new ApiCaller(); // Creating an instance of apiCaller to save the sleep.
+                apiCaller.savePost(new IResponseMessage() { // Saving the sleep input.
+                    @Override
+                    public void onSuccess(Object response) throws JSONException {
+                        JSONObject jsonObject = new JSONObject(response.toString()); // Getting a JSONObject to store the response from the server in a string.
+                        boolean status = jsonObject.getBoolean("status"); // Getting the result of the savePost method as a boolean (true/false).
+                        if (status) {
+                            Toast.makeText(getContext(),getString(R.string.sleepSaved),
+                                    Toast.LENGTH_LONG).show();
+                            Sleep.delSleep(); // Deleting the sleep instance, since the user doesn't want to add more info about it.
+                            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                            startActivity(intent);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) { // In case of connection error.
+                        Toast.makeText(getContext(),"Error saving Sleep! Please try again later",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+
             }
         });
 
