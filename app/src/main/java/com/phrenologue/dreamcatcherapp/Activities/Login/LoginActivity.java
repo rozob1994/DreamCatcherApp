@@ -16,6 +16,7 @@ import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        binding= ActivityLoginBinding.inflate(getLayoutInflater());
-        View view= binding.getRoot();
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
 
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
@@ -35,32 +36,42 @@ public class LoginActivity extends AppCompatActivity {
                 Users user = Users.getInstance();
                 String mail = binding.edtTxtUsername.getText().toString();
                 String pass = binding.edtTxtPassword.getText().toString();
-                Log.e("","");
+                Log.e("", "");
                 ApiCaller apiCaller = new ApiCaller();
                 apiCaller.login(mail, pass, new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
-                        user.setEmail(mail);
-                        Log.e("","");
-                        Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
-                        startActivity(intent);
-                        finish();
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        boolean status = jsonObject.getBoolean("status");
+                        if (status){
+                            user.setEmail(mail);
+                            Log.e("", "");
+                            Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            String message = jsonObject.getString("message");
+                            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                        }
+
                     }
 
                     @Override
-                    public void onFailure(String errorMessage) {
+                        public void onFailure(String errorMessage) {
                         Log.e("", errorMessage);
-                        Toast.makeText(getApplicationContext(),"login failed",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_LONG).show();
 
-                    }
-                });
+                        }
+                    });
+
+
             }
         });
 
         binding.btnLoginDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SignUp.class);
+                Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
                 finish();
             }

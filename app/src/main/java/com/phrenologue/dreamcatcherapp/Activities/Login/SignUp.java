@@ -32,8 +32,9 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Users user = Users.getInstance();
-                if ((binding.edtTxtUsername.getText() != null) & (binding.edtTxtPassword.getText() != null)) {
-                    String mail = binding.edtTxtUsername.getText().toString();
+                String mail = binding.edtTxtUsername.getText().toString();
+                Log.e("","");
+                if ((binding.edtTxtUsername.getText().toString() != "") & (binding.edtTxtPassword.getText().toString() != "")) {
                     String pass = binding.edtTxtPassword.getText().toString();
                     user.generateUid();
 
