@@ -30,7 +30,7 @@ public class ApiPostCaller {
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postSleeps(user.getUid(), sleep.getDuration(),
                 sleep.getTime(), sleep.getPhysicalActivity(), sleep.getFoodConsumption(),
-                sleep.getSleepParalysis(), dream.getDreamChecklist().isRemembered(),
+                sleep.getSleepParalysis(), dream.getDreamChecklist().getRemembered(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
                 date.getMonth(), date.getYear());
         call.enqueue(new Callback<ResponseBody>() {

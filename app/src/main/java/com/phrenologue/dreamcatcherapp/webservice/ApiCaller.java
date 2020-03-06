@@ -41,7 +41,7 @@ public class ApiCaller {
         Call<ResponseBody> call = postService.savePost(Users.getInstance().getUid(),
                 sleep1.getDuration(), sleep1.getTime(),
                 sleep1.getPhysicalActivity(), sleep1.getFoodConsumption(), sleep1.getSleepParalysis(),
-                dream1.getDreamChecklist().isRemembered(),
+                dream1.getDreamChecklist().getRemembered(),
                 dream1.getDreamPeople().getName(), dream1.getDreamPeople().isExistent(),
                 dream1.getDreamPeople().getImpression(),
                 dream1.getDreamSound().isSound(), dream1.getDreamSound().isMusical(),

@@ -45,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
                         boolean status = jsonObject.getBoolean("status");
                         if (status){
                             user.setEmail(mail);
+                            int uid = jsonObject.getInt("uid");
+                            user.setUid(uid);
                             Log.e("", "");
                             Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                             startActivity(intent);

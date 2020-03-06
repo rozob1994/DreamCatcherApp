@@ -132,13 +132,13 @@ public class SleepInfoInputFragment extends Fragment {
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String duration = binding.edtHours.getText().toString() +
-                        binding.edtMinutes.getText().toString(); // Storing sleep duration as a single string.
+                String duration = binding.edtHours.getText().toString() +" Hours "+
+                        binding.edtMinutes.getText().toString() + " Min. "; // Storing sleep duration as a single string.
                 sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
-                dreamChecklist.setRemembered(false);
+                dreamChecklist.setRemembered(1);
                 dream.setDreamChecklist(dreamChecklist);
                 date.setDateToday(); // Setting today's date in our instance of date.
-                ApiPostCaller apiCaller = new ApiPostCaller(); // Creating an instance of apiCaller to save the sleep.
+                ApiPostCaller apiCaller = new ApiPostCaller();// Creating an instance of apiCaller to save the sleep.
                 apiCaller.saveSleepSeparately(new IResponseMessage() { // Saving the sleep input.
                     @Override
                     public void onSuccess(Object response) throws JSONException {
