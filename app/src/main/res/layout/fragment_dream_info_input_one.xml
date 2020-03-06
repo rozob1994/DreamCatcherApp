@@ -612,7 +612,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rel_color_main"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/layout_separator"></View>
+                    android:background="@drawable/layout_separator">
+
+                </View>
 
 
                 //sounds_section_main

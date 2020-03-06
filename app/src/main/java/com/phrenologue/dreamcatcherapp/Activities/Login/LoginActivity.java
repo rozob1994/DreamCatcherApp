@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                             startActivity(intent);
                             finish();
+
                         } else {
                             String message = jsonObject.getString("message");
                             Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();

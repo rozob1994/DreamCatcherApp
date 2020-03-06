@@ -7,6 +7,7 @@
     android:background="@color/background_main"
     tools:context=".Activities.Login.LoginActivity">
 
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo_main"
         android:layout_width="550dp"

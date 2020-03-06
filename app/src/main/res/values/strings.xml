@@ -117,8 +117,6 @@
     <string name="username_input_hint">username or email</string>
     <string name="username_edtxt_hint">please enter your username or email</string>
     <string name="password_edt_txt_title">password</string>
-    <string name="pass_edtxt_hint">please enter your password</string>
-    <string name="acceptBtn">Accept</string>
     <string name="declineBtn">Decline</string>
     <string name="field_not_filled_toast">Please fill all the required fields.</string>
     <string name="taken_username_error">This username is already taken.</string>
@@ -131,5 +129,6 @@
     <string name="SignUpBtn">Register</string>
     <string name="SignInBtn">Sign In</string>
     <string name="sleepSaved">Sleep saved!</string>
+    <string name="pass_edtxt_hint">Please enter your password</string>
 
 </resources>
