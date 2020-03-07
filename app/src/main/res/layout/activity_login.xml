@@ -8,19 +8,22 @@
     tools:context=".Activities.Login.LoginActivity">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo_main"
-        android:layout_width="550dp"
-        android:layout_height="550dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_marginTop="-250dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-270dp"
-        app:srcCompat="@drawable/dream_catcher_logo" />
+        android:id="@+id/logo_spinning"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="logo_spinning.json"
+        app:lottie_loop="true" />
+
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo_main"
+        android:layout_below="@+id/logo_spinning"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-50dp"
         android:text="@string/loginTitle"
