@@ -937,7 +937,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/txt_glow"
-                    android:text="@string/previousBtn"
+                    android:text="previous"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -947,7 +947,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/txt_glow"
-                    android:text="@string/nextBtn"
+                    android:text="next"
                     android:textColor="@color/white" />
 
             </LinearLayout>

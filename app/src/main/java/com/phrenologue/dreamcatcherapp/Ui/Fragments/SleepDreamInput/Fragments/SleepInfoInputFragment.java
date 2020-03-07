@@ -146,7 +146,7 @@ public class SleepInfoInputFragment extends Fragment {
                             container.removeAllViews();
 
                         } else {
-                            Toast.makeText(getContext(),getString(R.string.dreamSaveError),
+                            Toast.makeText(getContext(), "Error",
                                     Toast.LENGTH_LONG).show();
                         }
                     }
@@ -195,7 +195,7 @@ public class SleepInfoInputFragment extends Fragment {
                     @Override
                     public void onFailure(String errorMessage) { // In case of connection error.
                         Log.e("", "");
-                        Toast.makeText(getContext(), R.string.errorSavingSleep,
+                        Toast.makeText(getContext(), "Error",
                                 Toast.LENGTH_LONG).show();
 
                     }

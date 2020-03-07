@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
-import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -62,20 +61,20 @@ public class DreamInfoInputTwoFragment extends Fragment {
                         Log.e("","");
                         if (status){
                             Dream.delDream();
-                            Toast.makeText(getContext(),getString(R.string.dreamSaved),
+                            Toast.makeText(getContext(),"Dream Saved.",
                                     Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getContext(), ProfileActivity.class);
                             Log.e("","");
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getContext(), R.string.errorDreamSave,
+                            Toast.makeText(getContext(), "Dream Saved",
                                     Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
-                        Toast.makeText(getContext(), R.string.connectionFailed,
+                        Toast.makeText(getContext(), "Connection Failed",
                                 Toast.LENGTH_LONG).show();
                     }
                 });
