@@ -8,132 +8,125 @@
     tools:context=".Activities.Login.LoginActivity">
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_marginTop="-250dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/logo_spinning"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="logo_spinning.json"
-        app:lottie_loop="true" />
-
-
-    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-        android:id="@+id/login_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo_spinning"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-50dp"
-        android:text="@string/loginTitle"
-        android:textColor="@color/white"
-        android:textSize="@dimen/header_title_size" />
-
-    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-        android:id="@+id/username_edt_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login_title"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/username_or_email_title"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_username"
+    <RelativeLayout
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/username_edt_txt_title"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/login_username_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size" />
+        android:layout_height="wrap_content">
 
-    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-        android:id="@+id/password_edt_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edt_txt_username"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/password_edtxt_title"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/password_edt_txt_title"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/pass_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_txt_password"
-        android:layout_marginTop="40dp"
-        android:gravity="center_horizontal">
-
-        <RelativeLayout
-            android:layout_gravity="center_horizontal"
+        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            android:id="@+id/login_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/loginTitle"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_title_size" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_login_accept"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/button_accept" />
-
-            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/btn_login_accept"
-                android:textColor="@color/white"
-                android:text="@string/signInBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
+        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            android:id="@+id/username_edt_txt_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_title"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/username_or_email_title"
+            android:textColor="@color/txt_glow"
+            android:textSize="@dimen/edt_title_size" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_login_decline"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/button_decline" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_txt_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/username_edt_txt_title"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/password"
+            android:hint="@string/login_username_edtxt_hint"
+            android:paddingLeft="30dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/edt_text_color"
+            android:textSize="@dimen/edt_txt_size" />
 
-            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/btn_login_decline"
-                android:textColor="@color/white"
-                android:text="@string/SignUpBtn"
+        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            android:id="@+id/password_edt_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_txt_username"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/password_edtxt_title"
+            android:textColor="@color/txt_glow"
+            android:textSize="@dimen/edt_title_size" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/password_edt_txt_title"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/password"
+            android:hint="@string/pass_edtxt_hint"
+            android:paddingLeft="30dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/edt_text_color"
+            android:textSize="@dimen/edt_txt_size" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_txt_password"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal">
+
+            <RelativeLayout
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_login_accept"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button_accept" />
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/btn_login_accept"
+                    android:textColor="@color/white"
+                    android:text="@string/signInBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="40dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_login_decline"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button_decline" />
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/btn_login_decline"
+                    android:textColor="@color/white"
+                    android:text="@string/SignUpBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
 
 
 
@@ -141,7 +134,10 @@
 
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 
 </RelativeLayout>
