@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
@@ -121,10 +123,41 @@ public class SleepInfoInputFragment extends Fragment {
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String duration = binding.edtHours.getText().toString() +" Hours "+
+                String duration = binding.edtHours.getText().toString() + " Hours " +
                         binding.edtMinutes.getText().toString() + " Min. "; // Storing sleep duration as a single string, before moving forward to dream input.
                 sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class, before moving forward to dream input.
+                dreamChecklist.setRemembered(1);
+                dream.setDreamChecklist(dreamChecklist);
+                dream.setPostId(sleep.generatePostId());
 
+
+                ApiPostCaller apiPostCaller = new ApiPostCaller();
+                apiPostCaller.saveSleepSeparately(new IResponseMessage() {
+                    @Override
+                    public void onSuccess(Object response) throws JSONException {
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        boolean status = jsonObject.getBoolean("status");
+                        if (status){
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            DreamInfoInputOneFragment fragment = new DreamInfoInputOneFragment();
+                            transaction.replace(R.id.dream_adding_frame, fragment);
+                            transaction.commit();
+                            container.removeAllViews();
+
+                        } else {
+                            Toast.makeText(getContext(),getString(R.string.dreamSaveError),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Toast.makeText(getContext(),getString(R.string.connection_error),
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                });
 
             }
         });
@@ -132,10 +165,11 @@ public class SleepInfoInputFragment extends Fragment {
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String duration = binding.edtHours.getText().toString() +" Hours "+
+                String duration = binding.edtHours.getText().toString() + " Hours " +
                         binding.edtMinutes.getText().toString() + " Min. "; // Storing sleep duration as a single string.
                 sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
-                dreamChecklist.setRemembered(1);
+                sleep.generatePostId();
+                dreamChecklist.setRemembered(0);
                 dream.setDreamChecklist(dreamChecklist);
                 date.setDateToday(); // Setting today's date in our instance of date.
                 ApiPostCaller apiCaller = new ApiPostCaller();// Creating an instance of apiCaller to save the sleep.
@@ -144,24 +178,24 @@ public class SleepInfoInputFragment extends Fragment {
                     public void onSuccess(Object response) throws JSONException {
                         JSONObject jsonObject = new JSONObject(response.toString()); // Getting a JSONObject to store the response from the server in a string.
                         boolean status = jsonObject.getBoolean("status"); // Getting the result of the savePost method as a boolean (true/false).
-                        Log.e("","");
+                        Log.e("", "");
                         if (status) {
-                            Toast.makeText(getContext(),getString(R.string.sleepSaved),
+                            Toast.makeText(getContext(), getString(R.string.sleepSaved),
                                     Toast.LENGTH_LONG).show();
                             Sleep.delSleep(); // Deleting the sleep instance, since the user doesn't want to add more info about it.
                             Intent intent = new Intent(getActivity(), ProfileActivity.class);
                             startActivity(intent);
                         } else {
                             String msg = jsonObject.getString("message");
-                            Toast.makeText(getContext(),msg,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                         }
 
                     }
 
                     @Override
                     public void onFailure(String errorMessage) { // In case of connection error.
-                        Log.e("","");
-                        Toast.makeText(getContext(),"Error saving Sleep! Please try again later",
+                        Log.e("", "");
+                        Toast.makeText(getContext(), R.string.errorSavingSleep,
                                 Toast.LENGTH_LONG).show();
 
                     }

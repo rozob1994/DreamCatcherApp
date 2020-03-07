@@ -23,12 +23,46 @@ public class ApiPostCaller {
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
 
+    public void saveDreamSeparately(IResponseMessage responseMessage) {
+        Users user = Users.getInstance();
+        Dream dream = Dream.getInstance();
+        Date date = Date.getInstance();
+        Call<ResponseBody> call = postService.postDreams(dream.getPostId(), user.getUid(),
+                dream.getDreamChecklist().getRemembered(), dream.getDreamPeople().getName(),
+                dream.getDreamPeople().getExistent(), dream.getDreamPeople().getImpression(),
+                dream.getDreamSound().getSound(), dream.getDreamSound().getMusical(),
+                dream.getDreamChecklist().getFalseAwake(), dream.getDreamChecklist().getGrayScale(),
+                dream.getDreamChecklist().getDailyRelated(), dream.getDreamChecklist().getExperience(),
+                dream.getDreamLucidity().getLucid(), dream.getDreamLucidity().getLucidityLevel(),
+                dream.getDreamDescription().getTitle(), dream.getDreamDescription().getContent(),
+                date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
+                date.getMonth(), date.getYear());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+
+    }
+
     public void saveSleepSeparately(IResponseMessage responseMessage) {
         Users user = Users.getInstance();
         Sleep sleep = Sleep.getInstance();
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
-        Call<ResponseBody> call = postService.postSleeps(user.getUid(), sleep.getDuration(),
+        Call<ResponseBody> call = postService.postSleeps(user.getUid(), sleep.getPostId(), sleep.getDuration(),
                 sleep.getTime(), sleep.getPhysicalActivity(), sleep.getFoodConsumption(),
                 sleep.getSleepParalysis(), dream.getDreamChecklist().getRemembered(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
@@ -36,7 +70,7 @@ public class ApiPostCaller {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.e("","");
+                Log.e("", "");
                 try {
                     responseMessage.onSuccess(response.body().string());
                 } catch (JSONException e) {

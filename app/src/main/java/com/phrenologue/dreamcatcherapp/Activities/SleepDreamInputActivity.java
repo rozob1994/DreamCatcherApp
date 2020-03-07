@@ -1,9 +1,9 @@
 package com.phrenologue.dreamcatcherapp.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Adapters.SleepDreamInputAdapter;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySleepDreamInputBinding;
@@ -22,5 +22,6 @@ public class SleepDreamInputActivity extends AppCompatActivity {
 
         adapter= new SleepDreamInputAdapter(getSupportFragmentManager());
         binding.sleepDreamInputVp.setAdapter(adapter);
+        
     }
 }

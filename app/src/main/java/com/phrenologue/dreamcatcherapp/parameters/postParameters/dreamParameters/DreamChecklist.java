@@ -5,8 +5,8 @@ import androidx.annotation.Nullable;
 public class DreamChecklist {
     private static final DreamChecklist instance = new DreamChecklist();
     private int remembered; // 0 = forgotten, 1 = remembered.
-    private boolean falseAwake = false;
-    private boolean grayScale = false;
+    private int falseAwake;
+    private int grayScale; // 0 = null, 1 = grayscale, 2 = colorful.
     private int dailyRelated = 0;
     private int experience = 0;
 
@@ -14,7 +14,7 @@ public class DreamChecklist {
     }
 
 
-    private DreamChecklist(@Nullable int remembered, @Nullable boolean falseAwake, @Nullable boolean grayScale,
+    private DreamChecklist(@Nullable int remembered, @Nullable int falseAwake, @Nullable int grayScale,
                            @Nullable int dailyRelated, @Nullable int experience) {
         this.remembered = remembered;
         this.falseAwake = falseAwake;
@@ -35,19 +35,19 @@ public class DreamChecklist {
         this.remembered = remembered;
     }
 
-    public boolean isFalseAwake() {
+    public int getFalseAwake() {
         return falseAwake;
     }
 
-    public void setFalseAwake(boolean falseAwake) {
+    public void setFalseAwake(int falseAwake) {
         this.falseAwake = falseAwake;
     }
 
-    public boolean isGrayScale() {
+    public int getGrayScale() {
         return grayScale;
     }
 
-    public void setGrayScale(boolean grayScale) {
+    public void setGrayScale(int grayScale) {
         this.grayScale = grayScale;
     }
 

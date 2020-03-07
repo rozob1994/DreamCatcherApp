@@ -928,22 +928,24 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/prevBtn"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/txt_glow"
-                    android:text="Previous"
+                    android:text="@string/previousBtn"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nextBtn"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/dreams_bg_shape"
                     android:backgroundTint="@color/txt_glow"
-                    android:text="Next"
+                    android:text="@string/nextBtn"
                     android:textColor="@color/white" />
 
             </LinearLayout>

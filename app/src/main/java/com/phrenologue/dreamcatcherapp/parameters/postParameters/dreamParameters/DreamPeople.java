@@ -5,13 +5,13 @@ import androidx.annotation.Nullable;
 public class DreamPeople {
     private static final DreamPeople instance = new DreamPeople();
     private String name = "";
-    private boolean existent = false;
-    private int impression = 0;
+    private int existent; // 0 = non-existent, 1 = existent.
+    private int impression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
 
     private DreamPeople() {
     }
 
-    private DreamPeople(@Nullable String name, @Nullable boolean existent, @Nullable int impression) {
+    private DreamPeople(@Nullable String name, @Nullable int existent, @Nullable int impression) {
         this.name = name;
         this.existent = existent;
         this.impression = impression;
@@ -31,11 +31,11 @@ public class DreamPeople {
         this.name = name;
     }
 
-    public boolean isExistent() {
+    public int getExistent() {
         return existent;
     }
 
-    public void setExistent(boolean existent) {
+    public void setExistent(int existent) {
         this.existent = existent;
     }
 

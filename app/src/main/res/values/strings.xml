@@ -131,5 +131,12 @@
     <string name="SignUpBtn">Register</string>
     <string name="SignInBtn">Sign In</string>
     <string name="sleepSaved">Sleep saved!</string>
+    <string name="previousBtn">Previous</string>
+    <string name="nextBtn">Next</string>
+    <string name="errorSavingSleep">Error saving Sleep! Please try again later</string>
+    <string name="dreamSaved">Dream saved!</string>
+    <string name="errorDreamSave">Error saving dream!</string>
+    <string name="connectionFailed">Connection failed. Please, try again.</string>
+    <string name="dreamSaveError">Error saving dream. Please, try again.</string>
 
 </resources>

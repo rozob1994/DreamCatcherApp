@@ -9,6 +9,8 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamTags;
 
+import java.util.Random;
+
 
 public class Dream {
     private static Dream instance =null;
@@ -19,6 +21,7 @@ public class Dream {
     private DreamDescription dreamDescription;
     //private String inspiration;
     private DreamTags dreamTags;
+    private int postId;
 
     private Dream() {
     }
@@ -92,6 +95,21 @@ public class Dream {
 
     public void setDreamTags(DreamTags dreamTags) {
         this.dreamTags = dreamTags;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public int generatePostId(){
+        Random rand = new Random();
+        int randInt = rand.nextInt(999999999);
+        this.postId = randInt;
+        return postId;
     }
 }
 

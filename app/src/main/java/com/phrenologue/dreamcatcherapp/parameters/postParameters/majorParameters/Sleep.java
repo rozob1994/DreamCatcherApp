@@ -2,21 +2,23 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameter
 
 import androidx.annotation.Nullable;
 
+import java.util.Random;
+
 public class Sleep {
     private static Sleep instance = null;
     private String duration = "";
     private int time = 0;  // 0 = no input, 1 = day, 2 = night
     private int physicalActivity = 0;
     private int foodConsumption = 0;
-    private boolean sleepParalysis = false;
-
+    private int sleepParalysis;
+    private int postId;
 
 
     private Sleep() {
     }
 
     private Sleep(@Nullable String duration, @Nullable int time, @Nullable int physicalActivity,
-                  @Nullable int foodConsumption, @Nullable boolean sleepParalysis) {
+                  @Nullable int foodConsumption, @Nullable int sleepParalysis) {
         this.duration = duration;
         this.time = time;
         this.physicalActivity = physicalActivity;
@@ -68,12 +70,27 @@ public class Sleep {
         this.foodConsumption = foodConsumption;
     }
 
-    public boolean getSleepParalysis() {
+    public int getSleepParalysis() {
         return sleepParalysis;
     }
 
-    public void setSleepParalysis(boolean sleepParalysis) {
+    public void setSleepParalysis(int sleepParalysis) {
         this.sleepParalysis = sleepParalysis;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public int generatePostId(){
+        Random rand = new Random();
+        int randInt = rand.nextInt(999999999);
+        this.postId = randInt;
+        return postId;
     }
 }
 
