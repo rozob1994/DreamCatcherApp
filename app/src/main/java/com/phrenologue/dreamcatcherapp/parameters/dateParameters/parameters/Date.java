@@ -33,16 +33,41 @@ public class Date {
         return calendar;
     }
 
-    public void setCustomDay(java.util.Date date) {
-        this.date = date;
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        this.dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        this.dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        this.dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
-        this.weekOfMonth = calendar.get(Calendar.WEEK_OF_MONTH);
-        this.month = calendar.get(Calendar.MONTH);
-        this.year = calendar.get(Calendar.YEAR);
+    public void setCustomDay(int year, String month, int day) {
+        this.dayOfMonth = day;
+        this.month = monthStrToInt(month);
+        this.year = year;
+    }
+
+    public int monthStrToInt(String month){
+        int monthNumber = 0;
+        switch (month.toLowerCase()){
+            case "january":
+                monthNumber = 1;
+            case "february":
+                monthNumber = 2;
+            case "march":
+                monthNumber = 3;
+            case "april":
+                monthNumber = 4;
+            case "may":
+                monthNumber = 5;
+            case "june":
+                monthNumber = 6;
+            case "july":
+                monthNumber = 7;
+            case "august":
+                monthNumber = 8;
+            case "september":
+                monthNumber = 9;
+            case "october":
+                monthNumber = 10;
+            case "november":
+                monthNumber = 11;
+            case "december":
+                monthNumber = 12;
+        }
+        return monthNumber;
     }
 
     public java.util.Date getCustomDate() {

@@ -6,9 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +23,11 @@ import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBind
 public class DreamInfoInputOneFragment extends Fragment {
 
     private FragmentDreamInfoInputOneBinding binding;
-
+    Dream dream;
+    DreamPeople people;
+    DreamSound sound;
+    DreamChecklist checklist;
+    DreamLucidity lucidity;
 
     public DreamInfoInputOneFragment() {
         // Required empty public constructor
@@ -28,8 +39,11 @@ public class DreamInfoInputOneFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDreamInfoInputOneBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-
+        dream = Dream.getInstance(); // Getting an instance of Dream.class for storing data.
+        people = DreamPeople.getInstance();
+        sound = DreamSound.getInstance();
+        checklist = DreamChecklist.getInstance();
+        lucidity = DreamLucidity.getInstance();
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[PEOPLE BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING PEOPLE BUTTON ON---------------------------//
@@ -37,6 +51,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.btnPeopleOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setExistent(1);
                 if (binding.relPeopleExpanded.getVisibility() == View.VISIBLE) {
                     binding.relPeopleExpanded.setVisibility(View.GONE);
                     binding.relPeopleClosed.setVisibility(View.VISIBLE);
@@ -51,6 +66,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.btnPeopleOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setExistent(0);
                 if (binding.relPeopleClosed.getVisibility() == View.VISIBLE) {
                     binding.relPeopleClosed.setVisibility(View.GONE);
                     binding.relPeopleExpanded.setVisibility(View.VISIBLE);
@@ -69,6 +85,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.btnSoundsOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sound.setSound(1);
                 if (binding.relSoundsExpanded.getVisibility() == View.VISIBLE) {
                     binding.relSoundsExpanded.setVisibility(View.GONE);
                     binding.relSoundsClosed.setVisibility(View.VISIBLE);
@@ -83,6 +100,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.btnSoundsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sound.setSound(0);
                 if (binding.relSoundsClosed.getVisibility() == View.VISIBLE) {
                     binding.relSoundsClosed.setVisibility(View.GONE);
                     binding.relSoundsExpanded.setVisibility(View.VISIBLE);
@@ -97,8 +115,6 @@ public class DreamInfoInputOneFragment extends Fragment {
 //************************************************************************************************************************************//
 //************************************************************************************************************************************//
 //************************************************************************************************************************************//
-
-
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING POSITIVE BUTTON ON---------------------------//
@@ -106,7 +122,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linPositiveOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                people.setImpression(3); // storing positive feelings.
                 if (binding.linPositiveOn.getVisibility() == View.VISIBLE) {
                     binding.linPositiveOn.setVisibility(View.INVISIBLE);
                     binding.linPositiveOff.setVisibility(View.VISIBLE);
@@ -126,6 +142,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linPositiveOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setImpression(0);
                 if (binding.linPositiveOff.getVisibility() == View.VISIBLE) {
                     binding.linPositiveOff.setVisibility(View.INVISIBLE);
                     binding.linPositiveOn.setVisibility(View.VISIBLE);
@@ -143,6 +160,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linNeutralOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setImpression(2);
                 if (binding.linNeutralOn.getVisibility() == View.VISIBLE) {
                     binding.linNeutralOn.setVisibility(View.INVISIBLE);
                     binding.linNeutralOff.setVisibility(View.VISIBLE);
@@ -161,6 +179,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linNeutralOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setImpression(0);
                 if (binding.linNeutralOff.getVisibility() == View.VISIBLE) {
                     binding.linNeutralOff.setVisibility(View.INVISIBLE);
                     binding.linNeutralOn.setVisibility(View.VISIBLE);
@@ -177,6 +196,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linNegativeOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setImpression(1);
                 if (binding.linNegativeOn.getVisibility() == View.VISIBLE) {
                     binding.linNegativeOn.setVisibility(View.INVISIBLE);
                     binding.linNegativeOff.setVisibility(View.VISIBLE);
@@ -195,6 +215,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linNegativeOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                people.setImpression(0);
                 if (binding.linNegativeOff.getVisibility() == View.VISIBLE) {
                     binding.linNegativeOff.setVisibility(View.INVISIBLE);
                     binding.linNegativeOn.setVisibility(View.VISIBLE);
@@ -215,6 +236,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linColorfulOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checklist.setGrayScale(2);
                 if (binding.linColorfulOn.getVisibility() == View.VISIBLE) {
                     binding.linColorfulOn.setVisibility(View.INVISIBLE);
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
@@ -233,6 +255,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linColorfulOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checklist.setGrayScale(0);
                 if (binding.linColorfulOff.getVisibility() == View.VISIBLE) {
                     binding.linColorfulOff.setVisibility(View.INVISIBLE);
                     binding.linColorfulOn.setVisibility(View.VISIBLE);
@@ -250,6 +273,7 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linGrayscaleOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checklist.setGrayScale(1);
                 if (binding.linGrayscaleOn.getVisibility() == View.VISIBLE) {
                     binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
@@ -268,10 +292,11 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linGrayscaleOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checklist.setGrayScale(0);
                 if (binding.linGrayscaleOff.getVisibility() == View.VISIBLE) {
                     binding.linGrayscaleOff.setVisibility(View.INVISIBLE);
                     binding.linGrayscaleOn.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.linGrayscaleOff.setVisibility(View.VISIBLE);
                     binding.linGrayscaleOn.setVisibility(View.INVISIBLE);
                     binding.linColorfulOff.setVisibility(View.VISIBLE);
@@ -288,10 +313,11 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linBtnMusicalOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(binding.linBtnMusicalOn.getVisibility()==View.VISIBLE){
+                sound.setMusical(2);
+                if (binding.linBtnMusicalOn.getVisibility() == View.VISIBLE) {
                     binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.linBtnMusicalOn.setVisibility(View.VISIBLE);
                     binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnMusicalOff.setVisibility(View.INVISIBLE);
@@ -305,10 +331,11 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linBtnMusicalOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.linBtnMusicalOff.getVisibility()==View.VISIBLE){
+                sound.setMusical(0);
+                if (binding.linBtnMusicalOff.getVisibility() == View.VISIBLE) {
                     binding.linBtnMusicalOff.setVisibility(View.INVISIBLE);
                     binding.linBtnMusicalOn.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
                     binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
@@ -321,10 +348,11 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linBtnNonMusicalOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.linBtnNonMusicalOn.getVisibility()==View.VISIBLE){
+                sound.setMusical(1);
+                if (binding.linBtnNonMusicalOn.getVisibility() == View.VISIBLE) {
                     binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.linBtnNonMusicalOn.setVisibility(View.VISIBLE);
                     binding.linBtnMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
@@ -338,10 +366,11 @@ public class DreamInfoInputOneFragment extends Fragment {
         binding.linBtnNonMusicalOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.linBtnNonMusicalOff.getVisibility()==View.VISIBLE){
+                sound.setMusical(0);
+                if (binding.linBtnNonMusicalOff.getVisibility() == View.VISIBLE) {
                     binding.linBtnNonMusicalOff.setVisibility(View.INVISIBLE);
                     binding.linBtnNonMusicalOn.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.linBtnNonMusicalOff.setVisibility(View.VISIBLE);
                     binding.linBtnNonMusicalOn.setVisibility(View.INVISIBLE);
                     binding.linBtnMusicalOff.setVisibility(View.VISIBLE);
@@ -349,7 +378,43 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTONS]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
+        //---------------------------------PREVIOUS BUTTON HIT----------------------------------//
+
+        binding.prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dream.delDream();
+                checklist.setRemembered(0);
+                dream.setDreamChecklist(checklist);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                SleepInfoInputFragment fragment = new SleepInfoInputFragment();
+                transaction.replace(R.id.dream_adding_frame, fragment);
+                transaction.commit();
+                container.removeAllViews();
+            }
+        });
+
+        //---------------------------------NEXT BUTTON HIT----------------------------------//
+
+        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                people.setName(binding.edtTxtNames.getText().toString());
+                dream.setDreamPeople(people);
+                dream.setDreamChecklist(checklist);
+                dream.setDreamSound(sound);
+                dream.setDreamLucidity(lucidity);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                DreamInfoInputTwoFragment fragment = new DreamInfoInputTwoFragment();
+                transaction.replace(R.id.dream_adding_frame, fragment);
+                transaction.commit();
+                container.removeAllViews();
+            }
+        });
 
         return view;
 

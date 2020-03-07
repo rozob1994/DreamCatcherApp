@@ -4,13 +4,13 @@ import androidx.annotation.Nullable;
 
 public class DreamLucidity {
     private static final DreamLucidity instance = new DreamLucidity();
-    private boolean lucid = false;
+    private int lucid;
     private int lucidityLevel = 0;
 
     private DreamLucidity() {
     }
 
-    private DreamLucidity(@Nullable boolean lucid, @Nullable int lucidityLevel) {
+    private DreamLucidity(@Nullable int lucid, @Nullable int lucidityLevel) {
         this.lucid = lucid;
         this.lucidityLevel = lucidityLevel;
     }
@@ -19,11 +19,11 @@ public class DreamLucidity {
         return instance;
     }
 
-    public boolean isLucid() {
+    public int getLucid() {
         return lucid;
     }
 
-    public void setLucid(boolean lucid) {
+    public void setLucid(int lucid) {
         this.lucid = lucid;
     }
 
