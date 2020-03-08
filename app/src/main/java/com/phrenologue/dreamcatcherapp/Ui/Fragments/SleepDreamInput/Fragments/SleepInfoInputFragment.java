@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -28,10 +29,13 @@ import org.json.JSONObject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepInfoInputFragment extends Fragment {
+public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
 
     private FragmentSleepInfoInputBinding binding;
+    private SeekBar physicalActivity;
+    private SeekBar foodConsumption;
+    private Sleep sleep;
 
     public SleepInfoInputFragment() {
     }
@@ -42,10 +46,12 @@ public class SleepInfoInputFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSleepInfoInputBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        Sleep sleep = Sleep.getInstance(); // Getting an instance of Sleep.class which is a singleton.
+        sleep = Sleep.getInstance(); // Getting an instance of Sleep.class which is a singleton.
         Dream dream = Dream.getInstance();// Getting an instance of Dream.class to store PostId.
         DreamChecklist dreamChecklist = DreamChecklist.getInstance();
         Date date = Date.getInstance(); // Getting an instance of Date.class to set today's date.
+        physicalActivity = binding.sliderPhysical;
+        foodConsumption = binding.sliderFood;
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING DAY BUTTON ON---------------------------//
@@ -119,7 +125,49 @@ public class SleepInfoInputFragment extends Fragment {
                 }
             }
         });
+        //---------------------------PHYSICAL ACTIVITY SEEK BAR---------------------------//
 
+        physicalActivity.setOnSeekBarChangeListener(this);
+        physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sleep.setPhysicalActivity(progress);
+                seekBar.setMax(9);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
+
+        foodConsumption.setOnSeekBarChangeListener(this);
+        foodConsumption.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sleep.setFoodConsumption(progress);
+                seekBar.setMax(9);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //---------------------------BUTTONS----------------------------------------------//
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,5 +254,25 @@ public class SleepInfoInputFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (seekBar == physicalActivity) {
+            sleep.getInstance().setPhysicalActivity(progress);
+        } else if (seekBar == foodConsumption) {
+            sleep.getInstance().setFoodConsumption(progress);
+        }
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }
