@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,7 +21,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DreamInfoInputOneFragment extends Fragment {
+public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private FragmentDreamInfoInputOneBinding binding;
     Dream dream;
@@ -28,6 +29,8 @@ public class DreamInfoInputOneFragment extends Fragment {
     DreamSound sound;
     DreamChecklist checklist;
     DreamLucidity lucidity;
+    private SeekBar experience;
+    private SeekBar lucidityLevel;
 
     public DreamInfoInputOneFragment() {
         // Required empty public constructor
@@ -44,6 +47,29 @@ public class DreamInfoInputOneFragment extends Fragment {
         sound = DreamSound.getInstance();
         checklist = DreamChecklist.getInstance();
         lucidity = DreamLucidity.getInstance();
+        experience = binding.sliderMood;
+        lucidityLevel = binding.sliderLucidity;
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MOOD SEEK BAR]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
+        experience.setOnSeekBarChangeListener(this);
+        experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                checklist.setExperience(progress);
+                seekBar.setMax(9);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[PEOPLE BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING PEOPLE BUTTON ON---------------------------//
@@ -378,6 +404,27 @@ public class DreamInfoInputOneFragment extends Fragment {
             }
         });
 
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[LUCIDITY LEVEL]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
+        lucidityLevel.setOnSeekBarChangeListener(this);
+        lucidityLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                lucidity.setLucidityLevel(progress);
+                seekBar.setMax(9);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTONS]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------------PREVIOUS BUTTON HIT----------------------------------//
@@ -417,6 +464,25 @@ public class DreamInfoInputOneFragment extends Fragment {
         });
 
         return view;
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if (seekBar == experience) {
+            checklist.setExperience(progress);
+        } else if (seekBar == lucidityLevel) {
+            lucidity.setLucidityLevel(progress);
+        }
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
 }

@@ -53,6 +53,17 @@ public interface IPostService {
                                   @Nullable @Field("month") int month,
                                   @Nullable @Field("year") int year);
 
+    @FormUrlEncoded
+    @POST("adddatetosleep.php")
+    Call<ResponseBody> addDateToSleep(@Nullable @Field("uid") int uid,
+                                      @Nullable @Field("postId") int postId,
+                                      @Nullable @Field("dayOfWeek") int dayOfWeek,
+                                      @Nullable @Field("dayOfMonth") int dayOfMonth,
+                                      @Nullable @Field("dayOfYear") int dayOfYear,
+                                      @Nullable @Field("weekOfMonth") int weekOfMonth,
+                                      @Nullable @Field("month") int month,
+                                      @Nullable @Field("year") int year);
+
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);
 

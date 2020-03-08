@@ -44,6 +44,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
         description = DreamDescription.getInstance();
         date = Date.getInstance();
 
+        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTON]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
+
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,21 +55,45 @@ public class DreamInfoInputTwoFragment extends Fragment {
                 description.setTitle(binding.edtTextTitle.getText().toString());
                 dream.setDreamDescription(description);
 
+                int day = Integer.parseInt(binding.spinnerDay.getSelectedItem().toString());
+                String month = binding.spinnerMonth.getSelectedItem().toString();
+                String year = binding.spinnerYear.getSelectedItem().toString();
+
+                date.setCustomDay(year, month, day);
+
                 postCaller.saveDreamSeparately(new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
                         JSONObject jsonObject = new JSONObject(response.toString());
                         boolean status = jsonObject.getBoolean("status");
-                        Log.e("","");
-                        if (status){
-                            Dream.delDream();
-                            Toast.makeText(getContext(),"Dream Saved.",
-                                    Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getContext(), ProfileActivity.class);
-                            Log.e("","");
-                            startActivity(intent);
+                        Log.e("", "");
+                        if (status) {
+                            postCaller.addDateToSleep(new IResponseMessage() {
+                                @Override
+                                public void onSuccess(Object response) throws JSONException {
+                                    JSONObject jsonObject1 = new JSONObject(response.toString());
+                                    boolean status1 = jsonObject1.getBoolean("status");
+                                    if (status1) {
+                                        Dream.delDream();
+                                        Toast.makeText(getContext(), "Dream Saved.",
+                                                Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getContext(),
+                                                ProfileActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(String errorMessage) {
+                                    Toast.makeText(getContext(),"Date couldn't be added to sleep entry.",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                            Log.e("", "");
+
                         } else {
-                            Toast.makeText(getContext(), "Dream Saved",
+                            Toast.makeText(getContext(), "Dream saving failed.",
                                     Toast.LENGTH_LONG).show();
                         }
                     }

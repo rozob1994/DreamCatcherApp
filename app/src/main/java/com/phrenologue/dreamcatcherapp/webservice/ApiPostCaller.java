@@ -23,6 +23,32 @@ public class ApiPostCaller {
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
 
+    public void addDateToSleep(IResponseMessage responseMessage) {
+        Date date = Date.getInstance();
+        Sleep sleep = Sleep.getInstance();
+        Users user = Users.getInstance();
+        Call<ResponseBody> call = postService.addDateToSleep(user.getUid(), sleep.getPostId(),
+                date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
+                date.getMonth(), date.getYear());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void saveDreamSeparately(IResponseMessage responseMessage) {
         Users user = Users.getInstance();
         Dream dream = Dream.getInstance();

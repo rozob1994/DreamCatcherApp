@@ -1,6 +1,9 @@
 package com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters;
 
 import java.util.Calendar;
+import java.util.HashMap;
+
+import static java.lang.Math.floor;
 
 public class Date {
     private static Date instance = null;
@@ -33,41 +36,108 @@ public class Date {
         return calendar;
     }
 
-    public void setCustomDay(int year, String month, int day) {
+    public void setCustomDay(String year, String month, int day) {
         this.dayOfMonth = day;
+        this.dayOfWeek = dayToWeekOfMonth(day);
         this.month = monthStrToInt(month);
-        this.year = year;
+        this.year = Integer.parseInt(year);
+        this.weekOfMonth = dayToWeekOfMonth(day);
+        this.dayOfYear = dayOfYear(this.year,this.month,day);
+
     }
 
-    public int monthStrToInt(String month){
-        int monthNumber = 0;
-        switch (month.toLowerCase()){
-            case "january":
-                monthNumber = 1;
-            case "february":
-                monthNumber = 2;
-            case "march":
-                monthNumber = 3;
-            case "april":
-                monthNumber = 4;
-            case "may":
-                monthNumber = 5;
-            case "june":
-                monthNumber = 6;
-            case "july":
-                monthNumber = 7;
-            case "august":
-                monthNumber = 8;
-            case "september":
-                monthNumber = 9;
-            case "october":
-                monthNumber = 10;
-            case "november":
-                monthNumber = 11;
-            case "december":
-                monthNumber = 12;
+
+
+    /**
+     * @param yearInt
+     * @param monthInt
+     * @param dayInt = dayOfMonth
+     * @return int dayOfYear.
+     */
+    public static int dayOfYear(int yearInt, int monthInt, int dayInt){
+        double year = yearInt;
+        double month = monthInt;
+        double day = dayInt;
+        double N1 = floor(275 * month / 9);
+        double N2 = floor((month + 9) / 12);
+        double N3 = (1 + floor((year - 4 * floor(year / 4) + 2) / 3));
+        double N = N1 - (N2 * N3) + day - 30;
+
+        return (int)N;
+    }
+
+    /**
+     * @param day = dayOfMonth
+     * @return int weekOfMonth
+     */
+    public int dayToWeekOfMonth(int day){
+        int weekOfMonth;
+        int calc = day/7;
+        if (calc==0) {
+            weekOfMonth = 1;
+        } else if (calc==1) {
+            weekOfMonth = 2;
+        } else if (calc == 2){
+            weekOfMonth = 3;
+        } else if (calc ==3){
+            weekOfMonth = 4;
+        } else {
+            weekOfMonth = 0;
         }
-        return monthNumber;
+        return weekOfMonth;
+    }
+
+    /**
+     * @param month = full month's name.
+     * @return int of month
+     */
+    public int monthStrToInt(String month) {
+        HashMap<String, Integer> monthMap = new HashMap<>();
+        monthMap.put("january", 1);
+        monthMap.put("february", 2);
+        monthMap.put("march", 3);
+        monthMap.put("april", 4);
+        monthMap.put("may", 5);
+        monthMap.put("june", 6);
+        monthMap.put("july", 7);
+        monthMap.put("august", 8);
+        monthMap.put("september", 9);
+        monthMap.put("october", 10);
+        monthMap.put("november", 11);
+        monthMap.put("december", 12);
+        return monthMap.get(month.toLowerCase());
+    }
+    /**
+     * @return 0 = Saturday, 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday,
+     * 6 = Friday.
+     */
+    public int dateToDayOfWeek(String year, String month, int day){
+        int yearInt = Integer.parseInt(year)%100;
+        int yearWhole = Integer.parseInt(year);
+        int yearCode = (yearInt + (yearInt/4))%7;
+        HashMap<String, Integer> monthCodes = new HashMap<>();
+        monthCodes.put("january",0);
+        monthCodes.put("february",3);
+        monthCodes.put("march",3);
+        monthCodes.put("april",6);
+        monthCodes.put("may",1);
+        monthCodes.put("june",4);
+        monthCodes.put("july",6);
+        monthCodes.put("august",2);
+        monthCodes.put("september",5);
+        monthCodes.put("october",0);
+        monthCodes.put("november",3);
+        monthCodes.put("december",5);
+        int monthCode = monthCodes.get(month.toLowerCase());
+        int centuryCode = 6;
+        int leapYearCode;
+        if (((yearWhole % 4 == 0) && (yearWhole % 100!= 0)) || (yearWhole%400 == 0)){
+            leapYearCode = -1;
+        } else {
+            leapYearCode = 0;
+        }
+        int result = (yearCode + monthCode + centuryCode + day + leapYearCode)%7;
+        return result;
     }
 
     public java.util.Date getCustomDate() {
