@@ -40,7 +40,7 @@ public class OperationResults {
         this.message = message;
     }
 
-    public static boolean isStatus() {
+    public boolean isStatus() {
         return status;
     }
 

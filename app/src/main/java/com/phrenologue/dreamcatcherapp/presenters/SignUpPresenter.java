@@ -19,7 +19,7 @@ public class SignUpPresenter {
 
     }
 
-    public void doSignUp(String username, String pass) {
+    public boolean doSignUp(String username, String pass) {
         results = OperationResults.getInstance();
         user = Users.getInstance();
         apiCaller = new ApiCaller();
@@ -49,5 +49,6 @@ public class SignUpPresenter {
             }
 
         });
+        return results.isStatus();
     }
 }

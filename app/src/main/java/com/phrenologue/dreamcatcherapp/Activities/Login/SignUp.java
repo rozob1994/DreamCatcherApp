@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.Activities.SleepDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySignUp2Binding;
-import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.presenters.SignUpPresenter;
 
 public class SignUp extends AppCompatActivity {
@@ -31,9 +30,9 @@ public class SignUp extends AppCompatActivity {
                 if ((binding.edtTxtUsername.getText().toString() != "") & (binding.edtTxtPassword.getText().toString() != "")) {
                     String mail = binding.edtTxtUsername.getText().toString();
                     String pass = binding.edtTxtPassword.getText().toString();
-                    presenter.doSignUp(mail, pass);
+                    boolean status = presenter.doSignUp(mail, pass);
 
-                    if (OperationResults.isStatus()){
+                    if (status){
                         Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                         startActivity(intent);
                         finish();
