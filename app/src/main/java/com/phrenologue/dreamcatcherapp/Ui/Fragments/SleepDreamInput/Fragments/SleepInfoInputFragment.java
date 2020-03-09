@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.presenters.SleepInputPresenter;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -35,6 +37,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
     private FragmentSleepInfoInputBinding binding;
     private SeekBar physicalActivity;
     private SeekBar foodConsumption;
+    private SleepInputPresenter presenter;
+    private LinearLayout dayOn, dayOff, nightOn, nightOff;
     private Sleep sleep;
 
     public SleepInfoInputFragment() {
@@ -46,6 +50,12 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                              Bundle savedInstanceState) {
         binding = FragmentSleepInfoInputBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        presenter = new SleepInputPresenter();
+        dayOn = binding.linDayOn;
+        dayOff = binding.linDayOff;
+        nightOff = binding.linNightOff;
+        nightOn = binding.linNightOn;
+
         sleep = Sleep.getInstance(); // Getting an instance of Sleep.class which is a singleton.
         Dream dream = Dream.getInstance();// Getting an instance of Dream.class to store PostId.
         DreamChecklist dreamChecklist = DreamChecklist.getInstance();
@@ -56,36 +66,19 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
 
         //---------------------------SWITCHING DAY BUTTON ON---------------------------//
 
-        binding.linDayOff.setOnClickListener(new View.OnClickListener() {
+        dayOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sleep.setTime(1); // Setting sleep's time to day.
-                if (binding.linDayOn.getVisibility() == View.VISIBLE) {
-                    binding.linDayOn.setVisibility(View.INVISIBLE);
-                    binding.linDayOff.setVisibility(View.VISIBLE);
-                } else {
-                    binding.linDayOn.setVisibility(View.VISIBLE);
-                    binding.linDayOff.setVisibility(View.INVISIBLE);
-                    binding.linNightOn.setVisibility(View.INVISIBLE);
-                    binding.linNightOff.setVisibility(View.VISIBLE);
-                }
+                presenter.setDayBtnOn(dayOn, dayOff, nightOn, nightOff);
             }
         });
 
         //---------------------------SWITCHING DAY BUTTON OFF---------------------------//
 
-        binding.linDayOn.setOnClickListener(new View.OnClickListener() {
+        dayOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sleep.setTime(0); // Deleting sleep's time.
-                if (binding.linDayOff.getVisibility() == View.VISIBLE) {
-                    binding.linDayOff.setVisibility(View.INVISIBLE);
-                    binding.linDayOn.setVisibility(View.VISIBLE);
-                } else {
-                    binding.linDayOff.setVisibility(View.VISIBLE);
-                    binding.linDayOn.setVisibility(View.INVISIBLE);
-                    binding.linNightOff.setVisibility(View.VISIBLE);
-                }
+                presenter.setDayBtnOff(dayOn, dayOff, nightOff);
             }
         });
 
@@ -93,79 +86,30 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
 
         //---------------------------SWITCHING NIGHT BUTTON ON---------------------------//
 
-        binding.linNightOff.setOnClickListener(new View.OnClickListener() {
+        nightOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sleep.setTime(2); // Setting sleep's time to night.
-                if (binding.linNightOn.getVisibility() == View.VISIBLE) {
-                    binding.linNightOn.setVisibility(View.INVISIBLE);
-                    binding.linNightOff.setVisibility(View.VISIBLE);
-                } else {
-                    binding.linNightOn.setVisibility(View.VISIBLE);
-                    binding.linNightOff.setVisibility(View.INVISIBLE);
-                    binding.linDayOn.setVisibility(View.INVISIBLE);
-                    binding.linDayOff.setVisibility(View.VISIBLE);
-                }
+                presenter.setNightBtnOn(dayOn, dayOff, nightOn, nightOff);
             }
         });
 
         //---------------------------SWITCHING NIGHT BUTTON OFF---------------------------//
 
-        binding.linNightOn.setOnClickListener(new View.OnClickListener() {
+        nightOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sleep.setTime(0); // Deleting sleep's time.
-                if (binding.linNightOff.getVisibility() == View.VISIBLE) {
-                    binding.linNightOff.setVisibility(View.INVISIBLE);
-                    binding.linNightOn.setVisibility(View.VISIBLE);
-                } else {
-                    binding.linNightOff.setVisibility(View.VISIBLE);
-                    binding.linNightOn.setVisibility(View.INVISIBLE);
-                    binding.linDayOff.setVisibility(View.VISIBLE);
-                }
+                presenter.setNightBtnOff(dayOn, dayOff, nightOn, nightOff);
             }
         });
         //---------------------------PHYSICAL ACTIVITY SEEK BAR---------------------------//
 
         physicalActivity.setOnSeekBarChangeListener(this);
-        physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sleep.setPhysicalActivity(progress);
-                seekBar.setMax(9);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+        presenter.setPhysicalActivitySeekBar(physicalActivity);
 
         //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
 
         foodConsumption.setOnSeekBarChangeListener(this);
-        foodConsumption.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sleep.setFoodConsumption(progress);
-                seekBar.setMax(9);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+        presenter.setFoodConsumptionSeekBar(foodConsumption);
 
         //---------------------------BUTTONS----------------------------------------------//
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +129,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                     public void onSuccess(Object response) throws JSONException {
                         JSONObject jsonObject = new JSONObject(response.toString());
                         boolean status = jsonObject.getBoolean("status");
-                        if (status){
+                        if (status) {
                             FragmentManager fm = getFragmentManager();
                             FragmentTransaction transaction = fm.beginTransaction();
                             DreamInfoInputOneFragment fragment = new DreamInfoInputOneFragment();
@@ -201,7 +145,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
 
                     @Override
                     public void onFailure(String errorMessage) {
-                        Toast.makeText(getContext(),getString(R.string.connection_error),
+                        Toast.makeText(getContext(), getString(R.string.connection_error),
                                 Toast.LENGTH_LONG).show();
 
                     }

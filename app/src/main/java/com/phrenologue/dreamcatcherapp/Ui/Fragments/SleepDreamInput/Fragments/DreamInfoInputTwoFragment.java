@@ -16,6 +16,7 @@ import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -75,6 +76,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
                                     boolean status1 = jsonObject1.getBoolean("status");
                                     if (status1) {
                                         Dream.delDream();
+                                        Sleep.delSleep();
                                         Toast.makeText(getContext(), "Dream Saved.",
                                                 Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getContext(),
