@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.Ui.Fragments.ProfilePackages.Adapter;
+package com.phrenologue.dreamcatcherapp.Activities.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import com.phrenologue.dreamcatcherapp.databinding.DreamsPackageBinding;
 
 import java.util.List;
 
-public class DreamsPackagesFragmentAdapter extends RecyclerView.Adapter<DreamsPackagesFragmentAdapter.DreamsPackagesHolder> {
+public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPackagesActivityAdapter.DreamsPackagesHolder> {
 
     List<DreamsPackages> dreamsPackages;
     Context context;
     LayoutInflater inflater;
-    public DreamsPackagesFragmentAdapter(Context context, @Nullable List<DreamsPackages>  packages ) {
+    public DreamsPackagesActivityAdapter(Context context, @Nullable List<DreamsPackages>  packages ) {
         dreamsPackages= packages;
         this.context= context;
         inflater= LayoutInflater.from(context);

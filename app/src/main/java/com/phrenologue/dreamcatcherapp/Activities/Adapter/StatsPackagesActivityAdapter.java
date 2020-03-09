@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.Ui.Fragments.ProfilePackages.Adapter;
+package com.phrenologue.dreamcatcherapp.Activities.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,12 +14,12 @@ import com.phrenologue.dreamcatcherapp.databinding.StatsPackageBinding;
 
 import java.util.List;
 
-public class StatsPackagesFragmentAdapter extends RecyclerView.Adapter<StatsPackagesFragmentAdapter.StatsPackagesHolder> {
+public class StatsPackagesActivityAdapter extends RecyclerView.Adapter<StatsPackagesActivityAdapter.StatsPackagesHolder> {
 
     List<StatsPackages> statsPackages;
     Context context;
     LayoutInflater inflater;
-    public StatsPackagesFragmentAdapter (Context context, List<StatsPackages> packages){
+    public StatsPackagesActivityAdapter(Context context, List<StatsPackages> packages){
         statsPackages= packages;
         this.context= context;
         inflater= LayoutInflater.from(context);

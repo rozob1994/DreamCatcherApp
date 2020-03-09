@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center"
+    android:background="@drawable/bg_night"
+    android:id="@+id/dreams_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.phrenologue.dreamcatcherapp.Activities.DreamsPackagesActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:blurkit="http://schemas.android.com/apk/res-auto">
+
+
+    <io.alterac.blurkit.BlurLayout
+        android:foregroundGravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_centerInParent="true"
+            android:id="@+id/bg_lights"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="packages_bg_animation.json"
+            app:lottie_loop="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/dreams_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </io.alterac.blurkit.BlurLayout>
+
+
+
+</RelativeLayout>
