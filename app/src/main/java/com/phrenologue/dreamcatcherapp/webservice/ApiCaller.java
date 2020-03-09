@@ -27,10 +27,9 @@ public class ApiCaller {
     }
 
     IUserService userService = ApiClient.getRetrofit().create(IUserService.class);
-    IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
 
 
-    public void signUp(String user, String pass, int uid, final IResponseMessage responseMessage) {
+    public void signUp(String user, String pass, int uid, IResponseMessage responseMessage) {
         Call<ResponseBody> call = userService.signUp(user, pass, uid);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
