@@ -92,6 +92,7 @@
                         android:textSize="@dimen/hint_size" />
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_txt_content"
                         android:layout_width="match_parent"
                         android:layout_height="400dp"
                         android:layout_gravity="center"

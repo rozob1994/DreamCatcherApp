@@ -1,18 +1,29 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
+import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DreamInputPresenter {
     Dream dream;
@@ -20,11 +31,13 @@ public class DreamInputPresenter {
     DreamPeople people;
     DreamSound sound;
     DreamLucidity lucidity;
+    DreamDescription description;
+    Date date;
 
     public DreamInputPresenter() {
     }
 
-    public void setMoodSeekBar(SeekBar experience){
+    public void setMoodSeekBar(SeekBar experience) {
         checklist = DreamChecklist.getInstance();
         experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -45,7 +58,7 @@ public class DreamInputPresenter {
         });
     }
 
-    public void setPeopleBtnOn(RelativeLayout peopleExpanded, RelativeLayout peopleClosed){
+    public void setPeopleBtnOn(RelativeLayout peopleExpanded, RelativeLayout peopleClosed) {
         people = DreamPeople.getInstance();
         people.setExistent(1);
         if (peopleExpanded.getVisibility() == View.VISIBLE) {
@@ -57,7 +70,8 @@ public class DreamInputPresenter {
         }
 
     }
-    public void setPeopleBtnOff(RelativeLayout peopleExpanded, RelativeLayout peopleClosed){
+
+    public void setPeopleBtnOff(RelativeLayout peopleExpanded, RelativeLayout peopleClosed) {
         people = DreamPeople.getInstance();
         people.setExistent(0);
         if (peopleClosed.getVisibility() == View.VISIBLE) {
@@ -69,7 +83,7 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setSoundBtnOn(RelativeLayout soundsExpanded, RelativeLayout soundsClosed){
+    public void setSoundBtnOn(RelativeLayout soundsExpanded, RelativeLayout soundsClosed) {
         sound = DreamSound.getInstance();
         sound.setSound(1);
         if (soundsExpanded.getVisibility() == View.VISIBLE) {
@@ -81,7 +95,7 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setSoundBtnOff(RelativeLayout soundsExpanded, RelativeLayout soundsClosed){
+    public void setSoundBtnOff(RelativeLayout soundsExpanded, RelativeLayout soundsClosed) {
         sound = DreamSound.getInstance();
         sound.setSound(0);
         if (soundsClosed.getVisibility() == View.VISIBLE) {
@@ -95,7 +109,7 @@ public class DreamInputPresenter {
 
     public void setPositiveBtnOn(LinearLayout positiveOn, LinearLayout positiveOff,
                                  LinearLayout neutralOn, LinearLayout neutralOff,
-                                 LinearLayout negativeOn, LinearLayout negativeOff){
+                                 LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(3);
         if (positiveOn.getVisibility() == View.VISIBLE) {
@@ -112,7 +126,7 @@ public class DreamInputPresenter {
     }
 
     public void setPositiveBtnOff(LinearLayout positiveOn, LinearLayout positiveOff,
-                                  LinearLayout neutralOff, LinearLayout negativeOff){
+                                  LinearLayout neutralOff, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(0);
         if (positiveOff.getVisibility() == View.VISIBLE) {
@@ -128,7 +142,7 @@ public class DreamInputPresenter {
 
     public void setNeutralBtnOn(LinearLayout positiveOn, LinearLayout positiveOff,
                                 LinearLayout neutralOn, LinearLayout neutralOff,
-                                LinearLayout negativeOn, LinearLayout negativeOff){
+                                LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(2);
         if (neutralOn.getVisibility() == View.VISIBLE) {
@@ -145,7 +159,7 @@ public class DreamInputPresenter {
     }
 
     public void setNeutralBtnOff(LinearLayout positiveOff, LinearLayout neutralOn,
-                                 LinearLayout neutralOff, LinearLayout negativeOff){
+                                 LinearLayout neutralOff, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(0);
         if (neutralOff.getVisibility() == View.VISIBLE) {
@@ -161,7 +175,7 @@ public class DreamInputPresenter {
 
     public void setNegativeBtnOn(LinearLayout positiveOn, LinearLayout positiveOff,
                                  LinearLayout neutralOn, LinearLayout neutralOff,
-                                 LinearLayout negativeOn, LinearLayout negativeOff){
+                                 LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(1);
         if (negativeOn.getVisibility() == View.VISIBLE) {
@@ -178,7 +192,7 @@ public class DreamInputPresenter {
     }
 
     public void setNegativeBtnOff(LinearLayout positiveOff, LinearLayout neutralOff,
-                                 LinearLayout negativeOn, LinearLayout negativeOff){
+                                  LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
         people.setImpression(0);
         if (negativeOff.getVisibility() == View.VISIBLE) {
@@ -194,7 +208,7 @@ public class DreamInputPresenter {
 
     public void setColorfulBtnOn(LinearLayout colorOn, LinearLayout colorOff,
                                  LinearLayout grayOn, LinearLayout grayOff,
-                                 RelativeLayout colorfulOff){
+                                 RelativeLayout colorfulOff) {
         checklist = DreamChecklist.getInstance();
         checklist.setGrayScale(2);
         if (colorOn.getVisibility() == View.VISIBLE) {
@@ -209,7 +223,7 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setColorfulBtnOff(LinearLayout colorOn, LinearLayout colorOff, LinearLayout grayOff){
+    public void setColorfulBtnOff(LinearLayout colorOn, LinearLayout colorOff, LinearLayout grayOff) {
         checklist = DreamChecklist.getInstance();
         checklist.setGrayScale(0);
         if (colorOff.getVisibility() == View.VISIBLE) {
@@ -224,7 +238,7 @@ public class DreamInputPresenter {
     }
 
     public void setGrayScaleBtnOn(LinearLayout colorOn, LinearLayout colorOff,
-                                  LinearLayout grayOn, LinearLayout grayOff, RelativeLayout colorfulOff){
+                                  LinearLayout grayOn, LinearLayout grayOff, RelativeLayout colorfulOff) {
         checklist = DreamChecklist.getInstance();
         checklist.setGrayScale(1);
         if (grayOn.getVisibility() == View.VISIBLE) {
@@ -240,7 +254,7 @@ public class DreamInputPresenter {
     }
 
     public void setGrayScaleBtnOff(LinearLayout colorOff,
-                                  LinearLayout grayOn, LinearLayout grayOff){
+                                   LinearLayout grayOn, LinearLayout grayOff) {
         checklist = DreamChecklist.getInstance();
         checklist.setGrayScale(0);
         if (grayOff.getVisibility() == View.VISIBLE) {
@@ -254,7 +268,7 @@ public class DreamInputPresenter {
     }
 
     public void setMusicalBtnOn(LinearLayout museOn, LinearLayout museOff,
-                                LinearLayout nonMuseOn, LinearLayout nonMuseOff){
+                                LinearLayout nonMuseOn, LinearLayout nonMuseOff) {
         sound = DreamSound.getInstance();
         sound.setMusical(2);
         if (museOn.getVisibility() == View.VISIBLE) {
@@ -269,7 +283,7 @@ public class DreamInputPresenter {
     }
 
     public void setMusicalBtnOff(LinearLayout museOn, LinearLayout museOff,
-                                 LinearLayout nonMuseOff){
+                                 LinearLayout nonMuseOff) {
         sound = DreamSound.getInstance();
         sound.setMusical(0);
         if (museOff.getVisibility() == View.VISIBLE) {
@@ -283,7 +297,7 @@ public class DreamInputPresenter {
     }
 
     public void setNonMusicalBtnOn(LinearLayout museOn, LinearLayout museOff,
-                                 LinearLayout nonMuseOn, LinearLayout nonMuseOff){
+                                   LinearLayout nonMuseOn, LinearLayout nonMuseOff) {
         sound = DreamSound.getInstance();
         sound.setMusical(1);
         if (nonMuseOn.getVisibility() == View.VISIBLE) {
@@ -298,7 +312,7 @@ public class DreamInputPresenter {
     }
 
     public void setNonMusicalBtnOff(LinearLayout museOff,
-                                 LinearLayout nonMuseOn, LinearLayout nonMuseOff){
+                                    LinearLayout nonMuseOn, LinearLayout nonMuseOff) {
         sound = DreamSound.getInstance();
         sound.setMusical(0);
         if (nonMuseOff.getVisibility() == View.VISIBLE) {
@@ -312,7 +326,7 @@ public class DreamInputPresenter {
     }
 
 
-    public void setLuciditySeekBar(SeekBar lucidityLevel){
+    public void setLuciditySeekBar(SeekBar lucidityLevel) {
         lucidity = DreamLucidity.getInstance();
         lucidityLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -333,7 +347,7 @@ public class DreamInputPresenter {
         });
     }
 
-    public void cancelDreamInput(){
+    public void cancelDreamInput() {
         checklist = DreamChecklist.getInstance();
         dream = Dream.getInstance();
         Dream.delDream();
@@ -341,7 +355,7 @@ public class DreamInputPresenter {
         dream.setDreamChecklist(checklist);
     }
 
-    public void saveHalfWayDream(AppCompatEditText edtTxtNames){
+    public void saveHalfWayDream(AppCompatEditText edtTxtNames) {
         people = DreamPeople.getInstance();
         dream = Dream.getInstance();
         checklist = DreamChecklist.getInstance();
@@ -355,7 +369,61 @@ public class DreamInputPresenter {
         dream.setDreamLucidity(lucidity);
     }
 
+    public boolean saveCompleteDream(AppCompatEditText title, AppCompatEditText content,
+                                  Spinner daySp, Spinner monthSp, Spinner yearSp) {
+        date = Date.getInstance();
+        description = DreamDescription.getInstance();
+        dream = Dream.getInstance();
+        description.setTitle(title.getText().toString());
+        description.setContent(content.getText().toString());
+        dream.setDreamDescription(description);
+        int day = Integer.parseInt(daySp.getSelectedItem().toString());
+        String month = monthSp.getSelectedItem().toString();
+        String year = yearSp.getSelectedItem().toString();
+        date.setCustomDay(year, month, day);
+        ApiPostCaller postCaller = new ApiPostCaller();
+        OperationResults results = OperationResults.getInstance();
+        postCaller.saveDreamSeparately(new IResponseMessage() {
+            @Override
+            public void onSuccess(Object response) throws JSONException {
+                JSONObject jsonObject = new JSONObject(response.toString());
+                boolean status = jsonObject.getBoolean("status");
+                Log.e("", "");
+                if (status) {
+                    postCaller.addDateToSleep(new IResponseMessage() {
+                        @Override
+                        public void onSuccess(Object response) throws JSONException {
+                            JSONObject jsonObject1 = new JSONObject(response.toString());
+                            boolean status1 = jsonObject1.getBoolean("status");
+                            if (status1) {
+                                String message = jsonObject.getString("message");
+                                results.setSuccessfulResults(message);
+                                Dream.delDream();
+                                Sleep.delSleep();
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(String errorMessage) {
+                            results.setFailedResults(errorMessage);
+                        }
+                    });
+
+                    Log.e("", "");
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                results.setFailedResults(errorMessage);
+
+            }
+        });
+        return results.isStatus();
+    }
 
 
 }
