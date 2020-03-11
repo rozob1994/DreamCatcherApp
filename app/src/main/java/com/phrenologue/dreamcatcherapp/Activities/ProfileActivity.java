@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(view);
         binding.userTitle.setText(Users.getInstance().getEmail());
 
+
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
