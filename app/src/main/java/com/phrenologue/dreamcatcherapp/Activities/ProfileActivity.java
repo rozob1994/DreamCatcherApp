@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 
@@ -36,6 +37,10 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        FeedsPackagesAdapter adapter= new FeedsPackagesAdapter(getApplicationContext(), null);
+        binding.recyclerFeed.setAdapter(adapter);
 
 
     }

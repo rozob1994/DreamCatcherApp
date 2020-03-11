@@ -23,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="-16dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/txt_glow">
 
                     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="40dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/black"
                     android:backgroundTintMode="multiply"
                     android:orientation="vertical">
@@ -66,7 +66,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/gray"
                         android:hint="Enter title..."
                         android:paddingLeft="16dp"
@@ -97,7 +97,7 @@
                         android:layout_height="400dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/gray"
                         android:gravity="top"
                         android:hint="@string/hint_dream_description"
@@ -134,7 +134,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginRight="8dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/dreams_bg_shape"
+                                android:background="@drawable/bg_shape"
                                 android:entries="@array/year"
                                 android:popupBackground="@color/txt_glow"
                                 android:popupElevation="3dp" />
@@ -145,7 +145,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginRight="8dp"
                                 android:layout_toRightOf="@id/spinner_year"
-                                android:background="@drawable/dreams_bg_shape"
+                                android:background="@drawable/bg_shape"
                                 android:entries="@array/month"
                                 android:popupBackground="@color/txt_glow"
                                 android:popupElevation="3dp" />
@@ -155,7 +155,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
                                 android:layout_toRightOf="@id/spinner_month"
-                                android:background="@drawable/dreams_bg_shape"
+                                android:background="@drawable/bg_shape"
                                 android:entries="@array/day"
                                 android:popupBackground="@color/txt_glow"
                                 android:popupElevation="3dp" />

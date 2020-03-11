@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="-16dp"
-                android:background="@drawable/dreams_bg_shape"
+                android:background="@drawable/bg_shape"
                 android:backgroundTint="@color/black">
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
@@ -79,7 +79,7 @@
                         android:layout_below="@id/hint_sleep_duration"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/black"
                         android:backgroundTintMode="multiply"
                         android:gravity="center_horizontal">
@@ -90,7 +90,7 @@
                             android:layout_height="32dp"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="8dp"
-                            android:background="@drawable/dreams_bg_shape"
+                            android:background="@drawable/bg_shape"
                             android:backgroundTint="@color/black"
                             android:hint="Hours"
                             android:paddingLeft="8dp"
@@ -105,7 +105,7 @@
                             android:layout_height="32dp"
                             android:layout_centerVertical="true"
                             android:layout_toRightOf="@id/edt_hours"
-                            android:background="@drawable/dreams_bg_shape"
+                            android:background="@drawable/bg_shape"
                             android:backgroundTint="@color/black"
                             android:hint="Minutes"
                             android:paddingLeft="8dp"
@@ -162,7 +162,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/hint_time_of_day"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/black"
                         android:backgroundTintMode="multiply"
                         android:gravity="center_horizontal">
@@ -323,7 +323,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/hint_physical"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/black"
                         android:backgroundTintMode="multiply">
 
@@ -483,7 +483,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/hint_food"
                         android:layout_marginTop="16dp"
-                        android:background="@drawable/dreams_bg_shape"
+                        android:background="@drawable/bg_shape"
                         android:backgroundTint="@color/black"
                         android:backgroundTintMode="multiply">
 
@@ -595,7 +595,7 @@
                     android:id="@+id/btn_to_dream_input"
                     android:layout_width="240dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/txt_glow"
                     android:text="To dream info"
                     android:textColor="@color/white" />
@@ -605,7 +605,7 @@
                     android:layout_width="240dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/txt_glow"
                     android:text="I didn't have a dream"
                     android:textColor="@color/white" />

@@ -43,7 +43,7 @@
                     android:layout_below="@id/blur_layout"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/black"
                     android:text="USER1994"
                     android:textColor="@color/txt_glow"
@@ -80,7 +80,7 @@
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_gradient"
                     android:backgroundTint="@color/txt_glow"
                     android:text="dreams"
                     android:textColor="@color/txt_glow"
@@ -92,7 +92,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/btn_dreams"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/dreams_bg_shape"
+                    android:background="@drawable/bg_gradient"
                     android:backgroundTint="@color/txt_glow"
                     android:text="stats"
                     android:textColor="@color/txt_glow"
@@ -100,14 +100,14 @@
 
             </RelativeLayout>
 
-            <FrameLayout
-                android:id="@+id/frame_dreams_stats"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_feed"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profile_tabs_buttons"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/dreams_bg_shape"
+                android:background="@drawable/bg_shape"
                 android:backgroundTint="@color/black" />
 
         </RelativeLayout>

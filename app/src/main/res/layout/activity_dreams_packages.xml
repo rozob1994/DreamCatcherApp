@@ -1,38 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center"
-    android:background="@drawable/bg_night"
-    android:id="@+id/dreams_fragment"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dreams_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.phrenologue.dreamcatcherapp.Activities.DreamsPackagesActivity"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:blurkit="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/bg_night"
+    tools:context="com.phrenologue.dreamcatcherapp.Activities.DreamsPackagesActivity">
 
 
     <io.alterac.blurkit.BlurLayout
-        android:foregroundGravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center_horizontal">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_centerInParent="true"
             android:id="@+id/bg_lights"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             app:lottie_autoPlay="true"
             app:lottie_fileName="packages_bg_animation.json"
             app:lottie_loop="true" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/dreams_recycler"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/top_main_bar"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_shape_stroked"
+                android:gravity="center_horizontal"
+                android:padding="16dp">
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:id="@+id/title_dreams_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dream Count"
+                    android:textColor="@color/white" />
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:id="@+id/title_dream_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title_dreams_count"
+                    android:layout_marginTop="16dp"
+                    android:text="Dream Hours"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="160dp"
+                    android:layout_below="@+id/title_dream_hours"
+                    android:layout_marginTop="16dp"
+                    app:srcCompat="@drawable/avatar" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dreams_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top_main_bar"
+                android:layout_gravity="center_horizontal" />
+
+        </RelativeLayout>
+
 
     </io.alterac.blurkit.BlurLayout>
-
 
 
 </RelativeLayout>

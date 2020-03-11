@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@drawable/dreams_bg_shape"
+    android:background="@drawable/bg_shape"
     android:backgroundTint="@color/black"
     android:orientation="vertical"
     android:padding="16dp">
@@ -21,18 +21,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TEST"
-            android:textColor="@color/txt_glow"
+            android:textColor="@color/white"
             android:textSize="20sp" />
+
+        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            android:layout_below="@id/dreams_package_title"
+            android:id="@+id/title_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="date"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hint_size" />
 
         <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
             android:id="@+id/dreams_package_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/dreams_package_title"
+            android:layout_below="@id/title_date"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/dreams_package_description_input"
-            android:textColor="@color/txt_glow"
+            android:textColor="@color/white"
             android:textSize="@dimen/edt_txt_size" />
 
 
@@ -50,7 +59,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:srcCompat="@drawable/ic_smile_emoji"
-            app:tint="@color/txt_glow" />
+            app:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:tint="@color/day_light"
@@ -65,19 +74,11 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:tint="@color/txt_glow"
-        app:srcCompat="@drawable/ic_delete_black_24dp" />
-
-
-    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dreams_package_nav_bar"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_alignParentRight="true"
-        android:tint="@color/txt_glow"
-        app:srcCompat="@drawable/ic_edit_black_24dp" />
+        android:tint="@color/white"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
 </RelativeLayout>

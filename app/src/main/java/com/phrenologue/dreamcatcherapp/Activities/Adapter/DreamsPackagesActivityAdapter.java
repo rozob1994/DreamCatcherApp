@@ -2,8 +2,10 @@ package com.phrenologue.dreamcatcherapp.Activities.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,8 +38,32 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
     @Override
     public void onBindViewHolder(@NonNull DreamsPackagesHolder holder, int position) {
-
         DreamsPackages packages= dreamsPackages.get(position);
+
+        holder.binding.dreamsPackageNavBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu menu= new PopupMenu(context, holder.binding.dreamsPackageNavBar);
+                menu.inflate(R.menu.tabs);
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        switch (item.getItemId()){
+                            case R.id.edit:
+
+                                break;
+
+                            case R.id.delete:
+
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
+            }
+        });
 
     }
 
@@ -52,6 +78,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
         public DreamsPackagesHolder(@NonNull View itemView) {
             super(itemView);
+
 
         }
     }
