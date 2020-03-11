@@ -5,6 +5,11 @@ import android.util.Log;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
@@ -50,17 +55,22 @@ public class ApiPostCaller {
     }
 
     public void saveDreamSeparately(IResponseMessage responseMessage) {
+        DreamChecklist checklist = DreamChecklist.getInstance();
+        DreamPeople people = DreamPeople.getInstance();
+        DreamSound sound = DreamSound.getInstance();
+        DreamLucidity lucidity = DreamLucidity.getInstance();
+        DreamDescription description = DreamDescription.getInstance();
         Users user = Users.getInstance();
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postDreams(dream.getPostId(), user.getUid(),
-                dream.getDreamChecklist().getRemembered(), dream.getDreamPeople().getName(),
-                dream.getDreamPeople().getExistent(), dream.getDreamPeople().getImpression(),
-                dream.getDreamSound().getSound(), dream.getDreamSound().getMusical(),
-                dream.getDreamChecklist().getFalseAwake(), dream.getDreamChecklist().getGrayScale(),
-                dream.getDreamChecklist().getDailyRelated(), dream.getDreamChecklist().getExperience(),
-                dream.getDreamLucidity().getLucid(), dream.getDreamLucidity().getLucidityLevel(),
-                dream.getDreamDescription().getTitle(), dream.getDreamDescription().getContent(),
+                checklist.getRemembered(), people.getName(),
+                people.getExistent(), people.getImpression(),
+                sound.getSound(), sound.getMusical(),
+                checklist.getGrayScale(),
+                checklist.getExperience(),
+                lucidity.getLucidityLevel(),
+                description.getTitle(), description.getContent(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
                 date.getMonth(), date.getYear());
         call.enqueue(new Callback<ResponseBody>() {

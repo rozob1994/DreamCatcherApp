@@ -46,7 +46,7 @@ public class StatsActivity extends AppCompatActivity {
                 ArrayList xArray = new ArrayList();
                 List<Integer> y = new ArrayList();
 
-                for (int j = 1 ; j<dataJson.length();j++){
+                for (int j = 3 ; j<dataJson.length();j++){
                     JSONArray entry = dataJson.getJSONArray(j);
                     x.add(Integer.parseInt(entry.getString(0)));
                     xArray.add(Integer.parseInt(entry.getString(0)));
