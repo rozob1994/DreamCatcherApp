@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String username = binding.edtTxtUsername.getText().toString();
                 String pass = binding.edtTxtPassword.getText().toString();
                 OperationResults results = OperationResults.getInstance();

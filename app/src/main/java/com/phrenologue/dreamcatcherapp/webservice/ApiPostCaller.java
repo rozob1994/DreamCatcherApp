@@ -114,6 +114,27 @@ public class ApiPostCaller {
 
     }
 
+    public void getDreamsDayOfYear(IResponseMessage responseMessage){
+        Call<ResponseBody> call = postService.getExperienceDayOfYear(Users.getInstance().getUid());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.e("","");
+                    responseMessage.onSuccess((response.body().string()));
+                    Log.e("","");
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void getDreamsDaily(IResponseMessage responseMessage) {
         Call<ResponseBody> call = postService.getDreamsDaily(Users.getInstance().getUid());
         call.enqueue(new Callback<ResponseBody>() {

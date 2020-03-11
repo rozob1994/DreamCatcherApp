@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     private static Retrofit retrofit = null;
 
-    private static final String KEY_URL = "http://phrenologue.com/api/users/";
+    private static final String KEY_URL = "http://phrenologue.com/api/";
 
     public static Retrofit getRetrofit(){
         if (retrofit == null ){

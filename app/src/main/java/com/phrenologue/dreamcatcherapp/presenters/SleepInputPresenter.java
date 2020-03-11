@@ -91,7 +91,7 @@ public class SleepInputPresenter {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setPhysicalActivity(progress);
-                seekBar.setMax(9);
+                seekBar.setMax(3);
             }
 
             @Override
@@ -112,7 +112,7 @@ public class SleepInputPresenter {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setFoodConsumption(progress);
-                seekBar.setMax(9);
+                seekBar.setMax(2);
             }
 
             @Override

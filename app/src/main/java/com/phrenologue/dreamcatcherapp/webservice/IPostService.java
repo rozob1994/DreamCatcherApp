@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 
 public interface IPostService {
     @FormUrlEncoded
-    @POST("postdream.php")
+    @POST("users/postdream.php")
     Call<ResponseBody> postDreams(@Field("postId") int postId,
                                   @Field("uid") int uid,
                                   @Field("dreamRemembered") int dreamRemembered,
@@ -37,7 +37,7 @@ public interface IPostService {
                                   @Field("year") int year);
 
     @FormUrlEncoded
-    @POST("postsleep.php")
+    @POST("users/postsleep.php")
     Call<ResponseBody> postSleeps(@Nullable @Field("uid") int uid,
                                   @Nullable @Field("postId") int postId,
                                   @Nullable @Field("sleepDuration") String sleepDuration,
@@ -54,7 +54,7 @@ public interface IPostService {
                                   @Nullable @Field("year") int year);
 
     @FormUrlEncoded
-    @POST("adddatetosleep.php")
+    @POST("users/adddatetosleep.php")
     Call<ResponseBody> addDateToSleep(@Nullable @Field("uid") int uid,
                                       @Nullable @Field("postId") int postId,
                                       @Nullable @Field("dayOfWeek") int dayOfWeek,
@@ -63,6 +63,9 @@ public interface IPostService {
                                       @Nullable @Field("weekOfMonth") int weekOfMonth,
                                       @Nullable @Field("month") int month,
                                       @Nullable @Field("year") int year);
+
+    @GET("objects/daily.php")
+    Call<ResponseBody> getExperienceDayOfYear(@Query("uid") int uid);
 
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);

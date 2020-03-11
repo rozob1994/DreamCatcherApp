@@ -122,6 +122,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
             public void onClick(View v) {
                 boolean sleepSaved = presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes);
                 if (sleepSaved){
+
                     Intent intent = new Intent(getActivity(), ProfileActivity.class);
                     startActivity(intent);
                 } else{

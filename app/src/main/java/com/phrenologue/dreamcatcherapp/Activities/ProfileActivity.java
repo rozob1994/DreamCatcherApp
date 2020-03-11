@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), StatsPackagesActivity.class);
+                Intent intent= new Intent(getApplicationContext(), StatsActivity.class);
                 startActivity(intent);
             }
         });

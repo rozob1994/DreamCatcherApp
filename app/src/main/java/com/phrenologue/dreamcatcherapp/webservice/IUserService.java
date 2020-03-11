@@ -10,13 +10,13 @@ import retrofit2.http.Query;
 
 public interface IUserService {
 
-    @GET("login.php")
+    @GET("users/login.php")
     Call<ResponseBody> login(@Query("username") String user, @Query("password") String pass);
 
 
 
     @FormUrlEncoded
-    @POST("signup.php")
+    @POST("users/signup.php")
     Call<ResponseBody> signUp(@Field("username") String user, @Field("password") String pass,
                               @Field("uid") int uid);
 
