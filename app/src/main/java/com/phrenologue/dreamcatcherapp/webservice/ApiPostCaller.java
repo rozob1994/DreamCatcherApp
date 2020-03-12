@@ -28,6 +28,28 @@ public class ApiPostCaller {
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
 
+    public void getRemembered(IResponseMessage responseMessage) {
+        Users user = Users.getInstance();
+        Call<ResponseBody> call = postService.getRemembered(user.getUid());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void addDateToSleep(IResponseMessage responseMessage) {
         Date date = Date.getInstance();
         Sleep sleep = Sleep.getInstance();
@@ -122,27 +144,6 @@ public class ApiPostCaller {
             }
         });
 
-    }
-
-    public void getDreamsDayOfYear(IResponseMessage responseMessage){
-        Call<ResponseBody> call = postService.getExperienceDayOfYear(Users.getInstance().getUid());
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Log.e("","");
-                    responseMessage.onSuccess((response.body().string()));
-                    Log.e("","");
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                responseMessage.onFailure(t.getMessage().toString());
-            }
-        });
     }
 
     public void getDreamsDaily(IResponseMessage responseMessage) {

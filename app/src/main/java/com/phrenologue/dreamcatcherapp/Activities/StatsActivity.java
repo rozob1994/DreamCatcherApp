@@ -3,77 +3,75 @@ package com.phrenologue.dreamcatcherapp.Activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.phrenologue.dreamcatcherapp.Ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityStatsBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class StatsActivity extends AppCompatActivity {
     private ActivityStatsBinding binding;
+    private PieChart pieChart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityStatsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        pieChart = binding.pieChart;
         ApiPostCaller postCaller = new ApiPostCaller();
-        postCaller.getDreamsDayOfYear(new IResponseMessage() {
+        postCaller.getRemembered(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                Log.e("","");
-                JSONObject jsonObject = new JSONObject(response.toString());
-                JSONArray dataJson = new JSONArray();
-                Iterator i = jsonObject.keys();
-                while (i.hasNext()){
-                    String key = i.next().toString();
-                    dataJson.put(jsonObject.get(key));
-                }
-                List<Integer> x = new ArrayList();
-                ArrayList xArray = new ArrayList();
-                List<Integer> y = new ArrayList();
+                Log.e("", "");
+                JSONArray jsonArray = new JSONArray(response.toString());
 
-                for (int j = 3 ; j<dataJson.length();j++){
-                    JSONArray entry = dataJson.getJSONArray(j);
-                    x.add(Integer.parseInt(entry.getString(0)));
-                    xArray.add(Integer.parseInt(entry.getString(0)));
-                    y.add(Integer.parseInt(entry.getString(1)));
+                ArrayList<Integer> list = new ArrayList();
 
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    list.add(jsonArray.getInt(i));
                 }
-                ArrayList entries = new ArrayList();
-                for (int k = 0; k<x.size();k++){
-                    BarEntry entry = new BarEntry(y.get(k),x.get(k));
-                    entries.add(entry);
-                }
-                BarDataSet dataSet = new BarDataSet(entries,"experience");
-                BarData data = new BarData(dataSet);
-                BarChart chart = binding.barChart;
-                chart.setData(data);
-                chart.animateXY(2000,2000);
-                chart.invalidate();
 
-                Log.e("","");
+                float countOnes = 0;
+                float countZeroes = 0;
+                for (int j = 0; j < list.size(); j++) {
+                    if (list.get(j) == 0) {
+                        countZeroes++;
+                    }
+                    countOnes++;
+                }
+
+                ArrayList<PieEntry> entries = new ArrayList<>();
+                entries.add(new PieEntry(countOnes / 100, "Remembered"));
+                entries.add(new PieEntry(countZeroes / 100, "Forgotten"));
+                PieDataSet pieDataSet = new PieDataSet(entries, "Percent of dreams remembered.");
+                pieDataSet.setColors(ColorPalettes.PIECHARTS);
+                PieData pieData = new PieData(pieDataSet);
+                pieChart.setData(pieData);
+                pieChart.animateXY(5000, 5000);
+                pieChart.invalidate();
+                pieChart.setDrawHoleEnabled(false);
+
             }
-
 
             @Override
             public void onFailure(String errorMessage) {
-                Log.e("","");
+                Log.e("", "");
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 }

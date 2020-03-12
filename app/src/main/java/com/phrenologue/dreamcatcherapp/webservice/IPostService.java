@@ -61,8 +61,8 @@ public interface IPostService {
                                       @Nullable @Field("month") int month,
                                       @Nullable @Field("year") int year);
 
-    @GET("objects/daily.php")
-    Call<ResponseBody> getExperienceDayOfYear(@Query("uid") int uid);
+    @GET("users/PercentRemembered.php")
+    Call<ResponseBody> getRemembered(@Query("uid") int uid);
 
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);
