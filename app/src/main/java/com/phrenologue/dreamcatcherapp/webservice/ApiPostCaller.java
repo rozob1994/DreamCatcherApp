@@ -146,6 +146,27 @@ public class ApiPostCaller {
 
     }
 
+    public void getDailyMood(IResponseMessage responseMessage){
+        Call<ResponseBody> call = postService.getDailyMood(Users.getInstance().getUid());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void getDreamsDaily(IResponseMessage responseMessage) {
         Call<ResponseBody> call = postService.getDreamsDaily(Users.getInstance().getUid());
         call.enqueue(new Callback<ResponseBody>() {
@@ -334,28 +355,6 @@ public class ApiPostCaller {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
-                responseMessage.onFailure(t.getMessage().toString());
-
-            }
-        });
-    }
-
-    public void getDreamCheckListExperienceDaily(IResponseMessage responseMessage) {
-        Call<ResponseBody> call = postService.getDreamCheckListExperienceDaily(Users.getInstance().getUid());
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    responseMessage.onSuccess(response.body().string());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 responseMessage.onFailure(t.getMessage().toString());
 
             }

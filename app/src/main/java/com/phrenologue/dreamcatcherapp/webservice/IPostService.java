@@ -64,6 +64,9 @@ public interface IPostService {
     @GET("users/PercentRemembered.php")
     Call<ResponseBody> getRemembered(@Query("uid") int uid);
 
+    @GET("users/DailyMood.php")
+    Call<ResponseBody> getDailyMood(@Query("uid") int uid);
+
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);
 
@@ -90,9 +93,6 @@ public interface IPostService {
 
     @GET("posts/dream/checklist/dailyrelated/monthly.php")
     Call<ResponseBody> getDreamCheckListRelatedMonthly(@Query("uid") int uid);
-
-    @GET("posts/dream/checklist/experience/daily.php")
-    Call<ResponseBody> getDreamCheckListExperienceDaily(@Query("uid") int uid);
 
     @GET("posts/dream/checklist/experience/weekly.php")
     Call<ResponseBody> getDreamCheckListExperienceWeekly(@Query("uid") int uid);
