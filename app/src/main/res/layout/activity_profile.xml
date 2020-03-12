@@ -28,7 +28,7 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_centerHorizontal="true"
-                    android:id="@+id/level10"
+                    android:id="@+id/level"
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
@@ -43,7 +43,7 @@
                     android:id="@+id/user_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/level10"
+                    android:layout_below="@id/level"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="18dp"
                     android:background="@drawable/bg_shape"
