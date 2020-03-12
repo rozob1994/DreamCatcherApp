@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_night"
     android:orientation="vertical">
 
@@ -25,24 +26,26 @@
                 android:backgroundTint="@color/txt_glow"
                 android:gravity="center_horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/blur_layout"
-                    android:layout_width="240dp"
-                    android:layout_height="360dp"
+                <com.airbnb.lottie.LottieAnimationView
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="150dp"
-                    android:background="@drawable/avatar">
-
-                </androidx.appcompat.widget.AppCompatImageView>
+                    android:id="@+id/level10"
+                    android:layout_width="280dp"
+                    android:layout_height="400dp"
+                    android:adjustViewBounds="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="level10.json"
+                    app:lottie_loop="true"
+                    android:layout_marginTop="180dp"
+                    app:lottie_imageAssetsFolder="images/"/>
 
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/blur_layout"
+                    android:layout_below="@id/level10"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="18dp"
                     android:background="@drawable/bg_shape"
                     android:backgroundTint="@color/black"
                     android:text="USER1994"
