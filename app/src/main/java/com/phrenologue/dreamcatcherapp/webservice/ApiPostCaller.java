@@ -5,6 +5,11 @@ import android.util.Log;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
@@ -22,6 +27,28 @@ public class ApiPostCaller {
     }
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
+
+    public void getRemembered(IResponseMessage responseMessage) {
+        Users user = Users.getInstance();
+        Call<ResponseBody> call = postService.getRemembered(user.getUid());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
 
     public void addDateToSleep(IResponseMessage responseMessage) {
         Date date = Date.getInstance();
@@ -50,17 +77,22 @@ public class ApiPostCaller {
     }
 
     public void saveDreamSeparately(IResponseMessage responseMessage) {
+        DreamChecklist checklist = DreamChecklist.getInstance();
+        DreamPeople people = DreamPeople.getInstance();
+        DreamSound sound = DreamSound.getInstance();
+        DreamLucidity lucidity = DreamLucidity.getInstance();
+        DreamDescription description = DreamDescription.getInstance();
         Users user = Users.getInstance();
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postDreams(dream.getPostId(), user.getUid(),
-                dream.getDreamChecklist().getRemembered(), dream.getDreamPeople().getName(),
-                dream.getDreamPeople().getExistent(), dream.getDreamPeople().getImpression(),
-                dream.getDreamSound().getSound(), dream.getDreamSound().getMusical(),
-                dream.getDreamChecklist().getFalseAwake(), dream.getDreamChecklist().getGrayScale(),
-                dream.getDreamChecklist().getDailyRelated(), dream.getDreamChecklist().getExperience(),
-                dream.getDreamLucidity().getLucid(), dream.getDreamLucidity().getLucidityLevel(),
-                dream.getDreamDescription().getTitle(), dream.getDreamDescription().getContent(),
+                checklist.getRemembered(), people.getName(),
+                people.getExistent(), people.getImpression(),
+                sound.getSound(), sound.getMusical(),
+                checklist.getGrayScale(),
+                checklist.getExperience(),
+                lucidity.getLucidityLevel(),
+                description.getTitle(), description.getContent(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
                 date.getMonth(), date.getYear());
         call.enqueue(new Callback<ResponseBody>() {
@@ -114,16 +146,16 @@ public class ApiPostCaller {
 
     }
 
-    public void getDreamsDayOfYear(IResponseMessage responseMessage){
-        Call<ResponseBody> call = postService.getExperienceDayOfYear(Users.getInstance().getUid());
+    public void getDailyMood(IResponseMessage responseMessage){
+        Call<ResponseBody> call = postService.getDailyMood(Users.getInstance().getUid());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.e("","");
-                    responseMessage.onSuccess((response.body().string()));
-                    Log.e("","");
-                } catch (JSONException | IOException e) {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -323,28 +355,6 @@ public class ApiPostCaller {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
-                responseMessage.onFailure(t.getMessage().toString());
-
-            }
-        });
-    }
-
-    public void getDreamCheckListExperienceDaily(IResponseMessage responseMessage) {
-        Call<ResponseBody> call = postService.getDreamCheckListExperienceDaily(Users.getInstance().getUid());
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    responseMessage.onSuccess(response.body().string());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 responseMessage.onFailure(t.getMessage().toString());
 
             }

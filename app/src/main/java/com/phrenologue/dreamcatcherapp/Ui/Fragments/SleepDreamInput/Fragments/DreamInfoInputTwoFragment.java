@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import androidx.fragment.app.Fragment;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
-import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 /**
@@ -46,16 +46,16 @@ public class DreamInfoInputTwoFragment extends Fragment {
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.saveCompleteDream(title, content, day, month, year);
-                OperationResults results = OperationResults.getInstance();
-                if (results.isStatus()) {
+                boolean dreamSaved = presenter.saveCompleteDream(title, content, day, month, year);
+                if (dreamSaved) {
                     Toast.makeText(getContext(), "Dream Saved.",
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getContext(),
                             ProfileActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getContext(), results.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Error.", Toast.LENGTH_LONG).show();
+                    Log.e("","");
                 }
 
 

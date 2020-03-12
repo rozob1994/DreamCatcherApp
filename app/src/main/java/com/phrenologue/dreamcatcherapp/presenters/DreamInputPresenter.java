@@ -395,9 +395,9 @@ public class DreamInputPresenter {
                         public void onSuccess(Object response) throws JSONException {
                             JSONObject jsonObject1 = new JSONObject(response.toString());
                             boolean status1 = jsonObject1.getBoolean("status");
+                            Log.e("","");
                             if (status1) {
-                                String message = jsonObject.getString("message");
-                                results.setSuccessfulResults(message);
+                                results.setStatus(true);
                                 Dream.delDream();
                                 Sleep.delSleep();
                             }
@@ -405,7 +405,8 @@ public class DreamInputPresenter {
 
                         @Override
                         public void onFailure(String errorMessage) {
-                            results.setFailedResults(errorMessage);
+                            Log.e("","");
+                            results.setStatus(false);
                         }
                     });
 
@@ -418,7 +419,8 @@ public class DreamInputPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
-                results.setFailedResults(errorMessage);
+                results.setStatus(false);
+                Log.e("","");
 
             }
         });

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -21,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding= ActivityProfileBinding.inflate(getLayoutInflater());
         View view= binding.getRoot();
         setContentView(view);
+        binding.userTitle.setText(Users.getInstance().getEmail());
+
 
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
             @Override

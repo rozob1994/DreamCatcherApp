@@ -21,11 +21,8 @@ public interface IPostService {
                                   @Field("dreamPeopleImpression") int dreamPeopleImpression,
                                   @Field("dreamSound") int dreamSound,
                                   @Field("dreamMusical") int dreamMusical,
-                                  @Field("dreamFalseAwake") int dreamFalseAwake,
                                   @Field("dreamGrayScale") int dreamGrayScale,
-                                  @Field("dreamDailyRelated") int dreamDailyRelated,
                                   @Field("dreamExperience") int dreamExperience,
-                                  @Field("dreamLucid") int dreamLucid,
                                   @Field("dreamLucidityLevel") int dreamLucidityLevel,
                                   @Field("dreamTitle") String dreamTitle,
                                   @Field("dreamContent") String dreamContent,
@@ -64,8 +61,11 @@ public interface IPostService {
                                       @Nullable @Field("month") int month,
                                       @Nullable @Field("year") int year);
 
-    @GET("objects/daily.php")
-    Call<ResponseBody> getExperienceDayOfYear(@Query("uid") int uid);
+    @GET("users/PercentRemembered.php")
+    Call<ResponseBody> getRemembered(@Query("uid") int uid);
+
+    @GET("users/DailyMood.php")
+    Call<ResponseBody> getDailyMood(@Query("uid") int uid);
 
     @GET("posts/dream/daily.php")
     Call<ResponseBody> getDreamsDaily(@Query("uid") int uid);
@@ -93,9 +93,6 @@ public interface IPostService {
 
     @GET("posts/dream/checklist/dailyrelated/monthly.php")
     Call<ResponseBody> getDreamCheckListRelatedMonthly(@Query("uid") int uid);
-
-    @GET("posts/dream/checklist/experience/daily.php")
-    Call<ResponseBody> getDreamCheckListExperienceDaily(@Query("uid") int uid);
 
     @GET("posts/dream/checklist/experience/weekly.php")
     Call<ResponseBody> getDreamCheckListExperienceWeekly(@Query("uid") int uid);
