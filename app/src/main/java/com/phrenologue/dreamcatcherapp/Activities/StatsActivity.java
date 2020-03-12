@@ -56,6 +56,7 @@ public class StatsActivity extends AppCompatActivity {
                         countZeroes++;
                     }
                     countOnes++;
+
                 }
 
                 ArrayList<PieEntry> entries = new ArrayList<>();
