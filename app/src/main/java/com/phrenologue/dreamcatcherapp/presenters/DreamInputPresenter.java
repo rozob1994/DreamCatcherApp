@@ -332,7 +332,7 @@ public class DreamInputPresenter {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 lucidity.setLucidityLevel(progress);
-                seekBar.setMax(9);
+                seekBar.setMax(3);
             }
 
             @Override
