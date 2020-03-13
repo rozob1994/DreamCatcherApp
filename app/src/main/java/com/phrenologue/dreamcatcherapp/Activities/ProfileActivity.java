@@ -11,6 +11,8 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
@@ -30,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), LevelsActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
             }
         });
 
