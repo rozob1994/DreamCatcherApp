@@ -25,6 +25,15 @@ public class ProfileActivity extends AppCompatActivity {
         binding.userTitle.setText(Users.getInstance().getEmail());
 
 
+        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), LevelsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

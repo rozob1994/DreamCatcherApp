@@ -28,7 +28,7 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_centerHorizontal="true"
-                    android:id="@+id/level"
+                    android:id="@+id/level_animation"
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
@@ -36,14 +36,14 @@
                     app:lottie_fileName="level10.json"
                     app:lottie_loop="true"
                     android:layout_marginTop="180dp"
-                    app:lottie_imageAssetsFolder="images/"/>
+                    app:lottie_imageAssetsFolder="images/level_ten/"/>
 
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/level"
+                    android:layout_below="@id/level_animation"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="18dp"
                     android:background="@drawable/bg_shape"
