@@ -163,8 +163,15 @@ public class SleepInputPresenter {
         dream = Dream.getInstance();
         date = Date.getInstance();
         checklist = DreamChecklist.getInstance();
-        String duration = edtHours.getText().toString() + " Hours " +
-                edtMinutes.getText().toString() + " Min. "; // Storing sleep duration as a single string.
+        String duration;
+        if ((!edtHours.getText().toString().equals(""))&&(!edtMinutes.getText().toString().equals(""))){
+            int hour = Integer.parseInt(edtHours.getText().toString());
+            int min = Integer.parseInt(edtMinutes.getText().toString());
+            duration = Integer.toString(hour*6+min);
+        } else {
+            duration = "";
+        }
+
         sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
         sleep.generatePostId();
         checklist.setRemembered(0);
