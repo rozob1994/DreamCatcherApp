@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.Activities.Adapter.DreamsPackagesActivityAdapter;
+import com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
@@ -22,11 +23,12 @@ import java.util.List;
 
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
-    List<String> titles;
-    List<String> contents;
+    private List<String> titles;
+    private List<String> contents;
     private DreamsPresenter presenter;
     private RecyclerView dreamsRecycler;
-
+    private MoonTextView dreamCount;
+    private MoonTextView dreamHours;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,8 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         dreamsRecycler = binding.dreamsRecycler;
+        dreamCount = binding.titleDreamsCount;
+        dreamHours = binding.titleDreamHours;
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
             @Override
@@ -58,6 +62,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
+                dreamCount.setText("Dream Count: "+titles.size()+"");
             }
 
             @Override
