@@ -23,6 +23,7 @@ import java.util.List;
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
     List<String> titles;
+    List<String> contents;
     private DreamsPresenter presenter;
     private RecyclerView dreamsRecycler;
 
@@ -46,14 +47,14 @@ public class DreamsPackagesActivity extends AppCompatActivity {
                     jsonArrays.add(jsonArray.getJSONArray(i));
                 }
                 titles = new ArrayList<String>();
-                ArrayList<String> dreamContents = new ArrayList<String>();
+                contents = new ArrayList<String>();
                 Log.e("", "");
                 for (int j = 0; j < jsonArrays.size(); j++) {
                     titles.add(jsonArrays.get(j).getString(0));
-                    dreamContents.add(jsonArrays.get(j).getString(1));
+                    contents.add(jsonArrays.get(j).getString(1));
                 }
 
-                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(getApplicationContext(), titles);
+                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(getApplicationContext(), titles, contents);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
