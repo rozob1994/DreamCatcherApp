@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.Activities.Adapter.DreamsPackagesActivityAdapter;
-import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
+import com.phrenologue.dreamcatcherapp.databinding.ActivityTestBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
-import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
@@ -20,18 +19,17 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DreamsPackagesActivity extends AppCompatActivity {
-    private ActivityDreamsPackagesBinding binding;
+public class test extends AppCompatActivity {
+    ActivityTestBinding binding;
+    RecyclerView recyclerView;
     List<String> titles;
-    private DreamsPresenter presenter;
-    private RecyclerView dreamsRecycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityDreamsPackagesBinding.inflate(getLayoutInflater());
+        binding = ActivityTestBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        dreamsRecycler = binding.dreamsRecycler;
+        recyclerView = binding.dreamsRecycler;
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
             @Override
@@ -54,8 +52,8 @@ public class DreamsPackagesActivity extends AppCompatActivity {
 
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(getApplicationContext(),titles);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                dreamsRecycler.setLayoutManager(layoutManager);
-                dreamsRecycler.setAdapter(adapter);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -67,6 +65,4 @@ public class DreamsPackagesActivity extends AppCompatActivity {
 
 
     }
-
-
 }

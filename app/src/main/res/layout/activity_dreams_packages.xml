@@ -5,13 +5,15 @@
     android:id="@+id/rel_dreams_package"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bg_night"
     tools:context="com.phrenologue.dreamcatcherapp.Activities.DreamsPackagesActivity">
 
 
     <io.alterac.blurkit.BlurLayout
+        android:id="@+id/k"
         android:layout_width="500dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:foregroundGravity="center_horizontal">
 
         <com.airbnb.lottie.LottieAnimationView
@@ -64,19 +66,22 @@
                     android:layout_marginTop="16dp"
                     app:srcCompat="@drawable/avatar" />
 
-            </RelativeLayout>
 
+            </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dreams_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_below="@+id/top_main_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal" />
+
+
 
         </RelativeLayout>
 
 
     </io.alterac.blurkit.BlurLayout>
+
 
 
 </RelativeLayout>
