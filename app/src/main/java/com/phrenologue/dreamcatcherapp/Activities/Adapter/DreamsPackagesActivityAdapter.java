@@ -18,17 +18,18 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     List<String> titles;
     Context context;
     LayoutInflater inflater;
+
     public DreamsPackagesActivityAdapter(Context context, @Nullable List<String> titles) {
         this.titles = titles;
-        this.context= context;
-        inflater= LayoutInflater.from(context);
+        this.context = context;
+        inflater = LayoutInflater.from(context);
 
     }
 
     @NonNull
     @Override
     public DreamsPackagesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= inflater.inflate(R.layout.dreams_package, parent,false);
+        View view = inflater.inflate(R.layout.dreams_package, parent, false);
         return new DreamsPackagesHolder(view);
     }
 
@@ -47,6 +48,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
     class DreamsPackagesHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView title;
+
         public DreamsPackagesHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.dreams_package_title);
