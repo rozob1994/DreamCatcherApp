@@ -11,6 +11,8 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
@@ -23,6 +25,16 @@ public class ProfileActivity extends AppCompatActivity {
         View view= binding.getRoot();
         setContentView(view);
         binding.userTitle.setText(Users.getInstance().getEmail());
+
+
+        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), LevelsActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
+            }
+        });
 
 
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
