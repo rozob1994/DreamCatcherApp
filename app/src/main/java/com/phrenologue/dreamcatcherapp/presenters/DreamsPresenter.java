@@ -42,8 +42,8 @@ public class DreamsPresenter {
                 List<String> contents = new ArrayList<String>();
                 Log.e("", "");
                 for (int j = 0; j < jsonArrays.size(); j++) {
-                    titles.add(jsonArrays.get(j).getString(1));
-                    contents.add(jsonArrays.get(j).getString(0));
+                    titles.add(jsonArrays.get(j).getString(0));
+                    contents.add(jsonArrays.get(j).getString(1));
                 }
 
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context, titles, contents);

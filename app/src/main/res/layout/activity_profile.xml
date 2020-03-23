@@ -17,6 +17,40 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp">
 
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_instagram"
+                android:backgroundTint="@color/white"
+                android:layout_marginTop="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_instagram"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_below="@id/btn_instagram"
+                android:id="@+id/btn_website"
+                android:backgroundTint="@color/white"
+                android:layout_marginTop="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_internet"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_below="@id/btn_website"
+                android:id="@+id/btn_email"
+                android:backgroundTint="@color/white"
+                android:layout_marginTop="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_mail_outline_black_24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+
             <RelativeLayout
                 android:id="@+id/rel_profile"
                 android:layout_width="192dp"
@@ -81,6 +115,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:elevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:id="@+id/btn_dreams"
@@ -92,6 +127,7 @@
                     android:textSize="18dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:elevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:id="@+id/btn_stats"

@@ -1,5 +1,6 @@
 package com.phrenologue.dreamcatcherapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -39,5 +40,16 @@ public class StatsActivity extends AppCompatActivity {
         presenter.drawMoodPercent(moodChart);
         presenter.drawLucidityPercent(lucidityChart);
 
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
+    @Override
+    public void onBackPressed() { }
 }

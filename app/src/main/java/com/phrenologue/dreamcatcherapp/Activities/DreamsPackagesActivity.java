@@ -1,5 +1,6 @@
 package com.phrenologue.dreamcatcherapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -32,7 +33,26 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         presenter = new DreamsPresenter(this);
         presenter.getDescription(dreamsRecycler,dreamCount);
 
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
+
+    @Override
+    public void onBackPressed() { }
 
 }
