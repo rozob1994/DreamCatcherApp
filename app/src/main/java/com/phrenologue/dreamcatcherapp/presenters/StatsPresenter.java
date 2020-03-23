@@ -58,10 +58,9 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 rememberedChart.setData(pieData);
-                rememberedChart.animateXY(5000, 5000);
+                rememberedChart.animateXY(2000, 2000);
                 rememberedChart.invalidate();
                 rememberedChart.setDrawHoleEnabled(false);
-
 
             }
 
@@ -104,7 +103,7 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 soundChart.setData(pieData);
-                soundChart.animateXY(5000, 5000);
+                soundChart.animateXY(2000, 2000);
                 soundChart.invalidate();
                 soundChart.setDrawHoleEnabled(false);
             }
@@ -148,7 +147,7 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 musicalChart.setData(pieData);
-                musicalChart.animateXY(5000, 5000);
+                musicalChart.animateXY(2000, 2000);
                 musicalChart.invalidate();
                 musicalChart.setDrawHoleEnabled(false);
             }
@@ -197,7 +196,7 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 colorfulChart.setData(pieData);
-                colorfulChart.animateXY(5000, 5000);
+                colorfulChart.animateXY(2000, 2000);
                 colorfulChart.invalidate();
                 colorfulChart.setDrawHoleEnabled(false);
             }
@@ -246,7 +245,7 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 lucidityChart.setData(pieData);
-                lucidityChart.animateXY(5000, 5000);
+                lucidityChart.animateXY(2000, 2000);
                 lucidityChart.invalidate();
                 lucidityChart.setDrawHoleEnabled(false);
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_night"
+    android:background="@drawable/bg_night_blur"
     android:orientation="vertical">
 
     <ScrollView
@@ -13,65 +13,67 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp">
 
             <RelativeLayout
                 android:id="@+id/rel_profile"
-                android:layout_width="250dp"
+                android:layout_width="192dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-120dp"
-                android:background="@drawable/bg_gradient"
-                android:backgroundTint="@color/txt_glow"
+                android:background="@drawable/bg_buttom_rounded"
                 android:gravity="center_horizontal">
 
                 <com.airbnb.lottie.LottieAnimationView
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/level_animation"
-                    android:layout_width="280dp"
-                    android:layout_height="400dp"
+                    android:layout_width="240dp"
+                    android:layout_height="300dp"
+                    android:layout_centerHorizontal="true"
                     android:adjustViewBounds="true"
                     app:lottie_autoPlay="true"
                     app:lottie_fileName="level10.json"
-                    app:lottie_loop="true"
-                    android:layout_marginTop="180dp"
-                    app:lottie_imageAssetsFolder="images/level_ten/"/>
+                    app:lottie_imageAssetsFolder="images/level_ten/"
+                    app:lottie_loop="true" />
 
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-                    android:id="@+id/user_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/level_animation"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/bg_shape"
-                    android:backgroundTint="@color/black"
-                    android:text="USER1994"
-                    android:textColor="@color/txt_glow"
-                    android:textSize="@dimen/title_size" />
-
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:id="@+id/level_number"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_below="@id/user_title"
+                    android:layout_below="@id/level_animation"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="24dp"
                     android:background="@drawable/dream_catcher_logo"
-                    android:backgroundTint="@color/txt_glow"
+                    android:backgroundTint="@color/white"
                     android:gravity="center"
                     android:text="1"
                     android:textColor="@color/white"
                     android:textSize="@dimen/level_size" />
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:id="@+id/user_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/level_number"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_buttom_rounded"
+                    android:backgroundTint="#00ACC1"
+                    android:gravity="center"
+                    android:text="USER1994"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_size" />
+
 
             </RelativeLayout>
 
 
             <RelativeLayout
                 android:id="@+id/profile_tabs_buttons"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rel_profile"
                 android:layout_centerHorizontal="true"
@@ -79,27 +81,28 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:clickable="true"
+                    android:focusable="true"
                     android:id="@+id/btn_dreams"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
                     android:background="@drawable/bg_gradient"
-                    android:backgroundTint="@color/txt_glow"
                     android:text="dreams"
-                    android:textColor="@color/txt_glow"
-                    android:textSize="@dimen/edt_title_size" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:clickable="true"
+                    android:focusable="true"
                     android:id="@+id/btn_stats"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
                     android:layout_below="@+id/btn_dreams"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_gradient"
-                    android:backgroundTint="@color/txt_glow"
                     android:text="stats"
-                    android:textColor="@color/txt_glow"
-                    android:textSize="@dimen/edt_title_size" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
             </RelativeLayout>
 

@@ -27,9 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.SleepDreamInputActivity" ></activity>
-        <activity android:name=".Activities.ProfileActivity">
-
-        </activity>
+        <activity android:name=".Activities.ProfileActivity"></activity>
         <activity android:name=".Activities.Login.LoginActivity" ></activity>
     </application>
 
