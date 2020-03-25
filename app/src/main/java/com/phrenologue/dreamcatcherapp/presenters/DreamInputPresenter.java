@@ -1,17 +1,19 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
-import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
+import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
-import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
@@ -369,8 +371,10 @@ public class DreamInputPresenter {
         dream.setDreamLucidity(lucidity);
     }
 
-    public boolean saveCompleteDream(AppCompatEditText title, AppCompatEditText content,
-                                  Spinner daySp, Spinner monthSp, Spinner yearSp) {
+    public void saveCompleteDream(Context context, AppCompatEditText title, AppCompatEditText content,
+                                     Spinner daySp, Spinner monthSp, Spinner yearSp, RelativeLayout loadingBg) {
+        loadingBg.setVisibility(View.VISIBLE);
+        loadingBg.setAlpha(0.5f);
         date = Date.getInstance();
         description = DreamDescription.getInstance();
         dream = Dream.getInstance();
@@ -382,49 +386,47 @@ public class DreamInputPresenter {
         String year = yearSp.getSelectedItem().toString();
         date.setCustomDay(year, month, day);
         ApiPostCaller postCaller = new ApiPostCaller();
-        OperationResults results = OperationResults.getInstance();
         postCaller.saveDreamSeparately(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
                 JSONObject jsonObject = new JSONObject(response.toString());
                 boolean status = jsonObject.getBoolean("status");
-                Log.e("", "");
                 if (status) {
                     postCaller.addDateToSleep(new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
                             JSONObject jsonObject1 = new JSONObject(response.toString());
                             boolean status1 = jsonObject1.getBoolean("status");
-                            Log.e("","");
                             if (status1) {
-                                results.setStatus(true);
                                 Dream.delDream();
                                 Sleep.delSleep();
+                                Intent intent = new Intent(context, ProfileActivity.class);
+                                context.startActivity(intent);
+                            } else {
+                                loadingBg.setVisibility(View.GONE);
+                                Toast.makeText(context,"Error", Toast.LENGTH_LONG);
                             }
                         }
 
                         @Override
                         public void onFailure(String errorMessage) {
-                            Log.e("","");
-                            results.setStatus(false);
+                            loadingBg.setVisibility(View.GONE);
+                            Toast.makeText(context, "Error", Toast.LENGTH_LONG);
                         }
                     });
 
-                    Log.e("", "");
-
                 } else {
-
+                    loadingBg.setVisibility(View.GONE);
+                    Toast.makeText(context,"Error.", Toast.LENGTH_LONG);
                 }
             }
 
             @Override
             public void onFailure(String errorMessage) {
-                results.setStatus(false);
-                Log.e("","");
-
+                loadingBg.setVisibility(View.GONE);
+                Toast.makeText(context,"Error!", Toast.LENGTH_LONG);
             }
         });
-        return results.isStatus();
     }
 
 
