@@ -11,6 +11,8 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityStatsBinding;
 import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class StatsActivity extends AppCompatActivity {
     private ActivityStatsBinding binding;
     private PieChart rememberedChart, soundChart, musicalChart, colorfulChart, moodChart,
@@ -45,6 +47,7 @@ public class StatsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(StatsActivity.this,"fadein-to-fadeout");
             }
         });
     }

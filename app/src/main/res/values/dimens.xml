@@ -7,5 +7,5 @@
     <dimen name="guide_txt_size">8sp</dimen>
     <dimen name="header_title_size">25sp</dimen>
     <dimen name="sings_txt_size">8sp</dimen>
-    <dimen name="level_size">45dp</dimen>
+    <dimen name="level_size">20dp</dimen>
 </resources>

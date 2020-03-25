@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <item
         android:id="@+id/edit"
-        android:title="Edit"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="Edit Profile" />
 
-        />
+    <item
+        android:id="@+id/email"
+        android:icon="@drawable/ic_mail_outline_black_24dp"
+        android:title="Contact Us" />
+
     <item
         android:id="@+id/delete"
-        android:title="Delete"
-        />
+        android:icon="@drawable/ic_internet"
+        android:title="Website"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/instagram"
+        android:icon="@drawable/ic_instagram"
+        android:title="Instagram"
+        app:showAsAction="ifRoom" />
+
 
 </menu>

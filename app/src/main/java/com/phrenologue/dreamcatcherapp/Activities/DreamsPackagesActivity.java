@@ -11,8 +11,12 @@ import com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 
+import java.util.List;
+
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
+    private List<String> titles;
+    private List<String> contents;
     private DreamsPresenter presenter;
     private RecyclerView dreamsRecycler;
     private MoonTextView dreamCount;

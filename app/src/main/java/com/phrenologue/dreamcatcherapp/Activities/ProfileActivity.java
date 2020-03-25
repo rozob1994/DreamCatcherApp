@@ -2,7 +2,9 @@ package com.phrenologue.dreamcatcherapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +18,7 @@ import maes.tech.intentanim.CustomIntent;
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,12 @@ public class ProfileActivity extends AppCompatActivity {
         View view= binding.getRoot();
         setContentView(view);
         binding.userTitle.setText(Users.getInstance().getEmail());
+
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        binding.toolbar.setTitle("");
+        binding.toolbar.setSubtitle("");
+
 
 
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
             }
         });
 
@@ -50,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), StatsActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
             }
         });
 
@@ -57,6 +68,13 @@ public class ProfileActivity extends AppCompatActivity {
         FeedsPackagesAdapter adapter= new FeedsPackagesAdapter(getApplicationContext(), null);
         binding.recyclerFeed.setAdapter(adapter);
 
+    }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tabs, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,14 +21,23 @@ public class LevelsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels);
         binding=ActivityLevelsBinding.inflate(getLayoutInflater());
 
+        binding.btnBackToProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(LevelsActivity.this,"fadein-to-fadeout");
+            }
+        });
     }
 
 
     @Override
     public void onBackPressed() {
+
         Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
         CustomIntent.customType(LevelsActivity.this,"fadein-to-fadeout");
-        super.onBackPressed();
+
     }
 }
