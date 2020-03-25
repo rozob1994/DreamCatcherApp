@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 
+import com.phrenologue.dreamcatcherapp.Activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
@@ -42,6 +43,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 presenter.saveCompleteDream(getContext(), title, content, day, month, year,binding.loadingBg);
             }
         });

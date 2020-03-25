@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.phrenologue.dreamcatcherapp.Activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -64,7 +65,9 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         museOff = binding.linBtnMusicalOff;
         nonMuseOn = binding.linBtnNonMusicalOn;
         nonMuseOff = binding.linBtnNonMusicalOff;
-
+        if (getContext().getClass()== EditDreamInputActivity.class){
+            binding.prevBtn.setVisibility(View.GONE);
+        }
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MOOD SEEK BAR]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         experience.setOnSeekBarChangeListener(this);
