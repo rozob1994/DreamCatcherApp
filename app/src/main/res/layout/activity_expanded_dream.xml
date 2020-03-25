@@ -25,8 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:background="@drawable/bg_shape"
-                android:backgroundTint="@color/black">
+                android:background="@drawable/bg_shape_stroked">
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/dreams_package_title"
