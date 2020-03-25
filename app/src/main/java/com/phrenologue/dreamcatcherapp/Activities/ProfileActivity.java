@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
 import com.phrenologue.dreamcatcherapp.Activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
+import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 
 import maes.tech.intentanim.CustomIntent;
@@ -97,11 +99,13 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.website:
-
+                Intent intentWebsite = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.website));
+                startActivity(intentWebsite);
                 break;
 
             case R.id.instagram:
-
+                Intent intentInsta = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.instagram));
+                startActivity(intentInsta);
                 break;
 
             case R.id.log_out:
@@ -110,8 +114,8 @@ public class ProfileActivity extends AppCompatActivity {
                 sp2.edit().putBoolean("signedUp", false).apply();
                 sharedPreferences.edit().putString("username", "").apply();
                 sharedPreferences.edit().putInt("uid", 0).apply();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                Intent intentLogOut = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intentLogOut);
                 finish();
                 break;
 

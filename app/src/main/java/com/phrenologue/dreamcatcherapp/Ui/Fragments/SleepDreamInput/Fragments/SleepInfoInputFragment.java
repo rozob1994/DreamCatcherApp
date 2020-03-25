@@ -98,7 +98,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         //---------------------------PHYSICAL ACTIVITY SEEK BAR---------------------------//
 
         physicalActivity.setOnSeekBarChangeListener(this);
-        presenter.setPhysicalActivitySeekBar(0, physicalActivity);
+        presenter.setPhysicalActivitySeekBar(physicalActivity);
 
         //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
 

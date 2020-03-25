@@ -89,15 +89,13 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setPhysicalActivitySeekBar(int prevProgress, SeekBar physicalActivity){
+    public void setPhysicalActivitySeekBar(SeekBar physicalActivity){
         sleep = Sleep.getInstance();
 
         physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setPhysicalActivity(progress);
-                seekBar.setClickable(true);
-                seekBar.setProgress(prevProgress);
                 seekBar.setMax(3);
             }
 
