@@ -33,7 +33,8 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         dreamCount = binding.titleDreamsCount;
         dreamHours = binding.titleDreamHours;
         presenter = new DreamsPresenter(this);
-        presenter.getDescription(dreamsRecycler,dreamCount);
+        presenter.getDescription(getApplicationContext(),
+                binding.loadingBg, dreamsRecycler,dreamCount);
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

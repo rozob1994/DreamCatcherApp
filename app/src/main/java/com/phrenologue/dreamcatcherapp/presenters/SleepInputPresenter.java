@@ -89,13 +89,15 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setPhysicalActivitySeekBar(SeekBar physicalActivity){
+    public void setPhysicalActivitySeekBar(int prevProgress, SeekBar physicalActivity){
         sleep = Sleep.getInstance();
 
         physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setPhysicalActivity(progress);
+                seekBar.setClickable(true);
+                seekBar.setProgress(prevProgress);
                 seekBar.setMax(3);
             }
 
@@ -132,7 +134,7 @@ public class SleepInputPresenter {
         });
     }
 
-    public boolean saveSleepAndContinue(RelativeLayout loadingBg,
+    public boolean saveSleepAndContinue(RelativeLayout loadingBg, Context context,
                                         AppCompatEditText edtHours, AppCompatEditText edtMinutes){
         loadingBg.setVisibility(View.VISIBLE);
         loadingBg.setAlpha(0.5f);

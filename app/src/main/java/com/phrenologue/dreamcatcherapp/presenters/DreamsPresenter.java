@@ -2,6 +2,9 @@ package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,14 +27,16 @@ public class DreamsPresenter {
         this.context = context;
     }
 
-    public void getDescription(RecyclerView dreamsRecycler,
+    public void getDescription(Context context,
+                               RelativeLayout loadingBg, RecyclerView dreamsRecycler,
                                MoonTextView dreamCount) {
-
+        loadingBg.setVisibility(View.VISIBLE);
+        loadingBg.setAlpha(0.5f);
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-
+                loadingBg.setVisibility(View.GONE);
                 JSONArray jsonArray = new JSONArray(response.toString());
 
                 ArrayList<JSONArray> jsonArrays = new ArrayList();
@@ -56,7 +61,8 @@ public class DreamsPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
-
+                loadingBg.setVisibility(View.GONE);
+                Toast.makeText(context,"Error", Toast.LENGTH_LONG).show();
             }
 
         });

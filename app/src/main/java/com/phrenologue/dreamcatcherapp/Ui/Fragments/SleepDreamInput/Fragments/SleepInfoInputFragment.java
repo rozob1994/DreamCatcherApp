@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -14,8 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
+import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.SleepInputPresenter;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +36,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
     private SeekBar foodConsumption;
     private SleepInputPresenter presenter;
     private LinearLayout dayOn, dayOff, nightOn, nightOff;
-
+    private RelativeLayout loadingBg;
 
     public SleepInfoInputFragment() {
     }
@@ -44,6 +52,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         dayOff = binding.linDayOff;
         nightOff = binding.linNightOff;
         nightOn = binding.linNightOn;
+        loadingBg = binding.loadingBg;
 
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
@@ -89,7 +98,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         //---------------------------PHYSICAL ACTIVITY SEEK BAR---------------------------//
 
         physicalActivity.setOnSeekBarChangeListener(this);
-        presenter.setPhysicalActivitySeekBar(physicalActivity);
+        presenter.setPhysicalActivitySeekBar(0, physicalActivity);
 
         //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
 
@@ -100,19 +109,42 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean sleepSaved = presenter.saveSleepAndContinue(binding.loadingBg,
-                        binding.edtHours, binding.edtMinutes);
-                if (sleepSaved) {
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction transaction = fm.beginTransaction();
-                    DreamInfoInputOneFragment fragment = new DreamInfoInputOneFragment();
-                    transaction.replace(R.id.dream_adding_frame, fragment);
-                    transaction.commit();
-                    container.removeAllViews();
-                } else {
-                    Toast.makeText(getContext(), "Error",
-                            Toast.LENGTH_LONG).show();
-                }
+                loadingBg.setVisibility(View.VISIBLE);
+                loadingBg.setAlpha(0.5f);
+                Sleep sleep = Sleep.getInstance();
+                Dream dream = Dream.getInstance();
+                DreamChecklist checklist = DreamChecklist.getInstance();
+
+                String duration = binding.edtHours.getText().toString() + " Hours, " +
+                        binding.edtMinutes.getText().toString() + " Minutes.";
+                sleep.setDuration(duration);
+                checklist.setRemembered(1);
+                dream.setDreamChecklist(checklist);
+                dream.setPostId(sleep.generatePostId());
+                ApiPostCaller postCaller = new ApiPostCaller();
+                postCaller.saveSleepSeparately(new IResponseMessage() {
+                    @Override
+                    public void onSuccess(Object response) throws JSONException {
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        boolean status = jsonObject.getBoolean("status");
+                        if (status) {
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            DreamInfoInputOneFragment fragment = new DreamInfoInputOneFragment();
+                            transaction.replace(R.id.dream_adding_frame, fragment);
+                            transaction.commit();
+                            container.removeAllViews();
+                        } else {
+                            loadingBg.setVisibility(View.GONE);
+                            Toast.makeText(getContext(),"Error",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        loadingBg.setVisibility(View.GONE);
+                        Toast.makeText(getContext(),"Error",Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
 
