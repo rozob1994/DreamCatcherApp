@@ -1,12 +1,17 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
+import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -127,7 +132,10 @@ public class SleepInputPresenter {
         });
     }
 
-    public boolean saveSleepAndContinue(AppCompatEditText edtHours, AppCompatEditText edtMinutes){
+    public boolean saveSleepAndContinue(RelativeLayout loadingBg,
+                                        AppCompatEditText edtHours, AppCompatEditText edtMinutes){
+        loadingBg.setVisibility(View.VISIBLE);
+        loadingBg.setAlpha(0.5f);
         sleep = Sleep.getInstance();
         dream = Dream.getInstance();
         checklist = DreamChecklist.getInstance();
@@ -148,17 +156,22 @@ public class SleepInputPresenter {
                 if (status) {
                     results.setStatus(true);
                 } else {
+                    loadingBg.setVisibility(View.GONE);
                     results.setStatus(false);
                 }
             }
             @Override
             public void onFailure(String errorMessage) {
+                loadingBg.setVisibility(View.GONE);
                 results.setStatus(false);
             }
         });
         return results.isStatus();
     }
-    public boolean saveSleepAndGo(AppCompatEditText edtHours, AppCompatEditText edtMinutes){
+    public void saveSleepAndGo(AppCompatEditText edtHours, AppCompatEditText edtMinutes,
+                                  RelativeLayout loadingBg, Context context){
+        loadingBg.setVisibility(View.VISIBLE);
+        loadingBg.setAlpha(0.5f);
         sleep = Sleep.getInstance();
         dream = Dream.getInstance();
         date = Date.getInstance();
@@ -177,7 +190,6 @@ public class SleepInputPresenter {
         checklist.setRemembered(0);
         dream.setDreamChecklist(checklist);
         date.setDateToday(); // Setting today's date in our instance of date.
-        OperationResults results = OperationResults.getInstance();
         postCaller = new ApiPostCaller();
         postCaller.saveSleepSeparately(new IResponseMessage() { // Saving the sleep input.
             @Override
@@ -186,22 +198,23 @@ public class SleepInputPresenter {
                 boolean status = jsonObject.getBoolean("status"); // Getting the result of the savePost method as a boolean (true/false).
                 Log.e("", "");
                 if (status) {
-                    results.setStatus(true);
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    context.startActivity(intent);
                     Sleep.delSleep(); // Deleting the sleep instance, since the user doesn't want to add more info about it.
 
                 } else {
-                    results.setStatus(false);
+                    loadingBg.setVisibility(View.GONE);
+                    Toast.makeText(context,"Error", Toast.LENGTH_LONG);
                 }
 
             }
 
             @Override
             public void onFailure(String errorMessage) { // In case of connection error.
-                results.setStatus(false);
-
+                loadingBg.setVisibility(View.GONE);
+                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG);
             }
         });
-        return results.isStatus();
     }
 
 }

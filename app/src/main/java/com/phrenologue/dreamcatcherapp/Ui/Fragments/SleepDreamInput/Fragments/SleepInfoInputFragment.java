@@ -1,6 +1,5 @@
 package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
@@ -102,7 +100,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean sleepSaved = presenter.saveSleepAndContinue(binding.edtHours, binding.edtMinutes);
+                boolean sleepSaved = presenter.saveSleepAndContinue(binding.loadingBg,
+                        binding.edtHours, binding.edtMinutes);
                 if (sleepSaved) {
                     FragmentManager fm = getFragmentManager();
                     FragmentTransaction transaction = fm.beginTransaction();
@@ -120,15 +119,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean sleepSaved = presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes);
-                if (sleepSaved){
-
-                    Intent intent = new Intent(getActivity(), ProfileActivity.class);
-                    startActivity(intent);
-                } else{
-                    Toast.makeText(getContext(), "Error",
-                            Toast.LENGTH_LONG).show();
-                }
+                presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes,
+                        binding.loadingBg, getContext());
 
             }
         });
