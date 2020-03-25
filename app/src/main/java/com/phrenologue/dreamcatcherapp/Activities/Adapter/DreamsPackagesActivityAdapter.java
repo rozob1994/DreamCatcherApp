@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.Activities.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity;
 import com.phrenologue.dreamcatcherapp.R;
 
 import java.util.List;
@@ -44,10 +46,12 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         String contentc = contents.get(position);
         holder.title.setText(titlec);
         holder.content.setText(contentc);
+
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent= new Intent(context, ExpandedDreamActivity.class);
+                context.startActivity(intent);
             }
         });
     }

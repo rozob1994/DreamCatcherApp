@@ -13,6 +13,8 @@ import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 
 import java.util.List;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
     private List<String> titles;
@@ -38,15 +40,17 @@ public class DreamsPackagesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
+                finish();
             }
         });
 
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent= new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                 startActivity(intent);
+                CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
             }
         });
     }
