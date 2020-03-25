@@ -2,9 +2,9 @@ package com.phrenologue.dreamcatcherapp.Activities.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +14,6 @@ import com.phrenologue.dreamcatcherapp.databinding.ActivityLoginBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
-import com.phrenologue.dreamcatcherapp.presenters.LoginPresenter;
 import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
 
 import org.json.JSONException;
@@ -23,7 +22,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private LoginPresenter presenter;
+    private RelativeLayout loadingBg;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +31,13 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        presenter = new LoginPresenter();
         progressBar = binding.progressBar;
-
+        loadingBg = binding.loadingBg;
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadingBg.setVisibility(View.VISIBLE);
+                loadingBg.setAlpha(0.5f);
                 progressBar.setVisibility(View.VISIBLE);
                 String username = binding.edtTxtUsername.getText().toString();
                 String pass = binding.edtTxtPassword.getText().toString();
@@ -46,11 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                 apiCaller.login(username, pass, new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
+                        loadingBg.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
                         Users user = Users.getInstance();
                         JSONObject jsonObject = new JSONObject(response.toString());
                         boolean status = jsonObject.getBoolean("status");
-                        Log.e("","");
                         String message = jsonObject.getString("message");
                         if (status){
                             results.setSuccessfulResults(message);
@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                             startActivity(intent);
                             finish();
-                            Log.e("", "");
                         } else {
                             results.setFailedResults(message);
                         }
@@ -68,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(String errorMessage) {
+                        loadingBg.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
-                        Log.e("","");
                         results.setFailedResults(errorMessage);
                     }
                 });
