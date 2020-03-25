@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
@@ -75,5 +77,33 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.tabs, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.edit:
+
+                break;
+
+            case R.id.contact_us:
+
+                break;
+
+            case R.id.website:
+
+                break;
+
+            case R.id.instagram:
+
+                break;
+
+            case R.id.log_out:
+
+                break;
+
+        } return super.onOptionsItemSelected(item);
     }
 }

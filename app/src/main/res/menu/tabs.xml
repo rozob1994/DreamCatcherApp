@@ -9,12 +9,12 @@
         android:title="Edit Profile" />
 
     <item
-        android:id="@+id/email"
+        android:id="@+id/contact_us"
         android:icon="@drawable/ic_mail_outline_black_24dp"
         android:title="Contact Us" />
 
     <item
-        android:id="@+id/delete"
+        android:id="@+id/website"
         android:icon="@drawable/ic_internet"
         android:title="Website"
         app:showAsAction="ifRoom" />
@@ -24,6 +24,11 @@
         android:icon="@drawable/ic_instagram"
         android:title="Instagram"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:title="Log Out"
+        android:id="@+id/log_out"
+        />
 
 
 </menu>
