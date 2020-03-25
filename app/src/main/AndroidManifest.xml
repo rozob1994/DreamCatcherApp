@@ -19,14 +19,16 @@
         <activity android:name=".Activities.StatsPackagesActivity" ></activity>
         <activity android:name=".Activities.DreamsPackagesActivity" ></activity>
         <activity android:name=".Activities.Splash.SplashActivity" ></activity>
-        <activity android:name=".Activities.Login.SignUp" ></activity>
-        <activity android:name=".Activities.SleepDreamInputActivity" ></activity>
-        <activity android:name=".Activities.ProfileActivity">
+        <activity android:name=".Activities.Login.SignUp" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.SleepDreamInputActivity" ></activity>
+        <activity android:name=".Activities.ProfileActivity">
+
         </activity>
         <activity android:name=".Activities.Login.LoginActivity" ></activity>
     </application>
