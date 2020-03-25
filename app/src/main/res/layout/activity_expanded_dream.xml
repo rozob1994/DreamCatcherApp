@@ -6,13 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
+    xmlns:blurkit="http://schemas.android.com/apk/res-auto"
     tools:context="com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity">
 
 
     <io.alterac.blurkit.BlurLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        blurkit:blk_blurRadius="5"
+        blurkit:blk_downscaleFactor="0.025"
+        blurkit:blk_fps="60">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,7 +38,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="TEST"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="25sp" />
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/title_date"
@@ -103,16 +107,16 @@
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/dreams_package_description_input"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/edt_txt_size" />
+                    android:textSize="@dimen/title_size" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dreams_package_description"
                     android:layout_marginLeft="24dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginRight="24dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginBottom="24dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
