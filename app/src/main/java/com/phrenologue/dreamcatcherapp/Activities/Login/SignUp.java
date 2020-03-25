@@ -39,6 +39,11 @@ public class SignUp extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        if (sharedPreferences.getBoolean("logged", false)){
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
         binding.btnSignUpAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
