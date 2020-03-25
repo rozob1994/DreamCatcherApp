@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class SignUp extends AppCompatActivity {
     ActivitySignUp2Binding binding;
     SignUpPresenter presenter;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences, spLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +34,8 @@ public class SignUp extends AppCompatActivity {
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
         sharedPreferences = getSharedPreferences("signUp", MODE_PRIVATE);
-        if (sharedPreferences.getBoolean("signedUp", false)){
-            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        if (sharedPreferences.getBoolean("logged", false)){
+        spLogin = getSharedPreferences("login", MODE_PRIVATE);
+        if ((sharedPreferences.getBoolean("signedUp", false))||(spLogin.getBoolean("logged", false))){
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
             finish();

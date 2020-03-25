@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
+import com.phrenologue.dreamcatcherapp.Activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
@@ -23,18 +24,21 @@ public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
     private Toolbar toolbar;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sp2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        binding= ActivityProfileBinding.inflate(getLayoutInflater());
-        View view= binding.getRoot();
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
-        binding.userTitle.setText(Users.getInstance().getEmail());
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
         Users user = Users.getInstance();
         user.setUid(sharedPreferences.getInt("uid", 0));
         user.setEmail(sharedPreferences.getString("username", "Nothing Retrieved"));
+        binding.userTitle.setText(Users.getInstance().getEmail());
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbar.setTitle("");
@@ -44,31 +48,31 @@ public class ProfileActivity extends AppCompatActivity {
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), LevelsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LevelsActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
             }
         });
 
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), DreamsPackagesActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
             }
         });
 
         binding.btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), StatsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
             }
         });
 
-        FeedsPackagesAdapter adapter= new FeedsPackagesAdapter(getApplicationContext(), null);
+        FeedsPackagesAdapter adapter = new FeedsPackagesAdapter(getApplicationContext(), null);
         binding.recyclerFeed.setAdapter(adapter);
 
     }
@@ -101,9 +105,17 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.log_out:
-
+                Users.delUser();
+                sharedPreferences.edit().putBoolean("logged", false).apply();
+                sp2.edit().putBoolean("signedUp", false).apply();
+                sharedPreferences.edit().putString("username", "").apply();
+                sharedPreferences.edit().putInt("uid", 0).apply();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
                 break;
 
-        } return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

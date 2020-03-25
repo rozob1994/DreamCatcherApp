@@ -13,7 +13,7 @@ import javax.inject.Inject;
 public class Users {
     private static Users instance = null;
     private String email;
-    private int uid;
+    private int uid, level;
     int gender;
     String username;
     private Dream dream;
