@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +44,12 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         String contentc = contents.get(position);
         holder.title.setText(titlec);
         holder.content.setText(contentc);
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 
     @Override
@@ -54,10 +60,12 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     class DreamsPackagesHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView title;
         private AppCompatTextView content;
+        private RelativeLayout relativeLayout;
         public DreamsPackagesHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.dreams_package_title);
             content = itemView.findViewById(R.id.dreams_package_description);
+            relativeLayout= itemView.findViewById(R.id.rel_dreams_package);
         }
     }
 }

@@ -34,8 +34,6 @@ public class ProfileActivity extends AppCompatActivity {
         binding.toolbar.setTitle("");
         binding.toolbar.setSubtitle("");
 
-
-
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +42,6 @@ public class ProfileActivity extends AppCompatActivity {
                 CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
             }
         });
-
 
         binding.btnDreams.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,13 +61,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
         FeedsPackagesAdapter adapter= new FeedsPackagesAdapter(getApplicationContext(), null);
         binding.recyclerFeed.setAdapter(adapter);
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -14,23 +14,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Activities.LevelsActivity"></activity>
-        <activity android:name=".Activities.StatsActivity" ></activity>
-        <activity android:name=".Activities.StatsPackagesActivity" ></activity>
-        <activity android:name=".Activities.DreamsPackagesActivity" ></activity>
-        <activity android:name=".Activities.Splash.SplashActivity" ></activity>
-        <activity android:name=".Activities.Login.SignUp" >
+        <activity android:name=".Activities.ExpandedDreamActivity"></activity>
+        <activity android:name=".Activities.LevelsActivity" />
+        <activity android:name=".Activities.StatsActivity" />
+        <activity android:name=".Activities.StatsPackagesActivity" />
+        <activity android:name=".Activities.DreamsPackagesActivity" />
+        <activity android:name=".Activities.Splash.SplashActivity" />
+        <activity android:name=".Activities.Login.SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SleepDreamInputActivity" ></activity>
-        <activity android:name=".Activities.ProfileActivity">
-
-        </activity>
-        <activity android:name=".Activities.Login.LoginActivity" ></activity>
+        <activity android:name=".Activities.SleepDreamInputActivity" />
+        <activity android:name=".Activities.ProfileActivity"></activity>
+        <activity android:name=".Activities.Login.LoginActivity" />
     </application>
 
 </manifest>

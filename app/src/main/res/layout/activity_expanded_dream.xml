@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@drawable/bg_night_blur"
+    android:id="@+id/rel_expanded_dream"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity">
+
+
+    <io.alterac.blurkit.BlurLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/bg_shape"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/dreams_package_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEST"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/dreams_package_title"
+                android:id="@+id/title_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/hint_size" />
+
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:id="@+id/rel_info"
+                android:layout_below="@+id/title_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_toRightOf="@id/mood"
+                    android:id="@+id/day_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_toRightOf="@id/day_time"
+                    android:id="@+id/color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_toRightOf="@id/color"
+                    android:id="@+id/sound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </RelativeLayout>
+
+            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                android:backgroundTint="@color/black"
+                android:background="@drawable/bg_shape"
+                android:id="@+id/dreams_package_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_info"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/dreams_package_description_input"
+                android:textColor="@color/white"
+                android:textSize="@dimen/edt_txt_size" />
+
+
+        </RelativeLayout>
+
+    </io.alterac.blurkit.BlurLayout>
+
+
+
+</RelativeLayout>
