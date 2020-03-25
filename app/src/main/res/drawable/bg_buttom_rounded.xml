@@ -3,12 +3,17 @@
 
 
     <solid
-        android:color="#BA000000"
+        android:color="#000000"
         />
 
     <corners
         android:bottomLeftRadius="8dp"
         android:bottomRightRadius="8dp"
+        />
+
+    <stroke
+        android:width="2dp"
+        android:color="@color/txt_glow"
         />
 
 </shape>

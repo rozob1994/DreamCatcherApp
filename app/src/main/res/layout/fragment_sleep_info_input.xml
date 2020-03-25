@@ -593,23 +593,27 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:elevation="4dp"
                     android:id="@+id/btn_to_dream_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
                     android:background="@drawable/bg_gradient"
                     android:text="To dream info"
                     android:textColor="@color/white"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/title_size" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:elevation="4dp"
                     android:id="@+id/btn_didnt_have_a_dream"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_gradient"
                     android:text="I didn't have a dream"
                     android:textColor="@color/white"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/title_size" />
 
             </LinearLayout>
 

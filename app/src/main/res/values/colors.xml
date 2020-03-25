@@ -13,4 +13,5 @@
     <color name="day_light">#FFC107</color>
     <color name="gray">#6A6A6A</color>
     <color name="black">#000000</color>
+    <color name="red">#FF2525</color>
 </resources>
