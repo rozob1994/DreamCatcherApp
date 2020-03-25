@@ -8,10 +8,10 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        style="@style/AppTheme"
         android:id="@+id/toolbar"
+        style="@style/AppTheme"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,38 +51,51 @@
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/level_number"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/level_animation"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="level one"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/level_size" />
+                    android:textSize="12sp" />
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="32dp"
                     android:layout_below="@+id/level_number"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/bg_buttom_rounded"
+                    android:background="@drawable/bg_gradient_flat"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:text="USER1994"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_add_dream"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/user_title"
+                    android:background="@drawable/bg_buttom_rounded"
+                    android:backgroundTint="@color/txt_glow"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_add_circle_black_24dp"
+                    android:tint="@color/white" />
             </RelativeLayout>
-            
+
             <RelativeLayout
-                android:gravity="center_horizontal"
                 android:id="@+id/profile_tabs_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rel_profile"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp">
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal">
 
 
                 <androidx.appcompat.widget.AppCompatButton

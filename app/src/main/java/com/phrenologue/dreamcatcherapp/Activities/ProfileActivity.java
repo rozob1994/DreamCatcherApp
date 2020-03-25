@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +23,6 @@ import maes.tech.intentanim.CustomIntent;
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
-    private Toolbar toolbar;
     private SharedPreferences sharedPreferences;
     private SharedPreferences sp2;
 
@@ -45,7 +43,6 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbar.setTitle("");
         binding.toolbar.setSubtitle("");
-
 
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +68,16 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+            }
+        });
+
+        binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
             }
         });
 
@@ -100,13 +107,11 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.website:
-                Intent intentWebsite = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.website));
-                startActivity(intentWebsite);
+
                 break;
 
             case R.id.instagram:
-                Intent intentInsta = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.instagram));
-                startActivity(intentInsta);
+
                 break;
 
             case R.id.log_out:
@@ -115,8 +120,8 @@ public class ProfileActivity extends AppCompatActivity {
                 sp2.edit().putBoolean("signedUp", false).apply();
                 sharedPreferences.edit().putString("username", "").apply();
                 sharedPreferences.edit().putInt("uid", 0).apply();
-                Intent intentLogOut = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intentLogOut);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
                 finish();
                 break;
 

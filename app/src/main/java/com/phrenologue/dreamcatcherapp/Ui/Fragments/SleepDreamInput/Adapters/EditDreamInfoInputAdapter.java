@@ -13,6 +13,7 @@ import java.util.List;
 
 public class EditDreamInfoInputAdapter extends FragmentStatePagerAdapter {
 
+    DreamInfoInputOneFragment fragment;
     List<Fragment> fragmentList;
     public EditDreamInfoInputAdapter(@NonNull FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -20,6 +21,7 @@ public class EditDreamInfoInputAdapter extends FragmentStatePagerAdapter {
         fragmentList= new ArrayList<>();
         fragmentList.add(new DreamInfoInputOneFragment());
         fragmentList.add(new DreamInfoInputTwoFragment());
+
     }
 
     @NonNull

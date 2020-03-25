@@ -65,6 +65,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         museOff = binding.linBtnMusicalOff;
         nonMuseOn = binding.linBtnNonMusicalOn;
         nonMuseOff = binding.linBtnNonMusicalOff;
+
         if (getContext().getClass()== EditDreamInputActivity.class){
             binding.prevBtn.setVisibility(View.GONE);
         }
