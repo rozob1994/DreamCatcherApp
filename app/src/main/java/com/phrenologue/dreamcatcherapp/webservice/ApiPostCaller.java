@@ -274,6 +274,7 @@ public class ApiPostCaller {
 
     public void getDreamDescription(IResponseMessage responseMessage){
         Call<ResponseBody> call = postService.getDescription(Users.getInstance().getUid());
+        Log.e("","");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

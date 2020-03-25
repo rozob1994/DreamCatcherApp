@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -19,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private Toolbar toolbar;
-
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,15 @@ public class ProfileActivity extends AppCompatActivity {
         View view= binding.getRoot();
         setContentView(view);
         binding.userTitle.setText(Users.getInstance().getEmail());
-
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        Users user = Users.getInstance();
+        user.setUid(sharedPreferences.getInt("uid", 0));
+        user.setEmail(sharedPreferences.getString("username", "Nothing Retrieved"));
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbar.setTitle("");
         binding.toolbar.setSubtitle("");
+
 
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
