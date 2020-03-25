@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.Activities.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.Activities.SleepDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySignUp2Binding;
@@ -22,7 +24,7 @@ import org.json.JSONObject;
 public class SignUp extends AppCompatActivity {
     ActivitySignUp2Binding binding;
     SignUpPresenter presenter;
-
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,12 @@ public class SignUp extends AppCompatActivity {
         setContentView(view);
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
-
+        sharedPreferences = getSharedPreferences("signUp", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("signedUp", false)){
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
         binding.btnSignUpAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,13 +60,14 @@ public class SignUp extends AppCompatActivity {
                             String message = jsonObject.getString("message");
                             Log.e("", "");
                             if (status) {
+                                sharedPreferences.edit().putBoolean("signedUp", true).apply();
                                 user.setEmail(mail);
                                 user.setPassword(pass);
                                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                                 startActivity(intent);
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG);
+                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                             }
 
                         }
@@ -68,7 +76,7 @@ public class SignUp extends AppCompatActivity {
                         public void onFailure(String errorMessage) {
                             binding.loadingBg.setVisibility(View.GONE);
                             binding.progressBar.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG);
+                            Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
 
                         }
 

@@ -19,12 +19,13 @@ import java.util.List;
 
 public class DreamsPresenter {
     private Context context;
-    public DreamsPresenter(Context context){
+
+    public DreamsPresenter(Context context) {
         this.context = context;
     }
 
     public void getDescription(RecyclerView dreamsRecycler,
-                               MoonTextView dreamCount){
+                               MoonTextView dreamCount) {
 
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
@@ -50,7 +51,7 @@ public class DreamsPresenter {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
-                dreamCount.setText("Dream Count: "+titles.size()+"");
+                dreamCount.setText("Dream Count: " + titles.size() + "");
             }
 
             @Override

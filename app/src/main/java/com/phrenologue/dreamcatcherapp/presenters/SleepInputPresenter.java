@@ -204,7 +204,7 @@ public class SleepInputPresenter {
 
                 } else {
                     loadingBg.setVisibility(View.GONE);
-                    Toast.makeText(context,"Error", Toast.LENGTH_LONG);
+                    Toast.makeText(context,"Error", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -212,7 +212,7 @@ public class SleepInputPresenter {
             @Override
             public void onFailure(String errorMessage) { // In case of connection error.
                 loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG);
+                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
             }
         });
     }
