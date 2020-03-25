@@ -53,7 +53,11 @@ public class StatsActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
-    public void onBackPressed() { }
+    public void onBackPressed() {
+        Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        CustomIntent.customType(StatsActivity.this,"fadein-to-fadeout");
+        finish();
+    }
 }

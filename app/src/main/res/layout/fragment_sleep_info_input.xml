@@ -598,7 +598,7 @@
                     android:paddingLeft="24dp"
                     android:paddingRight="24dp"
                     android:background="@drawable/bg_gradient"
-                    android:text="To dream info"
+                    android:text="@string/to_dream_info"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
@@ -611,7 +611,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_gradient"
-                    android:text="I didn't have a dream"
+                    android:backgroundTint="@color/red"
+                    android:text="@string/i_didn_t_have_a_dream"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 

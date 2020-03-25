@@ -73,10 +73,8 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
-
             </RelativeLayout>
-
-
+            
             <RelativeLayout
                 android:gravity="center_horizontal"
                 android:id="@+id/profile_tabs_buttons"

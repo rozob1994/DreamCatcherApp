@@ -38,6 +38,7 @@ public class LevelsActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(LevelsActivity.this,"fadein-to-fadeout");
+                finish();
             }
         });
     }
@@ -45,10 +46,9 @@ public class LevelsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
         CustomIntent.customType(LevelsActivity.this,"fadein-to-fadeout");
-
+        finish();
     }
 }

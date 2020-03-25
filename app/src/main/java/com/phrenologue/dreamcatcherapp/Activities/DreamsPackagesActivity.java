@@ -58,6 +58,11 @@ public class DreamsPackagesActivity extends AppCompatActivity {
 
 
     @Override
-    public void onBackPressed() { }
+    public void onBackPressed() {
+        Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
+        finish();
+    }
 
 }

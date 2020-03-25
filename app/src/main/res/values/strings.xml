@@ -138,5 +138,7 @@
     <string name="title_date">Date</string>
     <string name="title_interpretation">Your Interpretation</string>
     <string name="hint_interpretation">What is your take on your dream?</string>
+    <string name="to_dream_info">To dream info</string>
+    <string name="i_didn_t_have_a_dream">I didn\'t have a dream</string>
 
 </resources>
