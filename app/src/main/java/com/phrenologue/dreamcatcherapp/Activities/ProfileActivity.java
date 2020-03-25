@@ -95,7 +95,8 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.contact_us:
-
+                Intent intentMail = new Intent(Intent.ACTION_SEND, Uri.parse(Addresses.mail));
+                startActivity(Intent.createChooser(intentMail, "Mail Us."));
                 break;
 
             case R.id.website:
