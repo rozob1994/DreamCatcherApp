@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
             negativeBtnOff, colorOn, colorOff, grayOn, grayOff, museOn, museOff, nonMuseOn,
             nonMuseOff;
     RelativeLayout peopleExpanded, peopleClosed, soundsExpanded, soundsClosed, colorfulOff;
+    SharedPreferences dreamPrefs;
+    SharedPreferences.Editor dreamPrefsEditor;
 
     public DreamInfoInputOneFragment() {
         // Required empty public constructor
@@ -65,31 +69,37 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         museOff = binding.linBtnMusicalOff;
         nonMuseOn = binding.linBtnNonMusicalOn;
         nonMuseOff = binding.linBtnNonMusicalOff;
-
-        if (getContext().getClass()== EditDreamInputActivity.class){
+        dreamPrefs = getContext().getSharedPreferences("dream", Context.MODE_PRIVATE);
+        dreamPrefsEditor = dreamPrefs.edit();
+        if (getContext().getClass() == EditDreamInputActivity.class) {
             binding.prevBtn.setVisibility(View.GONE);
         }
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MOOD SEEK BAR]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
-
+        if (dreamPrefs.getBoolean("hasMood", false)) {
+            experience.setProgress(0);
+            experience.setMax(9);
+            experience.setProgress(dreamPrefs.getInt("mood", 0));
+        }
         experience.setOnSeekBarChangeListener(this);
-        presenter.setMoodSeekBar(experience);
+        presenter.setMoodSeekBar(dreamPrefsEditor, experience);
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[PEOPLE BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING PEOPLE BUTTON ON---------------------------//
-
+        if (dreamPrefs.getBoolean("hasPeople", false)) {
+            presenter.setPeopleBtnOn(dreamPrefsEditor, peopleExpanded, peopleClosed);
+        }
         binding.btnPeopleOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setPeopleBtnOn(peopleExpanded, peopleClosed);
+                presenter.setPeopleBtnOn(dreamPrefsEditor, peopleExpanded, peopleClosed);
             }
         });
         //---------------------------SWITCHING PEOPLE BUTTON OFF---------------------------//
-
         binding.btnPeopleOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setPeopleBtnOff(peopleExpanded, peopleClosed);
+                presenter.setPeopleBtnOff(dreamPrefsEditor, peopleExpanded, peopleClosed);
             }
         });
 
@@ -97,11 +107,13 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[SOUNDS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING SOUNDS BUTTON On---------------------------//
-
+        if (dreamPrefs.getBoolean("hasSound", false)) {
+            presenter.setSoundBtnOn(dreamPrefsEditor, soundsExpanded, soundsClosed);
+        }
         binding.btnSoundsOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setSoundBtnOn(soundsExpanded, soundsClosed);
+                presenter.setSoundBtnOn(dreamPrefsEditor, soundsExpanded, soundsClosed);
             }
         });
         //---------------------------SWITCHING SOUNDS BUTTON OFF---------------------------//
@@ -109,7 +121,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.btnSoundsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setSoundBtnOff(peopleExpanded, peopleClosed);
+                presenter.setSoundBtnOff(dreamPrefsEditor, peopleExpanded, peopleClosed);
             }
         });
 
@@ -120,11 +132,25 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING POSITIVE BUTTON ON---------------------------//
+        if (dreamPrefs.getBoolean("hasImpression", false)) {
+            int impression = dreamPrefs.getInt("impression", 0);
+            if (impression == 3) {
+                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
+                        neutralBtnOn, neutralBtnOff, negativeBtnOn, negativeBtnOff);
+            } else if (impression == 2) {
+                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
+                        neutralBtnOn, neutralBtnOff, negativeBtnOn, negativeBtnOff);
+            } else if (impression == 1) {
+                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
+                        neutralBtnOff, negativeBtnOn, negativeBtnOff);
+            }
 
+
+        }
         binding.linPositiveOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setPositiveBtnOn(positiveBtnOn, positiveBtnOff, neutralBtnOn,
+                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
                         neutralBtnOff, negativeBtnOn, negativeBtnOff);
             }
         });
@@ -133,8 +159,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linPositiveOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setPositiveBtnOff(positiveBtnOn, positiveBtnOff, neutralBtnOff,
-                        negativeBtnOff);
+                presenter.setPositiveBtnOff(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
+                        neutralBtnOff, negativeBtnOff);
             }
         });
 
@@ -143,8 +169,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linNeutralOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNeutralBtnOn(positiveBtnOn, positiveBtnOff, neutralBtnOn, neutralBtnOff,
-                        negativeBtnOn, negativeBtnOff);
+                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
+                        neutralBtnOff, negativeBtnOn, negativeBtnOff);
             }
         });
         //---------------------------SWITCHING NEUTRAL BUTTON OFF---------------------------//
@@ -152,7 +178,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linNeutralOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNeutralBtnOff(positiveBtnOff, neutralBtnOn, neutralBtnOff,
+                presenter.setNeutralBtnOff(dreamPrefsEditor, positiveBtnOff, neutralBtnOn, neutralBtnOff,
                         negativeBtnOff);
             }
         });
@@ -161,7 +187,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linNegativeOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNegativeBtnOn(positiveBtnOn, positiveBtnOff, neutralBtnOn, neutralBtnOff,
+                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn, neutralBtnOff,
                         negativeBtnOn, negativeBtnOff);
             }
         });
@@ -170,7 +196,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linNegativeOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNegativeBtnOff(positiveBtnOff, neutralBtnOff, negativeBtnOn,
+                presenter.setNegativeBtnOff(dreamPrefsEditor, positiveBtnOff, neutralBtnOff, negativeBtnOn,
                         negativeBtnOff);
             }
         });
@@ -179,11 +205,13 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
 
         //---------------------------SWITCHING COLORFUL BUTTON ON---------------------------//
-
+        if (dreamPrefs.getBoolean("hasColor", false)) {
+            presenter.setColorfulBtnOn(dreamPrefsEditor, colorOn, colorOff, grayOn, grayOff, colorfulOff);
+        }
         binding.linColorfulOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setColorfulBtnOn(colorOn, colorOff, grayOn, grayOff, colorfulOff);
+                presenter.setColorfulBtnOn(dreamPrefsEditor, colorOn, colorOff, grayOn, grayOff, colorfulOff);
 
             }
         });
@@ -193,16 +221,18 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linColorfulOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setColorfulBtnOff(colorOn, colorOff, grayOff);
+                presenter.setColorfulBtnOff(dreamPrefsEditor, colorOn, colorOff, grayOff);
             }
         });
 
         //---------------------------SWITCHING GRAYSCALE BUTTON ON---------------------------//
-
+        if (dreamPrefs.getBoolean("hasGray", false)) {
+            presenter.setGrayScaleBtnOn(dreamPrefsEditor, colorOn, colorOff, grayOn, grayOff, colorfulOff);
+        }
         binding.linGrayscaleOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setGrayScaleBtnOn(colorOn, colorOff, grayOn, grayOff, colorfulOff);
+                presenter.setGrayScaleBtnOn(dreamPrefsEditor, colorOn, colorOff, grayOn, grayOff, colorfulOff);
             }
         });
 
@@ -211,7 +241,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linGrayscaleOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setGrayScaleBtnOff(colorOff, grayOn, grayOff);
+                presenter.setGrayScaleBtnOff(dreamPrefsEditor, colorOff, grayOn, grayOff);
             }
         });
 
@@ -219,11 +249,13 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MUSICAL BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING MUSICAL BUTTON ON---------------------------//
-
+        if (dreamPrefs.getBoolean("hasMusic", false)) {
+            presenter.setMusicalBtnOn(dreamPrefsEditor, museOn, museOff, nonMuseOn, nonMuseOff);
+        }
         binding.linBtnMusicalOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setMusicalBtnOn(museOn, museOff, nonMuseOn, nonMuseOff);
+                presenter.setMusicalBtnOn(dreamPrefsEditor, museOn, museOff, nonMuseOn, nonMuseOff);
             }
         });
 
@@ -232,16 +264,18 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linBtnMusicalOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setMusicalBtnOff(museOn, museOff, nonMuseOff);
+                presenter.setMusicalBtnOff(dreamPrefsEditor, museOn, museOff, nonMuseOff);
             }
         });
 
         //---------------------------SWITCHING NON-MUSICAL BUTTON ON---------------------------//
-
+        if (dreamPrefs.getBoolean("hasNonMusic", false)) {
+            presenter.setNonMusicalBtnOn(dreamPrefsEditor, museOn, museOff, nonMuseOn, nonMuseOff);
+        }
         binding.linBtnNonMusicalOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNonMusicalBtnOn(museOn, museOff, nonMuseOn, nonMuseOff);
+                presenter.setNonMusicalBtnOn(dreamPrefsEditor, museOn, museOff, nonMuseOn, nonMuseOff);
             }
         });
 
@@ -250,14 +284,18 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.linBtnNonMusicalOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNonMusicalBtnOff(museOff, nonMuseOn, nonMuseOff);
+                presenter.setNonMusicalBtnOff(dreamPrefsEditor, museOff, nonMuseOn, nonMuseOff);
             }
         });
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[LUCIDITY LEVEL]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
-
+        if (dreamPrefs.getBoolean("hasLucidity", false)){
+            lucidityLevel.setProgress(0);
+            lucidityLevel.setMax(3);
+            lucidityLevel.setProgress(dreamPrefs.getInt("lucidity", 0));
+        }
         lucidityLevel.setOnSeekBarChangeListener(this);
-        presenter.setLuciditySeekBar(lucidityLevel);
+        presenter.setLuciditySeekBar(dreamPrefsEditor, lucidityLevel);
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTONS]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
@@ -266,7 +304,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.cancelDreamInput();
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
                 SleepInfoInputFragment fragment = new SleepInfoInputFragment();

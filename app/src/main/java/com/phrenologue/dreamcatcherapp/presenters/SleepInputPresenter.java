@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,10 +33,12 @@ public class SleepInputPresenter {
     public SleepInputPresenter() {
     }
 
-    public void setDayBtnOn(LinearLayout dayOn, LinearLayout dayOff, LinearLayout nightOn,
-                            LinearLayout nightOff) {
+    public void setDayBtnOn(SharedPreferences.Editor sleepSp, LinearLayout dayOn, LinearLayout dayOff,
+                            LinearLayout nightOn, LinearLayout nightOff) {
         sleep = Sleep.getInstance();
         sleep.setTime(1);
+        sleepSp.putBoolean("day", true).apply();
+        sleepSp.putBoolean("night", false).apply();
         if (dayOn.getVisibility() == View.VISIBLE) {
             dayOn.setVisibility(View.INVISIBLE);
             dayOff.setVisibility(View.VISIBLE);
@@ -47,9 +50,11 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setDayBtnOff(LinearLayout dayOn, LinearLayout dayOff, LinearLayout nightOff){
+    public void setDayBtnOff(SharedPreferences.Editor sleepSp, LinearLayout dayOn, LinearLayout dayOff,
+                             LinearLayout nightOff){
         sleep = Sleep.getInstance();
         sleep.setTime(0);
+        sleepSp.putBoolean("day", false).apply();
         if (dayOff.getVisibility() == View.VISIBLE) {
             dayOff.setVisibility(View.INVISIBLE);
             dayOn.setVisibility(View.VISIBLE);
@@ -60,10 +65,12 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setNightBtnOn(LinearLayout dayOn, LinearLayout dayOff, LinearLayout nightOn,
-                              LinearLayout nightOff){
+    public void setNightBtnOn(SharedPreferences.Editor sleepSp, LinearLayout dayOn, LinearLayout dayOff,
+                              LinearLayout nightOn, LinearLayout nightOff){
         sleep = Sleep.getInstance();
         sleep.setTime(2); // Setting sleep's time to night.
+        sleepSp.putBoolean("night", true).apply();
+        sleepSp.putBoolean("day", false).apply();
         if (nightOn.getVisibility() == View.VISIBLE) {
             nightOn.setVisibility(View.INVISIBLE);
             nightOff.setVisibility(View.VISIBLE);
@@ -75,10 +82,11 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setNightBtnOff(LinearLayout dayOn, LinearLayout dayOff, LinearLayout nightOn,
-                              LinearLayout nightOff){
+    public void setNightBtnOff(SharedPreferences.Editor sleepSp,LinearLayout dayOn, LinearLayout dayOff,
+                               LinearLayout nightOn, LinearLayout nightOff){
         sleep = Sleep.getInstance();
         sleep.setTime(0); // Deleting sleep's time.
+        sleepSp.putBoolean("night", false).apply();
         if (nightOff.getVisibility() == View.VISIBLE) {
             nightOff.setVisibility(View.INVISIBLE);
             nightOn.setVisibility(View.VISIBLE);
@@ -89,13 +97,15 @@ public class SleepInputPresenter {
         }
     }
 
-    public void setPhysicalActivitySeekBar(SeekBar physicalActivity){
+    public void setPhysicalActivitySeekBar(SharedPreferences.Editor sleepSp, SeekBar physicalActivity){
         sleep = Sleep.getInstance();
 
         physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setPhysicalActivity(progress);
+                sleepSp.putBoolean("hasPhysicalActivity", true).apply();
+                sleepSp.putInt("physicalActivity", progress).apply();
                 seekBar.setMax(3);
             }
 
@@ -111,12 +121,14 @@ public class SleepInputPresenter {
         });
     }
 
-    public void setFoodConsumptionSeekBar (SeekBar foodConsumption){
+    public void setFoodConsumptionSeekBar (SharedPreferences.Editor sleepSp, SeekBar foodConsumption){
         sleep = Sleep.getInstance();
         foodConsumption.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setFoodConsumption(progress);
+                sleepSp.putBoolean("hasFoodConsumption", true).apply();
+                sleepSp.putInt("foodConsumption", progress).apply();
                 seekBar.setMax(2);
             }
 

@@ -331,6 +331,7 @@
                             android:id="@+id/slider_physical"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+
                             android:thumb="@drawable/ic_slider_thumb_bright"
                             android:thumbOffset="-4dp" />
 

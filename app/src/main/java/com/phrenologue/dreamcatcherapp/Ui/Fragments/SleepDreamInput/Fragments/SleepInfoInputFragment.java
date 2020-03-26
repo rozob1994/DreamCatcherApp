@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +39,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
     private SleepInputPresenter presenter;
     private LinearLayout dayOn, dayOff, nightOn, nightOff;
     private RelativeLayout loadingBg;
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor sleepSp;
 
     public SleepInfoInputFragment() {
     }
@@ -53,17 +57,23 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         nightOff = binding.linNightOff;
         nightOn = binding.linNightOn;
         loadingBg = binding.loadingBg;
-
+        sharedPref = this.getActivity().getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        sleepSp = sharedPref.edit();
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
+
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
         //---------------------------SWITCHING DAY BUTTON ON---------------------------//
-
+        if (sharedPref.getBoolean("day", false)) {
+            presenter.setDayBtnOn(sleepSp, dayOn, dayOff, nightOn, nightOff);
+        } else if (sharedPref.getBoolean("night", false)) {
+            presenter.setNightBtnOn(sleepSp, dayOn, dayOff, nightOn, nightOff);
+        }
         dayOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setDayBtnOn(dayOn, dayOff, nightOn, nightOff);
+                presenter.setDayBtnOn(sleepSp, dayOn, dayOff, nightOn, nightOff);
             }
         });
 
@@ -72,7 +82,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         dayOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setDayBtnOff(dayOn, dayOff, nightOff);
+                presenter.setDayBtnOff(sleepSp, dayOn, dayOff, nightOff);
             }
         });
 
@@ -83,7 +93,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         nightOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNightBtnOn(dayOn, dayOff, nightOn, nightOff);
+                presenter.setNightBtnOn(sleepSp, dayOn, dayOff, nightOn, nightOff);
             }
         });
 
@@ -92,18 +102,27 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         nightOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setNightBtnOff(dayOn, dayOff, nightOn, nightOff);
+                presenter.setNightBtnOff(sleepSp, dayOn, dayOff, nightOn, nightOff);
             }
         });
         //---------------------------PHYSICAL ACTIVITY SEEK BAR---------------------------//
+        if (sharedPref.getBoolean("hasPhysicalActivity", false)) {
+            physicalActivity.setProgress(0);
+            physicalActivity.setMax(3);
+            physicalActivity.setProgress(sharedPref.getInt("physicalActivity", 2));
+            }
 
         physicalActivity.setOnSeekBarChangeListener(this);
-        presenter.setPhysicalActivitySeekBar(physicalActivity);
+        presenter.setPhysicalActivitySeekBar(sleepSp, physicalActivity);
 
         //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
-
+        if (sharedPref.getBoolean("hasFoodConsumption", false)) {
+            foodConsumption.setProgress(0);
+            foodConsumption.setMax(3);
+            foodConsumption.setProgress(sharedPref.getInt("foodConsumption", 2));
+        }
         foodConsumption.setOnSeekBarChangeListener(this);
-        presenter.setFoodConsumptionSeekBar(foodConsumption);
+        presenter.setFoodConsumptionSeekBar(sleepSp, foodConsumption);
 
         //---------------------------BUTTONS----------------------------------------------//
         binding.btnToDreamInput.setOnClickListener(new View.OnClickListener() {
@@ -136,13 +155,14 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                             container.removeAllViews();
                         } else {
                             loadingBg.setVisibility(View.GONE);
-                            Toast.makeText(getContext(),"Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
                         }
                     }
+
                     @Override
                     public void onFailure(String errorMessage) {
                         loadingBg.setVisibility(View.GONE);
-                        Toast.makeText(getContext(),"Error",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -151,6 +171,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sleepSp.clear().apply();
                 presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes,
                         binding.loadingBg, getContext());
 
