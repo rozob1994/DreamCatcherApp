@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
@@ -19,6 +20,7 @@ public class Dream {
     private DreamChecklist dreamChecklist;
     private DreamLucidity dreamLucidity;
     private DreamDescription dreamDescription;
+    private DreamInterpretation dreamInterpretation;
     //private String inspiration;
     private DreamTags dreamTags;
     private int postId;
@@ -110,6 +112,14 @@ public class Dream {
         int randInt = rand.nextInt(999999999);
         this.postId = randInt;
         return postId;
+    }
+
+    public DreamInterpretation getDreamInterpretation() {
+        return dreamInterpretation;
+    }
+
+    public void setDreamInterpretation(DreamInterpretation dreamInterpretation) {
+        this.dreamInterpretation = dreamInterpretation;
     }
 }
 

@@ -69,6 +69,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTON]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
         presenter.setTextListener("descriptionTitle", title, dreamTwo);
         presenter.setTextListener("description", content, dreamTwo);
+        presenter.setTextListener("interpretation", interpretation, dreamTwo);
 
         presenter.saveSpinnerIndex("dayInd", day, dreamTwo);
         presenter.saveSpinnerIndex("monthInd", month, dreamTwo);
@@ -79,7 +80,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sleepPrefs.edit().clear().apply();
-                presenter.saveCompleteDream(getContext(), title, content, day, month, year, binding.loadingBg,
+                presenter.saveCompleteDream(getContext(), interpretation,
+                        title, content, day, month, year, binding.loadingBg,
                         dreamOne.edit(), dreamTwo.edit());
             }
         });

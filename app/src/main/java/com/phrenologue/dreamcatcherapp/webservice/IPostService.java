@@ -31,7 +31,8 @@ public interface IPostService {
                                   @Field("dayOfYear") int dayOfYear,
                                   @Field("weekOfMonth") int weekOfMonth,
                                   @Field("month") int month,
-                                  @Field("year") int year);
+                                  @Field("year") int year,
+                                  @Field("interpretation") String interpretation);
 
     @FormUrlEncoded
     @POST("users/postsleep.php")

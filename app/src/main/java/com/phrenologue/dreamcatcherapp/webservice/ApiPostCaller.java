@@ -7,6 +7,7 @@ import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
@@ -82,6 +83,7 @@ public class ApiPostCaller {
         DreamSound sound = DreamSound.getInstance();
         DreamLucidity lucidity = DreamLucidity.getInstance();
         DreamDescription description = DreamDescription.getInstance();
+        DreamInterpretation interpretation = DreamInterpretation.getInstance();
         Users user = Users.getInstance();
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
@@ -94,7 +96,7 @@ public class ApiPostCaller {
                 lucidity.getLucidityLevel(),
                 description.getTitle(), description.getContent(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
-                date.getMonth(), date.getYear());
+                date.getMonth(), date.getYear(), interpretation.getInterpretation());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

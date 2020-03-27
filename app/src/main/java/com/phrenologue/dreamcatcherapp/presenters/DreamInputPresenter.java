@@ -21,6 +21,7 @@ import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
@@ -460,17 +461,21 @@ public class DreamInputPresenter {
         dream.setDreamLucidity(lucidity);
     }
 
-    public void saveCompleteDream(Context context, AppCompatEditText title, AppCompatEditText content,
+    public void saveCompleteDream(Context context, AppCompatEditText interpretation,
+                                  AppCompatEditText title, AppCompatEditText content,
                                   Spinner daySp, Spinner monthSp, Spinner yearSp, RelativeLayout loadingBg,
                                   SharedPreferences.Editor dreamPref, SharedPreferences.Editor dreamPrefTwo) {
         loadingBg.setVisibility(View.VISIBLE);
         loadingBg.setAlpha(0.5f);
         date = Date.getInstance();
         description = DreamDescription.getInstance();
+        DreamInterpretation dreamInterpretation = DreamInterpretation.getInstance();
         dream = Dream.getInstance();
         description.setTitle(title.getText().toString());
         description.setContent(content.getText().toString());
         dream.setDreamDescription(description);
+        dreamInterpretation.setInterpretation(interpretation.getText().toString());
+        dream.setDreamInterpretation(dreamInterpretation);
         int day = Integer.parseInt(daySp.getSelectedItem().toString());
         String month = monthSp.getSelectedItem().toString();
         String year = yearSp.getSelectedItem().toString();
@@ -496,27 +501,27 @@ public class DreamInputPresenter {
                                 context.startActivity(intent);
                             } else {
                                 loadingBg.setVisibility(View.GONE);
-                                Toast.makeText(context, "Error", Toast.LENGTH_LONG);
+                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(String errorMessage) {
                             loadingBg.setVisibility(View.GONE);
-                            Toast.makeText(context, "Error", Toast.LENGTH_LONG);
+                            Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                         }
                     });
 
                 } else {
                     loadingBg.setVisibility(View.GONE);
-                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG);
+                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(String errorMessage) {
                 loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context, "Error!", Toast.LENGTH_LONG);
+                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
             }
         });
     }
