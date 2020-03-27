@@ -49,22 +49,24 @@ public class DreamInfoInputTwoFragment extends Fragment {
         dreamOne = getContext().getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamTwo = getContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
 
-        if (dreamTwo.getBoolean("descriptionTitleExists", false)){
-            title.setText(dreamTwo.getString("descriptionTitle",""));
+        if (dreamTwo.getBoolean("descriptionTitleExists", false)) {
+            title.setText(dreamTwo.getString("descriptionTitle", ""));
         }
 
-        if (dreamTwo.getBoolean("descriptionTitleExists", false)){
-            content.setText(dreamTwo.getString("description",""));
+        if (dreamTwo.getBoolean("descriptionTitleExists", false)) {
+            content.setText(dreamTwo.getString("description", ""));
         }
 
-        if (dreamTwo.getBoolean("dayIndExists", false)){
-            day.setSelection(dreamTwo.getInt("dayInd",0));
+        if (dreamTwo.getBoolean("dayIndExists", false)) {
+            day.setSelection(dreamTwo.getInt("dayInd", 0));
         }
-        if (dreamTwo.getBoolean("monthIndExists", false)){
-            month.setSelection(dreamTwo.getInt("monthInd",0));
+
+        if (dreamTwo.getBoolean("monthIndExists", false)) {
+            month.setSelection(dreamTwo.getInt("monthInd", 0));
         }
-        if (dreamTwo.getBoolean("yearIndExists",false)){
-            year.setSelection(dreamTwo.getInt("yearInd",0));
+
+        if (dreamTwo.getBoolean("yearIndExists", false)) {
+            year.setSelection(dreamTwo.getInt("yearInd", 0));
         }
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTON]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
         presenter.setTextListener("descriptionTitle", title, dreamTwo);

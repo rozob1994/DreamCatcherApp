@@ -20,14 +20,17 @@ import java.util.List;
 public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPackagesActivityAdapter.DreamsPackagesHolder> {
     List<String> titles;
     List<String> contents;
+    List<Integer> postIds;
     Context context;
     LayoutInflater inflater;
 
     public DreamsPackagesActivityAdapter(Context context, @Nullable List<String> titles,
-                                         @Nullable List<String> contents) {
+                                         @Nullable List<String> contents,
+                                         @Nullable List<Integer> postIds) {
         this.titles = titles;
         this.contents = contents;
         this.context = context;
+        this.postIds = postIds;
         inflater = LayoutInflater.from(context);
 
     }
@@ -51,6 +54,8 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(context, ExpandedDreamActivity.class);
+                int postId = postIds.get(position);
+                intent.putExtra("postId", postId);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

@@ -16,6 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/rel_dreams_package_symbols">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/postId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
             android:id="@+id/dreams_package_title"
