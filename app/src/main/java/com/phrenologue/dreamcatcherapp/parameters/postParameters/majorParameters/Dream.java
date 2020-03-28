@@ -8,7 +8,6 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamTags;
 
 import java.util.Random;
 
@@ -21,22 +20,18 @@ public class Dream {
     private DreamLucidity dreamLucidity;
     private DreamDescription dreamDescription;
     private DreamInterpretation dreamInterpretation;
-    //private String inspiration;
-    private DreamTags dreamTags;
     private int postId;
 
     private Dream() {
     }
 
     private Dream(@Nullable DreamPeople dreamPeople, @Nullable DreamSound dreamSound, @Nullable DreamLucidity dreamLucidity,
-                  @Nullable DreamChecklist dreamChecklist, @Nullable DreamDescription dreamDescription,
-                  @Nullable DreamTags dreamTags) {
+                  @Nullable DreamChecklist dreamChecklist, @Nullable DreamDescription dreamDescription) {
         this.dreamPeople = dreamPeople;
         this.dreamSound = dreamSound;
         this.dreamLucidity = dreamLucidity;
         this.dreamDescription = dreamDescription;
         this.dreamChecklist = dreamChecklist;
-        this.dreamTags = dreamTags;
     }
 
     public static Dream getInstance() {
@@ -89,14 +84,6 @@ public class Dream {
 
     public void setDreamDescription(DreamDescription dreamDescription) {
         this.dreamDescription = dreamDescription;
-    }
-
-    public DreamTags getDreamTags() {
-        return dreamTags;
-    }
-
-    public void setDreamTags(DreamTags dreamTags) {
-        this.dreamTags = dreamTags;
     }
 
     public int getPostId() {

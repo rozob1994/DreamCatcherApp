@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.managers.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -481,50 +482,99 @@ public class DreamInputPresenter {
         String year = yearSp.getSelectedItem().toString();
         date.setCustomDay(year, month, day);
         ApiPostCaller postCaller = new ApiPostCaller();
-        postCaller.saveDreamSeparately(new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
-                JSONObject jsonObject = new JSONObject(response.toString());
-                boolean status = jsonObject.getBoolean("status");
-                if (status) {
-                    postCaller.addDateToSleep(new IResponseMessage() {
-                        @Override
-                        public void onSuccess(Object response) throws JSONException {
-                            JSONObject jsonObject1 = new JSONObject(response.toString());
-                            boolean status1 = jsonObject1.getBoolean("status");
-                            if (status1) {
-                                dreamPref.clear().apply();
-                                dreamPrefTwo.clear().apply();
-                                Dream.delDream();
-                                Sleep.delSleep();
-                                Intent intent = new Intent(context, ProfileActivity.class);
-                                context.startActivity(intent);
-                            } else {
+        if (SharedPreferencesManager.dreamIsLoaded(context)){
+            postCaller.editDream(new IResponseMessage() {
+                @Override
+                public void onSuccess(Object response) throws JSONException {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    boolean status = jsonObject.getBoolean("status");
+                    if (status) {
+                        postCaller.addDateToSleep(new IResponseMessage() {
+                            @Override
+                            public void onSuccess(Object response) throws JSONException {
+                                JSONObject jsonObject1 = new JSONObject(response.toString());
+                                boolean status1 = jsonObject1.getBoolean("status");
+                                if (status1) {
+                                    dreamPref.clear().apply();
+                                    dreamPrefTwo.clear().apply();
+                                    Dream.delDream();
+                                    Sleep.delSleep();
+                                    Intent intent = new Intent(context, ProfileActivity.class);
+                                    context.startActivity(intent);
+                                } else {
+                                    loadingBg.setVisibility(View.GONE);
+                                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
                                 loadingBg.setVisibility(View.GONE);
                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                             }
-                        }
+                        });
 
-                        @Override
-                        public void onFailure(String errorMessage) {
-                            loadingBg.setVisibility(View.GONE);
-                            Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                } else {
-                    loadingBg.setVisibility(View.GONE);
-                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                    } else {
+                        loadingBg.setVisibility(View.GONE);
+                        Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(String errorMessage) {
-                loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(String errorMessage) {
+                    loadingBg.setVisibility(View.GONE);
+                    Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+            postCaller.saveDreamSeparately(new IResponseMessage() {
+                @Override
+                public void onSuccess(Object response) throws JSONException {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    boolean status = jsonObject.getBoolean("status");
+                    if (status) {
+                        postCaller.addDateToSleep(new IResponseMessage() {
+                            @Override
+                            public void onSuccess(Object response) throws JSONException {
+                                JSONObject jsonObject1 = new JSONObject(response.toString());
+                                boolean status1 = jsonObject1.getBoolean("status");
+                                if (status1) {
+                                    dreamPref.clear().apply();
+                                    dreamPrefTwo.clear().apply();
+                                    Dream.delDream();
+                                    Sleep.delSleep();
+                                    Intent intent = new Intent(context, ProfileActivity.class);
+                                    context.startActivity(intent);
+                                } else {
+                                    loadingBg.setVisibility(View.GONE);
+                                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                loadingBg.setVisibility(View.GONE);
+                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    } else {
+                        loadingBg.setVisibility(View.GONE);
+                        Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    loadingBg.setVisibility(View.GONE);
+                    Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
     }
+
+
 
 
 }

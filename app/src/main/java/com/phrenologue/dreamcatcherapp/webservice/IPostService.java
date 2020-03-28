@@ -35,6 +35,24 @@ public interface IPostService {
                                   @Field("interpretation") String interpretation);
 
     @FormUrlEncoded
+    @POST("users/EditDream.php")
+    Call<ResponseBody> editDream(@Field("postId") int postId,
+                                 @Field("dreamPeopleName") String peopleName,
+                                 @Field("dreamPeopleExist") int peopleExist,
+                                 @Field("dreamPeopleImpression") int peopleImpression,
+                                 @Field("dreamSound") int sound,
+                                 @Field("dreamMusical") int musical,
+                                 @Field("dreamGrayScale") int grayScale,
+                                 @Field("dreamExperience") int dreamExperience,
+                                 @Field("dreamLucidityLevel") int dreamLucidityLevel,
+                                 @Field("dreamTitle") String dreamTitle,
+                                 @Field("dreamContent") String dreamContent,
+                                 @Field("dayOfMonth") int dayOfMonth,
+                                 @Field("month") int month,
+                                 @Field("year") int year,
+                                 @Field("interpretation") String interpretation);
+
+    @FormUrlEncoded
     @POST("users/postsleep.php")
     Call<ResponseBody> postSleeps(@Nullable @Field("uid") int uid,
                                   @Nullable @Field("postId") int postId,

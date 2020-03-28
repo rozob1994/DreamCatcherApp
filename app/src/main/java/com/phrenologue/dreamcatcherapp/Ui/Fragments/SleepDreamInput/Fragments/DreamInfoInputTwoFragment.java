@@ -53,8 +53,12 @@ public class DreamInfoInputTwoFragment extends Fragment {
             title.setText(dreamTwo.getString("descriptionTitle", ""));
         }
 
-        if (dreamTwo.getBoolean("descriptionTitleExists", false)) {
+        if (dreamTwo.getBoolean("descriptionExists", false)) {
             content.setText(dreamTwo.getString("description", ""));
+        }
+
+        if (dreamTwo.getBoolean("interpretationExists", false)) {
+            interpretation.setText(dreamTwo.getString("interpretation", ""));
         }
 
         if (dreamTwo.getBoolean("dayIndExists", false)) {

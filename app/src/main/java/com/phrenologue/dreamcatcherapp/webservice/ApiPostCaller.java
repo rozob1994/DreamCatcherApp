@@ -6,6 +6,7 @@ import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
@@ -32,6 +33,35 @@ public class ApiPostCaller {
     public void getRemembered(IResponseMessage responseMessage) {
         Users user = Users.getInstance();
         Call<ResponseBody> call = postService.getRemembered(user.getUid());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
+    public void editDream(IResponseMessage responseMessage){
+        Dream dream = Dream.getInstance();
+        DreamDate date = DreamDate.getInstance();
+        Call<ResponseBody> call = postService.editDream(dream.getPostId(),dream.getDreamPeople().getName(),
+                dream.getDreamPeople().getExistent(),dream.getDreamPeople().getImpression(),
+                dream.getDreamSound().getSound(),dream.getDreamSound().getMusical(),
+                dream.getDreamChecklist().getGrayScale(),dream.getDreamChecklist().getExperience(),
+                dream.getDreamLucidity().getLucidityLevel(),dream.getDreamDescription().getTitle(),
+                dream.getDreamDescription().getContent(),date.getDayOfMonth(),date.getMonth(),
+                date.getYear(), dream.getDreamInterpretation().getInterpretation());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

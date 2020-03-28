@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
+import com.phrenologue.dreamcatcherapp.managers.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 import maes.tech.intentanim.CustomIntent;
 
 public class ExpandedDreamActivity extends AppCompatActivity {
+    SharedPreferencesManager spManager;
     Dream dream;
     DreamPeople people;
     DreamChecklist checklist;
@@ -37,10 +39,11 @@ public class ExpandedDreamActivity extends AppCompatActivity {
     DreamSound sound;
     Sleep sleep;
     private ActivityExpandedDreamBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityExpandedDreamBinding.inflate(getLayoutInflater());
+        binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         dream = Dream.getInstance();
@@ -52,22 +55,23 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         lucidity = DreamLucidity.getInstance();
         sound = DreamSound.getInstance();
         sleep = Sleep.getInstance();
-        int postId = getIntent().getIntExtra("postId",0);
-        Log.e("","");
+        spManager = new SharedPreferencesManager();
+        int postId = getIntent().getIntExtra("postId", 0);
+        Log.e("", "");
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getDreamProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
-                Log.e("","");
+                Log.e("", "");
                 people.setName(jsonObject.getString("dreamPeopleName"));
                 people.setExistent(jsonObject.getInt("dreamPeopleExist"));
                 people.setImpression(jsonObject.getInt("dreamPeopleImpression"));
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
-                Log.e("","");
+
                 date.setDayOfMonth(jsonObject.getInt("dayOfMonth"));
                 date.setMonth(jsonObject.getInt("month"));
                 date.setYear(jsonObject.getInt("year"));
@@ -89,27 +93,27 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 dream.setDreamSound(sound);
                 dream.setDreamLucidity(lucidity);
 
-                Log.e("","");
+
+                spManager.saveDreamToSp(getApplicationContext(), dream, date);
+
                 binding.dreamsPackageTitle.setText(description.getTitle());
                 binding.dreamsPackageDescription.setText(description.getContent());
             }
 
             @Override
             public void onFailure(String errorMessage) {
-                Log.e("","");
+                Log.e("", "");
             }
         });
-
-
 
 
         binding.btnEdtDream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(getApplicationContext(), EditDreamInputActivity.class);
+                Intent intent = new Intent(getApplicationContext(), EditDreamInputActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(ExpandedDreamActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(ExpandedDreamActivity.this, "fadein-to-fadeout");
                 finish();
             }
         });
