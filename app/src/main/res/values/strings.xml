@@ -140,5 +140,6 @@
     <string name="hint_interpretation">What is your take on your dream?</string>
     <string name="to_dream_info">To dream info</string>
     <string name="i_didn_t_have_a_dream">I didn\'t have a dream</string>
+    <string name="sleep_duration">Sleep Duration</string>
 
 </resources>

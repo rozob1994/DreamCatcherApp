@@ -22,7 +22,6 @@ import java.util.List;
 
 public class DreamsPresenter {
     private Context context;
-
     public DreamsPresenter(Context context) {
         this.context = context;
     }
@@ -46,13 +45,14 @@ public class DreamsPresenter {
                 }
                 List<String> titles = new ArrayList<String>();
                 List<String> contents = new ArrayList<String>();
+                List<Integer> postIds = new ArrayList<>();
                 Log.e("", "");
                 for (int j = 0; j < jsonArrays.size(); j++) {
                     titles.add(jsonArrays.get(j).getString(0));
                     contents.add(jsonArrays.get(j).getString(1));
+                    postIds.add(jsonArrays.get(j).getInt(2));
                 }
-
-                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context, titles, contents);
+                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context, titles, contents, postIds);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
