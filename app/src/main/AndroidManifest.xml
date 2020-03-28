@@ -22,7 +22,8 @@
         <activity android:name=".Activities.DreamsPackagesActivity" ></activity>
         <activity android:name=".Activities.Splash.SplashActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                        android:noHistory="true"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
