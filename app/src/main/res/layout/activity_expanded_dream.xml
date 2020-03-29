@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rel_expanded_dream"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg_night_blur"
     xmlns:blurkit="http://schemas.android.com/apk/res-auto"
     tools:context="com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity">
@@ -13,22 +13,21 @@
     <io.alterac.blurkit.BlurLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         blurkit:blk_blurRadius="5"
         blurkit:blk_downscaleFactor="0.025"
         blurkit:blk_fps="60">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center">
 
             <RelativeLayout
                 android:id="@+id/rel_box"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:background="@drawable/bg_shape_stroked">
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
@@ -99,11 +98,21 @@
 
                 <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                     android:id="@+id/dreams_package_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
                     android:layout_below="@id/rel_info"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_shape_stroked"
+                    android:text="@string/dreams_package_description_input"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_size" />
+
+                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                    android:id="@+id/dreams_package_interpretation"
+                    android:layout_width="400dp"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/dreams_package_description"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/dreams_package_description_input"
                     android:textColor="@color/white"
@@ -112,7 +121,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/dreams_package_description"
+                    android:layout_below="@+id/dreams_package_interpretation"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginRight="24dp"
