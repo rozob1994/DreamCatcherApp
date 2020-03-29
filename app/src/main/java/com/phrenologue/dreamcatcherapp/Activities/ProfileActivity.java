@@ -107,11 +107,13 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.website:
-
+                Intent intentSite = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.website));
+                startActivity(intentSite);
                 break;
 
             case R.id.instagram:
-
+                Intent intentInsta = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.instagram));
+                startActivity(intentInsta);
                 break;
 
             case R.id.log_out:
