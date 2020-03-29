@@ -10,7 +10,36 @@
     tools:context="com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity">
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:backgroundTint="#77000000"
+        android:elevation="10dp">
+
+        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+            android:backgroundTint="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
     <io.alterac.blurkit.BlurLayout
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         blurkit:blk_blurRadius="5"

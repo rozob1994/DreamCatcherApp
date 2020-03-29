@@ -10,44 +10,43 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:elevation="10dp"
-        android:backgroundTint="#77000000"
-        android:background="#000000"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:backgroundTint="#77000000"
+        android:elevation="10dp">
 
         <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-            android:text="DREAMS"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="DREAMS"
+            android:textColor="@color/white" />
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_gravity="center_vertical"
             android:id="@+id/btn_back"
-            android:layout_marginLeft="8dp"
-            android:backgroundTint="@color/white"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
             android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
-            android:layout_width="32dp"
-            android:layout_height="32dp"/>
+            android:backgroundTint="@color/white" />
 
     </androidx.cardview.widget.CardView>
 
 
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginBottom="24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_add_circle_black_24dp"
         app:maxImageSize="60dp" />
 
@@ -62,11 +61,9 @@
         app:lottie_loop="true" />
 
     <RelativeLayout
-        android:layout_below="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_below="@+id/card_view"
         android:gravity="center">
 
 
@@ -77,7 +74,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:background="@drawable/bg_shape_stroked"
-            android:elevation="24dp"
+            android:elevation="10dp"
             android:padding="16dp">
 
 
@@ -114,25 +111,27 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:elevation="40dp"
             android:id="@+id/dreams_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_main_bar"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="24dp"/>
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/loadingBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        android:id="@+id/loadingBg"
         android:visibility="gone">
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 </RelativeLayout>

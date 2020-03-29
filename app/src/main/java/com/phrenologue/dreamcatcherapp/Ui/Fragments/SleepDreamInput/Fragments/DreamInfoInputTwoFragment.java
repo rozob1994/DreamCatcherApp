@@ -82,7 +82,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
         presenter.saveSpinnerIndex("yearInd", year, dreamTwo);
 
 
-        binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
+        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sleepPrefs.edit().clear().apply();

@@ -216,7 +216,7 @@
                 android:layout_marginBottom="40dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_login_accept"
+                    android:id="@+id/btn_submit"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
@@ -230,7 +230,7 @@
                     android:id="@+id/btn_cancel"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/btn_login_accept"
+                    android:layout_below="@+id/btn_submit"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="24dp"
                     android:background="@drawable/bg_gradient"

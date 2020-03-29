@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.phrenologue.dreamcatcherapp">
+    package="com.phrenologue.dreamcatcherapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,25 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".Activities.EditDreamInputActivity"></activity>
-        <activity android:name=".Activities.ExpandedDreamActivity" ></activity>
-        <activity android:name=".Activities.LevelsActivity" ></activity>
-        <activity android:name=".Activities.StatsActivity" ></activity>
-        <activity android:name=".Activities.StatsPackagesActivity" ></activity>
-        <activity android:name=".Activities.DreamsPackagesActivity" ></activity>
+        tools:targetApi="m" >
+        <activity android:name=".Activities.LucidDreamingQuestionnaireActivity" >
+        </activity>
+        <activity android:name=".Activities.EditDreamInputActivity" />
+        <activity android:name=".Activities.ExpandedDreamActivity" />
+        <activity android:name=".Activities.LevelsActivity" />
+        <activity android:name=".Activities.StatsActivity" />
+        <activity android:name=".Activities.StatsPackagesActivity" />
+        <activity android:name=".Activities.DreamsPackagesActivity" />
         <activity android:name=".Activities.Splash.SplashActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
-                        android:noHistory="true"/>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:noHistory="true" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Login.SignUp"></activity>
-        <activity android:name=".Activities.SleepDreamInputActivity" ></activity>
-        <activity android:name=".Activities.ProfileActivity" ></activity>
-        <activity android:name=".Activities.Login.LoginActivity" ></activity>
+        <activity android:name=".Activities.Login.SignUp" />
+        <activity android:name=".Activities.SleepDreamInputActivity" />
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity android:name=".Activities.Login.LoginActivity" />
     </application>
 
 </manifest>
