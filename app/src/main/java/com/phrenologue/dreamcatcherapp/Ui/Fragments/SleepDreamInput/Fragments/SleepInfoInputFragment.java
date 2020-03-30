@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,14 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.InputFilterMinMax;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
@@ -41,6 +44,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
     private RelativeLayout loadingBg;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor sleepSp;
+    private AppCompatEditText hours, minutes;
 
     public SleepInfoInputFragment() {
     }
@@ -61,6 +65,11 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         sleepSp = sharedPref.edit();
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
+        hours = binding.edtHours;
+        minutes = binding.edtMinutes;
+
+        hours.setFilters(new InputFilter[]{new InputFilterMinMax(0,24)});
+        minutes.setFilters(new InputFilter[]{new InputFilterMinMax(0, 60)});
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 

@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
-import com.phrenologue.dreamcatcherapp.managers.SharedPreferencesManager;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
@@ -57,7 +57,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         int postId = getIntent().getIntExtra("postId", 0);
-        Log.e("", "");
+        dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getDreamProps(postId, new IResponseMessage() {
             @Override

@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.managers;
+package com.phrenologue.dreamcatcherapp.managersAndFilters;
 
 import android.content.Context;
 import android.content.SharedPreferences;

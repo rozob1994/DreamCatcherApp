@@ -23,6 +23,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
     private RecyclerView dreamsRecycler;
     private MoonTextView dreamCount;
     private MoonTextView dreamHours;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +35,14 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         dreamHours = binding.titleDreamHours;
         presenter = new DreamsPresenter(this);
         presenter.getDescription(getApplicationContext(),
-                binding.loadingBg, dreamsRecycler,dreamCount);
+                binding.loadingBg, dreamsRecycler, dreamCount);
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
                 finish();
             }
         });
@@ -49,9 +50,9 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                 startActivity(intent);
-                CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
+                CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
             }
         });
     }
@@ -59,9 +60,9 @@ public class DreamsPackagesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
-        CustomIntent.customType(DreamsPackagesActivity.this,"fadein-to-fadeout");
+        CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
         finish();
     }
 
