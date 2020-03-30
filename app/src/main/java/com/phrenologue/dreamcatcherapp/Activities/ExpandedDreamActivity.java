@@ -117,5 +117,16 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(ExpandedDreamActivity.this, "fadein-to-fadeout");
+                finish();
+            }
+        });
     }
 }

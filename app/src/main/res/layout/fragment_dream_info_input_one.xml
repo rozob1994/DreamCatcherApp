@@ -862,55 +862,6 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/layout_separator"></View>
 
-
-                //lucidity_section_main
-
-                <RelativeLayout
-                    android:id="@+id/rel_lucidity_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/separator_four"
-                    android:layout_marginTop="16dp">
-
-                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-                        android:id="@+id/title_lucidity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Lucidity"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-                        android:id="@+id/hint_lucidity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_lucidity"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_lucidity"
-                        android:textColor="@color/white" />
-
-                    <RelativeLayout
-                        android:id="@+id/lin_slider_lucidity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/hint_lucidity"
-                        android:layout_marginTop="24dp"
-                        android:background="@drawable/bg_shape"
-                        android:backgroundTint="@color/black">
-
-                        <androidx.appcompat.widget.AppCompatSeekBar
-                            android:id="@+id/slider_lucidity"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:thumb="@drawable/ic_slider_button_luciduty"
-                            android:thumbOffset="-1px" />
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-
             </RelativeLayout>
 
             <LinearLayout

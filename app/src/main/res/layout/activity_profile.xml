@@ -84,10 +84,22 @@
                     android:textSize="@dimen/title_size" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/btn_add_dream"
+                    android:id="@+id/btn_answer_questionnaire"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_below="@id/user_title"
+                    android:background="@drawable/bg_simple"
+                    android:backgroundTint="@color/day_light"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_content_paste_black_24dp"
+                    android:tint="@color/white" />
+                add_dream
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btn_add_dream"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/btn_answer_questionnaire"
                     android:background="@drawable/bg_buttom_rounded"
                     android:backgroundTint="@color/txt_glow"
                     android:clickable="true"
@@ -133,16 +145,6 @@
                     android:textSize="18dp" />
 
             </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_feed"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_tabs_buttons"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_shape"
-                android:backgroundTint="@color/black" />
 
         </RelativeLayout>
 

@@ -18,12 +18,6 @@
         android:backgroundTint="#77000000"
         android:elevation="10dp">
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/white" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_back"
             android:layout_width="32dp"

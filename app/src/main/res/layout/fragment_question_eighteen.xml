@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="16dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_shape"
+    android:backgroundTint="@color/black"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Ui.Fragments.SleepDreamInput.Fragments.QuestionEighteenFragment">
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textColor="@color/txt_glow"
+        android:text="Question 18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_size"
+        android:layout_marginTop="16dp"
+        android:text="18.Did you recall some facts or episodes from your waking life?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:buttonTint="@color/white"
+            android:checked="false"
+            android:text="Yes"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:buttonTint="@color/white"
+            android:checked="false"
+            android:text="Not Sure"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:buttonTint="@color/white"
+            android:checked="false"
+            android:text="No"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="125dp"
+        android:layout_height="29dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_gradient"
+        android:elevation="4dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_prev"
+        android:layout_width="125dp"
+        android:layout_height="29dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_gradient"
+        android:elevation="4dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="Previous"
+        android:textColor="@color/white"
+        android:textSize="@dimen/edt_txt_size" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_cancel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_gradient"
+        android:backgroundTint="@color/red"
+        android:elevation="4dp"
+        android:padding="4dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:srcCompat="@drawable/ic_close_black_24dp"
+        app:tint="@color/white" />
+
+</LinearLayout>

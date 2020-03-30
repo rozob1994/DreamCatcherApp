@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/bg_night"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dream_adding_frame"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".Activities.SleepDreamInputActivity"
-    xmlns:blurkit="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/bg_night_blur"
+    tools:context=".Activities.SleepDreamInputActivity">
 
 
-    <io.alterac.blurkit.BlurLayout
-        android:id="@+id/blur_layout_dream_info"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/sleep_dream_input_vp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        blurkit:blk_blurRadius="5"
-        blurkit:blk_downscaleFactor="0.025"
-        blurkit:blk_fps="60">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/sleep_dream_input_vp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </io.alterac.blurkit.BlurLayout>
-
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

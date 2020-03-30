@@ -216,11 +216,24 @@
                 android:layout_marginBottom="40dp">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/prevBtn"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_gradient"
+                    android:elevation="4dp"
+                    android:text="previous"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_size" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@id/prevBtn"
                     android:id="@+id/btn_submit"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_gradient"
+                    android:backgroundTint="@color/day_light"
                     android:elevation="4dp"
                     android:text="submit dream"
                     android:textColor="@color/white"

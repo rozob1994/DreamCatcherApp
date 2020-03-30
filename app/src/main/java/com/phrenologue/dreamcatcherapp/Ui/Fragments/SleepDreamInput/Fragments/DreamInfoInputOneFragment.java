@@ -53,7 +53,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         peopleClosed = binding.relPeopleClosed;
         soundsExpanded = binding.relSoundsExpanded;
         soundsClosed = binding.relSoundsClosed;
-        lucidityLevel = binding.sliderLucidity;
         positiveBtnOn = binding.linPositiveOn;
         positiveBtnOff = binding.linPositiveOff;
         neutralBtnOn = binding.linNeutralOn;
@@ -71,6 +70,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         nonMuseOff = binding.linBtnNonMusicalOff;
         dreamPrefs = getContext().getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamPrefsEditor = dreamPrefs.edit();
+
         if (getContext().getClass() == EditDreamInputActivity.class) {
             binding.prevBtn.setVisibility(View.GONE);
         }
@@ -294,8 +294,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
             lucidityLevel.setMax(3);
             lucidityLevel.setProgress(dreamPrefs.getInt("lucidity", 0));
         }
-        lucidityLevel.setOnSeekBarChangeListener(this);
-        presenter.setLuciditySeekBar(dreamPrefsEditor, lucidityLevel);
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTONS]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 

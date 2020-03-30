@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.phrenologue.dreamcatcherapp.Activities.Adapter.FeedsPackagesAdapter;
 import com.phrenologue.dreamcatcherapp.Activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
@@ -41,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         user.setUid(sharedPreferences.getInt("uid", 0));
         user.setEmail(sharedPreferences.getString("username", "Nothing Retrieved"));
         binding.userTitle.setText(Users.getInstance().getEmail());
+
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         binding.toolbar.setTitle("");
@@ -83,8 +83,17 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        FeedsPackagesAdapter adapter = new FeedsPackagesAdapter(getApplicationContext(), null);
-        binding.recyclerFeed.setAdapter(adapter);
+        binding.btnAnswerQuestionnaire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getApplicationContext(), LucidDreamingQuestionnaireActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(ProfileActivity.this,"fadein-to-fadeout");
+
+            }
+        });
+
 
     }
 
