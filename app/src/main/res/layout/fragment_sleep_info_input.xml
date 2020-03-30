@@ -97,6 +97,7 @@
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/txt_glow"
                             android:textColorHint="@color/gray"
+                            android:inputType="number"
                             android:textSize="@dimen/edt_txt_size" />
 
                         <androidx.appcompat.widget.AppCompatEditText
@@ -112,6 +113,7 @@
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/txt_glow"
                             android:textColorHint="@color/gray"
+                            android:inputType="number"
                             android:textSize="@dimen/edt_txt_size" />
 
                     </RelativeLayout>
