@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
@@ -66,6 +67,13 @@ public class DreamInputPresenter {
 
             }
         });
+    }
+
+    public void makeFeelingVisible(AppCompatTextView textView, RelativeLayout feelingsOn,
+                                   RelativeLayout feelingsOff){
+        textView.setVisibility(View.VISIBLE);
+        feelingsOn.setVisibility(View.VISIBLE);
+        feelingsOff.setVisibility(View.VISIBLE);
     }
 
     public void setPeopleBtnOn(SharedPreferences.Editor dreamPrefEditor,

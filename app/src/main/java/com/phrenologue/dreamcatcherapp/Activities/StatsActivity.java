@@ -33,8 +33,7 @@ public class StatsActivity extends AppCompatActivity {
         moodChart = binding.pieChartFive;
         lucidityChart = binding.pieChartSix;
         presenter = new StatsPresenter();
-
-        presenter.drawDreamRememberedPercent(rememberedChart);
+        presenter.drawDreamRememberedPercent(getApplicationContext(),rememberedChart);
         presenter.drawDailyMood(dailyMoodChart);
         presenter.drawSoundPercent(soundChart);
         presenter.drawMusicalPercent(musicalChart);
