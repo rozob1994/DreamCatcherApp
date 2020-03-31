@@ -1,5 +1,6 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
@@ -7,6 +8,7 @@ import androidx.annotation.RequiresApi;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -14,6 +16,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.Ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
@@ -28,7 +31,7 @@ import java.util.stream.IntStream;
 
 public class StatsPresenter {
 
-    public void drawDreamRememberedPercent(PieChart rememberedChart) {
+    public void drawDreamRememberedPercent(Context context, PieChart rememberedChart) {
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getRemembered(new IResponseMessage() {
             @Override
@@ -56,9 +59,11 @@ public class StatsPresenter {
                 entries.add(new PieEntry((countZeroes * 100) / (countOnes + countZeroes), "Forgotten"));
                 PieDataSet pieDataSet = new PieDataSet(entries, "Percent of dreams remembered.");
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
+                pieDataSet.setValueTextColor(context.getResources().getColor(R.color.white));
                 PieData pieData = new PieData(pieDataSet);
+                Legend legend = rememberedChart.getLegend();
+                legend.setEnabled(false);
                 rememberedChart.setData(pieData);
-                rememberedChart.animateXY(2000, 2000);
                 rememberedChart.invalidate();
                 rememberedChart.setDrawHoleEnabled(false);
 
@@ -103,7 +108,7 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 soundChart.setData(pieData);
-                soundChart.animateXY(2000, 2000);
+                soundChart.getLegend().setTextColor(R.color.design_default_color_secondary_variant);
                 soundChart.invalidate();
                 soundChart.setDrawHoleEnabled(false);
             }
@@ -147,7 +152,6 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 musicalChart.setData(pieData);
-                musicalChart.animateXY(2000, 2000);
                 musicalChart.invalidate();
                 musicalChart.setDrawHoleEnabled(false);
             }
@@ -196,7 +200,6 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 colorfulChart.setData(pieData);
-                colorfulChart.animateXY(2000, 2000);
                 colorfulChart.invalidate();
                 colorfulChart.setDrawHoleEnabled(false);
             }
@@ -245,7 +248,6 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorPalettes.PIECHARTS);
                 PieData pieData = new PieData(pieDataSet);
                 lucidityChart.setData(pieData);
-                lucidityChart.animateXY(2000, 2000);
                 lucidityChart.invalidate();
                 lucidityChart.setDrawHoleEnabled(false);
             }
@@ -333,7 +335,6 @@ public class StatsPresenter {
                 pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
                 PieData pieData = new PieData(pieDataSet);
                 moodChart.setData(pieData);
-                moodChart.animateXY(5000, 5000);
                 moodChart.invalidate();
                 moodChart.setDrawHoleEnabled(false);
             }
@@ -393,7 +394,6 @@ public class StatsPresenter {
                 LineDataSet set = new LineDataSet(entries, "Daily Mood Report");
                 LineData data = new LineData(set);
                 lineChart.setData(data);
-                lineChart.animateXY(2000, 2000);
                 lineChart.invalidate();
             }
 

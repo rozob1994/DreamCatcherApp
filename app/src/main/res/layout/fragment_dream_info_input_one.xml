@@ -195,7 +195,7 @@
                                 android:background="@drawable/bg_shape"
                                 android:backgroundTint="@color/gray"
                                 android:gravity="top"
-                                android:hint="Enter the names here..."
+                                android:hint="Enter the names here. Separate them by commas."
                                 android:paddingLeft="20dp"
                                 android:paddingTop="25dp"
                                 android:textColor="@color/white"
@@ -211,6 +211,9 @@
                                 android:text="@string/title_people_feelings"
                                 android:textColor="@color/txt_glow"
                                 android:textSize="@dimen/title_size" />
+
+
+                            //===================== First Person ==================================
 
                             <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings"
@@ -381,6 +384,1704 @@
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Second Person ==================================
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings2"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on2"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings2"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on2"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on2"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off2"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings2"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off2"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off2"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Third Person ===================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings3"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off2"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on3"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings3"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on3"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on3"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off3"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings3"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off3"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off3"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Fourth Person ==================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings4"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off3"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on4"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings4"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on4"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on4"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off4"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings4"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off4"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off4"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            //===================== Fifth Person ===================================
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings5"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off4"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on5"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings5"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on5"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on5"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off5"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings5"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off5"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off5"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off5"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Sixth Person ===================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings6"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off5"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on6"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings6"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on6"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on6"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off6"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings2"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off6"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off6"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off6"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Seventh Person =================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings7"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off6"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on7"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings7"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on7"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on7"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off7"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings7"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off7"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off7"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off7"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Eighth Person ==================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings8"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off7"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on8"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings8"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on8"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on8"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off8"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings8"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off8"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off8"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off8"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Ninth Person ===================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings9"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off8"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on9"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings9"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on9"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on9"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off9"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings9"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off9"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off9"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off9"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            //===================== Tenth Person ===================================
+
+                            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                android:id="@+id/hint_feelings10"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rel_feelings_off9"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/hint_feelings"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hint_size" />
+
+                            //feelings_on
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_on10"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings10"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_on10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_on10"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/txt_glow"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_neutral_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_on10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_on10"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_on10"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+
+                                //lin_negative_on
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_on10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_on10"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:visibility="invisible">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_on10"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_negative_on" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Negative"
+                                        android:textColor="@color/day_light"
+                                        android:textSize="@dimen/hint_size" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            //feelings_off
+
+                            <RelativeLayout
+                                android:id="@+id/rel_feelings_off10"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hint_feelings10"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                //lin_positive_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_positive_off10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_positive_off10"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_positive_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Positive"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_neutral_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_neutral_off10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="8dp"
+                                    android:layout_toRightOf="@id/lin_positive_off10"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_neutral_off10"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        app:srcCompat="@drawable/button_neutral_off" />
+
+                                    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Neutral"
+                                        android:textColor="@color/edt_text_color"
+                                        android:textSize="@dimen/hint_size" />
+                                </LinearLayout>
+                                //lin_negative_off
+
+                                <LinearLayout
+                                    android:id="@+id/lin_negative_off10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/lin_neutral_off10"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/btn_negative_off10"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />

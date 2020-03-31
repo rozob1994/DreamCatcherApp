@@ -20,7 +20,6 @@
         <activity android:name=".Activities.ExpandedDreamActivity" />
         <activity android:name=".Activities.LevelsActivity" />
         <activity android:name=".Activities.StatsActivity" />
-        <activity android:name=".Activities.StatsPackagesActivity" />
         <activity android:name=".Activities.DreamsPackagesActivity" />
         <activity android:name=".Activities.Splash.SplashActivity" >
             <intent-filter>
