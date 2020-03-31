@@ -141,5 +141,8 @@
     <string name="to_dream_info">To dream info</string>
     <string name="i_didn_t_have_a_dream">I didn\'t have a dream</string>
     <string name="sleep_duration">Sleep Duration</string>
+    <string name="hint_questionnaire">There are a total of 19 Questions. You can answer them to figure out how lucid your dream was. This can help you improve your skills and also become better at understanding Lucid Dreaming</string>
+    <string name="question_one">1.Were you aware of differences to the waking state?</string>
+    <string name="question_two">2.Did you perceive your surroundings more intense than in non-lucid dreams?</string>
 
 </resources>

@@ -15,6 +15,7 @@
 
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_two_title"
         android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="@color/txt_glow"
@@ -23,10 +24,11 @@
         android:layout_height="wrap_content"/>
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_two"
         android:textColor="@color/white"
         android:textSize="@dimen/title_size"
         android:layout_marginTop="16dp"
-        android:text="2.did you perceive your surroundings more intense than in non-lucid dreams?"
+        android:text="@string/question_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -36,7 +38,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:layout_width="wrap_content"
@@ -69,7 +71,6 @@
 
     </LinearLayout>
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         android:layout_width="125dp"
@@ -98,19 +99,5 @@
         android:textColor="@color/white"
         android:textSize="@dimen/edt_txt_size" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btn_cancel"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_gradient"
-        android:backgroundTint="@color/red"
-        android:elevation="4dp"
-        android:padding="4dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:srcCompat="@drawable/ic_close_black_24dp"
-        app:tint="@color/white" />
 
 </LinearLayout>

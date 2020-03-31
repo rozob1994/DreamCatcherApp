@@ -93,11 +93,11 @@
                             android:background="@drawable/bg_shape"
                             android:backgroundTint="@color/black"
                             android:hint="Hours"
+                            android:inputType="number"
                             android:paddingLeft="8dp"
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/txt_glow"
                             android:textColorHint="@color/gray"
-                            android:inputType="number"
                             android:textSize="@dimen/edt_txt_size" />
 
                         <androidx.appcompat.widget.AppCompatEditText
@@ -109,11 +109,11 @@
                             android:background="@drawable/bg_shape"
                             android:backgroundTint="@color/black"
                             android:hint="Minutes"
+                            android:inputType="number"
                             android:paddingLeft="8dp"
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/txt_glow"
                             android:textColorHint="@color/gray"
-                            android:inputType="number"
                             android:textSize="@dimen/edt_txt_size" />
 
                     </RelativeLayout>
@@ -594,47 +594,48 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:elevation="4dp"
                     android:id="@+id/btn_to_dream_input"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
+                    android:background="@drawable/bg_gradient"
+                    android:elevation="4dp"
                     android:paddingLeft="24dp"
                     android:paddingRight="24dp"
-                    android:background="@drawable/bg_gradient"
                     android:text="@string/to_dream_info"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:elevation="4dp"
                     android:id="@+id/btn_didnt_have_a_dream"
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_gradient"
                     android:backgroundTint="@color/red"
+                    android:elevation="4dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
                     android:text="@string/i_didn_t_have_a_dream"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
             </LinearLayout>
 
-
         </LinearLayout>
 
     </ScrollView>
+
     <RelativeLayout
         android:id="@+id/loadingBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
         android:visibility="gone">
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 
