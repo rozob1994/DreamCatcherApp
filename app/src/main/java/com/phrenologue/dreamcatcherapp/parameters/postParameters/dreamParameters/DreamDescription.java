@@ -1,16 +1,13 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
-import androidx.annotation.Nullable;
-
-
 public class DreamDescription {
-    private static final DreamDescription instance = new DreamDescription();
+    private static DreamDescription instance = new DreamDescription();
     private String title = "";
     private String content = "";
     private DreamDescription(){}
-    private DreamDescription(@Nullable String title, @Nullable String content) {
-        this.content = content;
-        this.title = title;
+    public static void delDescription() {
+
+        instance = null;
     }
 
     public static DreamDescription getInstance(){

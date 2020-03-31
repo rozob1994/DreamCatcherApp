@@ -1,18 +1,16 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
-import androidx.annotation.Nullable;
-
 public class DreamSound {
-    private static final DreamSound instance = new DreamSound();
+    private static DreamSound instance = new DreamSound();
     private int sound; // 0 = silent dream, 1 = dream with sound.
     private int musical; // 0 = null, 1 = non-musical dream, 2 = musical dream.
 
     private DreamSound() {
     }
 
-    private DreamSound(@Nullable int sound, @Nullable int musical) {
-        this.sound = sound;
-        this.musical = musical;
+    public static void delSound() {
+
+        instance = null;
     }
 
     public static DreamSound getInstance(){

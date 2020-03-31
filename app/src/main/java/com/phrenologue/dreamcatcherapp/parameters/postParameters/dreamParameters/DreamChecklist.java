@@ -1,9 +1,7 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
-import androidx.annotation.Nullable;
-
 public class DreamChecklist {
-    private static final DreamChecklist instance = new DreamChecklist();
+    private static DreamChecklist instance = new DreamChecklist();
     private int remembered; // 0 = forgotten, 1 = remembered.
     private int grayScale; // 0 = null, 1 = grayscale, 2 = colorful.
     private int experience = 0;
@@ -12,11 +10,9 @@ public class DreamChecklist {
     }
 
 
-    private DreamChecklist(@Nullable int remembered, @Nullable int falseAwake, @Nullable int grayScale,
-                           @Nullable int dailyRelated, @Nullable int experience) {
-        this.remembered = remembered;
-        this.grayScale = grayScale;
-        this.experience = experience;
+    public static void delChecklist() {
+
+        instance = null;
     }
 
     public static DreamChecklist getInstance(){

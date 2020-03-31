@@ -12,7 +12,7 @@ public class DreamInterpretation {
         return instance;
     }
 
-    public static void delDream() {
+    public static void delInterpretation() {
         instance = null;
     }
 

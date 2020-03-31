@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -28,6 +27,8 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import java.util.Arrays;
@@ -197,7 +198,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                 feelingsOff4, feelingsOff5, feelingsOff6, feelingsOff7, feelingsOff8, feelingsOff9,
                 feelingsOff10);
         List<LinearLayout> positiveBtnsOn = Arrays.asList(binding.linPositiveOn, binding.linPositiveOn2,
-                binding.linPositiveOn3, binding.linPositiveOff4, binding.linPositiveOn5,
+                binding.linPositiveOn3, binding.linPositiveOn4, binding.linPositiveOn5,
                 binding.linPositiveOn6, binding.linPositiveOn7, binding.linPositiveOn8, binding.linPositiveOn9,
                 binding.linPositiveOn10);
         List<LinearLayout> positiveBtnsOff = Arrays.asList(binding.linPositiveOff,
@@ -237,6 +238,10 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                 String hint = getString(R.string.hint_feelings);
                 for (int i = 0; i < namesList.size(); i++) {
                     if (i < namesHints.size()) {
+                        DreamPeople people = DreamPeople.getInstance();
+                        people.setName(i, namesList.get(i));
+                        Dream dream = Dream.getInstance();
+                        dream.setDreamPeople(people);
                         presenter.makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
                                 feelingsOffLayouts.get(i));
                         String indexedHint = hint.replace("them", namesList.get(i));
@@ -249,7 +254,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setPositiveBtnOn(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
@@ -258,7 +263,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setPositiveBtnOff(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
                                         negativeBtnsOff.get(finalI));
                             }
@@ -266,7 +271,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setNeutralBtnOn(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
@@ -275,89 +280,34 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                presenter.setNeutralBtnOff(finalI, dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                presenter.setNegativeBtnOn(finalI, dreamPrefsEditor,positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                presenter.setNegativeBtnOff(finalI, dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
                             }
                         });
 
-                    } else {
-                        Toast.makeText(getContext(), "You've reached the names limit.",
-                                Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
 
-
-        //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[FEELINGS BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
-
-        //---------------------------SWITCHING POSITIVE BUTTON ON---------------------------//
-        if (dreamPrefs.getBoolean("hasImpression", false)) {
-            int impression = dreamPrefs.getInt("impression", 0);
-            if (impression == 3) {
-                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
-                        neutralBtnOn, neutralBtnOff, negativeBtnOn, negativeBtnOff);
-            } else if (impression == 2) {
-                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
-                        neutralBtnOn, neutralBtnOff, negativeBtnOn, negativeBtnOff);
-            } else if (impression == 1) {
-                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
-                        neutralBtnOff, negativeBtnOn, negativeBtnOff);
-            }
-
-
-        }
-        binding.linPositiveOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
-                        neutralBtnOff, negativeBtnOn, negativeBtnOff);
-            }
-        });
-
-        //---------------------------SWITCHING POSITIVE BUTTON OFF---------------------------//
-        binding.linPositiveOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setPositiveBtnOff(dreamPrefsEditor, positiveBtnOn, positiveBtnOff,
-                        neutralBtnOff, negativeBtnOff);
-            }
-        });
-
-        //---------------------------SWITCHING NEUTRAL BUTTON ON---------------------------//
-
-        binding.linNeutralOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn,
-                        neutralBtnOff, negativeBtnOn, negativeBtnOff);
-            }
-        });
-        //---------------------------SWITCHING NEUTRAL BUTTON OFF---------------------------//
-
-        binding.linNeutralOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setNeutralBtnOff(dreamPrefsEditor, positiveBtnOff, neutralBtnOn, neutralBtnOff,
-                        negativeBtnOff);
-            }
-        });
-
-        //---------------------------SWITCHING NEGATIVE BUTTON ON---------------------------//
-        binding.linNegativeOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnOn, positiveBtnOff, neutralBtnOn, neutralBtnOff,
-                        negativeBtnOn, negativeBtnOff);
-            }
-        });
-
-        //---------------------------SWITCHING NEGATIVE BUTTON Off---------------------------//
-        binding.linNegativeOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.setNegativeBtnOff(dreamPrefsEditor, positiveBtnOff, neutralBtnOff, negativeBtnOn,
-                        negativeBtnOff);
-            }
-        });
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[COLOR BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 

@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameter
 import androidx.annotation.Nullable;
 
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
@@ -42,6 +43,13 @@ public class Dream {
     }
 
     public static void delDream() {
+        DreamDescription.delDescription();
+        DreamDate.delDreamDate();
+        DreamChecklist.delChecklist();
+        DreamInterpretation.delInterpretation();
+        DreamLucidity.delLucidity();
+        DreamPeople.delPeople();
+        DreamSound.delSound();
         instance = null;
     }
 
