@@ -15,7 +15,7 @@
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
         android:id="@+id/question_one_title"
-        android:textSize="30dp"
+        android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="@color/txt_glow"
         android:text="Question 1"

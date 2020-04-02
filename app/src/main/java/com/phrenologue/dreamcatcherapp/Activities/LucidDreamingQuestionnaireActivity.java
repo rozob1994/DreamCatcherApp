@@ -21,7 +21,7 @@ public class LucidDreamingQuestionnaireActivity extends AppCompatActivity {
         setContentView(view);
 
         adapter= new QuestionnaireAdapter(getSupportFragmentManager());
-        binding.QuestionsVp.setAdapter(adapter);
+        binding.questionsVp.setAdapter(adapter);
 
     }
 }

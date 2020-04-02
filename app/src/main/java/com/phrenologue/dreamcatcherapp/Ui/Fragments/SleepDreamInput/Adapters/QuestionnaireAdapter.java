@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments.QuestionEightFragment;
 import com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments.QuestionEighteenFragment;
 import com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments.QuestionElevenFragment;
 import com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments.QuestionFifteenFragment;
@@ -42,7 +43,7 @@ public class QuestionnaireAdapter extends FragmentStatePagerAdapter {
         fragmentList.add(new QuestionFiveFragment());
         fragmentList.add(new QuestionSixFragment());
         fragmentList.add(new QuestionSevenFragment());
-        fragmentList.add(new QuestionEighteenFragment());
+        fragmentList.add(new QuestionEightFragment());
         fragmentList.add(new QuestionNineFragment());
         fragmentList.add(new QuestionTenFragment());
         fragmentList.add(new QuestionElevenFragment());

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_questionnaire"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
@@ -36,33 +37,36 @@
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/card_view"
-        android:gravity="center">
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp">
 
         <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
-            android:background="@drawable/bg_shape"
-            android:backgroundTint="@color/black"
-            android:layout_centerHorizontal="true"
+            android:elevation="10dp"
+            android:layout_marginTop="32dp"
             android:id="@+id/hint_questionnaire"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_shape"
+            android:backgroundTint="@color/black"
             android:text="@string/hint_questionnaire"
             android:textAlignment="center"
-            android:textSize="@dimen/edt_txt_size"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/edt_txt_size" />
 
         <androidx.viewpager.widget.ViewPager
-            android:layout_marginTop="24dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/Questions_vp"
+            android:elevation="10dp"
+            android:id="@+id/questions_vp"
             android:layout_width="wrap_content"
             android:layout_height="400dp"
             android:layout_below="@+id/hint_questionnaire"
-            android:foregroundGravity="center" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:foregroundGravity="center" >
+        </androidx.viewpager.widget.ViewPager>
 
     </RelativeLayout>
 

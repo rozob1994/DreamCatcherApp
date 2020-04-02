@@ -14,6 +14,7 @@
     tools:context=".Ui.Fragments.SleepDreamInput.Fragments.QuestionTwelveFragment">
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_twelve_title"
         android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="@color/txt_glow"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"/>
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_twelve"
         android:textColor="@color/white"
         android:textSize="@dimen/title_size"
         android:layout_marginTop="16dp"
@@ -35,7 +37,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:layout_width="wrap_content"

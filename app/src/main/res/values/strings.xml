@@ -144,5 +144,9 @@
     <string name="hint_questionnaire">There are a total of 19 Questions. You can answer them to figure out how lucid your dream was. This can help you improve your skills and also become better at understanding Lucid Dreaming</string>
     <string name="question_one">1.Were you aware of differences to the waking state?</string>
     <string name="question_two">2.Did you perceive your surroundings more intense than in non-lucid dreams?</string>
+    <string name="dialog_note">Note: If you do not add these results to a dream, your level progression won\'t be affected.</string>
+    <string name="dialog_txt_one">Your Dream Lucidity:</string>
+    <string name="add_to_dream">Add to Dream</string>
+    <string name="back_to_profile">back to profile</string>
 
 </resources>

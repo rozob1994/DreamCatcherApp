@@ -13,7 +13,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Ui.Fragments.SleepDreamInput.Fragments.QuestionNineteenFragment">
 
+
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_nineteen_title"
         android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="@color/txt_glow"
@@ -22,6 +24,7 @@
         android:layout_height="wrap_content"/>
 
     <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/question_nineteen"
         android:textColor="@color/white"
         android:textSize="@dimen/title_size"
         android:layout_marginTop="16dp"
@@ -35,7 +38,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:layout_width="wrap_content"
@@ -68,7 +71,6 @@
 
     </LinearLayout>
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         android:layout_width="125dp"
@@ -97,5 +99,34 @@
         android:textColor="@color/white"
         android:textSize="@dimen/edt_txt_size" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="visible"
+        android:id="@+id/btn_results"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_simple_rounded"
+        android:backgroundTint="@color/txt_glow"
+        android:elevation="10dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="submit"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/loadingBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -1,28 +1,42 @@
 package com.phrenologue.dreamcatcherapp.Ui.Fragments.SleepDreamInput.Fragments;
 
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionSevenBinding;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class QuestionSevenFragment extends Fragment {
 
+    private FragmentQuestionSevenBinding binding;
+
     public QuestionSevenFragment() {
         // Required empty public constructor
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_seven, container, false);
+        binding= FragmentQuestionSevenBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        binding.questionSeven.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSevenTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSeven.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+
+        return view;
     }
 }

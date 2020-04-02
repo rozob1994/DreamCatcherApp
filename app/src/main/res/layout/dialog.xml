@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_shape_stroked"
+    android:backgroundTint="@color/black"
+    android:backgroundTintMode="add"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/dialog_txt_one"
+        android:textColor="@color/white" />
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:id="@+id/txt_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Percentage"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
+
+    <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="@string/dialog_note"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/hint_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_gradient"
+            android:elevation="4dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:text="@string/add_to_dream"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_size" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_return"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_gradient"
+            android:elevation="4dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:text="@string/back_to_profile"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_size" />
+
+    </LinearLayout>
+
+</LinearLayout>
