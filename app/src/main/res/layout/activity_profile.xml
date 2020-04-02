@@ -91,7 +91,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@id/user_title"
                     android:background="@drawable/bg_simple"
-                    android:backgroundTint="#E65709AE"
+                    android:backgroundTint="@color/purple"
                     android:clickable="true"
                     android:focusable="true"
                     android:src="@drawable/ic_content_paste_black_24dp"
