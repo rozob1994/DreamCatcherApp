@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DreamDate {
-    private static final DreamDate instance = new DreamDate();
+    private static DreamDate instance = new DreamDate();
     private int dayOfWeek;
     private int dayOfMonth;
     private int dayOfYear;
@@ -18,6 +18,12 @@ public class DreamDate {
     private DreamDate(){
         this.date = new Date();
     }
+
+    public static void delDreamDate() {
+
+        instance = null;
+    }
+
 
     private DreamDate(Date date) {
         this.date = date;

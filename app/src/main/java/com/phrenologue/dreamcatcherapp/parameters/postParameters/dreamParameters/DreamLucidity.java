@@ -1,18 +1,16 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
-import androidx.annotation.Nullable;
-
 public class DreamLucidity {
-    private static final DreamLucidity instance = new DreamLucidity();
+    private static DreamLucidity instance = new DreamLucidity();
     private int lucid;
     private int lucidityLevel = 0;
 
     private DreamLucidity() {
     }
 
-    private DreamLucidity(@Nullable int lucid, @Nullable int lucidityLevel) {
-        this.lucid = lucid;
-        this.lucidityLevel = lucidityLevel;
+    public static void delLucidity() {
+
+        instance = null;
     }
 
     public static DreamLucidity getInstance(){

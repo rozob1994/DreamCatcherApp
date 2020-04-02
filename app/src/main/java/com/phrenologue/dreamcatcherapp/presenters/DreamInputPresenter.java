@@ -133,14 +133,14 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setPositiveBtnOn(SharedPreferences.Editor dreamPrefEditor,
+    public void setPositiveBtnOn(int index, SharedPreferences.Editor dreamPrefEditor,
                                  LinearLayout positiveOn, LinearLayout positiveOff,
                                  LinearLayout neutralOn, LinearLayout neutralOff,
                                  LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(3);
-        dreamPrefEditor.putBoolean("hasImpression", true).apply();
-        dreamPrefEditor.putInt("impression", 3).apply();
+        people.setImpression(index,3);
+        /**dreamPrefEditor.putBoolean("hasImpression", true).apply();
+        dreamPrefEditor.putInt("impression", 3).apply();**/
         if (positiveOn.getVisibility() == View.VISIBLE) {
             positiveOn.setVisibility(View.INVISIBLE);
             positiveOff.setVisibility(View.VISIBLE);
@@ -154,13 +154,13 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setPositiveBtnOff(SharedPreferences.Editor dreamPrefEditor,
+    public void setPositiveBtnOff(int index, SharedPreferences.Editor dreamPrefEditor,
                                   LinearLayout positiveOn, LinearLayout positiveOff,
                                   LinearLayout neutralOff, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(0);
-        dreamPrefEditor.putBoolean("hasImpression", false).apply();
-        dreamPrefEditor.putInt("impression", 0).apply();
+        people.setImpression(index,0);
+        /**dreamPrefEditor.putBoolean("hasImpression", false).apply();
+        dreamPrefEditor.putInt("impression", 0).apply();**/
         if (positiveOff.getVisibility() == View.VISIBLE) {
             positiveOff.setVisibility(View.INVISIBLE);
             positiveOn.setVisibility(View.VISIBLE);
@@ -172,14 +172,14 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setNeutralBtnOn(SharedPreferences.Editor dreamPrefEditor,
+    public void setNeutralBtnOn(int index, SharedPreferences.Editor dreamPrefEditor,
                                 LinearLayout positiveOn, LinearLayout positiveOff,
                                 LinearLayout neutralOn, LinearLayout neutralOff,
                                 LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(2);
-        dreamPrefEditor.putBoolean("hasImpression", true).apply();
-        dreamPrefEditor.putInt("impression", 2).apply();
+        people.setImpression(index, 2);
+        /**dreamPrefEditor.putBoolean("hasImpression", true).apply();
+        dreamPrefEditor.putInt("impression", 2).apply();**/
         if (neutralOn.getVisibility() == View.VISIBLE) {
             neutralOn.setVisibility(View.INVISIBLE);
             neutralOff.setVisibility(View.VISIBLE);
@@ -193,11 +193,11 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setNeutralBtnOff(SharedPreferences.Editor dreamPrefEditor,
+    public void setNeutralBtnOff(int index, SharedPreferences.Editor dreamPrefEditor,
                                  LinearLayout positiveOff, LinearLayout neutralOn,
                                  LinearLayout neutralOff, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(0);
+        people.setImpression(index, 0);
         dreamPrefEditor.putBoolean("hasImpression", false).apply();
         dreamPrefEditor.putInt("impression", 0).apply();
         if (neutralOff.getVisibility() == View.VISIBLE) {
@@ -211,12 +211,12 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setNegativeBtnOn(SharedPreferences.Editor dreamPrefEditor,
+    public void setNegativeBtnOn(int index, SharedPreferences.Editor dreamPrefEditor,
                                  LinearLayout positiveOn, LinearLayout positiveOff,
                                  LinearLayout neutralOn, LinearLayout neutralOff,
                                  LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(1);
+        people.setImpression(index, 1);
         dreamPrefEditor.putBoolean("hasImpression", true).apply();
         dreamPrefEditor.putInt("impression", 1).apply();
         if (negativeOn.getVisibility() == View.VISIBLE) {
@@ -232,11 +232,11 @@ public class DreamInputPresenter {
         }
     }
 
-    public void setNegativeBtnOff(SharedPreferences.Editor dreamPrefEditor,
+    public void setNegativeBtnOff(int index, SharedPreferences.Editor dreamPrefEditor,
                                   LinearLayout positiveOff, LinearLayout neutralOff,
                                   LinearLayout negativeOn, LinearLayout negativeOff) {
         people = DreamPeople.getInstance();
-        people.setImpression(0);
+        people.setImpression(index,0);
         dreamPrefEditor.putBoolean("hasImpression", false).apply();
         dreamPrefEditor.putInt("impression", 0).apply();
         if (negativeOff.getVisibility() == View.VISIBLE) {
@@ -463,7 +463,6 @@ public class DreamInputPresenter {
         sound = DreamSound.getInstance();
         lucidity = DreamLucidity.getInstance();
 
-        people.setName(edtTxtNames.getText().toString());
         dream.setDreamPeople(people);
         dream.setDreamChecklist(checklist);
         dream.setDreamSound(sound);
