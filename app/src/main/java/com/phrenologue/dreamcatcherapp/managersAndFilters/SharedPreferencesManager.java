@@ -23,7 +23,6 @@ public class SharedPreferencesManager {
         int experience = dream.getDreamChecklist().getExperience();
         int lucidityLevel = dream.getDreamLucidity().getLucidityLevel();
         int peopleExist = dream.getDreamPeople().getExistent();
-        int peopleImpression = dream.getDreamPeople().getImpression();
         int sound = dream.getDreamSound().getSound();
         int musical = dream.getDreamSound().getMusical();
         int dayOfMonth = date.getDayOfMonth();
@@ -33,7 +32,6 @@ public class SharedPreferencesManager {
         String title = dream.getDreamDescription().getTitle();
         String content = dream.getDreamDescription().getContent();
         String interpretation = dream.getDreamInterpretation().getInterpretation();
-        String peopleName = dream.getDreamPeople().getName();
 
         sp.edit().putInt("postId", postId).apply();
         if (grayscale==1){
@@ -51,10 +49,7 @@ public class SharedPreferencesManager {
         if (peopleExist == 1) {
             sp.edit().putBoolean("hasPeople", true).apply();
         }
-        if (peopleImpression>0){
-            sp.edit().putBoolean("hasImpression", true).apply();
-        }
-        sp.edit().putInt("impression", peopleImpression).apply();
+
         if (sound == 1) {
             sp.edit().putBoolean("hasSound", true).apply();
         }
@@ -74,7 +69,6 @@ public class SharedPreferencesManager {
         spTwo.edit().putString("description", content).apply();
         spTwo.edit().putBoolean("interpretationExists", true).apply();
         spTwo.edit().putString("interpretation", interpretation).apply();
-        sp.edit().putString("peopleName", peopleName).apply();
 
     }
 

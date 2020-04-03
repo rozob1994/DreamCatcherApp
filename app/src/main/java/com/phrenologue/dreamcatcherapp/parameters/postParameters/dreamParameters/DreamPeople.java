@@ -1,8 +1,5 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class DreamPeople {
     private static DreamPeople instance = new DreamPeople();
     private String firstName = "";
@@ -40,17 +37,52 @@ public class DreamPeople {
     }
 
     public void setImpression(int index, int value){
-        List<Integer> impressionList = Arrays.asList(this.firstImpression, this.secondImpression,
-                this.thirdImpression, this.fourthImpression, this.fifthImpression,
-                this.sixthImpression, this.seventhImpression, this.eighthImpression,
-                this.ninthImpression, this.tenthImpression);
-        value = impressionList.get(index);
+        switch (index){
+            case 0:
+                setFirstImpression(value);
+            case 1:
+                setSecondImpression(value);
+            case 2:
+                setThirdImpression(value);
+            case 3:
+                setFourthImpression(value);
+            case 4:
+                setFifthImpression(value);
+            case 5:
+                setSixthImpression(value);
+            case 6:
+                setSeventhImpression(value);
+            case 7:
+                setEighthImpression(value);
+            case 8:
+                setNinthImpression(value);
+            case 9:
+                setTenthImpression(value);
+        }
     }
     public void setName(int index, String value){
-        List<String> namesList = Arrays.asList(this.firstName, this.secondName, this.thirdName,
-                this.fourthName, this.fifthName, this.sixthName, this.seventhName, this.eighthName,
-                this.ninthName, this.tenthName);
-        value = namesList.get(index);
+        switch (index){
+            case 0:
+                setFirstName(value);
+            case 1:
+                setSecondName(value);
+            case 2:
+                setThirdName(value);
+            case 3:
+                setFourthName(value);
+            case 4:
+                setFifthName(value);
+            case 5:
+                setSixthName(value);
+            case 6:
+                setSeventhName(value);
+            case 7:
+                setEighthName(value);
+            case 8:
+                setNinthName(value);
+            case 9:
+                setTenthName(value);
+        }
     }
     public String getFirstName() {
         return firstName;
