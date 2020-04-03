@@ -65,9 +65,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 Log.e("", "");
-                people.setName(jsonObject.getString("dreamPeopleName"));
                 people.setExistent(jsonObject.getInt("dreamPeopleExist"));
-                people.setImpression(jsonObject.getInt("dreamPeopleImpression"));
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));

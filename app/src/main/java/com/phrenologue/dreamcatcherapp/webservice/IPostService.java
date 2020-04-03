@@ -80,6 +80,30 @@ public interface IPostService {
                                       @Nullable @Field("month") int month,
                                       @Nullable @Field("year") int year);
 
+    @FormUrlEncoded
+    @POST("users/PostPeople.php")
+    Call<ResponseBody> postPeople(@Field("postId") int postId,
+                                  @Field("firstPerson") String firstPerson,
+                                  @Field("firstImpression") int firstImpression,
+                                  @Field("secondPerson") String secondPerson,
+                                  @Field("secondImpression") int secondImpression,
+                                  @Field("thirdPerson") String thirdPerson,
+                                  @Field("thirdImpression") int thirdImpression,
+                                  @Field("fourthPerson") String fourthPerson,
+                                  @Field("fourthImpression") int fourthImpression,
+                                  @Field("fifthPerson") String fifthPerson,
+                                  @Field("fifthImpression") int fifthImpression,
+                                  @Field("sixthPerson") String sixthPerson,
+                                  @Field("sixthImpression") int sixthImpression,
+                                  @Field("seventhPerson") String seventhPerson,
+                                  @Field("seventhImpression") int seventhImpression,
+                                  @Field("eighthPerson") String eighthPerson,
+                                  @Field("eighthImpression") int eighthImpression,
+                                  @Field("ninthPerson") String ninthPerson,
+                                  @Field("ninthImpression") int ninthImpression,
+                                  @Field("tenthPerson") String tenthPerson,
+                                  @Field("tenthImpression") int tenthImpression);
+
     @GET("users/PercentRemembered.php")
     Call<ResponseBody> getRemembered(@Query("uid") int uid);
 

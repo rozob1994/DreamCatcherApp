@@ -52,11 +52,41 @@ public class ApiPostCaller {
         });
     }
 
+    public void postPeople(IResponseMessage responseMessage){
+        Dream dream = Dream.getInstance();
+        DreamPeople people = dream.getDreamPeople();
+        Call<ResponseBody> call = postService.postPeople(dream.getPostId(),people.getFirstName(),
+                people.getFirstImpression(), people.getSecondName(), people.getSecondImpression(),
+                people.getThirdName(),people.getThirdImpression(),people.getFourthName(),
+                people.getFourthImpression(),people.getFifthName(),people.getFifthImpression(),
+                people.getSixthName(),people.getSixthImpression(),people.getSeventhName(),
+                people.getSeventhImpression(),people.getEighthName(),people.getEighthImpression(),
+                people.getNinthName(),people.getNinthImpression(),people.getTenthName(),
+                people.getTenthImpression());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void editDream(IResponseMessage responseMessage){
         Dream dream = Dream.getInstance();
         DreamDate date = DreamDate.getInstance();
-        Call<ResponseBody> call = postService.editDream(dream.getPostId(),dream.getDreamPeople().getName(),
-                dream.getDreamPeople().getExistent(),dream.getDreamPeople().getImpression(),
+        Call<ResponseBody> call = postService.editDream(dream.getPostId(),"",
+                dream.getDreamPeople().getExistent(),0,
                 dream.getDreamSound().getSound(),dream.getDreamSound().getMusical(),
                 dream.getDreamChecklist().getGrayScale(),dream.getDreamChecklist().getExperience(),
                 dream.getDreamLucidity().getLucidityLevel(),dream.getDreamDescription().getTitle(),
@@ -118,8 +148,8 @@ public class ApiPostCaller {
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postDreams(dream.getPostId(), user.getUid(),
-                checklist.getRemembered(), people.getName(),
-                people.getExistent(), people.getImpression(),
+                checklist.getRemembered(), "People.Names",
+                1, 0,
                 sound.getSound(), sound.getMusical(),
                 checklist.getGrayScale(),
                 checklist.getExperience(),

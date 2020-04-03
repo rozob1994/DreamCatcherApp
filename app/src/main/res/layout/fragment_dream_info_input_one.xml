@@ -219,6 +219,7 @@
                                 android:id="@+id/hint_feelings"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_below="@id/title_feelings"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
@@ -229,6 +230,7 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on"
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings"
@@ -319,6 +321,7 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off"
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings"

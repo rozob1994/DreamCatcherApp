@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,6 @@ import com.phrenologue.dreamcatcherapp.Activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
@@ -42,10 +42,15 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
     private FragmentDreamInfoInputOneBinding binding;
     DreamInputPresenter presenter;
     private SeekBar experience;
-    private SeekBar lucidityLevel;
     private AppCompatEditText peopleNames;
-    LinearLayout positiveBtnOn, positiveBtnOnTwo, positiveBtnOff, positiveBtnOffTwo, neutralBtnOn,
-            neutralBtnOnTwo, neutralBtnOff, neutralBtnOffTwo, negativeBtnOn, negativeBtnOnTwo,
+    LinearLayout positiveBtnOn, positiveBtnOn2, positiveBtnOn3, positiveBtnOn4, positiveBtnOn5,
+            positiveBtnOn6, positiveBtnOn7, positiveBtnOn8, positiveBtnOn9, positiveBtnOn10,
+            positiveBtnOff, positiveBtnOffTwo, neutralBtnOn,
+            neutralBtnOn2, neutralBtnOn3, neutralBtnOn4, neutralBtnOn5, neutralBtnOn6, neutralBtnOn7,
+            neutralBtnOn8, neutralBtnOn9, neutralBtnOn10,
+            neutralBtnOff, neutralBtnOffTwo, negativeBtnOn, negativeBtnOn2, negativeBtnOn3,
+            negativeBtnOn4, negativeBtnOn5, negativeBtnOn6, negativeBtnOn7, negativeBtnOn8,
+            negativeBtnOn9, negativeBtnOn10,
             negativeBtnOff, negativeBtnOffTwo, colorOn, colorOff, grayOn, grayOff, museOn, museOff,
             nonMuseOn, nonMuseOff;
     RelativeLayout peopleExpanded, peopleClosed, soundsExpanded, soundsClosed, colorfulOff,
@@ -106,15 +111,39 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         namesHint9 = binding.hintFeelings9;
         namesHint10 = binding.hintFeelings10;
         positiveBtnOn = binding.linPositiveOn;
-        positiveBtnOnTwo = binding.linPositiveOn2;
+        positiveBtnOn2 = binding.linPositiveOn2;
+        positiveBtnOn3 = binding.linPositiveOn3;
+        positiveBtnOn4 = binding.linPositiveOn4;
+        positiveBtnOn5 = binding.linPositiveOn5;
+        positiveBtnOn6 = binding.linPositiveOn6;
+        positiveBtnOn7 = binding.linPositiveOn7;
+        positiveBtnOn8 = binding.linPositiveOn8;
+        positiveBtnOn9 = binding.linPositiveOn9;
+        positiveBtnOn10 = binding.linPositiveOn10;
         positiveBtnOff = binding.linPositiveOff;
         positiveBtnOffTwo = binding.linPositiveOff2;
         neutralBtnOn = binding.linNeutralOn;
-        neutralBtnOnTwo = binding.linNeutralOn2;
+        neutralBtnOn2 = binding.linNeutralOn2;
+        neutralBtnOn3 = binding.linNeutralOn3;
+        neutralBtnOn4 = binding.linNeutralOn4;
+        neutralBtnOn5 = binding.linNeutralOn5;
+        neutralBtnOn6 = binding.linNeutralOn6;
+        neutralBtnOn7 = binding.linNeutralOn7;
+        neutralBtnOn8 = binding.linNeutralOn8;
+        neutralBtnOn9 = binding.linNeutralOn9;
+        neutralBtnOn10 = binding.linNeutralOn10;
         neutralBtnOff = binding.linNeutralOff;
         neutralBtnOffTwo = binding.linNeutralOff2;
         negativeBtnOn = binding.linNegativeOn;
-        negativeBtnOnTwo = binding.linNegativeOn2;
+        negativeBtnOn2 = binding.linNegativeOn2;
+        negativeBtnOn3 = binding.linNegativeOn3;
+        negativeBtnOn4 = binding.linNegativeOn4;
+        negativeBtnOn5 = binding.linNegativeOn5;
+        negativeBtnOn6 = binding.linNegativeOn6;
+        negativeBtnOn7 = binding.linNegativeOn7;
+        negativeBtnOn8 = binding.linNegativeOn8;
+        negativeBtnOn9 = binding.linNegativeOn9;
+        negativeBtnOn10 = binding.linNegativeOn10;
         negativeBtnOff = binding.linNegativeOff;
         negativeBtnOffTwo = binding.linNegativeOff2;
         colorOn = binding.linColorfulOn;
@@ -240,6 +269,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                     if (i < namesHints.size()) {
                         DreamPeople people = DreamPeople.getInstance();
                         people.setName(i, namesList.get(i));
+                        Log.e("", "");
                         Dream dream = Dream.getInstance();
                         dream.setDreamPeople(people);
                         presenter.makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
@@ -254,7 +284,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setPositiveBtnOn(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
@@ -263,7 +293,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setPositiveBtnOff(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
                                         negativeBtnsOff.get(finalI));
                             }
@@ -271,7 +301,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setNeutralBtnOn(finalI, dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
@@ -280,7 +310,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setNeutralBtnOff(finalI, dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                presenter.setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
                                         neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
                                         negativeBtnsOff.get(finalI));
                             }
@@ -288,7 +318,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setNegativeBtnOn(finalI, dreamPrefsEditor,positiveBtnsOn.get(finalI),
+                                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
                                         positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
@@ -297,7 +327,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                         negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                presenter.setNegativeBtnOff(finalI, dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                presenter.setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
                                         neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
                                         negativeBtnsOff.get(finalI));
                             }
@@ -397,11 +427,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         });
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[LUCIDITY LEVEL]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
-        if (dreamPrefs.getBoolean("hasLucidity", false)) {
-            lucidityLevel.setProgress(0);
-            lucidityLevel.setMax(3);
-            lucidityLevel.setProgress(dreamPrefs.getInt("lucidity", 0));
-        }
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTONS]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
@@ -424,7 +449,15 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.saveHalfWayDream(binding.edtTxtNames);
+                presenter.saveHalfWayDream(binding.edtTxtNames, positiveBtnOn, positiveBtnOn2,
+                        positiveBtnOn3, positiveBtnOn4, positiveBtnOn5, positiveBtnOn6, positiveBtnOn7,
+                        positiveBtnOn8, positiveBtnOn9, positiveBtnOn10, neutralBtnOn, neutralBtnOn2,
+                        neutralBtnOn3, neutralBtnOn4, neutralBtnOn5, neutralBtnOn6, neutralBtnOn7,
+                        neutralBtnOn8, neutralBtnOn9, neutralBtnOn10, negativeBtnOn, negativeBtnOn2,
+                        negativeBtnOn3, negativeBtnOn4, negativeBtnOn5, negativeBtnOn6, negativeBtnOn7,
+                        negativeBtnOn8, negativeBtnOn9, negativeBtnOn10, namesHint1, namesHint2,
+                        namesHint3, namesHint4, namesHint5, namesHint6, namesHint7, namesHint8,
+                        namesHint9, namesHint10);
 
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
@@ -441,13 +474,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (seekBar == experience) {
             DreamChecklist checklist = DreamChecklist.getInstance();
             checklist.setExperience(progress);
-        } else if (seekBar == lucidityLevel) {
-            DreamLucidity lucidity = DreamLucidity.getInstance();
-            lucidity.setLucidityLevel(progress);
-        }
     }
 
     @Override
@@ -459,4 +487,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
+
+
 }
