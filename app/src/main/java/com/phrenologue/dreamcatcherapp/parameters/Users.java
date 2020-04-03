@@ -1,14 +1,10 @@
 package com.phrenologue.dreamcatcherapp.parameters;
 
-import androidx.annotation.Nullable;
-
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
 import java.util.Random;
-
-import javax.inject.Inject;
 
 public class Users {
     private static Users instance = null;
@@ -24,12 +20,6 @@ public class Users {
     private Users() {
     }
 
-    @Inject
-    public Users(@Nullable Dream dream, @Nullable Sleep sleep, @Nullable Date date) {
-        this.setDate(date);
-        this.setDream(dream);
-        this.setSleep(sleep);
-    }
 
     public static Users getInstance() {
         if (instance == null){

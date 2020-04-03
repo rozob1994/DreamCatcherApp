@@ -1,0 +1,251 @@
+package com.phrenologue.dreamcatcherapp.parameters;
+
+public class QuestionnaireEntry {
+    private static QuestionnaireEntry instance = null;
+
+    private int qOne; // 0 = No, 1 = Not Sure, 2 = Yes
+    private int qTwo;
+    private int qThree;
+    private int qFour;
+    private int qFive;
+    private int qSix;
+    private int qSeven;
+    private int qEight;
+    private int qNine;
+    private int qTen;
+    private int qEleven;
+    private int qTwelve;
+    private int qThirteen;
+    private int qFourteen;
+    private int qFifteen;
+    private int qSixteen;
+    private int qSeventeen;
+    private int qEighteen;
+    private int qNineteen;
+    private int result;
+
+    private QuestionnaireEntry() {
+    }
+
+    public static QuestionnaireEntry getInstance() {
+        if (instance == null) {
+            instance = new QuestionnaireEntry();
+        }
+        return instance;
+    }
+
+    public static void delQuestionnaireEntry() {
+        instance = null;
+    }
+
+    public void setAns(int qNumber, int ans){ // 0 = No, 1 = Not Sure, 2 = Yes
+        switch (qNumber) {
+            case 1:
+                setqOne(ans);
+            case 2:
+                setqTwo(ans);
+            case 3:
+                setqThree(ans);
+            case 4:
+                setqFour(ans);
+            case 5:
+                setqFive(ans);
+            case 6:
+                setqSix(ans);
+            case 7:
+                setqSeven(ans);
+            case 8:
+                setqEight(ans);
+            case 9:
+                setqNine(ans);
+            case 10:
+                setqTen(ans);
+            case 11:
+                setqEleven(ans);
+            case 12:
+                setqTwelve(ans);
+            case 13:
+                setqThirteen(ans);
+            case 14:
+                setqFourteen(ans);
+            case 15:
+                setqFifteen(ans);
+            case 16:
+                setqSixteen(ans);
+            case 17:
+                setqSeventeen(ans);
+            case 18:
+                setqEighteen(ans);
+            case 19:
+                setqNineteen(ans);
+        }
+    }
+
+    public int getqOne() {
+        return qOne;
+    }
+
+    public void setqOne(int qOne) {
+        this.qOne = qOne;
+    }
+
+    public int getqTwo() {
+        return qTwo;
+    }
+
+    public void setqTwo(int qTwo) {
+        this.qTwo = qTwo;
+    }
+
+    public int getqThree() {
+        return qThree;
+    }
+
+    public void setqThree(int qThree) {
+        this.qThree = qThree;
+    }
+
+    public int getqFour() {
+        return qFour;
+    }
+
+    public void setqFour(int qFour) {
+        this.qFour = qFour;
+    }
+
+    public int getqFive() {
+        return qFive;
+    }
+
+    public void setqFive(int qFive) {
+        this.qFive = qFive;
+    }
+
+    public int getqSix() {
+        return qSix;
+    }
+
+    public void setqSix(int qSix) {
+        this.qSix = qSix;
+    }
+
+    public int getqSeven() {
+        return qSeven;
+    }
+
+    public void setqSeven(int qSeven) {
+        this.qSeven = qSeven;
+    }
+
+    public int getqEight() {
+        return qEight;
+    }
+
+    public void setqEight(int qEight) {
+        this.qEight = qEight;
+    }
+
+    public int getqNine() {
+        return qNine;
+    }
+
+    public void setqNine(int qNine) {
+        this.qNine = qNine;
+    }
+
+    public int getqTen() {
+        return qTen;
+    }
+
+    public void setqTen(int qTen) {
+        this.qTen = qTen;
+    }
+
+    public int getqEleven() {
+        return qEleven;
+    }
+
+    public void setqEleven(int qEleven) {
+        this.qEleven = qEleven;
+    }
+
+    public int getqTwelve() {
+        return qTwelve;
+    }
+
+    public void setqTwelve(int qTwelve) {
+        this.qTwelve = qTwelve;
+    }
+
+    public int getqThirteen() {
+        return qThirteen;
+    }
+
+    public void setqThirteen(int qThirteen) {
+        this.qThirteen = qThirteen;
+    }
+
+    public int getqFourteen() {
+        return qFourteen;
+    }
+
+    public void setqFourteen(int qFourteen) {
+        this.qFourteen = qFourteen;
+    }
+
+    public int getqFifteen() {
+        return qFifteen;
+    }
+
+    public void setqFifteen(int qFifteen) {
+        this.qFifteen = qFifteen;
+    }
+
+    public int getqSixteen() {
+        return qSixteen;
+    }
+
+    public void setqSixteen(int qSixteen) {
+        this.qSixteen = qSixteen;
+    }
+
+    public int getqSeventeen() {
+        return qSeventeen;
+    }
+
+    public void setqSeventeen(int qSeventeen) {
+        this.qSeventeen = qSeventeen;
+    }
+
+    public int getqEighteen() {
+        return qEighteen;
+    }
+
+    public void setqEighteen(int qEighteen) {
+        this.qEighteen = qEighteen;
+    }
+
+    public int getqNineteen() {
+        return qNineteen;
+    }
+
+    public void setqNineteen(int qNineteen) {
+        this.qNineteen = qNineteen;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult() {
+        int result = getqOne() + getqTwo() + getqThree() + getqFour() + getqFive() + getqSix() +
+                getqSeven() + getqEight() + getqNine() + getqTen() + getqEleven() + getqTwelve() +
+                getqThirteen() + getqFourteen() + getqFifteen() + getqSixteen() + getqSeventeen() +
+                getqEighteen() + getqNineteen();
+        this.result = result;
+    }
+
+    public int getResultPercentage(){
+        return (100*(getResult()/38));
+    }
+}

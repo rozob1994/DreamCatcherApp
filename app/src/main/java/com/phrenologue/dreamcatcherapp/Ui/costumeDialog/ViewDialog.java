@@ -14,10 +14,13 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.phrenologue.dreamcatcherapp.Activities.DreamChoosingActivity;
 import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 
 public class ViewDialog {
 
     private Context context;
+    MoonTextView percentage;
 
     public void showDialog(Activity activity, Context context, String msg){
         final Dialog dialog = new Dialog(activity);
@@ -26,7 +29,11 @@ public class ViewDialog {
         dialog.setContentView(R.layout.dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         this.context = context;
-
+        percentage = dialog.findViewById(R.id.txt_percentage);
+        QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
+        int res = (int) ((float) entry.getResult()/38)*100;
+        String result = res+"";
+        percentage.setText(result);
         AppCompatButton addButton =dialog.findViewById(R.id.btn_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

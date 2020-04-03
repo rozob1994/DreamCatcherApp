@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.webservice;
 import android.util.Log;
 
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -29,6 +30,36 @@ public class ApiPostCaller {
     }
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
+
+    public void postQEntry(IResponseMessage responseMessage){
+        Users user = Users.getInstance();
+        Dream dream = Dream.getInstance();
+        QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
+        entry.setResult();
+        Call<ResponseBody> call = postService.postQEntry(user.getUid(), dream.getPostId(),
+                entry.getqOne(),entry.getqTwo(), entry.getqThree(), entry.getqFour(),
+                entry.getqFive(), entry.getqSix(), entry.getqSeven(), entry.getqEight(),
+                entry.getqNine(), entry.getqTen(), entry.getqEleven(), entry.getqTwelve(),
+                entry.getqThirteen(), entry.getqFourteen(), entry.getqFifteen(), entry.getqSixteen(),
+                entry.getqSeventeen(), entry.getqEighteen(), entry.getqNineteen(), entry.getResult());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
 
     public void getRemembered(IResponseMessage responseMessage) {
         Users user = Users.getInstance();

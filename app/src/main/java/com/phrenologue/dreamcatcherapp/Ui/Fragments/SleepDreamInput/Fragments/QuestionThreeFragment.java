@@ -8,11 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionThreeBinding;
+import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
@@ -23,6 +25,9 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 public class QuestionThreeFragment extends Fragment {
 
     private FragmentQuestionThreeBinding binding;
+    private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
+    private int questionNo;
+    private QuestionnairePresenter presenter;
 
     public QuestionThreeFragment() {
         // Required empty public constructor
@@ -36,6 +41,14 @@ public class QuestionThreeFragment extends Fragment {
 
         binding = FragmentQuestionThreeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
+        presenter = new QuestionnairePresenter();
+        yesBtn = binding.checkboxYesBtn;
+        notSureBtn = binding.checkboxNotSureBtn;
+        noBtn = binding.checkboxNoBtn;
+        questionNo = 3;
+
+        presenter.saveAns(questionNo,yesBtn,notSureBtn,noBtn);
 
         binding.questionThree.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionThreeTitle.setTypeface(Typeface.DEFAULT_BOLD);

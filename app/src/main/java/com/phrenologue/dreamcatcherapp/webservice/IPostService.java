@@ -104,6 +104,31 @@ public interface IPostService {
                                   @Field("tenthPerson") String tenthPerson,
                                   @Field("tenthImpression") int tenthImpression);
 
+    @FormUrlEncoded
+    @POST("users/PostQEntry.php")
+    Call<ResponseBody> postQEntry(@Field("uid") int uid,
+                                  @Field("postId") int postId,
+                                  @Field("q1") int q1,
+                                  @Field("q2") int q2,
+                                  @Field("q3") int q3,
+                                  @Field("q4") int q4,
+                                  @Field("q5") int q5,
+                                  @Field("q6") int q6,
+                                  @Field("q7") int q7,
+                                  @Field("q8") int q8,
+                                  @Field("q9") int q9,
+                                  @Field("q10") int q10,
+                                  @Field("q11") int q11,
+                                  @Field("q12") int q12,
+                                  @Field("q13") int q13,
+                                  @Field("q14") int q14,
+                                  @Field("q15") int q15,
+                                  @Field("q16") int q16,
+                                  @Field("q17") int q17,
+                                  @Field("q18") int q18,
+                                  @Field("q19") int q19,
+                                  @Field("result") int result);
+
     @GET("users/PercentRemembered.php")
     Call<ResponseBody> getRemembered(@Query("uid") int uid);
 
