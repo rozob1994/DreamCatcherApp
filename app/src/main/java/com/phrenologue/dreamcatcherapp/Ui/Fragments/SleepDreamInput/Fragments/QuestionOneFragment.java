@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
@@ -44,10 +43,10 @@ public class QuestionOneFragment extends Fragment {
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
                 QuestionTwoFragment fragment = new QuestionTwoFragment();
-                transaction.replace(R.id.questions_vp, fragment);
+                transaction.replace(R.id.your_placeholder, fragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
                 container.removeAllViews();
             }

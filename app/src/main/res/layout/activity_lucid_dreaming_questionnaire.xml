@@ -37,6 +37,7 @@
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
+        android:id="@+id/rel_vp_questionnaire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/card_view"
@@ -56,8 +57,13 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/edt_txt_size" />
+        <FrameLayout
+            android:id="@+id/your_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
 
-        <androidx.viewpager.widget.ViewPager
+        <!--<androidx.viewpager.widget.ViewPager
             android:elevation="10dp"
             android:id="@+id/questions_vp"
             android:layout_width="wrap_content"
@@ -66,7 +72,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:foregroundGravity="center" >
-        </androidx.viewpager.widget.ViewPager>
+        </androidx.viewpager.widget.ViewPager>-->
 
     </RelativeLayout>
 
