@@ -72,20 +72,6 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_next"
-        android:layout_width="125dp"
-        android:layout_height="29dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_gradient"
-        android:elevation="4dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:text="Next"
-        android:textColor="@color/white"
-        android:textSize="@dimen/edt_txt_size" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_prev"
         android:layout_width="125dp"
         android:layout_height="29dp"

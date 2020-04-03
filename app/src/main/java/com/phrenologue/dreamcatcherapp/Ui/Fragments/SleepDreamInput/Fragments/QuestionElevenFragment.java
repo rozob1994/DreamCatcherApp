@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionElevenBinding;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
@@ -36,6 +38,30 @@ public class QuestionElevenFragment extends Fragment {
         binding.questionEleven.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionElevenTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionEleven.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
+                QuestionTwelveFragment fragment = new QuestionTwelveFragment();
+                transaction.replace(R.id.your_placeholder, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                container.removeAllViews();
+            }
+        });
+
+        binding.btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
+                QuestionTenFragment fragment = new QuestionTenFragment();
+                transaction.replace(R.id.your_placeholder, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                container.removeAllViews();
+            }
+        });
 
         return view;
     }
