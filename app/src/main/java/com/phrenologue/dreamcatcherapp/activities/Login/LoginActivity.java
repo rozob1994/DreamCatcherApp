@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.activities.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -63,26 +64,29 @@ public class LoginActivity extends AppCompatActivity {
                         boolean status = jsonObject.getBoolean("status");
                         String message = jsonObject.getString("message");
                         if (status) {
-                            int level = jsonObject.getInt("level");
-                            user.setLevel(level);
-                            sharedPreferences.edit().putInt("level", level).apply();
+                            //int level = jsonObject.getInt("level");
+                            //user.setLevel(level);
+                            //sharedPreferences.edit().putInt("level", level).apply();
                             sharedPreferences.edit().putBoolean("logged", true).apply();
                             user.setEmail(username);
                             int uid = jsonObject.getInt("uid");
                             sharedPreferences.edit().putInt("uid", uid).apply();
                             sharedPreferences.edit().putString("username", username).apply();
                             user.setUid(uid);
+                            Log.e("","");
                             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+                            Log.e("","");
                         }
 
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
+                        Log.e("","");
                         loadingBg.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_LONG).show();
