@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_night_blur"
     xmlns:blurkit="http://schemas.android.com/apk/res-auto"
-    tools:context="com.phrenologue.dreamcatcherapp.Activities.ExpandedDreamActivity">
+    tools:context="com.phrenologue.dreamcatcherapp.activities.ExpandedDreamActivity">
 
 
     <androidx.cardview.widget.CardView
@@ -53,7 +53,7 @@
                 android:layout_marginRight="8dp"
                 android:background="@drawable/bg_shape_stroked">
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:id="@+id/dreams_package_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:id="@+id/title_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
 
                 </RelativeLayout>
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:id="@+id/dreams_package_description"
                     android:layout_width="400dp"
                     android:layout_height="400dp"
@@ -130,7 +130,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:id="@+id/dreams_package_interpretation"
                     android:layout_width="400dp"
                     android:layout_height="250dp"

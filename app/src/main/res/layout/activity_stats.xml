@@ -6,7 +6,7 @@
     android:background="@drawable/bg_night"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.phrenologue.dreamcatcherapp.Activities.StatsActivity">
+    tools:context="com.phrenologue.dreamcatcherapp.activities.StatsActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:text="STATS"
             android:layout_gravity="center"
             android:textColor="@color/white"

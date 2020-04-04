@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ui.Fragments.ProfilePackages.Fragments.DreamsPackagesFragment">
+    tools:context=".ui.Fragments.ProfilePackages.Fragments.DreamsPackagesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dreams_recycler"

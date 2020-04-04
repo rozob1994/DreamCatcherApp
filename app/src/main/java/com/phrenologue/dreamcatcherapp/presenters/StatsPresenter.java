@@ -17,7 +17,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.Ui.colorPalette.ColorPalettes;
+import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 

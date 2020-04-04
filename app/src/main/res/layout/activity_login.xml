@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_main"
-    tools:context=".Activities.Login.LoginActivity">
+    tools:context=".activities.Login.LoginActivity">
 
 
     <RelativeLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_size" />
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:id="@+id/username_edt_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textColorHint="@color/edt_text_color"
             android:textSize="@dimen/edt_txt_size" />
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:id="@+id/password_edt_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:layout_height="70dp"
                     android:background="@drawable/button_accept" />
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/btn_login_accept"
                     android:textColor="@color/white"
@@ -118,7 +118,7 @@
                     android:layout_height="70dp"
                     android:background="@drawable/button_decline" />
 
-                <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/btn_login_decline"
                     android:textColor="@color/white"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
-    tools:context="com.phrenologue.dreamcatcherapp.Activities.DreamsPackagesActivity">
+    tools:context="com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -16,7 +16,7 @@
         android:backgroundTint="#77000000"
         android:elevation="10dp">
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -88,7 +88,7 @@
                 app:lottie_imageAssetsFolder="images/level_one"
                 app:lottie_loop="true" />
 
-            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dreams_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                 android:text="Dream Count"
                 android:textColor="@color/white" />
 
-            <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dream_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

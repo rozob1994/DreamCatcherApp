@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
-    tools:context=".Activities.SleepDreamInputActivity">
+    tools:context=".activities.SleepDreamInputActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/sleep_dream_input_vp"

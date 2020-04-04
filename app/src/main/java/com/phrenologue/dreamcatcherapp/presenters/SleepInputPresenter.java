@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.phrenologue.dreamcatcherapp.Activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;

@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.phrenologue.dreamcatcherapp.Activities.Adapter.DreamsPackagesActivityAdapter;
-import com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
-    tools:context="com.phrenologue.dreamcatcherapp.Activities.LucidDreamingQuestionnaireActivity">
+    tools:context="com.phrenologue.dreamcatcherapp.activities.LucidDreamingQuestionnaireActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -16,7 +16,7 @@
         android:backgroundTint="#77000000"
         android:elevation="10dp">
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,7 +44,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp">
 
-        <com.phrenologue.dreamcatcherapp.Ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
             android:elevation="10dp"
             android:layout_marginTop="32dp"
             android:id="@+id/hint_questionnaire"
