@@ -63,6 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                         boolean status = jsonObject.getBoolean("status");
                         String message = jsonObject.getString("message");
                         if (status) {
+                            int level = jsonObject.getInt("level");
+                            user.setLevel(level);
+                            sharedPreferences.edit().putInt("level", level).apply();
                             sharedPreferences.edit().putBoolean("logged", true).apply();
                             user.setEmail(username);
                             int uid = jsonObject.getInt("uid");

@@ -69,5 +69,27 @@ public class ApiCaller {
         });
     }
 
+    public void editUserLevel(IResponseMessage responseMessage){
+        Users user = Users.getInstance();
+        Call<ResponseBody> call = userService.editLevel(user.getUid(),user.getLevel());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
 
 }

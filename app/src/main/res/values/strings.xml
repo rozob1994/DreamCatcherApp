@@ -189,5 +189,16 @@
     <string name="q7">7.Did you think about different options of what you can do in a dream?</string>
     <string name="question_6_title">Question 6</string>
     <string name="q6">6.Did you perceive your emotions more intense than in non-lucid dreams?</string>
+    <string name="level_one_title">level one</string>
+    <string name="LevelOneTitle">Level One</string>
+    <string name="LevelTwoTitle">Level Two</string>
+    <string name="LevelThreeTitle">Level Three</string>
+    <string name="LevelFourTitle">Level Four</string>
+    <string name="LevelFiveTitle">Level Five</string>
+    <string name="LevelSixTitle">Level Six</string>
+    <string name="LevelSevenTitle">Level Seven</string>
+    <string name="LevelEightTitle">Level Eight</string>
+    <string name="LevelNineTitle">Level Nine</string>
+    <string name="LevelTenTitle">Level Ten</string>
 
 </resources>

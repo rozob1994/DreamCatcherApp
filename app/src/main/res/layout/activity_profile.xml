@@ -63,7 +63,7 @@
                     android:layout_below="@id/level_animation"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="level one"
+                    android:text="@string/level_one_title"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 

@@ -13,11 +13,13 @@ public interface IUserService {
     @GET("users/login.php")
     Call<ResponseBody> login(@Query("username") String user, @Query("password") String pass);
 
-
-
     @FormUrlEncoded
     @POST("users/signup.php")
     Call<ResponseBody> signUp(@Field("username") String user, @Field("password") String pass,
                               @Field("uid") int uid);
+
+    @FormUrlEncoded
+    @POST("users/EditUserLevel.php")
+    Call<ResponseBody> editLevel(@Field("uid") int uid, @Field("level") int level);
 
 }

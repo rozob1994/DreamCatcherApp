@@ -61,6 +61,29 @@ public class ApiPostCaller {
         });
     }
 
+    public void getDreamSleepQuestCounts(IResponseMessage responseMessage) {
+        Users user = Users.getInstance();
+        int uid = user.getUid();
+        Call<ResponseBody> call = postService.getDreamSleepQuestCounts(uid);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void getRemembered(IResponseMessage responseMessage) {
         Users user = Users.getInstance();
         Call<ResponseBody> call = postService.getRemembered(user.getUid());

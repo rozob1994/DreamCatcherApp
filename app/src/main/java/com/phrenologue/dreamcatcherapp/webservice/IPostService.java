@@ -129,6 +129,9 @@ public interface IPostService {
                                   @Field("q19") int q19,
                                   @Field("result") int result);
 
+    @GET("users/DreamSleepQuestCounts.php")
+    Call<ResponseBody> getDreamSleepQuestCounts(@Query("uid") int uid);
+
     @GET("users/PercentRemembered.php")
     Call<ResponseBody> getRemembered(@Query("uid") int uid);
 
