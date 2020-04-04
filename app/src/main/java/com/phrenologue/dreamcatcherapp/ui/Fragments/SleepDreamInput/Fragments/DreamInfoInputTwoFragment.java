@@ -11,7 +11,10 @@ import android.widget.Spinner;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
@@ -101,6 +104,18 @@ public class DreamInfoInputTwoFragment extends Fragment {
                 Intent intent = new Intent(v.getContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(getContext(), "fadein-to-fadeout");
+            }
+        });
+
+        binding.prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                DreamInfoInputOneFragment fragment = new DreamInfoInputOneFragment();
+                transaction.replace(R.id.dream_adding_frame, fragment);
+                transaction.commit();
+                container.removeAllViews();
             }
         });
 

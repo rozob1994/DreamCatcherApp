@@ -16,7 +16,7 @@ import maes.tech.intentanim.CustomIntent;
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding binding;
-    boolean clicked = false;
+    boolean clickState = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +26,17 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(view);
 
 
-
-
         binding.splash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicked = true;
+                clickState = true;
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
                 finish();
             }
         });
-        if (!clicked){
+        if (clickState){
             new Handler().postDelayed(new Runnable() {
 
                 @Override

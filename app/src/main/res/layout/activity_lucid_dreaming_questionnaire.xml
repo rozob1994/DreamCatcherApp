@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rel_questionnaire"
     android:layout_width="match_parent"
@@ -20,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Questionnaire"
+            android:text="@string/questionnaire"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -40,27 +39,28 @@
         android:id="@+id/rel_vp_questionnaire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/card_view"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp">
+        android:layout_below="@id/card_view">
 
         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-            android:elevation="10dp"
-            android:layout_marginTop="32dp"
+            android:padding="8dp"
             android:id="@+id/hint_questionnaire"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/bg_shape"
-            android:backgroundTint="@color/black"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_simple"
+            android:backgroundTint="#8B000000"
+            android:elevation="10dp"
             android:text="@string/hint_questionnaire"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/edt_txt_size" />
+
         <FrameLayout
             android:id="@+id/your_placeholder"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         </FrameLayout>
 
         <!--<androidx.viewpager.widget.ViewPager
@@ -95,16 +95,17 @@
         app:tint="@color/white" />-->
     <RelativeLayout
         android:id="@+id/loadingBg"
-        android:visibility="gone"
-        android:background="@color/cardview_dark_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"
+        android:visibility="gone">
+
         <ProgressBar
             android:id="@+id/progressBar"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
     </RelativeLayout>
 
 
