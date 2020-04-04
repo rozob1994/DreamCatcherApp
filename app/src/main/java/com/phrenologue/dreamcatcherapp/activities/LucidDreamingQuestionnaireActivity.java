@@ -1,22 +1,21 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.QuestionnaireAdapter;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.QuestionOneFragment;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLucidDreamingQuestionnaireBinding;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.QuestionOneFragment;
+
+import maes.tech.intentanim.CustomIntent;
 
 public class LucidDreamingQuestionnaireActivity extends FragmentActivity {
 
     private ActivityLucidDreamingQuestionnaireBinding binding;
-    QuestionnaireAdapter adapter;
-    private ViewPager mPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +35,10 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity {
     }
     @Override
     public void onBackPressed() {
-        if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-        }
+
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        CustomIntent.customType(LucidDreamingQuestionnaireActivity.this, "fadein-to-fadeout");
+        finish();
     }
 }
