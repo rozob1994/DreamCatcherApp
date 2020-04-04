@@ -38,7 +38,7 @@ public class QuestionnaireEntry {
         instance = null;
     }
 
-    public void setAns(int qNumber, int ans){ // 0 = No, 1 = Not Sure, 2 = Yes
+    public void setAns(int qNumber, int ans) { // 0 = No, 1 = Not Sure, 2 = Yes
         switch (qNumber) {
             case 1:
                 setqOne(ans);
@@ -85,7 +85,7 @@ public class QuestionnaireEntry {
         return qOne;
     }
 
-    public void setqOne(int qOne) {
+    private void setqOne(int qOne) {
         this.qOne = qOne;
     }
 
@@ -93,7 +93,7 @@ public class QuestionnaireEntry {
         return qTwo;
     }
 
-    public void setqTwo(int qTwo) {
+    private void setqTwo(int qTwo) {
         this.qTwo = qTwo;
     }
 
@@ -101,7 +101,7 @@ public class QuestionnaireEntry {
         return qThree;
     }
 
-    public void setqThree(int qThree) {
+    private void setqThree(int qThree) {
         this.qThree = qThree;
     }
 
@@ -109,7 +109,7 @@ public class QuestionnaireEntry {
         return qFour;
     }
 
-    public void setqFour(int qFour) {
+    private void setqFour(int qFour) {
         this.qFour = qFour;
     }
 
@@ -117,7 +117,7 @@ public class QuestionnaireEntry {
         return qFive;
     }
 
-    public void setqFive(int qFive) {
+    private void setqFive(int qFive) {
         this.qFive = qFive;
     }
 
@@ -125,7 +125,7 @@ public class QuestionnaireEntry {
         return qSix;
     }
 
-    public void setqSix(int qSix) {
+    private void setqSix(int qSix) {
         this.qSix = qSix;
     }
 
@@ -133,7 +133,7 @@ public class QuestionnaireEntry {
         return qSeven;
     }
 
-    public void setqSeven(int qSeven) {
+    private void setqSeven(int qSeven) {
         this.qSeven = qSeven;
     }
 
@@ -141,7 +141,7 @@ public class QuestionnaireEntry {
         return qEight;
     }
 
-    public void setqEight(int qEight) {
+    private void setqEight(int qEight) {
         this.qEight = qEight;
     }
 
@@ -149,7 +149,7 @@ public class QuestionnaireEntry {
         return qNine;
     }
 
-    public void setqNine(int qNine) {
+    private void setqNine(int qNine) {
         this.qNine = qNine;
     }
 
@@ -157,7 +157,7 @@ public class QuestionnaireEntry {
         return qTen;
     }
 
-    public void setqTen(int qTen) {
+    private void setqTen(int qTen) {
         this.qTen = qTen;
     }
 
@@ -165,7 +165,7 @@ public class QuestionnaireEntry {
         return qEleven;
     }
 
-    public void setqEleven(int qEleven) {
+    private void setqEleven(int qEleven) {
         this.qEleven = qEleven;
     }
 
@@ -173,7 +173,7 @@ public class QuestionnaireEntry {
         return qTwelve;
     }
 
-    public void setqTwelve(int qTwelve) {
+    private void setqTwelve(int qTwelve) {
         this.qTwelve = qTwelve;
     }
 
@@ -181,7 +181,7 @@ public class QuestionnaireEntry {
         return qThirteen;
     }
 
-    public void setqThirteen(int qThirteen) {
+    private void setqThirteen(int qThirteen) {
         this.qThirteen = qThirteen;
     }
 
@@ -189,7 +189,7 @@ public class QuestionnaireEntry {
         return qFourteen;
     }
 
-    public void setqFourteen(int qFourteen) {
+    private void setqFourteen(int qFourteen) {
         this.qFourteen = qFourteen;
     }
 
@@ -197,7 +197,7 @@ public class QuestionnaireEntry {
         return qFifteen;
     }
 
-    public void setqFifteen(int qFifteen) {
+    private void setqFifteen(int qFifteen) {
         this.qFifteen = qFifteen;
     }
 
@@ -205,7 +205,7 @@ public class QuestionnaireEntry {
         return qSixteen;
     }
 
-    public void setqSixteen(int qSixteen) {
+    private void setqSixteen(int qSixteen) {
         this.qSixteen = qSixteen;
     }
 
@@ -213,7 +213,7 @@ public class QuestionnaireEntry {
         return qSeventeen;
     }
 
-    public void setqSeventeen(int qSeventeen) {
+    private void setqSeventeen(int qSeventeen) {
         this.qSeventeen = qSeventeen;
     }
 
@@ -221,7 +221,7 @@ public class QuestionnaireEntry {
         return qEighteen;
     }
 
-    public void setqEighteen(int qEighteen) {
+    private void setqEighteen(int qEighteen) {
         this.qEighteen = qEighteen;
     }
 
@@ -229,11 +229,15 @@ public class QuestionnaireEntry {
         return qNineteen;
     }
 
-    public void setqNineteen(int qNineteen) {
+    private void setqNineteen(int qNineteen) {
         this.qNineteen = qNineteen;
     }
 
     public int getResult() {
+        return result;
+    }
+
+    private float getFloatResult() {
         return result;
     }
 
@@ -245,7 +249,7 @@ public class QuestionnaireEntry {
         this.result = result;
     }
 
-    public int getResultPercentage(){
-        return (100*(getResult()/38));
+    public float getResultPercentage() {
+        return (100 * (getFloatResult() / 38f));
     }
 }

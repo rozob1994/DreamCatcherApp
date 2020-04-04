@@ -22,7 +22,7 @@ public class ViewDialog {
     private Context context;
     MoonTextView percentage;
 
-    public void showDialog(Activity activity, Context context, String msg){
+    public void showDialog(Activity activity, Context context, String msg) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -31,10 +31,10 @@ public class ViewDialog {
         this.context = context;
         percentage = dialog.findViewById(R.id.txt_percentage);
         QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
-        int res = (int) ((float) entry.getResult()/38)*100;
-        String result = res+"";
+        int res = Math.round(entry.getResultPercentage());
+        String result = "%" + res + "";
         percentage.setText(result);
-        AppCompatButton addButton =dialog.findViewById(R.id.btn_add);
+        AppCompatButton addButton = dialog.findViewById(R.id.btn_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +42,7 @@ public class ViewDialog {
                 context.startActivity(intent);
             }
         });
-        AppCompatButton returnButton= dialog.findViewById(R.id.btn_return);
+        AppCompatButton returnButton = dialog.findViewById(R.id.btn_return);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
