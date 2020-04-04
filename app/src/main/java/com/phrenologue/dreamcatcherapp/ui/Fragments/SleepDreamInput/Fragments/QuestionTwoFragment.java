@@ -70,7 +70,7 @@ public class QuestionTwoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionTwoFragment fragment = new QuestionTwoFragment();
+                QuestionOneFragment fragment = new QuestionOneFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();

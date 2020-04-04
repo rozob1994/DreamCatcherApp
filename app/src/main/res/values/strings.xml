@@ -189,5 +189,8 @@
     <string name="q7">7.Did you think about different options of what you can do in a dream?</string>
     <string name="question_6_title">Question 6</string>
     <string name="q6">6.Did you perceive your emotions more intense than in non-lucid dreams?</string>
+    <string name="choose_your_dream_or_create_a_new_one">Choose your Dream or create a new one</string>
+    <string name="dreams">DREAMS</string>
+    <string name="questionnaire">Questionnaire</string>
 
 </resources>
