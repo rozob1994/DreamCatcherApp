@@ -203,5 +203,6 @@
     <string name="choose_your_dream_or_create_a_new_one">Choose your Dream or create a new one</string>
     <string name="dreams">DREAMS</string>
     <string name="questionnaire">Questionnaire</string>
+    <string name="cancel">cancel</string>
 
 </resources>

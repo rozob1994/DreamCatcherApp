@@ -26,16 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(view);
 
 
-        binding.splash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickState = true;
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-                CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
-                finish();
-            }
-        });
+
         if (clickState){
             new Handler().postDelayed(new Runnable() {
 
@@ -47,6 +38,19 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
             }, 10000);
+
+        } else {
+
+            binding.splash.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickState = true;
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                    CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
+                    finish();
+                }
+            });
         }
 
 

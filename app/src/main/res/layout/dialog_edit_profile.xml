@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/lin_edt_profile"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_simple_rounded"
+    android:backgroundTint="#B9000000"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable= "true"
+    app:behavior_peekHeight= "0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Username"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_simple"
+        android:backgroundTint="#7E000000"
+        android:textColor="@color/white" />
+
+    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Edit Password"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_simple"
+        android:backgroundTint="#7E000000" />
+
+    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Repeat Password" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_simple"
+        android:backgroundTint="#7E000000" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_apply_edt"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="apply"
+        android:background="@drawable/bg_simple_rounded"
+        android:backgroundTint="@color/txt_glow"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel_edt"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/cancel"
+        android:background="@drawable/bg_simple_rounded"
+        android:backgroundTint="@color/red"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

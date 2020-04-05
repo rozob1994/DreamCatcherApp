@@ -9,12 +9,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
@@ -32,6 +35,8 @@ import maes.tech.intentanim.CustomIntent;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private BottomSheetBehavior behavior;
+    private LinearLayout edt_profile;
     private ActivityProfileBinding binding;
     private SharedPreferences sharedPreferences;
     private SharedPreferences sp2;
@@ -40,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ProfilePresenter presenter;
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
+    private AppCompatButton btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,19 @@ public class ProfileActivity extends AppCompatActivity {
         binding.toolbar.setSubtitle("");
         levelAnim = binding.levelAnimation;
         levelTitle = binding.levelNumber;
+        edt_profile=findViewById(R.id.lin_edt_profile);
+        behavior= BottomSheetBehavior.from(edt_profile);
+        btnCancel= findViewById(R.id.btn_cancel_edt);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (behavior.getState()==BottomSheetBehavior.STATE_EXPANDED){
+
+                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
 
         //=========================== Determine User's Level =================================
         postCaller.getDreamSleepQuestCounts(new IResponseMessage() {
@@ -178,6 +197,9 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+
+
+
     }
 
     @Override
@@ -192,6 +214,13 @@ public class ProfileActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.edit:
+
+                if (behavior.getState()!=BottomSheetBehavior.STATE_EXPANDED){
+
+                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
 
                 break;
 
@@ -224,6 +253,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {
