@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLoginBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = binding.edtTxtUsername.getText().toString();
                 String pass = binding.edtTxtPassword.getText().toString();
                 ApiCaller apiCaller = new ApiCaller();
+                ApiPostCaller postCaller = new ApiPostCaller();
                 apiCaller.login(username, pass, new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
@@ -64,19 +66,39 @@ public class LoginActivity extends AppCompatActivity {
                         boolean status = jsonObject.getBoolean("status");
                         String message = jsonObject.getString("message");
                         if (status) {
-                            //int level = jsonObject.getInt("level");
-                            //user.setLevel(level);
-                            //sharedPreferences.edit().putInt("level", level).apply();
-                            sharedPreferences.edit().putBoolean("logged", true).apply();
-                            user.setEmail(username);
-                            int uid = jsonObject.getInt("uid");
-                            sharedPreferences.edit().putInt("uid", uid).apply();
-                            sharedPreferences.edit().putString("username", username).apply();
-                            user.setUid(uid);
-                            Log.e("","");
-                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                            startActivity(intent);
-                            finish();
+                            postCaller.getDreamSleepQuestCounts(new IResponseMessage() {
+                                @Override
+                                public void onSuccess(Object response) throws JSONException {
+                                    JSONObject jsonObject1 = new JSONObject(response.toString());
+                                    boolean status = jsonObject.getBoolean("status");
+                                    if (status) {
+                                        int level = jsonObject.getInt("level");
+                                        user.setLevel(level);
+                                        sharedPreferences.edit().putInt("level", level).apply();
+                                        sharedPreferences.edit().putBoolean("logged", true).apply();
+                                        user.setEmail(username);
+                                        int uid = jsonObject.getInt("uid");
+                                        sharedPreferences.edit().putInt("uid", uid).apply();
+                                        sharedPreferences.edit().putString("username", username).apply();
+                                        user.setUid(uid);
+                                        Log.e("","");
+                                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(),
+                                                "Level retrieval failed!",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(String errorMessage) {
+                                    Toast.makeText(getApplicationContext(),
+                                            "Level retrieval failed!",Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+
                         } else {
                             Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
                             Log.e("","");
