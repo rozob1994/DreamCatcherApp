@@ -63,6 +63,9 @@ public class SignUp extends AppCompatActivity {
                             if (status) {
                                 sharedPreferences.edit().putBoolean("signedUp", true).apply();
                                 user.setEmail(mail);
+                                spLogin.edit().putBoolean("logged", true).apply();
+                                spLogin.edit().putString("username", mail).apply();
+                                spLogin.edit().putInt("level", 1).apply();
                                 user.setPassword(pass);
                                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                                 startActivity(intent);
@@ -98,4 +101,15 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+    }
 }
+

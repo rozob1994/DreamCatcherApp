@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import maes.tech.intentanim.CustomIntent;
@@ -88,6 +89,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Users user = Users.getInstance();
+                user.checkSetLevelChange(getContext());
                 sleepPrefs.edit().clear().apply();
                 presenter.saveCompleteDream(getContext(), interpretation,
                         title, content, day, month, year, binding.loadingBg,

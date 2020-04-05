@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDialog;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionNineteenBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -77,6 +78,8 @@ public class QuestionNineteenFragment extends Fragment {
             public void onClick(View v) {
                 binding.loadingBg.setVisibility(View.VISIBLE);
                 binding.loadingBg.setAlpha(0.5f);
+                Users user = Users.getInstance();
+                user.checkSetLevelChange(getContext());
                 QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
                 entry.setResult();
                 postCaller.postQEntry(new IResponseMessage() {

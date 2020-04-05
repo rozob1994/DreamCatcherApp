@@ -1,8 +1,16 @@
 package com.phrenologue.dreamcatcherapp.parameters;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.webservice.ApiCaller;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Random;
 
@@ -11,6 +19,8 @@ public class Users {
     private String email;
     private int uid;
     private int level;
+    private int newLevel = 0;
+    private boolean levelChanged;
     int gender;
     String username;
     private Dream dream;
@@ -35,6 +45,74 @@ public class Users {
 
     public static void delUser() {
         instance = null;
+    }
+
+    public void checkSetLevelChange(Context context) {
+        ApiPostCaller postCaller = new ApiPostCaller();
+        ApiCaller caller = new ApiCaller();
+        postCaller.getDreamSleepQuestCounts(new IResponseMessage() {
+            @Override
+            public void onSuccess(Object response) throws JSONException {
+                JSONObject jsonObject = new JSONObject(response.toString());
+                boolean status = jsonObject.getBoolean("status");
+                if (status) {
+                    int dreamCount = jsonObject.getInt("dreamCount");
+                    int sleepCount = jsonObject.getInt("sleepCount");
+                    int questCount = jsonObject.getInt("questCount");
+                    int newLevel = calculateGetLevel(dreamCount, sleepCount, questCount);
+                    if (newLevel > level) {
+                        setLevelChanged(true);
+                        setLevel(newLevel);
+                        caller.editUserLevel(new IResponseMessage() {
+                            @Override
+                            public void onSuccess(Object response) throws JSONException {
+                                JSONObject jsonObject1 = new JSONObject(response.toString());
+                                boolean status = jsonObject1.getBoolean("status");
+                                if (status){
+                                    Toast.makeText(context, "Congrats, You've Been Promoted!!",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(context, "Error",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                Toast.makeText(context, "Error!",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        setLevelChanged(false);
+                        caller.editUserLevel(new IResponseMessage() {
+                            @Override
+                            public void onSuccess(Object response) throws JSONException {
+                                JSONObject jsonObject1 = new JSONObject(response.toString());
+                                boolean status = jsonObject1.getBoolean("status");
+                                if (status) {
+                                    Toast.makeText(context,"level ensured",Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(context,"Couldn't update level",Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                Toast.makeText(context,"Couldn't update level",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                Toast.makeText(context, "Error.",
+                        Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
     public String getEmail() {
@@ -99,6 +177,32 @@ public class Users {
         this.level = level;
     }
 
+    public int calculateGetLevel(int dreamCount, int sleepCount, int lucidityCount) {
+        int score = dreamCount + sleepCount + lucidityCount;
+        if (score < levelTwoScore) {
+            newLevel = 1;
+        } else if (score < levelThreeScore) {
+            newLevel = 2;
+        } else if (score < levelFourScore) {
+            newLevel = 3;
+        } else if (score < levelFiveScore) {
+            newLevel = 4;
+        } else if (score < levelSixScore) {
+            newLevel = 5;
+        } else if (score < levelSevenScore) {
+            newLevel = 6;
+        } else if (score < levelEightScore) {
+            newLevel = 7;
+        } else if (score < levelNineScore) {
+            newLevel = 8;
+        } else if (score < levelTenScore) {
+            newLevel = 9;
+        } else if (score > levelTenScore) {
+            newLevel = 10;
+        }
+        return newLevel;
+    }
+
     public void calculateSetLevel(int dreamCount, int sleepCount, int lucidityCount) {
         Levels level = Levels.getInstance();
         int score = dreamCount + sleepCount + lucidityCount;
@@ -121,8 +225,16 @@ public class Users {
             this.level = 8;
         } else if (score < levelTenScore) {
             this.level = 9;
-        } else if (score >levelTenScore) {
+        } else if (score > levelTenScore) {
             this.level = 10;
         }
+    }
+
+    public boolean isLevelChanged() {
+        return levelChanged;
+    }
+
+    public void setLevelChanged(boolean levelChanged) {
+        this.levelChanged = levelChanged;
     }
 }

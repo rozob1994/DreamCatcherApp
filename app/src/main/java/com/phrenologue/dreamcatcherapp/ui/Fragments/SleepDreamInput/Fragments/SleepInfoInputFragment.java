@@ -21,6 +21,7 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.InputFilterMinMax;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
@@ -180,6 +181,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Users user = Users.getInstance();
+                user.checkSetLevelChange(getContext());
                 sleepSp.clear().apply();
                 presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes,
                         binding.loadingBg, getContext());
