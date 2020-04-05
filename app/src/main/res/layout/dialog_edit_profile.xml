@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Repeat Password" />
+        android:text="@string/repeat_password" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:textColor="@color/white"
@@ -57,17 +57,19 @@
         android:backgroundTint="@color/gray" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:elevation="10dp"
         android:id="@+id/btn_apply_edt"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:text="apply"
+        android:text="@string/apply"
         android:background="@drawable/bg_simple_rounded"
-        android:backgroundTint="@color/txt_glow"
+        android:backgroundTint="@color/purple"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:elevation="10dp"
         android:id="@+id/btn_cancel_edt"
         android:textSize="16sp"
         android:textColor="@color/white"

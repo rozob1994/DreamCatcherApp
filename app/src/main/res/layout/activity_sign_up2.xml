@@ -7,21 +7,24 @@
     android:background="@color/background_main"
     tools:context=".activities.Login.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo_main"
-        android:layout_width="550dp"
-        android:layout_height="550dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/logo_spinning"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-270dp"
-        app:srcCompat="@drawable/dream_catcher_logo" />
+        android:layout_marginTop="-200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="logo_spinning.json"
+        app:lottie_imageAssetsFolder="images/spinning_logo"
+        app:lottie_loop="true" />
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:layout_marginTop="16dp"
         android:id="@+id/signUp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo_main"
+        android:layout_below="@+id/logo_spinning"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-50dp"
         android:text="@string/signUpHeader"
         android:textColor="@color/white"
         android:textSize="@dimen/header_title_size" />
@@ -81,17 +84,17 @@
         android:textSize="@dimen/edt_txt_size" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edt_txt_password"
         android:layout_marginTop="40dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <RelativeLayout
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signUp_accept"
@@ -100,20 +103,20 @@
                 android:background="@drawable/button_accept" />
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/btn_signUp_accept"
-                android:textColor="@color/white"
-                android:text="@string/SignUpBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_signUp_accept"
+                android:layout_centerHorizontal="true"
+                android:text="@string/SignUpBtn"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginLeft="40dp"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signUp_decline"
@@ -122,34 +125,31 @@
                 android:background="@drawable/button_decline" />
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/btn_signUp_decline"
-                android:textColor="@color/white"
-                android:text="@string/SignInBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_signUp_decline"
+                android:layout_centerHorizontal="true"
+                android:text="@string/SignInBtn"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
 
-
-
-
-
-
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/loadingBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@color/cardview_dark_background">
+        android:background="@color/cardview_dark_background"
+        android:visibility="gone">
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RelativeLayout>
 
 

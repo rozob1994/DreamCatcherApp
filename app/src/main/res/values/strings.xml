@@ -204,5 +204,7 @@
     <string name="dreams">DREAMS</string>
     <string name="questionnaire">Questionnaire</string>
     <string name="cancel">cancel</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="apply">apply</string>
 
 </resources>
