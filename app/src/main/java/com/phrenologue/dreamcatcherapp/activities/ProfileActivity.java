@@ -81,7 +81,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         //=========================== Determine User's Level =================================
         int level = user.getLevel();
-        Log.e("","");
         switch (level){
             case 1:
                 levelAnim.setImageAssetsFolder("images/level_one");
@@ -236,6 +235,7 @@ public class ProfileActivity extends AppCompatActivity {
                 sp2.edit().putBoolean("signedUp", false).apply();
                 sharedPreferences.edit().putString("username", "").apply();
                 sharedPreferences.edit().putInt("uid", 0).apply();
+                sharedPreferences.edit().putInt("level", 0).apply();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();

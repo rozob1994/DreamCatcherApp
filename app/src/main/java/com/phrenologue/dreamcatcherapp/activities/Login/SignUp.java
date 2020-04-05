@@ -63,6 +63,9 @@ public class SignUp extends AppCompatActivity {
                             if (status) {
                                 sharedPreferences.edit().putBoolean("signedUp", true).apply();
                                 user.setEmail(mail);
+                                spLogin.edit().putBoolean("logged", true).apply();
+                                spLogin.edit().putString("username", mail).apply();
+                                spLogin.edit().putInt("level", 1).apply();
                                 user.setPassword(pass);
                                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                                 startActivity(intent);
