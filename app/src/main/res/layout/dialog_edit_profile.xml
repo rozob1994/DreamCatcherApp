@@ -23,7 +23,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_simple"
-        android:backgroundTint="#7E000000"
+        android:backgroundTint="@color/gray"
         android:textColor="@color/white" />
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
@@ -39,7 +39,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_simple"
-        android:backgroundTint="#7E000000" />
+        android:backgroundTint="@color/gray" />
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
         android:textColor="@color/white"
@@ -54,7 +54,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_simple"
-        android:backgroundTint="#7E000000" />
+        android:backgroundTint="@color/gray" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_apply_edt"
