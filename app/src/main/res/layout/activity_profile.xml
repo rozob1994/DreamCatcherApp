@@ -143,6 +143,17 @@
 
         </RelativeLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_gravity="center"
+        android:elevation="-20dp"
+        android:id="@+id/bg_lights"
+        android:layout_width="420dp"
+        android:layout_height="700dp"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="profile_background_lights.json"
+        app:lottie_loop="true" />
+
     <include layout= "@layout/dialog_edit_profile"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
