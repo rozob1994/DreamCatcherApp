@@ -6,40 +6,22 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.PieChart;
+import com.google.android.material.tabs.TabLayout;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityStatsBinding;
-import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.StatsTabsAdapter;
 
 import maes.tech.intentanim.CustomIntent;
 
 public class StatsActivity extends AppCompatActivity {
     private ActivityStatsBinding binding;
-    private PieChart rememberedChart, soundChart, musicalChart, colorfulChart, moodChart,
-            lucidityChart;
-    private LineChart dailyMoodChart;
-    private StatsPresenter presenter;
+    private StatsTabsAdapter statsTabsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityStatsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        rememberedChart = binding.pieChart;
-        dailyMoodChart = binding.lineChart;
-        soundChart = binding.pieChartTwo;
-        musicalChart = binding.pieChartThree;
-        colorfulChart = binding.pieChartFour;
-        moodChart = binding.pieChartFive;
-        lucidityChart = binding.pieChartSix;
-        presenter = new StatsPresenter();
-        presenter.drawDreamRememberedPercent(getApplicationContext(),rememberedChart);
-        presenter.drawDailyMood(dailyMoodChart);
-        presenter.drawSoundPercent(soundChart);
-        presenter.drawMusicalPercent(musicalChart);
-        presenter.drawColorfulPercent(colorfulChart);
-        presenter.drawMoodPercent(moodChart);
-        presenter.drawLucidityPercent(lucidityChart);
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +30,28 @@ public class StatsActivity extends AppCompatActivity {
                 startActivity(intent);
                 CustomIntent.customType(StatsActivity.this,"fadein-to-fadeout");
                 finish();
+            }
+        });
+
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Stats"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("People"));
+        binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        statsTabsAdapter= new StatsTabsAdapter(getSupportFragmentManager(),binding.tabLayout.getTabCount());
+        binding.viewPager.setAdapter(statsTabsAdapter);
+        binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));
+        binding.tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                binding.viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }
