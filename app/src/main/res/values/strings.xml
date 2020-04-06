@@ -207,5 +207,8 @@
     <string name="repeat_password">Repeat Password</string>
     <string name="apply">apply</string>
     <string name="submit_dream">submit dream</string>
+    <string name="d_r_e_a_m_s">D R E A M S</string>
+    <string name="dream_count">Dream Count</string>
+    <string name="dream_hours">Dream Hours</string>
 
 </resources>

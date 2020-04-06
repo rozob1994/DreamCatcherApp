@@ -33,7 +33,7 @@ public class StatsActivity extends AppCompatActivity {
             }
         });
 
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Stats"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Charts"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("People"));
         binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

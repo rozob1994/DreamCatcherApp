@@ -31,7 +31,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChart"
@@ -47,7 +47,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart"
@@ -63,7 +63,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChartThree"
@@ -79,7 +79,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChartFour"
@@ -95,7 +95,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChartFive"
@@ -111,7 +111,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/layout_separator"
-                android:backgroundTint="@color/white"></View>
+                android:backgroundTint="@color/white"/>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChartSix"

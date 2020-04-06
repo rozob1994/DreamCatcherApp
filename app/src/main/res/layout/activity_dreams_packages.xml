@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="DREAMS"
+            android:text="@string/d_r_e_a_m_s"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/level_animation"
                 android:layout_centerHorizontal="true"
-                android:text="Dream Count"
+                android:text="@string/dream_count"
                 android:textColor="@color/white" />
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
@@ -104,7 +104,7 @@
                 android:layout_below="@+id/title_dreams_count"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:text="Dream Hours"
+                android:text="@string/dream_hours"
                 android:textColor="@color/white" />
 
 
