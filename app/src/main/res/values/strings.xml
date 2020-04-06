@@ -206,5 +206,6 @@
     <string name="cancel">cancel</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="apply">apply</string>
+    <string name="submit_dream">submit dream</string>
 
 </resources>
