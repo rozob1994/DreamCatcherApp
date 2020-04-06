@@ -158,4 +158,7 @@ public interface IPostService {
 
     @GET("users/alldreamprops.php")
     Call<ResponseBody> getDreamProps(@Query("postId") int postId);
+
+    @GET("users/PeopleProps.php")
+    Call<ResponseBody> getPeopleProps(@Query("postId") int postId);
 }

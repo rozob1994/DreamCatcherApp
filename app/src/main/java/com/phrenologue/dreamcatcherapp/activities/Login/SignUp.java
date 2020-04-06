@@ -49,6 +49,7 @@ public class SignUp extends AppCompatActivity {
                 if ((binding.edtTxtUsername.getText().toString() != "") & (binding.edtTxtPassword.getText().toString() != "")) {
                     Users user = Users.getInstance();
                     user.generateUid();
+                    spLogin.edit().putInt("uid",user.getUid()).apply();
                     String mail = binding.edtTxtUsername.getText().toString();
                     String pass = binding.edtTxtPassword.getText().toString();
                     apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {

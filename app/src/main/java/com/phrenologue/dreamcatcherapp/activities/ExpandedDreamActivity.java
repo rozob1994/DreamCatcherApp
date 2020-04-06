@@ -25,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import maes.tech.intentanim.CustomIntent;
 
 public class ExpandedDreamActivity extends AppCompatActivity {
@@ -59,6 +61,52 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         int postId = getIntent().getIntExtra("postId", 0);
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
+        apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
+            @Override
+            public void onSuccess(Object response) throws JSONException {
+                DreamPeople people = DreamPeople.getInstance();
+                JSONArray jsonArray = new JSONArray(response.toString());
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                ArrayList<Integer> impressions = new ArrayList<>();
+                impressions.add(0, jsonObject.getInt("firstImpression"));
+                impressions.add(1, jsonObject.getInt("secondImpression"));
+                impressions.add(2, jsonObject.getInt("thirdImpression"));
+                impressions.add(3, jsonObject.getInt("fourthImpression"));
+                impressions.add(4, jsonObject.getInt("fifthImpression"));
+                impressions.add(5, jsonObject.getInt("sixthImpression"));
+                impressions.add(6, jsonObject.getInt("seventhImpression"));
+                impressions.add(7, jsonObject.getInt("eighthImpression"));
+                impressions.add(8, jsonObject.getInt("ninthImpression"));
+                impressions.add(9, jsonObject.getInt("tenthImpression"));
+
+                ArrayList<String> names = new ArrayList<>();
+                names.add(0, jsonObject.getString("firstPerson"));
+                names.add(1, jsonObject.getString("secondPerson"));
+                names.add(2, jsonObject.getString("thirdPerson"));
+                names.add(3, jsonObject.getString("fourthPerson"));
+                names.add(4, jsonObject.getString("fifthPerson"));
+                names.add(5, jsonObject.getString("sixthPerson"));
+                names.add(6, jsonObject.getString("seventhPerson"));
+                names.add(7, jsonObject.getString("eighthPerson"));
+                names.add(8, jsonObject.getString("ninthPerson"));
+                names.add(9, jsonObject.getString("tenthPerson"));
+
+                for (int i = 0; i < 10; i++) {
+                    people.setImpression(i, impressions.get(i));
+                }
+
+                for (int i = 0; i < 10; i++) {
+                    people.setName(i, names.get(i));
+                }
+
+                spManager.savePeopleToSp(getApplicationContext(), people);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+
+            }
+        });
         apiPostCaller.getDreamProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {

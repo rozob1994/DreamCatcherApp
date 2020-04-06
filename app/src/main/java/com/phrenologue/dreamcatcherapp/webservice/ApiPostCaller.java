@@ -140,7 +140,7 @@ public class ApiPostCaller {
         Dream dream = Dream.getInstance();
         DreamDate date = DreamDate.getInstance();
         Call<ResponseBody> call = postService.editDream(dream.getPostId(),"",
-                dream.getDreamPeople().getExistent(),0,
+                0,0,
                 dream.getDreamSound().getSound(),dream.getDreamSound().getMusical(),
                 dream.getDreamChecklist().getGrayScale(),dream.getDreamChecklist().getExperience(),
                 dream.getDreamLucidity().getLucidityLevel(),dream.getDreamDescription().getTitle(),
@@ -412,6 +412,27 @@ public class ApiPostCaller {
 
     public void getDreamProps(int postId, IResponseMessage responseMessage){
         Call<ResponseBody> call = postService.getDreamProps(postId);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
+    public void getPeopleProps(int postId, IResponseMessage responseMessage){
+        Call<ResponseBody> call = postService.getPeopleProps(postId);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

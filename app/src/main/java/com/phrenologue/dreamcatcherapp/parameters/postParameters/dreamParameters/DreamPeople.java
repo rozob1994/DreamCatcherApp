@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameter
 
 public class DreamPeople {
     private static DreamPeople instance = new DreamPeople();
+    private String name = "";
     private String firstName = "";
     private String secondName = "";
     private String thirdName = "";
@@ -12,6 +13,7 @@ public class DreamPeople {
     private String eighthName = "";
     private String ninthName = "";
     private String tenthName = "";
+    private int impression = 0;
     private int existent; // 0 = non-existent, 1 = existent.
     private int firstImpression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
     private int secondImpression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
@@ -32,58 +34,152 @@ public class DreamPeople {
         instance = null;
     }
 
-    public static DreamPeople getInstance(){
+    public static DreamPeople getInstance() {
         return instance;
     }
 
-    public void setImpression(int index, int value){
-        switch (index){
+    public void setImpression(int index, int value) {
+        switch (index) {
             case 0:
                 setFirstImpression(value);
+                break;
             case 1:
                 setSecondImpression(value);
+                break;
             case 2:
                 setThirdImpression(value);
+                break;
             case 3:
                 setFourthImpression(value);
+                break;
             case 4:
                 setFifthImpression(value);
+                break;
             case 5:
                 setSixthImpression(value);
+                break;
             case 6:
                 setSeventhImpression(value);
+                break;
             case 7:
                 setEighthImpression(value);
+                break;
             case 8:
                 setNinthImpression(value);
+                break;
             case 9:
                 setTenthImpression(value);
+                break;
         }
     }
-    public void setName(int index, String value){
-        switch (index){
+
+    public int getImpression(int index) {
+        switch (index) {
+            case 0:
+                impression = getFirstImpression();
+                break;
+            case 1:
+                impression = getSecondImpression();
+                break;
+            case 2:
+                impression = getThirdImpression();
+                break;
+            case 3:
+                impression = getFourthImpression();
+                break;
+            case 4:
+                impression = getFifthImpression();
+                break;
+            case 5:
+                impression = getSixthImpression();
+                break;
+            case 6:
+                impression = getSeventhImpression();
+                break;
+            case 7:
+                impression = getEighthImpression();
+                break;
+            case 8:
+                impression = getNinthImpression();
+                break;
+            case 9:
+                impression = getTenthImpression();
+                break;
+        }
+        return impression;
+    }
+
+    public void setName(int index, String value) {
+        switch (index) {
             case 0:
                 setFirstName(value);
+                break;
             case 1:
                 setSecondName(value);
+                break;
             case 2:
                 setThirdName(value);
+                break;
             case 3:
                 setFourthName(value);
+                break;
             case 4:
                 setFifthName(value);
+                break;
             case 5:
                 setSixthName(value);
+                break;
             case 6:
                 setSeventhName(value);
+                break;
             case 7:
                 setEighthName(value);
+                break;
             case 8:
                 setNinthName(value);
+                break;
             case 9:
                 setTenthName(value);
+                break;
         }
     }
+
+    public String getName(int index) {
+        switch (index) {
+            case 0:
+                name = getFirstName();
+                break;
+            case 1:
+                name = getSecondName();
+                break;
+            case 2:
+                name = getThirdName();
+                break;
+            case 3:
+                name = getFourthName();
+                break;
+            case 4:
+                name = getFifthName();
+                break;
+            case 5:
+                name = getSixthName();
+                break;
+            case 6:
+                name = getSeventhName();
+                break;
+            case 7:
+                name = getEighthName();
+                break;
+            case 8:
+                name = getNinthName();
+                break;
+            case 9:
+                name = getTenthName();
+                break;
+        }
+        return name;
+    }
+
     public String getFirstName() {
         return firstName;
     }

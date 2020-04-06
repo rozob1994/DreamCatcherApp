@@ -3,8 +3,12 @@ package com.phrenologue.dreamcatcherapp.presenters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -77,6 +81,242 @@ public class DreamInputPresenter {
         textView.setVisibility(View.VISIBLE);
         feelingsOn.setVisibility(View.VISIBLE);
         feelingsOff.setVisibility(View.VISIBLE);
+    }
+
+    public void makePeopleWork(SharedPreferences.Editor dreamPrefsEditor,
+                               Context context, AppCompatEditText peopleNames,
+                               List<AppCompatTextView> namesHints,
+                               List<RelativeLayout> feelingsOnLayouts,
+                               List<RelativeLayout> feelingsOffLayouts,
+                               List<LinearLayout> positiveBtnsOn,
+                               List<LinearLayout> positiveBtnsOff,
+                               List<LinearLayout> neutralBtnsOn,
+                               List<LinearLayout> neutralBtnsOff,
+                               List<LinearLayout> negativeBtnsOn,
+                               List<LinearLayout> negativeBtnsOff){
+        peopleNames.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().equals("")){
+                    String string = s.toString();
+                    List<String> namesList = Arrays.asList(string.split(","));
+                    String hint = context.getString(R.string.hint_feelings);
+                    for (int i = 0; i < namesList.size(); i++) {
+                        if (i < 10) {
+                            DreamPeople people = DreamPeople.getInstance();
+                            people.setName(i, namesList.get(i));
+                            Dream dream = Dream.getInstance();
+                            dream.setDreamPeople(people);
+
+                            makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
+                                    feelingsOffLayouts.get(i));
+
+                            String indexedHint = hint.replace("them", namesList.get(i));
+
+                            int nameLength = namesList.get(i).length();
+                            SpannableString ss = new SpannableString(indexedHint);
+                            ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
+                            ss.setSpan(fcs, 58, 58 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            namesHints.get(i).setText(ss);
+                            int finalI = i;
+                            positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                            neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String string = s.toString();
+                List<String> namesList = Arrays.asList(string.split(","));
+                String hint = context.getString(R.string.hint_feelings);
+                for (int i = 0; i < namesList.size(); i++) {
+                    if (i < 10) {
+                        DreamPeople people = DreamPeople.getInstance();
+                        people.setName(i, namesList.get(i));
+                        Dream dream = Dream.getInstance();
+                        dream.setDreamPeople(people);
+
+                        makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
+                                feelingsOffLayouts.get(i));
+
+                        String indexedHint = hint.replace("them", namesList.get(i));
+
+                        int nameLength = namesList.get(i).length();
+                        SpannableString ss = new SpannableString(indexedHint);
+                        ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
+                        ss.setSpan(fcs, 58, 58 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        namesHints.get(i).setText(ss);
+                        int finalI = i;
+                        positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+
+                    }
+                }
+            }
+        });
+    }
+
+    public void loadPeople(SharedPreferences dreamPrefs, SharedPreferences.Editor dreamPrefsEditor,
+                           AppCompatEditText peopleNames,
+                           List<AppCompatTextView> namesHints,
+                           List<RelativeLayout> feelingsOnLayouts,
+                           List<RelativeLayout> feelingsOffLayouts,
+                           List<LinearLayout> positiveBtnsOn,
+                           List<LinearLayout> positiveBtnsOff,
+                           List<LinearLayout> neutralBtnsOn,
+                           List<LinearLayout> neutralBtnsOff,
+                           List<LinearLayout> negativeBtnsOn,
+                           List<LinearLayout> negativeBtnsOff){
+
+        for (int i = 0; i < 10; i++) {
+            if (i == 0) {
+                if (dreamPrefs.getBoolean("hasName" + i + "", false)) {
+                    String name = people.getName(i);
+                    peopleNames.setText(name);
+                }
+            } else {
+                if (!people.getName(i).equals("")) {
+                    String name = people.getName(i);
+                    String loadedNames = peopleNames.getText().toString();
+                    String newNames = loadedNames + ", " + name;
+                    peopleNames.setText(newNames);
+                }
+            }
+
+            if (people.getImpression(i) > 0) {
+                int impression = people.getImpression(i);
+                namesHints.get(i).setVisibility(View.VISIBLE);
+                feelingsOnLayouts.get(i).setVisibility(View.VISIBLE);
+                feelingsOffLayouts.get(i).setVisibility(View.VISIBLE);
+                switch (impression) {
+                    case 1:
+                        setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(i),
+                                positiveBtnsOff.get(i), neutralBtnsOn.get(i),
+                                neutralBtnsOff.get(i), negativeBtnsOn.get(i),
+                                negativeBtnsOff.get(i));
+                        break;
+                    case 2:
+                        setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(i),
+                                positiveBtnsOff.get(i), neutralBtnsOn.get(i),
+                                neutralBtnsOff.get(i), negativeBtnsOn.get(i),
+                                negativeBtnsOff.get(i));
+                        break;
+                    case 3:
+                        setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(i),
+                                positiveBtnsOff.get(i), neutralBtnsOn.get(i),
+                                neutralBtnsOff.get(i), negativeBtnsOn.get(i),
+                                negativeBtnsOff.get(i));
+                        break;
+                }
+            }
+        }
     }
 
     public void setPeopleBtnOn(SharedPreferences.Editor dreamPrefEditor,

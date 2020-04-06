@@ -2,14 +2,7 @@ package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +16,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.phrenologue.dreamcatcherapp.activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import java.util.Arrays;
@@ -249,94 +241,24 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
                 binding.linNegativeOff3, binding.linNegativeOff4, binding.linNegativeOff5,
                 binding.linNegativeOff6, binding.linNegativeOff7, binding.linNegativeOff8,
                 binding.linNegativeOff9, binding.linNegativeOff10);
-        peopleNames.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (dreamPrefs.getBoolean("hasPeople", false)) {
+            DreamPeople people = DreamPeople.getInstance();
 
-            }
+            presenter.makePeopleWork(dreamPrefsEditor, getContext(), peopleNames, namesHints,
+                    feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
+                    neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                String string = s.toString();
-                List<String> namesList = Arrays.asList(string.split(","));
-                String hint = getString(R.string.hint_feelings);
-                for (int i = 0; i < namesList.size(); i++) {
-                    if (i < namesHints.size()) {
-                        DreamPeople people = DreamPeople.getInstance();
-                        people.setName(i, namesList.get(i));
-                        Log.e("", "");
-                        Dream dream = Dream.getInstance();
-                        dream.setDreamPeople(people);
-                        presenter.makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
-                                feelingsOffLayouts.get(i));
-                        String indexedHint = hint.replace("them", namesList.get(i));
-                        int nameLength = namesList.get(i).length();
-                        SpannableString ss = new SpannableString(indexedHint);
-                        ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
-                        ss.setSpan(fcs, 58, 58 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        namesHints.get(i).setText(ss);
-                        int finalI = i;
-                        positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
-                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
-                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
-                        positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
-                                        positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
-                        neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
-                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
-                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
-                        neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
-                                        neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
-                        negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
-                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
-                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
-                        negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                presenter.setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
-                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
-                                        negativeBtnsOff.get(finalI));
-                            }
-                        });
+            presenter.loadPeople(dreamPrefs, dreamPrefsEditor, peopleNames, namesHints,
+                    feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
+                    neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
 
-                    }
-                }
-            }
-        });
+
+        }
+        presenter.makePeopleWork(dreamPrefsEditor, getContext(), peopleNames, namesHints,
+                feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
+                neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
 
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[COLOR BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
@@ -474,8 +396,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            DreamChecklist checklist = DreamChecklist.getInstance();
-            checklist.setExperience(progress);
+        DreamChecklist checklist = DreamChecklist.getInstance();
+        checklist.setExperience(progress);
     }
 
     @Override
