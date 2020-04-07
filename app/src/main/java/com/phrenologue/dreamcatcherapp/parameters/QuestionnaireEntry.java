@@ -2,7 +2,7 @@ package com.phrenologue.dreamcatcherapp.parameters;
 
 public class QuestionnaireEntry {
     private static QuestionnaireEntry instance = null;
-
+    private int id;
     private int qOne; // 0 = No, 1 = Not Sure, 2 = Yes
     private int qTwo;
     private int qThree;
@@ -270,5 +270,13 @@ public class QuestionnaireEntry {
 
     public float getResultPercentage() {
         return (100 * (getFloatResult() / 38f));
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

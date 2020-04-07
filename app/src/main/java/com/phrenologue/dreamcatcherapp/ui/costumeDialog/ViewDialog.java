@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
@@ -21,6 +22,7 @@ public class ViewDialog {
 
     private Context context;
     MoonTextView percentage;
+    SharedPreferences sp;
 
     public void showDialog(Activity activity, Context context, String msg) {
         final Dialog dialog = new Dialog(activity);
@@ -30,6 +32,7 @@ public class ViewDialog {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         this.context = context;
         percentage = dialog.findViewById(R.id.txt_percentage);
+        sp = context.getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
         int res = Math.round(entry.getResultPercentage());
         String result = "%" + res + "";
@@ -38,6 +41,7 @@ public class ViewDialog {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sp.edit().putBoolean("fromLucidityQuestionnaire", true).apply();
                 Intent intent = new Intent(context, DreamChoosingActivity.class);
                 context.startActivity(intent);
             }

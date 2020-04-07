@@ -18,6 +18,8 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import maes.tech.intentanim.CustomIntent;
@@ -31,7 +33,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
     private FragmentDreamInfoInputTwoBinding binding;
     AppCompatEditText title, content, interpretation;
     Spinner day, month, year;
-    SharedPreferences sleepPrefs, dreamOne, dreamTwo;
+    SharedPreferences sleepPrefs, dreamOne, dreamTwo, dreamToLuciditySp;
 
     public DreamInfoInputTwoFragment() {
     }
@@ -52,6 +54,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
         sleepPrefs = getContext().getSharedPreferences("sleep", Context.MODE_PRIVATE);
         dreamOne = getContext().getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamTwo = getContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
+        dreamToLuciditySp = getContext().getSharedPreferences("dreamToLucidityQuestionnaire",
+                Context.MODE_PRIVATE);
 
         if (dreamTwo.getBoolean("descriptionTitleExists", false)) {
             title.setText(dreamTwo.getString("descriptionTitle", ""));
@@ -89,24 +93,31 @@ public class DreamInfoInputTwoFragment extends Fragment {
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dreamToLuciditySp.edit().putBoolean("fromDream", false).apply();
                 Users user = Users.getInstance();
                 user.checkSetLevelChange(getContext());
                 sleepPrefs.edit().clear().apply();
                 presenter.saveCompleteDream(getContext(), interpretation,
                         title, content, day, month, year, binding.loadingBg,
                         dreamOne.edit(), dreamTwo.edit());
+                Dream.delDream();
+                Sleep.delSleep();
             }
         });
 
         binding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 sleepPrefs.edit().clear().apply();
                 dreamOne.edit().clear().apply();
                 dreamTwo.edit().clear().apply();
+                Dream.delDream();
+                Sleep.delSleep();
                 Intent intent = new Intent(v.getContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(getContext(), "fadein-to-fadeout");
+
             }
         });
 

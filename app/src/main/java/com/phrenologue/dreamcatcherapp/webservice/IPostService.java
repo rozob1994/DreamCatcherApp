@@ -153,6 +153,16 @@ public interface IPostService {
                                   @Field("q19") int q19,
                                   @Field("result") int result);
 
+    @FormUrlEncoded
+    @POST("users/AddLucidityToDream.php")
+    Call<ResponseBody> addLucidityToDream(@Field("postId") int postId,
+                                          @Field("dreamLucidityLevel") int dreamLucidityLevel);
+
+    @FormUrlEncoded
+    @POST("users/AddPostIdToIdQ.php")
+    Call<ResponseBody> addPostIdToIdQ(@Field("postId") int postId,
+                                      @Field("id") int id);
+
     @GET("users/DreamSleepQuestCounts.php")
     Call<ResponseBody> getDreamSleepQuestCounts(@Query("uid") int uid);
 
@@ -185,4 +195,5 @@ public interface IPostService {
 
     @GET("users/PeopleProps.php")
     Call<ResponseBody> getPeopleProps(@Query("postId") int postId);
+
 }

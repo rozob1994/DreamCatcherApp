@@ -30,8 +30,8 @@ public class DreamChoosingActivity extends AppCompatActivity {
 
         dreamsRecycler = binding.dreamsRecycler;
         presenter = new DreamsPresenter(this);
-        presenter.getDescription(getApplicationContext(),
-                binding.loadingBg, dreamsRecycler, dreamCount);
+        presenter.getDescriptionForChoice(getApplicationContext(),
+                binding.loadingBg, dreamsRecycler);
 
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override
