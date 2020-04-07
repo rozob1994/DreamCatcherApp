@@ -210,5 +210,7 @@
     <string name="d_r_e_a_m_s">D R E A M S</string>
     <string name="dream_count">Dream Count</string>
     <string name="dream_hours">Dream Hours</string>
+    <string name="interpretation">Interpretation</string>
+    <string name="description">Description</string>
 
 </resources>
