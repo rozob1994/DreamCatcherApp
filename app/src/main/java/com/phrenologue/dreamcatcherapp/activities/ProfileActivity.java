@@ -1,5 +1,6 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -42,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
     private AppCompatButton btnCancel;
+    private SharedPreferences dreamChoosingOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,8 @@ public class ProfileActivity extends AppCompatActivity {
         edt_profile=findViewById(R.id.lin_edt_profile);
         behavior= BottomSheetBehavior.from(edt_profile);
         btnCancel= findViewById(R.id.btn_cancel_edt);
+        dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
+        dreamChoosingOff.edit().clear().apply();
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

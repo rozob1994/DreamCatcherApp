@@ -129,7 +129,7 @@ public class ApiPostCaller {
 
     public void postPeople(IResponseMessage responseMessage) {
         Dream dream = Dream.getInstance();
-        DreamPeople people = dream.getDreamPeople();
+        DreamPeople people = DreamPeople.getInstance();
         Call<ResponseBody> call = postService.postPeople(dream.getPostId(), people.getFirstName(),
                 people.getFirstImpression(), people.getSecondName(), people.getSecondImpression(),
                 people.getThirdName(), people.getThirdImpression(), people.getFourthName(),
@@ -277,7 +277,7 @@ public class ApiPostCaller {
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postDreams(dream.getPostId(), user.getUid(),
-                checklist.getRemembered(), "People.Names",
+                1, "People.Names",
                 1, 0,
                 sound.getSound(), sound.getMusical(),
                 checklist.getGrayScale(),
@@ -464,7 +464,7 @@ public class ApiPostCaller {
     }
 
     public void getDreamDescription(IResponseMessage responseMessage) {
-        Call<ResponseBody> call = postService.getDescription(Users.getInstance().getUid());
+        Call<ResponseBody> call = postService.getAllDreams(Users.getInstance().getUid());
         Log.e("", "");
         call.enqueue(new Callback<ResponseBody>() {
             @Override

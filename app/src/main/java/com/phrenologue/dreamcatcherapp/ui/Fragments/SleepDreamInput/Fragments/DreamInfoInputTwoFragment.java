@@ -18,8 +18,6 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import maes.tech.intentanim.CustomIntent;
@@ -100,8 +98,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
                 presenter.saveCompleteDream(getContext(), interpretation,
                         title, content, day, month, year, binding.loadingBg,
                         dreamOne.edit(), dreamTwo.edit());
-                Dream.delDream();
-                Sleep.delSleep();
+                /**Dream.delDream();
+                Sleep.delSleep();**/
             }
         });
 
@@ -112,8 +110,8 @@ public class DreamInfoInputTwoFragment extends Fragment {
                 sleepPrefs.edit().clear().apply();
                 dreamOne.edit().clear().apply();
                 dreamTwo.edit().clear().apply();
-                Dream.delDream();
-                Sleep.delSleep();
+                /**Dream.delDream();
+                Sleep.delSleep();**/
                 Intent intent = new Intent(v.getContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(getContext(), "fadein-to-fadeout");

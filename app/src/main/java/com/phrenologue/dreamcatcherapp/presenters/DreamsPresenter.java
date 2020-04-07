@@ -45,13 +45,36 @@ public class DreamsPresenter {
                 List<String> titles = new ArrayList<String>();
                 List<String> contents = new ArrayList<String>();
                 List<Integer> postIds = new ArrayList<>();
+                List<Integer> sounds = new ArrayList<>();
+                List<Integer> musics = new ArrayList<>();
+                List<Integer> grayScales = new ArrayList<>();
+                List<Integer> experiences = new ArrayList<>();
+                List<Integer> lucidityLevels = new ArrayList<>();
+                List<Integer> days = new ArrayList<>();
+                List<Integer> months = new ArrayList<>();
+                List<Integer> years = new ArrayList<>();
+                List<String> interpretations = new ArrayList<>();
+                List<Integer> sleepTimes = new ArrayList<>();
+
 
                 for (int j = 0; j < jsonArrays.size(); j++) {
-                    titles.add(jsonArrays.get(j).getString(0));
-                    contents.add(jsonArrays.get(j).getString(1));
+                    titles.add(jsonArrays.get(j).getString(1));
+                    contents.add(jsonArrays.get(j).getString(0));
                     postIds.add(jsonArrays.get(j).getInt(2));
+                    sounds.add(jsonArrays.get(j).getInt(3));
+                    musics.add(jsonArrays.get(j).getInt(4));
+                    grayScales.add(jsonArrays.get(j).getInt(5));
+                    experiences.add(jsonArrays.get(j).getInt(6));
+                    //lucidityLevels.add(jsonArrays.get(j).getInt(7));
+                    days.add(jsonArrays.get(j).getInt(8));
+                    months.add(jsonArrays.get(j).getInt(9));
+                    years.add(jsonArrays.get(j).getInt(10));
+                    interpretations.add(jsonArrays.get(j).getString(11));
+                    sleepTimes.add(jsonArrays.get(j).getInt(12));
                 }
-                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context, titles, contents, postIds);
+                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
+                        titles, contents, postIds, sounds, musics, grayScales,experiences,
+                        lucidityLevels,days,months,years,interpretations,sleepTimes);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
@@ -87,13 +110,36 @@ public class DreamsPresenter {
                 List<String> titles = new ArrayList<String>();
                 List<String> contents = new ArrayList<String>();
                 List<Integer> postIds = new ArrayList<>();
+                List<Integer> sounds = new ArrayList<>();
+                List<Integer> musics = new ArrayList<>();
+                List<Integer> grayScales = new ArrayList<>();
+                List<Integer> experiences = new ArrayList<>();
+                List<Integer> lucidityLevels = new ArrayList<>();
+                List<Integer> days = new ArrayList<>();
+                List<Integer> months = new ArrayList<>();
+                List<Integer> years = new ArrayList<>();
+                List<String> interpretations = new ArrayList<>();
+                List<Integer> sleepTimes = new ArrayList<>();
+
 
                 for (int j = 0; j < jsonArrays.size(); j++) {
-                    titles.add(jsonArrays.get(j).getString(0));
-                    contents.add(jsonArrays.get(j).getString(1));
+                    titles.add(jsonArrays.get(j).getString(1));
+                    contents.add(jsonArrays.get(j).getString(0));
                     postIds.add(jsonArrays.get(j).getInt(2));
+                    sounds.add(jsonArrays.get(j).getInt(3));
+                    musics.add(jsonArrays.get(j).getInt(4));
+                    grayScales.add(jsonArrays.get(j).getInt(5));
+                    experiences.add(jsonArrays.get(j).getInt(6));
+                    lucidityLevels.add(jsonArrays.get(j).getInt(7));
+                    days.add(jsonArrays.get(j).getInt(8));
+                    months.add(jsonArrays.get(j).getInt(9));
+                    years.add(jsonArrays.get(j).getInt(10));
+                    interpretations.add(jsonArrays.get(j).getString(11));
+                    sleepTimes.add(jsonArrays.get(j).getInt(12));
                 }
-                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context, titles, contents, postIds);
+                DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
+                        titles, contents, postIds, sounds, musics, grayScales,experiences,
+                        lucidityLevels,days,months,years,interpretations,sleepTimes);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);

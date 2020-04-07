@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -59,6 +60,9 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         int postId = getIntent().getIntExtra("postId", 0);
+        int sleepTime = getIntent().getIntExtra("sleepTime", 0);
+        String dateLoaded = getIntent().getStringExtra("date");
+        sleep.setTime(sleepTime);
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
@@ -112,23 +116,38 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             public void onSuccess(Object response) throws JSONException {
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
-                Log.e("", "");
+
                 people.setExistent(jsonObject.getInt("dreamPeopleExist"));
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
+                if (checklist.getGrayScale() == 1){
+                    binding.color.setImageResource(R.drawable.button_grayscale_on);
+                }
 
                 date.setDayOfMonth(jsonObject.getInt("dayOfMonth"));
                 date.setMonth(jsonObject.getInt("month"));
                 date.setYear(jsonObject.getInt("year"));
 
                 interpretation.setInterpretation(jsonObject.getString("interpretation"));
+                binding.dreamsPackageInterpretation.setText(interpretation.getInterpretation());
 
-                description.setTitle(jsonObject.getString("dreamContent"));
-                description.setContent(jsonObject.getString("dreamTitle"));
+                description.setTitle(jsonObject.getString("dreamTitle"));
+                description.setContent(jsonObject.getString("dreamContent"));
+                binding.dreamsPackageTitle.setText(description.getTitle());
+                binding.dreamsPackageDescription.setText(description.getContent());
 
                 sound.setSound(jsonObject.getInt("dreamSound"));
                 sound.setMusical(jsonObject.getInt("dreamMusical"));
+                if (sound.getSound() == 0) {
+                    binding.sound.setImageResource(R.drawable.button_non_musical_on);
+                }
+                if (sleep.getTime()==2) {
+                    binding.dayTime.setImageResource(R.drawable.ic_night_symbol);
+                    binding.dayTime.setColorFilter(R.color.ic_night_light);
+                }
+
+                binding.titleDate.setText(dateLoaded);
 
                 lucidity.setLucidityLevel(jsonObject.getInt("dreamLucidityLevel"));
 

@@ -13,26 +13,26 @@ import retrofit2.http.Query;
 public interface IPostService {
     @FormUrlEncoded
     @POST("users/postdream.php")
-    Call<ResponseBody> postDreams(@Field("postId") int postId,
-                                  @Field("uid") int uid,
-                                  @Field("dreamRemembered") int dreamRemembered,
-                                  @Field("dreamPeopleName") String dreamPeopleName,
-                                  @Field("dreamPeopleExist") int dreamPeopleExist,
-                                  @Field("dreamPeopleImpression") int dreamPeopleImpression,
-                                  @Field("dreamSound") int dreamSound,
-                                  @Field("dreamMusical") int dreamMusical,
-                                  @Field("dreamGrayScale") int dreamGrayScale,
-                                  @Field("dreamExperience") int dreamExperience,
-                                  @Field("dreamLucidityLevel") int dreamLucidityLevel,
-                                  @Field("dreamTitle") String dreamTitle,
-                                  @Field("dreamContent") String dreamContent,
-                                  @Field("dayOfWeek") int dayOfWeek,
-                                  @Field("dayOfMonth") int dayOfMonth,
-                                  @Field("dayOfYear") int dayOfYear,
-                                  @Field("weekOfMonth") int weekOfMonth,
-                                  @Field("month") int month,
-                                  @Field("year") int year,
-                                  @Field("interpretation") String interpretation);
+    Call<ResponseBody> postDreams(@Nullable @Field("postId") int postId,
+                                  @Nullable @Field("uid") int uid,
+                                  @Nullable @Field("dreamRemembered") int dreamRemembered,
+                                  @Nullable @Field("dreamPeopleName") String dreamPeopleName,
+                                  @Nullable @Field("dreamPeopleExist") int dreamPeopleExist,
+                                  @Nullable @Field("dreamPeopleImpression") int dreamPeopleImpression,
+                                  @Nullable @Field("dreamSound") int dreamSound,
+                                  @Nullable @Field("dreamMusical") int dreamMusical,
+                                  @Nullable @Field("dreamGrayScale") int dreamGrayScale,
+                                  @Nullable @Field("dreamExperience") int dreamExperience,
+                                  @Nullable @Field("dreamLucidityLevel") int dreamLucidityLevel,
+                                  @Nullable @Field("dreamTitle") String dreamTitle,
+                                  @Nullable @Field("dreamContent") String dreamContent,
+                                  @Nullable @Field("dayOfWeek") int dayOfWeek,
+                                  @Nullable @Field("dayOfMonth") int dayOfMonth,
+                                  @Nullable @Field("dayOfYear") int dayOfYear,
+                                  @Nullable @Field("weekOfMonth") int weekOfMonth,
+                                  @Nullable @Field("month") int month,
+                                  @Nullable @Field("year") int year,
+                                  @Nullable @Field("interpretation") String interpretation);
 
     @FormUrlEncoded
     @POST("users/EditDream.php")
@@ -82,27 +82,27 @@ public interface IPostService {
 
     @FormUrlEncoded
     @POST("users/PostPeople.php")
-    Call<ResponseBody> postPeople(@Field("postId") int postId,
-                                  @Field("firstPerson") String firstPerson,
-                                  @Field("firstImpression") int firstImpression,
-                                  @Field("secondPerson") String secondPerson,
-                                  @Field("secondImpression") int secondImpression,
-                                  @Field("thirdPerson") String thirdPerson,
-                                  @Field("thirdImpression") int thirdImpression,
-                                  @Field("fourthPerson") String fourthPerson,
-                                  @Field("fourthImpression") int fourthImpression,
-                                  @Field("fifthPerson") String fifthPerson,
-                                  @Field("fifthImpression") int fifthImpression,
-                                  @Field("sixthPerson") String sixthPerson,
-                                  @Field("sixthImpression") int sixthImpression,
-                                  @Field("seventhPerson") String seventhPerson,
-                                  @Field("seventhImpression") int seventhImpression,
-                                  @Field("eighthPerson") String eighthPerson,
-                                  @Field("eighthImpression") int eighthImpression,
-                                  @Field("ninthPerson") String ninthPerson,
-                                  @Field("ninthImpression") int ninthImpression,
-                                  @Field("tenthPerson") String tenthPerson,
-                                  @Field("tenthImpression") int tenthImpression);
+    Call<ResponseBody> postPeople(@Nullable @Field("postId") int postId,
+                                  @Nullable @Field("firstPerson") String firstPerson,
+                                  @Nullable @Field("firstImpression") int firstImpression,
+                                  @Nullable @Field("secondPerson") String secondPerson,
+                                  @Nullable @Field("secondImpression") int secondImpression,
+                                  @Nullable @Field("thirdPerson") String thirdPerson,
+                                  @Nullable @Field("thirdImpression") int thirdImpression,
+                                  @Nullable @Field("fourthPerson") String fourthPerson,
+                                  @Nullable @Field("fourthImpression") int fourthImpression,
+                                  @Nullable @Field("fifthPerson") String fifthPerson,
+                                  @Nullable @Field("fifthImpression") int fifthImpression,
+                                  @Nullable @Field("sixthPerson") String sixthPerson,
+                                  @Nullable @Field("sixthImpression") int sixthImpression,
+                                  @Nullable @Field("seventhPerson") String seventhPerson,
+                                  @Nullable @Field("seventhImpression") int seventhImpression,
+                                  @Nullable @Field("eighthPerson") String eighthPerson,
+                                  @Nullable @Field("eighthImpression") int eighthImpression,
+                                  @Nullable @Field("ninthPerson") String ninthPerson,
+                                  @Nullable @Field("ninthImpression") int ninthImpression,
+                                  @Nullable @Field("tenthPerson") String tenthPerson,
+                                  @Nullable @Field("tenthImpression") int tenthImpression);
 
     @FormUrlEncoded
     @POST("users/EditPeople.php")
@@ -187,8 +187,8 @@ public interface IPostService {
     @GET("users/PercentLucidity.php")
     Call<ResponseBody> getLucidity(@Query("uid") int uid);
 
-    @GET("users/DreamDescription.php")
-    Call<ResponseBody> getDescription(@Query("uid") int uid);
+    @GET("users/AllDreams.php")
+    Call<ResponseBody> getAllDreams(@Query("uid") int uid);
 
     @GET("users/alldreamprops.php")
     Call<ResponseBody> getDreamProps(@Query("postId") int postId);

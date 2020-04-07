@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -28,20 +30,50 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPackagesActivityAdapter.DreamsPackagesHolder> {
-    List<String> titles;
-    List<String> contents;
-    List<Integer> postIds;
-    Context context;
-    LayoutInflater inflater;
-    SharedPreferences sp;
+    private List<String> titles;
+    private List<String> contents;
+    private List<Integer> postIds;
+    private List<Integer> sounds;
+    private List<Integer> musics;
+    private List<Integer> grayScales;
+    private List<Integer> experiences;
+    private List<Integer> lucidityLevels;
+    private List<Integer> days;
+    private List<Integer> months;
+    private List<Integer> years;
+    private List<String> interpretations;
+    private List<Integer> sleepTimes;
+    private Context context;
+    private LayoutInflater inflater;
+    private SharedPreferences sp;
 
     public DreamsPackagesActivityAdapter(Context context, @Nullable List<String> titles,
                                          @Nullable List<String> contents,
-                                         @Nullable List<Integer> postIds) {
+                                         @Nullable List<Integer> postIds,
+                                         List<Integer> sounds,
+                                         List<Integer> musics,
+                                         List<Integer> grayScales,
+                                         List<Integer> experiences,
+                                         List<Integer> lucidityLevels,
+                                         List<Integer> days,
+                                         List<Integer> months,
+                                         List<Integer> years,
+                                         List<String> interpretations,
+                                         List<Integer> sleepTimes) {
         this.titles = titles;
         this.contents = contents;
         this.context = context;
         this.postIds = postIds;
+        this.sounds = sounds;
+        this.musics = musics;
+        this.grayScales = grayScales;
+        this.experiences = experiences;
+        this.lucidityLevels = lucidityLevels;
+        this.days = days;
+        this.months = months;
+        this.years = years;
+        this.interpretations = interpretations;
+        this.sleepTimes = sleepTimes;
         inflater = LayoutInflater.from(context);
 
     }
@@ -58,8 +90,21 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
         String titlec = titles.get(position);
         String contentc = contents.get(position);
+        int dayNightC = sleepTimes.get(position);
+        String day = days.get(position) + "";
+        String month = months.get(position) + "";
+        String year = years.get(position) + "";
+        String date = year + "/" + month + "/" + day;
+
         holder.title.setText(titlec);
         holder.content.setText(contentc);
+
+        if (dayNightC == 2) {
+            holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
+            holder.dayNight.setColorFilter(R.color.ic_night_light);
+        }
+
+        holder.dateTitle.setText(date);
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +114,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                 dream.setPostId(postId1);
                 ApiPostCaller postCaller = new ApiPostCaller();
                 sp = context.getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
-                if (sp.getBoolean("fromLucidityQuestionnaire", false)){
+                if (sp.getBoolean("fromLucidityQuestionnaire", false)) {
                     postCaller.addPostIdToIdQ(new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
@@ -88,31 +133,33 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             context.startActivity(intent);
                                         } else {
-                                            Toast.makeText(context, "Error Editing Dream.",Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Error Editing Dream.", Toast.LENGTH_LONG).show();
                                         }
                                     }
 
                                     @Override
                                     public void onFailure(String errorMessage) {
-                                        Toast.makeText(context, "Connection Error",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
                                     }
                                 });
                             } else {
-                                Toast.makeText(context, "Error Editing Questionnaire Results.",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Error Editing Questionnaire Results.", Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(String errorMessage) {
-                            Toast.makeText(context, "Connection Error.",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Connection Error.", Toast.LENGTH_LONG).show();
                         }
                     }, postId1);
 
 
                 } else {
-                    Intent intent= new Intent(context, ExpandedDreamActivity.class);
+                    Intent intent = new Intent(context, ExpandedDreamActivity.class);
                     int postId = postIds.get(position);
                     intent.putExtra("postId", postId);
+                    intent.putExtra("sleepTime", dayNightC);
+                    intent.putExtra("date", date);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -129,12 +176,17 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     class DreamsPackagesHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView title;
         private AppCompatTextView content;
+        private AppCompatImageView dayNight;
+        private MoonTextView dateTitle;
         private RelativeLayout relativeLayout;
+
         public DreamsPackagesHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.dreams_package_title);
             content = itemView.findViewById(R.id.dreams_package_description);
-            relativeLayout= itemView.findViewById(R.id.rel_dreams_package);
+            dayNight = itemView.findViewById(R.id.package_day_time);
+            dateTitle = itemView.findViewById(R.id.title_date);
+            relativeLayout = itemView.findViewById(R.id.rel_dreams_package);
         }
     }
 }
