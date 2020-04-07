@@ -41,8 +41,9 @@
             android:id="@+id/rel_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="15dp">
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/dreams_package_title"
