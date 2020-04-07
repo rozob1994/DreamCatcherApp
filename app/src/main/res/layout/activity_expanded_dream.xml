@@ -33,7 +33,7 @@
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="550dp"
         android:layout_below="@+id/card_view"
         android:layout_gravity="center">
 
@@ -151,12 +151,12 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/btn_edt_dream"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/bg_simple_rounded"
             android:backgroundTint="@color/txt_glow"
             android:clickable="true"
@@ -167,17 +167,15 @@
             app:srcCompat="@drawable/ic_edit_black_24dp"
             app:tint="@color/white" />
 
+
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/bg_simple"
-            android:backgroundTint="@color/red"
+            android:background="@drawable/bg_gradient"
+            android:backgroundTint="#6AB2B2B2"
             android:clickable="true"
             android:focusable="true"
             android:padding="10dp"
@@ -187,5 +185,6 @@
             app:tint="@color/white" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

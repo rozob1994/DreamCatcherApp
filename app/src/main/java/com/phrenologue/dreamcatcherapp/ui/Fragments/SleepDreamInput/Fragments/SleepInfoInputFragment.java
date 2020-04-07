@@ -178,7 +178,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
             }
         });
 
-        binding.btnDidntHaveADream.setOnClickListener(new View.OnClickListener() {
+        binding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Users user = Users.getInstance();

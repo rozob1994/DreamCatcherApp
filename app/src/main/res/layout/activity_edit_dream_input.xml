@@ -8,22 +8,9 @@
     tools:context=".activities.EditDreamInputActivity"
     xmlns:blurkit="http://schemas.android.com/apk/res-auto">
 
-
-    <io.alterac.blurkit.BlurLayout
-        android:id="@+id/blur_layout_sleep_dream_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        blurkit:blk_blurRadius="5"
-        blurkit:blk_downscaleFactor="0.025"
-        blurkit:blk_fps="60">
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/sleep_dream_input_vp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-    </io.alterac.blurkit.BlurLayout>
-
-
 
 </RelativeLayout>

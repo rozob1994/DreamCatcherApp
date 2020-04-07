@@ -390,6 +390,8 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
             }
         });
 
+
+
         return view;
 
     }

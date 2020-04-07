@@ -219,23 +219,23 @@
                                 android:id="@+id/hint_feelings"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
                                 android:layout_below="@id/title_feelings"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -321,12 +321,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -403,27 +403,28 @@
                             </RelativeLayout>
 
                             //===================== Second Person ==================================
+
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings2"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on2"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings2"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -509,12 +510,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off2"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings2"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -594,25 +595,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings3"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off2"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on3"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings3"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -698,12 +699,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off3"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings3"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -783,25 +784,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings4"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off3"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on4"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings4"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -887,12 +888,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off4"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings4"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -968,27 +969,28 @@
                             </RelativeLayout>
 
                             //===================== Fifth Person ===================================
+
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings5"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off4"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on5"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings5"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -1074,12 +1076,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off5"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings5"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -1159,25 +1161,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings6"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off5"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on6"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings6"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -1263,12 +1265,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off6"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings2"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -1348,25 +1350,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings7"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off6"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on7"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings7"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -1452,12 +1454,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off7"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings7"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -1537,25 +1539,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings8"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off7"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on8"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings8"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -1641,12 +1643,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off8"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings8"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -1726,25 +1728,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings9"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off8"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on9"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings9"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -1830,12 +1832,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off9"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings9"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -1915,25 +1917,25 @@
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/hint_feelings10"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/rel_feelings_off9"
                                 android:layout_marginTop="8dp"
                                 android:text="@string/hint_feelings"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hint_size" />
+                                android:textSize="@dimen/hint_size"
+                                android:visibility="gone" />
 
                             //feelings_on
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_on10"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings10"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_on
 
@@ -2019,12 +2021,12 @@
 
                             <RelativeLayout
                                 android:id="@+id/rel_feelings_off10"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/hint_feelings10"
                                 android:layout_marginTop="16dp"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:visibility="gone">
 
                                 //lin_positive_off
 
@@ -2600,7 +2602,6 @@
                     android:textSize="@dimen/title_size" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

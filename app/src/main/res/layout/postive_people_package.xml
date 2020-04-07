@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
+    android:elevation="10dp"
+    android:background="#ABFFC107"
+    android:id="@+id/lin_people_positive"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:layout_centerInParent="true"
+        android:text="name"
+        android:textSize="32sp"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
