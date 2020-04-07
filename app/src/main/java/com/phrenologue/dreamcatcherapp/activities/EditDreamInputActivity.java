@@ -2,15 +2,13 @@ package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.EditDreamInfoInputAdapter;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityEditDreamInputBinding;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.EditDreamInfoInputAdapter;
 
 public class EditDreamInputActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
@@ -29,24 +27,8 @@ public class EditDreamInputActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-            homeIntent.addCategory( Intent.CATEGORY_HOME );
-            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(homeIntent);
-            return;
-        }
+        Intent intent = new Intent(getApplicationContext(), ExpandedDreamActivity.class);
+        startActivity(intent);
+        finish();
 
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
-    }
-
-}
+}}
