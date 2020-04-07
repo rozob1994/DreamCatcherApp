@@ -52,6 +52,10 @@ public class QuestionFifteenFragment extends Fragment {
         noBtn = binding.checkboxNoBtn;
         questionNo = 15;
 
+        if (sp.getBoolean("hasAns" + questionNo + "", false)) {
+            presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
+        }
+
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
         binding.questionFifteen.setTypeface(Typeface.DEFAULT_BOLD);

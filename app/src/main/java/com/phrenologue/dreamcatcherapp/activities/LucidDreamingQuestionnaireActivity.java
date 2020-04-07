@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -35,7 +36,8 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity {
     }
     @Override
     public void onBackPressed() {
-
+        SharedPreferences sp = getSharedPreferences("questionnaire", MODE_PRIVATE);
+        sp.edit().clear().apply();
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
         CustomIntent.customType(LucidDreamingQuestionnaireActivity.this, "fadein-to-fadeout");
