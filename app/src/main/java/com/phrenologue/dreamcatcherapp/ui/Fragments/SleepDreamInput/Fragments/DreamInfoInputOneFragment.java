@@ -201,7 +201,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding.btnSoundsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setSoundBtnOff(dreamPrefsEditor, peopleExpanded, peopleClosed);
+                presenter.setSoundBtnOff(dreamPrefsEditor, soundsExpanded, soundsClosed);
             }
         });
 
