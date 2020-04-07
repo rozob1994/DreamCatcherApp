@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionOneBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
+import java.util.Objects;
+
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 
@@ -29,6 +33,7 @@ public class QuestionOneFragment extends Fragment {
     private int questionNo;
     private QuestionnairePresenter presenter;
 
+
     public QuestionOneFragment() {
         // Required empty public constructor
     }
@@ -41,25 +46,30 @@ public class QuestionOneFragment extends Fragment {
         binding = FragmentQuestionOneBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
+                Context.MODE_PRIVATE);
         presenter = new QuestionnairePresenter();
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
         questionNo = 1;
 
-        presenter.saveAns(questionNo,yesBtn,notSureBtn,noBtn);
+        if (sp.getBoolean("hasAns" + questionNo + "", false)) {
+            presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
+        }
+
+        presenter.saveAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
 
         binding.questionOne.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionOneTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionOne.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
 
-
-
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                ;
                 QuestionTwoFragment fragment = new QuestionTwoFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);

@@ -42,42 +42,61 @@ public class QuestionnaireEntry {
         switch (qNumber) {
             case 1:
                 setqOne(ans);
+                break;
             case 2:
                 setqTwo(ans);
+                break;
             case 3:
                 setqThree(ans);
+                break;
             case 4:
                 setqFour(ans);
+                break;
             case 5:
                 setqFive(ans);
+                break;
             case 6:
                 setqSix(ans);
+                break;
             case 7:
                 setqSeven(ans);
+                break;
             case 8:
                 setqEight(ans);
+                break;
             case 9:
                 setqNine(ans);
+                break;
             case 10:
                 setqTen(ans);
+                break;
             case 11:
                 setqEleven(ans);
+                break;
             case 12:
                 setqTwelve(ans);
+                break;
             case 13:
                 setqThirteen(ans);
+                break;
             case 14:
                 setqFourteen(ans);
+                break;
             case 15:
                 setqFifteen(ans);
+                break;
             case 16:
                 setqSixteen(ans);
+                break;
             case 17:
                 setqSeventeen(ans);
+                break;
             case 18:
                 setqEighteen(ans);
+                break;
             case 19:
                 setqNineteen(ans);
+                break;
         }
     }
 

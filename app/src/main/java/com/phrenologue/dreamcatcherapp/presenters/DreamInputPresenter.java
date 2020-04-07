@@ -863,30 +863,45 @@ public class DreamInputPresenter {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     boolean status = jsonObject.getBoolean("status");
                     if (status) {
-                        postCaller.addDateToSleep(new IResponseMessage() {
+                        postCaller.editPeople(new IResponseMessage() {
                             @Override
                             public void onSuccess(Object response) throws JSONException {
                                 JSONObject jsonObject1 = new JSONObject(response.toString());
-                                boolean status1 = jsonObject1.getBoolean("status");
-                                if (status1) {
-                                    dreamPref.clear().apply();
-                                    dreamPrefTwo.clear().apply();
-                                    Dream.delDream();
-                                    Sleep.delSleep();
-                                    Intent intent = new Intent(context, ProfileActivity.class);
-                                    context.startActivity(intent);
-                                } else {
-                                    loadingBg.setVisibility(View.GONE);
-                                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                boolean status = jsonObject1.getBoolean("status");
+                                if (status){
+                                    postCaller.addDateToSleep(new IResponseMessage() {
+                                        @Override
+                                        public void onSuccess(Object response) throws JSONException {
+                                            JSONObject jsonObject1 = new JSONObject(response.toString());
+                                            boolean status1 = jsonObject1.getBoolean("status");
+                                            if (status1) {
+                                                dreamPref.clear().apply();
+                                                dreamPrefTwo.clear().apply();
+                                                Dream.delDream();
+                                                Sleep.delSleep();
+                                                Intent intent = new Intent(context, ProfileActivity.class);
+                                                context.startActivity(intent);
+                                            } else {
+                                                loadingBg.setVisibility(View.GONE);
+                                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(String errorMessage) {
+                                            loadingBg.setVisibility(View.GONE);
+                                            Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                                 }
                             }
 
                             @Override
                             public void onFailure(String errorMessage) {
-                                loadingBg.setVisibility(View.GONE);
-                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+
                             }
                         });
+
 
                     } else {
                         loadingBg.setVisibility(View.GONE);

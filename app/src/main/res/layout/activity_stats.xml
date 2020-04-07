@@ -38,7 +38,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.tabs.TabLayout
-        app:tabSelectedTextColor=""
+        app:tabSelectedTextColor="#86000000"
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

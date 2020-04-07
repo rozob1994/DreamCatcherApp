@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionFourteenBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
+
+import java.util.Objects;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
@@ -40,13 +44,15 @@ public class QuestionFourteenFragment extends Fragment {
         binding= FragmentQuestionFourteenBinding.inflate(inflater,container,false);
         View view= binding.getRoot();
 
+        SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
+                Context.MODE_PRIVATE);
         presenter = new QuestionnairePresenter();
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
         questionNo = 14;
 
-        presenter.saveAns(questionNo,yesBtn,notSureBtn,noBtn);
+        presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
         binding.questionFourteen.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionFourteenTitle.setTypeface(Typeface.DEFAULT_BOLD);

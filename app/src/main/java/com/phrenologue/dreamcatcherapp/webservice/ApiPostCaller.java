@@ -165,6 +165,36 @@ public class ApiPostCaller {
         });
     }
 
+    public void editPeople(IResponseMessage responseMessage) {
+        Dream dream = Dream.getInstance();
+        DreamPeople people = DreamPeople.getInstance();
+        Call<ResponseBody> call = postService.editPeople(dream.getPostId(), people.getFirstName(),
+                people.getFirstImpression(), people.getSecondName(), people.getSecondImpression(),
+                people.getThirdName(), people.getThirdImpression(), people.getFourthName(),
+                people.getFourthImpression(), people.getFifthName(), people.getFifthImpression(),
+                people.getSixthName(), people.getSixthImpression(), people.getSeventhName(),
+                people.getSeventhImpression(), people.getEighthName(), people.getEighthImpression(),
+                people.getNinthName(), people.getNinthImpression(), people.getTenthName(),
+                people.getTenthImpression());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void addDateToSleep(IResponseMessage responseMessage) {
         Date date = Date.getInstance();
         Sleep sleep = Sleep.getInstance();
