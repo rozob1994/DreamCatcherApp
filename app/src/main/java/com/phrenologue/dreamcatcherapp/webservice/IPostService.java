@@ -163,6 +163,9 @@ public interface IPostService {
     Call<ResponseBody> addPostIdToIdQ(@Field("postId") int postId,
                                       @Field("id") int id);
 
+    @GET("users/QResult.php")
+    Call<ResponseBody> getQResult(@Query("postId") int postId);
+
     @GET("users/DreamSleepQuestCounts.php")
     Call<ResponseBody> getDreamSleepQuestCounts(@Query("uid") int uid);
 

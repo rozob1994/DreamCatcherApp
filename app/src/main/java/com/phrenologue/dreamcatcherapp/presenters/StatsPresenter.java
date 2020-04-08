@@ -19,10 +19,12 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -337,6 +339,42 @@ public class StatsPresenter {
                 moodChart.setData(pieData);
                 moodChart.invalidate();
                 moodChart.setDrawHoleEnabled(false);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                Log.e("", "");
+            }
+        });
+    }
+
+    public static void drawSingleLucidityLevel(PieChart lucidityChart, int postId,
+                                               MoonTextView percentageText) {
+        ApiPostCaller postCaller = new ApiPostCaller();
+        postCaller.getQResult(postId, new IResponseMessage() {
+            @Override
+            public void onSuccess(Object response) throws JSONException {
+
+                JSONObject jsonObject = new JSONObject(response.toString());
+                JSONArray jsonArray = jsonObject.getJSONArray("0");
+
+                boolean status = jsonObject.getBoolean("status");
+                if (status) {
+                    int result = jsonArray.getJSONObject(0).getInt("result");
+                    int percentage = (int) (((float) result / 38f) * 100);
+                    String percentageStr = "%" + percentage + "" + " Lucid";
+                    percentageText.setText(percentageStr);
+                    int remainder = 100 - percentage;
+                    ArrayList<PieEntry> entries = new ArrayList<>();
+                    entries.add(new PieEntry(percentage, "Lucid"));
+                    entries.add(new PieEntry(remainder, "Not Lucid"));
+                    PieDataSet dataSet = new PieDataSet(entries, "Lucidity Percentage");
+                    PieData pieData = new PieData(dataSet);
+                    lucidityChart.setData(pieData);
+                    lucidityChart.invalidate();
+                    lucidityChart.setDrawHoleEnabled(false);
+                }
+
             }
 
             @Override
