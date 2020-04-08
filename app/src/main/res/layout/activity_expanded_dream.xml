@@ -45,6 +45,7 @@
             android:layout_marginRight="16dp">
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                android:textAllCaps="true"
                 android:id="@+id/dreams_package_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +118,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/day_time"
-                    app:srcCompat="@drawable/button_colorful_on" />
+                    app:srcCompat="@drawable/ic_colorful" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/sound"
@@ -125,7 +126,8 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/color"
-                    app:srcCompat="@drawable/button_musical_on" />
+                    app:srcCompat="@drawable/ic_musical"
+                    app:tint="@color/txt_glow"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/food"

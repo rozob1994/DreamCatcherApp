@@ -93,11 +93,11 @@
                         android:backgroundTint="@color/black">
 
                         <androidx.appcompat.widget.AppCompatSeekBar
-                            style="@style/CustomSeekbar"
                             android:id="@+id/slider_mood"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:thumb="@drawable/ic_cry_emoji"
+                            android:thumbTint="@color/white"
                             android:thumbOffset="2dp" />
 
                     </RelativeLayout>

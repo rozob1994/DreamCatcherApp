@@ -33,6 +33,15 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity {
         //mPager = binding.questionsVp;
         //mPager.setAdapter(adapter);
 
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+                CustomIntent.customType(LucidDreamingQuestionnaireActivity.this,"fadein-to-fadeout");
+                finish();
+            }
+        });
     }
     @Override
     public void onBackPressed() {

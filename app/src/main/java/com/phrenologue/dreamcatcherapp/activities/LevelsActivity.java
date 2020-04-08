@@ -26,15 +26,6 @@ public class LevelsActivity extends AppCompatActivity {
         binding.btnBackToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        binding.btnBackToProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(LevelsActivity.this,"fadein-to-fadeout");

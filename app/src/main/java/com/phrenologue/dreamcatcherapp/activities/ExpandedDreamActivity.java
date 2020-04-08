@@ -193,7 +193,39 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.expandableDescription.expand();
+                if (!clicked) {
+                    binding.expandableDescription.expand();
+                    clicked = true;
+                } else {
+                    binding.expandableDescription.collapse();
+                    clicked = false;
+                }
+            }
+        });
+
+        binding.relInterpretation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!clicked) {
+                    binding.expandableInterpretation.expand();
+                    clicked = true;
+                } else {
+                    binding.expandableInterpretation.collapse();
+                    clicked = false;
+                }
+            }
+        });
+
+        binding.relPeople.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!clicked) {
+                    binding.expandablePeople.expand();
+                    clicked = true;
+                } else {
+                    binding.expandablePeople.collapse();
+                    clicked = false;
+                }
             }
         });
 
