@@ -117,7 +117,10 @@ public class DreamExpandedPresenter {
 
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
                 if (checklist.getGrayScale() == 1) {
-                    color.setImageResource(R.drawable.button_grayscale_on);
+                    color.setImageResource(R.drawable.ic_colorful);
+                    color.setColorFilter(R.color.gray);
+                } else if (checklist.getGrayScale()==2) {
+                    color.setImageResource(R.drawable.ic_colorful);
                 }
 
                 date.setDayOfMonth(jsonObject.getInt("dayOfMonth"));
@@ -134,8 +137,12 @@ public class DreamExpandedPresenter {
 
                 sound.setSound(jsonObject.getInt("dreamSound"));
                 sound.setMusical(jsonObject.getInt("dreamMusical"));
-                if (sound.getSound() == 0) {
-                    soundImg.setImageResource(R.drawable.button_non_musical_on);
+                if (sound.getSound() == 1) {
+                    soundImg.setImageResource(R.drawable.ic_musical);
+                    soundImg.setColorFilter(R.color.txt_glow);
+                } else if (sound.getSound()==0) {
+                    soundImg.setImageResource(R.drawable.ic_musical);
+                    soundImg.setColorFilter(R.color.gray);
                 }
                 titleDate.setText(dateLoaded);
 
@@ -184,6 +191,7 @@ public class DreamExpandedPresenter {
                     dayTime.setImageResource(R.drawable.ic_day_symbol);
                 } else if (sleep.getTime() == 2) {
                     dayTime.setImageResource(R.drawable.ic_night_symbol);
+                    dayTime.setColorFilter(R.color.txt_glow);
                 }
 
                 if (sleep.getPhysicalActivity() == 0) {
