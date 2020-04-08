@@ -3,6 +3,8 @@ package com.phrenologue.dreamcatcherapp.presenters;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.RequiresApi;
 
@@ -17,8 +19,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -349,7 +351,8 @@ public class StatsPresenter {
     }
 
     public static void drawSingleLucidityLevel(PieChart lucidityChart, int postId,
-                                               MoonTextView percentageText) {
+                                               MoonTextView percentageText,
+                                               RelativeLayout noDataRel) {
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getQResult(postId, new IResponseMessage() {
             @Override
@@ -361,18 +364,24 @@ public class StatsPresenter {
                 boolean status = jsonObject.getBoolean("status");
                 if (status) {
                     int result = jsonArray.getJSONObject(0).getInt("result");
-                    int percentage = (int) (((float) result / 38f) * 100);
-                    String percentageStr = "%" + percentage + "" + " Lucid";
-                    percentageText.setText(percentageStr);
-                    int remainder = 100 - percentage;
-                    ArrayList<PieEntry> entries = new ArrayList<>();
-                    entries.add(new PieEntry(percentage, "Lucid"));
-                    entries.add(new PieEntry(remainder, "Not Lucid"));
-                    PieDataSet dataSet = new PieDataSet(entries, "Lucidity Percentage");
-                    PieData pieData = new PieData(dataSet);
-                    lucidityChart.setData(pieData);
-                    lucidityChart.invalidate();
-                    lucidityChart.setDrawHoleEnabled(false);
+                    if (result == 0) {
+                        noDataRel.setVisibility(View.VISIBLE);
+                    } else {
+                        lucidityChart.setVisibility(View.VISIBLE);
+                        int percentage = (int) (((float) result / 38f) * 100);
+                        String percentageStr = "%" + percentage + "" + " Lucid";
+                        percentageText.setText(percentageStr);
+                        int remainder = 100 - percentage;
+                        ArrayList<PieEntry> entries = new ArrayList<>();
+                        entries.add(new PieEntry(percentage, "Lucid"));
+                        entries.add(new PieEntry(remainder, "Not Lucid"));
+                        PieDataSet dataSet = new PieDataSet(entries, "Lucidity Percentage");
+                        PieData pieData = new PieData(dataSet);
+                        lucidityChart.setData(pieData);
+                        lucidityChart.invalidate();
+                        lucidityChart.setDrawHoleEnabled(false);
+                    }
+
                 }
 
             }

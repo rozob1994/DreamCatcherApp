@@ -66,7 +66,8 @@ public class ExpandedDreamActivity extends AppCompatActivity {
 
         dream.setPostId(postId);
 
-        StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage);
+        StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
+                binding.noDataRel);
 
         presenter.retrievePeople(getApplicationContext(), postId, spManager);
         presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
