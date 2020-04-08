@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DreamDate {
-    private static DreamDate instance = new DreamDate();
+    private static DreamDate instance = null;
     private int dayOfWeek;
     private int dayOfMonth;
     private int dayOfYear;
@@ -36,7 +36,10 @@ public class DreamDate {
         setYear(calendar.YEAR);
     }
 
-    public static DreamDate getInstance(){
+    public static DreamDate getInstance() {
+        if (instance == null){
+            instance = new DreamDate();
+        }
         return instance;
     }
 

@@ -1,7 +1,9 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+
 public class DreamDescription {
-    private static DreamDescription instance = new DreamDescription();
+    private static DreamDescription instance = null;
     private String title = "";
     private String content = "";
     private DreamDescription(){}
@@ -10,7 +12,10 @@ public class DreamDescription {
         instance = null;
     }
 
-    public static DreamDescription getInstance(){
+    public static DreamDescription getInstance() {
+        if (instance == null){
+            instance = new DreamDescription();
+        }
         return instance;
     }
 

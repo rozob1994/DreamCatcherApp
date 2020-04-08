@@ -1,7 +1,9 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+
 public class DreamLucidity {
-    private static DreamLucidity instance = new DreamLucidity();
+    private static DreamLucidity instance = null;
     private int lucid;
     private int lucidityLevel = 0;
 
@@ -13,7 +15,10 @@ public class DreamLucidity {
         instance = null;
     }
 
-    public static DreamLucidity getInstance(){
+    public static DreamLucidity getInstance() {
+        if (instance == null){
+            instance = new DreamLucidity();
+        }
         return instance;
     }
 

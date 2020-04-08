@@ -3,7 +3,7 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameter
 import androidx.annotation.Nullable;
 
 public class DreamPeople {
-    private static DreamPeople instance = new DreamPeople();
+    private static DreamPeople instance = null;
     private String name = "";
     private String firstName = "";
     private String secondName = "";
@@ -37,6 +37,9 @@ public class DreamPeople {
     }
 
     public static DreamPeople getInstance() {
+        if (instance == null){
+            instance = new DreamPeople();
+        }
         return instance;
     }
 

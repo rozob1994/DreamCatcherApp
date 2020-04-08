@@ -101,7 +101,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 names.add(7, jsonObject.getString("eighthPerson"));
                 names.add(8, jsonObject.getString("ninthPerson"));
                 names.add(9, jsonObject.getString("tenthPerson"));
-
+                Log.e("","");
                 for (int i = 0; i < 10; i++) {
                     if (impressions.get(i) != null) {
                         people.setImpression(i, impressions.get(i));
