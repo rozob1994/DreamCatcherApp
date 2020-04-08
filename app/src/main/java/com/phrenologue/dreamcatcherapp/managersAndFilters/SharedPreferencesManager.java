@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
 public class SharedPreferencesManager {
     public SharedPreferencesManager() {
@@ -16,7 +17,7 @@ public class SharedPreferencesManager {
 
         SharedPreferences sp = context.getSharedPreferences("dream", Context.MODE_PRIVATE);
 
-        if (!people.getName(0).equals("")){
+        if (!people.getName(0).equals("")) {
             sp.edit().putBoolean("hasPeople", true).apply();
         }
 
@@ -30,7 +31,7 @@ public class SharedPreferencesManager {
         }
 
         for (int i = 0; i < 10; i++) {
-            if (!people.getName(i).equals("")){
+            if (!people.getName(i).equals("")) {
                 sp.edit().putBoolean("hasName" + i + "", true).apply();
                 sp.edit().putString("name" + i + "", people.getName(i)).apply();
             }
@@ -96,6 +97,29 @@ public class SharedPreferencesManager {
         spTwo.edit().putBoolean("interpretationExists", true).apply();
         spTwo.edit().putString("interpretation", interpretation).apply();
 
+    }
+
+    public void saveSleepToSp(Context context) {
+        Sleep sleep = Sleep.getInstance();
+        SharedPreferences sp = context.getSharedPreferences("sleep", Context.MODE_PRIVATE);
+
+        if (sleep.getTime() == 1) {
+            sp.edit().putBoolean("day", true).apply();
+            sp.edit().putBoolean("night", false).apply();
+        } else if (sleep.getTime() == 2) {
+            sp.edit().putBoolean("day", false).apply();
+            sp.edit().putBoolean("night", true).apply();
+        }
+
+        if (sleep.getPhysicalActivity() > 0) {
+            sp.edit().putBoolean("hasPhysicalActivity", true).apply();
+            sp.edit().putInt("physicalActivity", sleep.getPhysicalActivity()).apply();
+        }
+
+        if (sleep.getFoodConsumption() > 0) {
+            sp.edit().putBoolean("hasFoodConsumption", true).apply();
+            sp.edit().putInt("foodConsumption", sleep.getFoodConsumption()).apply();
+        }
     }
 
     public void delDreamFromSp(Context context) {
