@@ -64,6 +64,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         loadingBg = binding.loadingBg;
         sharedPref = this.getActivity().getSharedPreferences("sleep", Context.MODE_PRIVATE);
         sleepSp = sharedPref.edit();
+
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
 

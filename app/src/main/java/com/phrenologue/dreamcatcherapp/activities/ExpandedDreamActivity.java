@@ -67,8 +67,8 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
         sp.edit().putInt("sleepTime", sleepTime).apply();
         String dateLoaded = getIntent().getStringExtra("date");
-        sleep.setTime(sp.getInt("sleepTime",0));
-        clicked= false;
+        sleep.setTime(sp.getInt("sleepTime", 0));
+        clicked = false;
 
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
@@ -103,7 +103,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 names.add(9, jsonObject.getString("tenthPerson"));
 
                 for (int i = 0; i < 10; i++) {
-                    if (impressions.get(i)!=null){
+                    if (impressions.get(i) != null) {
                         people.setImpression(i, impressions.get(i));
                     }
 
