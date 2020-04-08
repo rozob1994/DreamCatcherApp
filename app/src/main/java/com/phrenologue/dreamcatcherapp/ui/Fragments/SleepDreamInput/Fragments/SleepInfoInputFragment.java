@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
-import com.phrenologue.dreamcatcherapp.managersAndFilters.InputFilterMinMax;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -68,11 +66,9 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
 
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
-        hours = binding.edtHours;
-        minutes = binding.edtMinutes;
 
-        hours.setFilters(new InputFilter[]{new InputFilterMinMax(0,24)});
-        minutes.setFilters(new InputFilter[]{new InputFilterMinMax(0, 60)});
+
+
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
@@ -146,9 +142,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                 Dream dream = Dream.getInstance();
                 DreamChecklist checklist = DreamChecklist.getInstance();
 
-                String duration = binding.edtHours.getText().toString() + " Hours, " +
-                        binding.edtMinutes.getText().toString() + " Minutes.";
-                sleep.setDuration(duration);
+
+
                 dream.setDreamChecklist(checklist);
                 dream.setPostId(sleep.generatePostId());
                 ApiPostCaller postCaller = new ApiPostCaller();

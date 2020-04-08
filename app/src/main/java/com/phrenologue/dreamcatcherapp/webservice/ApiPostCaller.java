@@ -508,6 +508,28 @@ public class ApiPostCaller {
         });
     }
 
+    public void getSleepProps(int postId, IResponseMessage responseMessage) {
+        Call<ResponseBody> call = postService.getSleepProps(postId);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    responseMessage.onSuccess(response.body().string());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void getPeopleProps(int postId, IResponseMessage responseMessage) {
         Call<ResponseBody> call = postService.getPeopleProps(postId);
         call.enqueue(new Callback<ResponseBody>() {

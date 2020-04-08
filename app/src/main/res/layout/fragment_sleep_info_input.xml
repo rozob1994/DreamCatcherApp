@@ -48,95 +48,12 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="24dp">
 
-                sleep duration section
-
-                <RelativeLayout
-                    android:id="@+id/rel_sleep_duration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                        android:id="@+id/title_sleep_duration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sleep_duration"
-                        android:textColor="@color/txt_glow"
-                        android:textSize="@dimen/title_size" />
-
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                        android:id="@+id/hint_sleep_duration"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/title_sleep_duration"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/hint_sleep_duration"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/hint_size" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_below="@id/hint_sleep_duration"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/bg_shape"
-                        android:backgroundTint="@color/black"
-                        android:backgroundTintMode="multiply"
-                        android:gravity="center_horizontal">
-
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/edt_hours"
-                            android:layout_width="80dp"
-                            android:layout_height="32dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/bg_shape"
-                            android:backgroundTint="@color/black"
-                            android:hint="Hours"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColor="@color/white"
-                            android:textColorHighlight="@color/txt_glow"
-                            android:textColorHint="@color/gray"
-                            android:textSize="@dimen/edt_txt_size" />
-
-                        <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/edt_minutes"
-                            android:layout_width="80dp"
-                            android:layout_height="32dp"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@id/edt_hours"
-                            android:background="@drawable/bg_shape"
-                            android:backgroundTint="@color/black"
-                            android:hint="Minutes"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColor="@color/white"
-                            android:textColorHighlight="@color/txt_glow"
-                            android:textColorHint="@color/gray"
-                            android:textSize="@dimen/edt_txt_size" />
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/separator_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rel_sleep_duration"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/layout_separator">
-
-                </View>
-
                 time of day section
 
                 <RelativeLayout
                     android:id="@+id/rel_time_of_day"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/separator_one"
                     android:layout_marginTop="16dp">
 
                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
