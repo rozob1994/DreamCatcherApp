@@ -33,17 +33,16 @@
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/card_view"
-        android:layout_gravity="center">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/card_view">
 
         <RelativeLayout
             android:id="@+id/rel_box"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="16dp">
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/dreams_package_title"
@@ -95,13 +94,12 @@
                 android:backgroundTint="#80000000"
                 android:gravity="center_horizontal">
 
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mood"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_margin="8dp"
                     app:srcCompat="@drawable/ic_smile_emoji"
+                    android:layout_margin="8dp"
                     app:tint="@color/txt_glow" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -145,154 +143,183 @@
                     android:layout_toRightOf="@id/food"
                     app:srcCompat="@drawable/stick_figure_3" />
 
-
             </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/rel_btns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rel_info"
                 android:layout_marginTop="32dp"
                 android:orientation="vertical">
 
-                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                    android:id="@+id/title_description"
+                <RelativeLayout
+                    android:id="@+id/rel_description"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/bg_simple_rounded"
-                    android:backgroundTint="@color/purple"
-                    android:padding="8dp"
-                    android:text="@string/description"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/title_size" />
-
-                <net.cachapa.expandablelayout.ExpandableLayout
-                    android:id="@+id/expandable_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="bounce"
-                    app:ael_orientation="vertical">
+                    android:layout_height="wrap_content">
 
                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                        android:id="@+id/dreams_package_description"
-                        android:layout_width="400dp"
+                        android:id="@+id/title_description"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_buttom_rounded"
-                        android:backgroundTint="#80000000"
-                        android:padding="16dp"
-                        android:text="@string/dreams_package_description_input"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/bg_simple_rounded"
+                        android:backgroundTint="@color/purple"
+                        android:padding="8dp"
+                        android:text="@string/description"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/title_size" />
 
-                </net.cachapa.expandablelayout.ExpandableLayout>
+                    <net.cachapa.expandablelayout.ExpandableLayout
+                        android:layout_below="@id/title_description"
+                        android:id="@+id/expandable_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:ael_duration="500"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="bounce"
+                        app:ael_orientation="vertical">
 
+                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            android:id="@+id/dreams_package_description"
+                            android:layout_width="400dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_buttom_rounded"
+                            android:backgroundTint="#80000000"
+                            android:padding="16dp"
+                            android:text="@string/dreams_package_description_input"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/title_size" />
 
-                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                    android:id="@+id/title_interpretation"
+                    </net.cachapa.expandablelayout.ExpandableLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@id/rel_description"
+                    android:id="@+id/rel_interpretation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_simple_rounded"
+                    android:layout_height="wrap_content">
+
+                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        android:id="@+id/title_interpretation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_simple_rounded"
+                        android:backgroundTint="@color/txt_glow"
+                        android:padding="8dp"
+                        android:text="@string/interpretation"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_size" />
+
+                    <net.cachapa.expandablelayout.ExpandableLayout
+                        android:layout_below="@id/title_interpretation"
+                        android:id="@+id/expandable_interpretation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:ael_duration="500"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="bounce"
+                        app:ael_orientation="vertical">
+
+                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            android:id="@+id/dreams_package_interpretation"
+                            android:layout_width="400dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_buttom_rounded"
+                            android:backgroundTint="#80000000"
+                            android:padding="16dp"
+                            android:text="@string/dreams_package_description_input"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/title_size" />
+
+                    </net.cachapa.expandablelayout.ExpandableLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@id/rel_interpretation"
+                    android:id="@+id/rel_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        android:id="@+id/title_people"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_simple_rounded"
+                        android:backgroundTint="@color/day_light"
+                        android:padding="8dp"
+                        android:text="People"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_size" />
+
+                    <net.cachapa.expandablelayout.ExpandableLayout
+                        android:layout_below="@id/title_people"
+                        android:id="@+id/expandable_people"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:ael_duration="500"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="bounce"
+                        app:ael_orientation="vertical">
+
+                    </net.cachapa.expandablelayout.ExpandableLayout>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/rel_btns"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_edt_dream"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/bg_gradient"
                     android:backgroundTint="@color/txt_glow"
-                    android:padding="8dp"
-                    android:text="@string/interpretation"
-                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:elevation="10dp"
+                    android:focusable="true"
+                    android:padding="10dp"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/title_size" />
+                    app:srcCompat="@drawable/ic_edit_black_24dp"
+                    app:tint="@color/white" />
 
-                <net.cachapa.expandablelayout.ExpandableLayout
-                    android:id="@+id/expandable_interpretation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="bounce"
-                    app:ael_orientation="vertical">
-
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                        android:id="@+id/dreams_package_interpretation"
-                        android:layout_width="400dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_buttom_rounded"
-                        android:backgroundTint="#80000000"
-                        android:padding="16dp"
-                        android:text="@string/dreams_package_description_input"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/title_size" />
-
-                </net.cachapa.expandablelayout.ExpandableLayout>
-
-                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                    android:id="@+id/title_people"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_simple_rounded"
-                    android:backgroundTint="@color/day_light"
-                    android:padding="8dp"
-                    android:text="People"
-                    android:textAlignment="center"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_delete"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_gradient"
+                    android:backgroundTint="#6AB2B2B2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/title_size" />
+                    app:srcCompat="@drawable/ic_delete_black_24dp"
+                    app:tint="@color/white" />
 
-                <net.cachapa.expandablelayout.ExpandableLayout
-                    android:id="@+id/expandable_people"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:ael_duration="500"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="bounce"
-                    app:ael_orientation="vertical">
-
-                </net.cachapa.expandablelayout.ExpandableLayout>
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
     </ScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:padding="16dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btn_edt_dream"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/bg_gradient"
-            android:backgroundTint="@color/txt_glow"
-            android:clickable="true"
-            android:elevation="10dp"
-            android:focusable="true"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            app:srcCompat="@drawable/ic_edit_black_24dp"
-            app:tint="@color/white" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btn_delete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/bg_gradient"
-            android:backgroundTint="#6AB2B2B2"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            app:srcCompat="@drawable/ic_delete_black_24dp"
-            app:tint="@color/white" />
-
-    </RelativeLayout>
 
 
 </RelativeLayout>
