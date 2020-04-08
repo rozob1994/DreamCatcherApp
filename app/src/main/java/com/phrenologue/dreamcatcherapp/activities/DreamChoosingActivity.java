@@ -44,4 +44,8 @@ public class DreamChoosingActivity extends AppCompatActivity {
             }
         });
     }
+    public void onBackPressed(){
+        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+        startActivity(intent);
+    }
 }

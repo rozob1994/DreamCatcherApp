@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityEditDreamInputBinding;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.EditDreamInfoInputAdapter;
 
 public class EditDreamInputActivity extends AppCompatActivity {
@@ -27,7 +28,10 @@ public class EditDreamInputActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        Dream dream = Dream.getInstance();
+        int postId = dream.getPostId();
         Intent intent = new Intent(getApplicationContext(), ExpandedDreamActivity.class);
+        intent.putExtra("postId", postId);
         startActivity(intent);
         finish();
 
