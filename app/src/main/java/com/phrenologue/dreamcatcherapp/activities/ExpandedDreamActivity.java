@@ -103,7 +103,10 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 names.add(9, jsonObject.getString("tenthPerson"));
 
                 for (int i = 0; i < 10; i++) {
-                    people.setImpression(i, impressions.get(i));
+                    if (impressions.get(i)!=null){
+                        people.setImpression(i, impressions.get(i));
+                    }
+
                 }
 
                 for (int i = 0; i < 10; i++) {
@@ -127,6 +130,15 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 people.setExistent(jsonObject.getInt("dreamPeopleExist"));
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
+
+                if (checklist.getExperience() == 0) {
+                    binding.mood.setImageResource(R.drawable.ic_sad_emoji);
+                } else if (checklist.getExperience() == 1) {
+                    binding.mood.setImageResource(R.drawable.ic_poker_face_emoji);
+                } else if (checklist.getExperience() == 2) {
+                    binding.mood.setImageResource(R.drawable.ic_happy_emoji);
+                }
+
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
                 if (checklist.getGrayScale() == 1) {
                     binding.color.setImageResource(R.drawable.button_grayscale_on);

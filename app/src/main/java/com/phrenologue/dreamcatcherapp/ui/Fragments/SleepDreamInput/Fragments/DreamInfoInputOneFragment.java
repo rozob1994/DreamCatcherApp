@@ -157,7 +157,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[MOOD SEEK BAR]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
         if (dreamPrefs.getBoolean("hasMood", false)) {
             experience.setProgress(0);
-            experience.setMax(9);
+            experience.setMax(2);
             experience.setProgress(dreamPrefs.getInt("mood", 0));
         }
         experience.setOnSeekBarChangeListener(this);

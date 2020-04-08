@@ -3,7 +3,7 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameter
 public class DreamChecklist {
     private static DreamChecklist instance = new DreamChecklist();
     private Integer grayScale; // 0 = null, 1 = grayscale, 2 = colorful.
-    private Integer experience = 0;
+    private Integer experience = 0; // 0 = sad, 1 = pokerFace, 2 = happy
 
     private DreamChecklist() {
     }
