@@ -116,4 +116,16 @@ public class SharedPreferencesManager {
         return sp.getInt("postId", 0);
     }
 
+    public static void clearDreamSleepQuest(Context context) {
+        SharedPreferences sleepSp = context.getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        SharedPreferences dreamOneSp = context.getSharedPreferences("dream", Context.MODE_PRIVATE);
+        SharedPreferences dreamTwoSp = context.getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
+        SharedPreferences questionnaireSp = context.getSharedPreferences("questionnaire", Context.MODE_PRIVATE);
+
+        sleepSp.edit().clear().apply();
+        dreamOneSp.edit().clear().apply();
+        dreamTwoSp.edit().clear().apply();
+        questionnaireSp.edit().clear().apply();
+    }
+
 }

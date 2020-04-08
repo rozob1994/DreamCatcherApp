@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
+import androidx.annotation.Nullable;
+
 public class DreamPeople {
     private static DreamPeople instance = new DreamPeople();
     private String name = "";
@@ -38,7 +40,7 @@ public class DreamPeople {
         return instance;
     }
 
-    public void setImpression(int index, int value) {
+    public void setImpression(@Nullable Integer index, @Nullable Integer value) {
         switch (index) {
             case 0:
                 setFirstImpression(value);

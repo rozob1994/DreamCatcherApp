@@ -2,6 +2,8 @@ package com.phrenologue.dreamcatcherapp.webservice;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
@@ -306,14 +308,14 @@ public class ApiPostCaller {
 
     }
 
-    public void saveSleepSeparately(IResponseMessage responseMessage) {
+    public void saveSleepSeparately(IResponseMessage responseMessage, @Nullable Integer remembered) {
         Users user = Users.getInstance();
         Sleep sleep = Sleep.getInstance();
         Dream dream = Dream.getInstance();
         Date date = Date.getInstance();
         Call<ResponseBody> call = postService.postSleeps(user.getUid(), sleep.getPostId(), sleep.getDuration(),
                 sleep.getTime(), sleep.getPhysicalActivity(), sleep.getFoodConsumption(),
-                sleep.getSleepParalysis(), dream.getDreamChecklist().getRemembered(),
+                sleep.getSleepParalysis(), remembered,
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
                 date.getMonth(), date.getYear());
         call.enqueue(new Callback<ResponseBody>() {
