@@ -7,10 +7,4 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/txt_glow</item>
     </style>
-
-    <style name="CustomSeekbar" parent="Widget.AppCompat.SeekBar">
-        <item name="colorAccent">#1D5368</item>
-        <item name="android:width">2dp</item>
-        <item name="android:height">2dp</item>
-    </style>
 </resources>

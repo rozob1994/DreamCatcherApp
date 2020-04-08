@@ -42,7 +42,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
     DreamLucidity lucidity;
     DreamSound sound;
     Sleep sleep;
-    boolean clicked;
     private ActivityExpandedDreamBinding binding;
 
     @Override
@@ -51,7 +50,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
         dream = Dream.getInstance();
         people = DreamPeople.getInstance();
         checklist = DreamChecklist.getInstance();
@@ -68,7 +66,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sp.edit().putInt("sleepTime", sleepTime).apply();
         String dateLoaded = getIntent().getStringExtra("date");
         sleep.setTime(sp.getInt("sleepTime",0));
-        clicked= false;
 
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
@@ -124,7 +121,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                people.setExistent(jsonObject.getInt("dreamPeopleExist"));
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
@@ -178,10 +174,48 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             }
         });
 
-        binding.relDescription.setOnClickListener(new View.OnClickListener() {
+        apiPostCaller.getSleepProps(postId, new IResponseMessage() {
             @Override
-            public void onClick(View v) {
-                binding.expandableDescription.expand();
+            public void onSuccess(Object response) throws JSONException {
+                JSONArray jsonArray = new JSONArray(response.toString());
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+
+                Sleep sleep = Sleep.getInstance();
+
+                sleep.setTime(jsonObject.getInt("sleepTime"));
+                sleep.setFoodConsumption(jsonObject.getInt("sleepFoodConsumption"));
+                sleep.setPhysicalActivity(jsonObject.getInt("sleepPhysicalActivity"));
+
+                spManager.saveSleepToSp(getApplicationContext());
+
+                if (sleep.getTime() == 1) {
+                    binding.dayTime.setImageResource(R.drawable.ic_day_symbol);
+                } else if (sleep.getTime() == 2) {
+                    binding.dayTime.setImageResource(R.drawable.ic_night_symbol);
+                }
+
+                if (sleep.getPhysicalActivity() == 0) {
+                    binding.activity.setImageResource(R.drawable.stick_figure_1);
+                } else if (sleep.getPhysicalActivity() == 1) {
+                    binding.activity.setImageResource(R.drawable.stick_figure_2);
+                } else if (sleep.getPhysicalActivity() == 2) {
+                    binding.activity.setImageResource(R.drawable.stick_figure_3);
+                } else if (sleep.getPhysicalActivity() == 3) {
+                    binding.activity.setImageResource(R.drawable.stick_figure_4);
+                }
+
+                if (sleep.getFoodConsumption() == 0) {
+                    binding.food.setImageResource(R.drawable.apple);
+                } else if (sleep.getFoodConsumption() == 1) {
+                    binding.food.setImageResource(R.drawable.steak);
+                } else if (sleep.getFoodConsumption() == 2) {
+                    binding.food.setImageResource(R.drawable.hamburger_drink);
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+
             }
         });
 
