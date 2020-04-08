@@ -117,8 +117,8 @@ public class DreamExpandedPresenter {
 
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
                 if (checklist.getGrayScale() == 1) {
-                    color.setImageResource(R.drawable.ic_colorful);
-                    color.setColorFilter(R.color.gray);
+                    color.setImageResource(R.drawable.ic_grayscale);
+
                 } else if (checklist.getGrayScale()==2) {
                     color.setImageResource(R.drawable.ic_colorful);
                 }
