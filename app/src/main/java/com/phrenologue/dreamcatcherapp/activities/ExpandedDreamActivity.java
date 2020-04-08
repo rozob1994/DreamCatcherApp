@@ -42,6 +42,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
     DreamLucidity lucidity;
     DreamSound sound;
     Sleep sleep;
+    boolean clicked;
     private ActivityExpandedDreamBinding binding;
 
     @Override
@@ -50,6 +51,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
         dream = Dream.getInstance();
         people = DreamPeople.getInstance();
         checklist = DreamChecklist.getInstance();
@@ -66,6 +68,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sp.edit().putInt("sleepTime", sleepTime).apply();
         String dateLoaded = getIntent().getStringExtra("date");
         sleep.setTime(sp.getInt("sleepTime",0));
+        clicked= false;
 
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
@@ -172,6 +175,13 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             @Override
             public void onFailure(String errorMessage) {
                 Log.e("", "");
+            }
+        });
+
+        binding.relDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.expandableDescription.expand();
             }
         });
 
