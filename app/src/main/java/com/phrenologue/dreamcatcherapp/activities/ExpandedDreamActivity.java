@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -82,9 +83,11 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!clicked) {
                     binding.expandableDescription.expand();
+                    binding.titleDescription.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.txt_glow));
                     clicked = true;
                 } else {
                     binding.expandableDescription.collapse();
+                    binding.titleDescription.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.gray));
                     clicked = false;
                 }
             }
@@ -95,9 +98,11 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!clicked) {
                     binding.expandableInterpretation.expand();
+                    binding.titleInterpretation.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.txt_glow));
                     clicked = true;
                 } else {
                     binding.expandableInterpretation.collapse();
+                    binding.titleInterpretation.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.gray));
                     clicked = false;
                 }
             }
@@ -108,14 +113,15 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!clicked) {
                     binding.expandablePeople.expand();
+                    binding.titlePeople.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.txt_glow));
                     clicked = true;
                 } else {
                     binding.expandablePeople.collapse();
+                    binding.titlePeople.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.gray));
                     clicked = false;
                 }
             }
         });
-
 
         binding.btnEdtDream.setOnClickListener(new View.OnClickListener() {
             @Override

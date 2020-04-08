@@ -41,16 +41,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp">
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="32dp">
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                android:textAllCaps="true"
                 android:id="@+id/dreams_package_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="TEST"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
@@ -67,36 +68,53 @@
             <RelativeLayout
                 android:id="@+id/lucidity"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/title_date"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp">
+
                 <RelativeLayout
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
                     android:id="@+id/noDataRel"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                         android:id="@+id/noDataTxt"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="No Lucidity Data."
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_lucidity_data"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_size" />
+
+                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        android:id="@+id/btn_test"
+                        android:elevation="2dp"
+                        android:textColor="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_below="@+id/noDataTxt"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_gradient"
+                        android:gravity="center"
+                        android:text="@string/take_test"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/hint_size" />
 
                 </RelativeLayout>
 
-
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pieChart"
-                    android:visibility="gone"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
             </RelativeLayout>
-
 
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
@@ -115,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_percentage"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/bg_simple_rounded"
                 android:backgroundTint="#80000000"
                 android:gravity="center_horizontal">
@@ -152,7 +170,7 @@
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/color"
                     app:srcCompat="@drawable/ic_musical"
-                    app:tint="@color/txt_glow"/>
+                    app:tint="@color/txt_glow" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/food"
@@ -191,7 +209,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/bg_simple_rounded"
-                        android:backgroundTint="@color/purple"
+                        android:backgroundTint="@color/gray"
                         android:padding="8dp"
                         android:text="@string/description"
                         android:textAlignment="center"
@@ -235,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_simple_rounded"
-                        android:backgroundTint="@color/txt_glow"
+                        android:backgroundTint="@color/gray"
                         android:padding="8dp"
                         android:text="@string/interpretation"
                         android:textAlignment="center"
@@ -279,7 +297,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_simple_rounded"
-                        android:backgroundTint="@color/day_light"
+                        android:backgroundTint="@color/gray"
                         android:padding="8dp"
                         android:text="People"
                         android:textAlignment="center"
@@ -297,84 +315,84 @@
                         app:ael_orientation="vertical">
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_one"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_two"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_three"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_four"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_five"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_six"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_seven"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_eight"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_nine"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textColor="@color/white"
                             android:id="@+id/name_ten"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
 
 
                     </net.cachapa.expandablelayout.ExpandableLayout>
@@ -384,48 +402,48 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rel_btns"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btn_edt_dream"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/bg_gradient"
-                    android:backgroundTint="@color/txt_glow"
-                    android:clickable="true"
-                    android:elevation="10dp"
-                    android:focusable="true"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    app:srcCompat="@drawable/ic_edit_black_24dp"
-                    app:tint="@color/white" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btn_delete"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/bg_gradient"
-                    android:backgroundTint="#6AB2B2B2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    app:srcCompat="@drawable/ic_delete_black_24dp"
-                    app:tint="@color/white" />
-
-            </RelativeLayout>
-
         </RelativeLayout>
 
     </ScrollView>
 
+    <RelativeLayout
+        android:layout_below="@id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_edt_dream"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/bg_gradient"
+            android:backgroundTint="@color/txt_glow"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:focusable="true"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            app:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_gradient"
+            android:backgroundTint="#6AB2B2B2"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:focusable="true"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            app:srcCompat="@drawable/ic_delete_black_24dp"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

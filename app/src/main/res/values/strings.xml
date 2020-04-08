@@ -212,5 +212,7 @@
     <string name="dream_hours">Dream Hours</string>
     <string name="interpretation">Interpretation</string>
     <string name="description">Description</string>
+    <string name="no_lucidity_data">No Lucidity Data.</string>
+    <string name="take_test">take test</string>
 
 </resources>
