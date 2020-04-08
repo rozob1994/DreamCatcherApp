@@ -690,7 +690,6 @@ public class DreamInputPresenter {
         dream = Dream.getInstance();
         Dream.delDream();
         dreamPrefEditor.clear().apply();
-        checklist.setRemembered(0);
         dream.setDreamChecklist(checklist);
     }
 

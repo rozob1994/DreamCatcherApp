@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters;
 
+import androidx.annotation.Nullable;
+
 public class DreamPeople {
     private static DreamPeople instance = new DreamPeople();
     private String name = "";
@@ -38,39 +40,45 @@ public class DreamPeople {
         return instance;
     }
 
-    public void setImpression(int index, int value) {
-        switch (index) {
-            case 0:
-                setFirstImpression(value);
-                break;
-            case 1:
-                setSecondImpression(value);
-                break;
-            case 2:
-                setThirdImpression(value);
-                break;
-            case 3:
-                setFourthImpression(value);
-                break;
-            case 4:
-                setFifthImpression(value);
-                break;
-            case 5:
-                setSixthImpression(value);
-                break;
-            case 6:
-                setSeventhImpression(value);
-                break;
-            case 7:
-                setEighthImpression(value);
-                break;
-            case 8:
-                setNinthImpression(value);
-                break;
-            case 9:
-                setTenthImpression(value);
-                break;
+    public void setImpression(@Nullable Integer index, @Nullable Integer value) {
+        if (index != null) {
+            if (value != null) {
+                switch (index) {
+                    case 0:
+                        setFirstImpression(value);
+                        break;
+                    case 1:
+                        setSecondImpression(value);
+                        break;
+                    case 2:
+                        setThirdImpression(value);
+                        break;
+                    case 3:
+                        setFourthImpression(value);
+                        break;
+                    case 4:
+                        setFifthImpression(value);
+                        break;
+                    case 5:
+                        setSixthImpression(value);
+                        break;
+                    case 6:
+                        setSeventhImpression(value);
+                        break;
+                    case 7:
+                        setEighthImpression(value);
+                        break;
+                    case 8:
+                        setNinthImpression(value);
+                        break;
+                    case 9:
+                        setTenthImpression(value);
+                        break;
+                }
+            }
+
         }
+
     }
 
     public int getImpression(int index) {

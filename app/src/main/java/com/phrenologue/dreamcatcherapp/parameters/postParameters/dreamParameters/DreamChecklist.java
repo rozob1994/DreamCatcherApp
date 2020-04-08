@@ -2,9 +2,8 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameter
 
 public class DreamChecklist {
     private static DreamChecklist instance = new DreamChecklist();
-    private int remembered; // 0 = forgotten, 1 = remembered.
-    private int grayScale; // 0 = null, 1 = grayscale, 2 = colorful.
-    private int experience = 0;
+    private Integer grayScale; // 0 = null, 1 = grayscale, 2 = colorful.
+    private Integer experience = 0;
 
     private DreamChecklist() {
     }
@@ -19,15 +18,7 @@ public class DreamChecklist {
         return instance;
     }
 
-    public int getRemembered() {
-        return remembered;
-    }
-
-    public void setRemembered(int remembered) {
-        this.remembered = remembered;
-    }
-
-    public int getGrayScale() {
+    public Integer getGrayScale() {
         return grayScale;
     }
 
@@ -35,7 +26,7 @@ public class DreamChecklist {
         this.grayScale = grayScale;
     }
 
-    public int getExperience() {
+    public Integer getExperience() {
         return experience;
     }
 

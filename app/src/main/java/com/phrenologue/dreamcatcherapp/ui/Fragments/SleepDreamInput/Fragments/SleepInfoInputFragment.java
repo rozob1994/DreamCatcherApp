@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -18,10 +19,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.InputFilterMinMax;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
-import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
@@ -63,7 +65,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         nightOn = binding.linNightOn;
         loadingBg = binding.loadingBg;
         sharedPref = this.getActivity().getSharedPreferences("sleep", Context.MODE_PRIVATE);
-        sleepSp = sharedPref.edit();
+
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
         hours = binding.edtHours;
@@ -147,7 +149,6 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                 String duration = binding.edtHours.getText().toString() + " Hours, " +
                         binding.edtMinutes.getText().toString() + " Minutes.";
                 sleep.setDuration(duration);
-                checklist.setRemembered(1);
                 dream.setDreamChecklist(checklist);
                 dream.setPostId(sleep.generatePostId());
                 ApiPostCaller postCaller = new ApiPostCaller();
@@ -174,19 +175,16 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                         loadingBg.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
                     }
-                });
+                },1);
             }
         });
 
         binding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users user = Users.getInstance();
-                user.checkSetLevelChange(getContext());
-                sleepSp.clear().apply();
-                presenter.saveSleepAndGo(binding.edtHours, binding.edtMinutes,
-                        binding.loadingBg, getContext());
-
+                SharedPreferencesManager.clearDreamSleepQuest(getContext());
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                startActivity(intent);
             }
         });
 

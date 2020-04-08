@@ -155,7 +155,6 @@ public class SleepInputPresenter {
         String duration = edtHours.getText().toString() + " Hours, " +
                 edtMinutes.getText().toString() + " Minutes.";
         sleep.setDuration(duration);
-        checklist.setRemembered(1);
         dream.setDreamChecklist(checklist);
         dream.setPostId(sleep.generatePostId());
         postCaller = new ApiPostCaller();
@@ -177,7 +176,7 @@ public class SleepInputPresenter {
                 loadingBg.setVisibility(View.GONE);
                 results.setStatus(false);
             }
-        });
+        },1);
         return results.isStatus();
     }
     public void saveSleepAndGo(AppCompatEditText edtHours, AppCompatEditText edtMinutes,
@@ -199,7 +198,6 @@ public class SleepInputPresenter {
 
         sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
         sleep.generatePostId();
-        checklist.setRemembered(0);
         dream.setDreamChecklist(checklist);
         date.setDateToday(); // Setting today's date in our instance of date.
         postCaller = new ApiPostCaller();
@@ -226,7 +224,7 @@ public class SleepInputPresenter {
                 loadingBg.setVisibility(View.GONE);
                 Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
             }
-        });
+        }, 0);
     }
 
 }

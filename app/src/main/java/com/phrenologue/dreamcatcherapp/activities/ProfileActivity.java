@@ -22,6 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
@@ -172,7 +173,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
@@ -182,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.btnAnswerQuestionnaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), LucidDreamingQuestionnaireActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");

@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,8 +62,11 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         spManager = new SharedPreferencesManager();
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
+        SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
+        sp.edit().putInt("sleepTime", sleepTime).apply();
         String dateLoaded = getIntent().getStringExtra("date");
-        sleep.setTime(sleepTime);
+        sleep.setTime(sp.getInt("sleepTime",0));
+
         dream.setPostId(postId);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
@@ -121,7 +125,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
 
                 checklist.setExperience(jsonObject.getInt("dreamExperience"));
                 checklist.setGrayScale(jsonObject.getInt("dreamGrayScale"));
-                if (checklist.getGrayScale() == 1){
+                if (checklist.getGrayScale() == 1) {
                     binding.color.setImageResource(R.drawable.button_grayscale_on);
                 }
 
@@ -142,7 +146,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 if (sound.getSound() == 0) {
                     binding.sound.setImageResource(R.drawable.button_non_musical_on);
                 }
-                if (sleep.getTime()==2) {
+                if (sleep.getTime() == 2) {
                     binding.dayTime.setImageResource(R.drawable.ic_night_symbol);
                     binding.dayTime.setColorFilter(R.color.ic_night_light);
                 }
@@ -186,7 +190,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sp.edit().clear().apply();
                 Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ExpandedDreamActivity.this, "fadein-to-fadeout");
