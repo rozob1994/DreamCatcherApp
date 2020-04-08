@@ -8,8 +8,8 @@ public class Sleep {
     private static Sleep instance = null;
     private String duration = "";
     private int time = 0;  // 0 = no input, 1 = day, 2 = night
-    private int physicalActivity = 0;
-    private int foodConsumption = 0;
+    private int physicalActivity = 0; // 0 = no movement, 1 = usual, 2 = workout, 3 = excessive
+    private int foodConsumption = 0; // 0 = low, 1 = medium, 2 = high
     private int sleepParalysis;
     private int postId;
 

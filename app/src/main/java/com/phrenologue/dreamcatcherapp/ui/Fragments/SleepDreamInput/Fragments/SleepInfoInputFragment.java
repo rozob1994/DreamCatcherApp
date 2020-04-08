@@ -63,7 +63,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         nightOn = binding.linNightOn;
         loadingBg = binding.loadingBg;
         sharedPref = this.getActivity().getSharedPreferences("sleep", Context.MODE_PRIVATE);
-
+        sleepSp = sharedPref.edit();
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
 
@@ -126,7 +126,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         //---------------------------FOOD CONSUMPTION SEEK BAR---------------------------//
         if (sharedPref.getBoolean("hasFoodConsumption", false)) {
             foodConsumption.setProgress(0);
-            foodConsumption.setMax(3);
+            foodConsumption.setMax(2);
             foodConsumption.setProgress(sharedPref.getInt("foodConsumption", 2));
         }
         foodConsumption.setOnSeekBarChangeListener(this);
