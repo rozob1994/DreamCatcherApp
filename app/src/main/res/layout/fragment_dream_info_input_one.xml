@@ -140,6 +140,7 @@
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
+
                         <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                             android:id="@+id/hint_people_expanded"
                             android:layout_width="match_parent"
