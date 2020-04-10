@@ -57,6 +57,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter();
+
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
@@ -68,15 +69,18 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         dream.setPostId(postId);
 
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
-                binding.noDataRel);
+                binding.noDataRel, binding.txtPercentage);
 
-        presenter.retrievePeople(getApplicationContext(), postId, spManager);
+        presenter.retrievePeople(getApplicationContext(), postId, spManager, binding.loadingBg,
+                binding.progressBar, binding.nameOne, binding.nameTwo, binding.nameThree,
+                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
+                binding.nameEight, binding.nameNine, binding.nameTen);
         presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
                 binding.dreamsPackageInterpretation, binding.dreamsPackageTitle,
                 binding.dreamsPackageDescription, binding.sound, binding.titleDate, dateLoaded,
-                spManager);
+                spManager, binding.loadingBg, binding.progressBar);
         presenter.retrieveSleep(getApplicationContext(), postId, spManager, binding.dayTime,
-                binding.activity, binding.food);
+                binding.activity, binding.food, binding.loadingBg, binding.progressBar);
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,4 +149,4 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             }
         });
     }
-    }
+}
