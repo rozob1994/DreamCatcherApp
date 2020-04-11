@@ -97,8 +97,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:thumb="@drawable/ic_cry_emoji"
-                            android:thumbTint="@color/white"
-                            android:thumbOffset="2dp" />
+                            android:paddingRight="566dp"
+                            android:paddingLeft="56dp"
+                            android:thumbTint="@color/white"/>
 
                     </RelativeLayout>
 

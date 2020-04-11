@@ -56,6 +56,8 @@ public class DreamInputPresenter {
                                Context context) {
         checklist = DreamChecklist.getInstance();
         experience.setMax(2);
+        experience.setPadding(56,0,56,0);
+        experience.setThumbOffset(16);
         experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -64,10 +66,13 @@ public class DreamInputPresenter {
                 dreamPrefEditor.putInt("mood", progress).apply();
                 if (progress == 0) {
                     experience.setThumb(context.getResources().getDrawable(R.drawable.ic_sad_emoji));
+
                 } else if (progress == 1) {
                     experience.setThumb(context.getResources().getDrawable(R.drawable.ic_poker_face_emoji));
+
                 } else if (progress == 2) {
                     experience.setThumb(context.getResources().getDrawable(R.drawable.ic_happy_emoji));
+
                 }
 
             }

@@ -250,9 +250,10 @@
                             android:id="@+id/slider_physical"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-
+                            android:paddingLeft="56dp"
+                            android:paddingRight="56dp"
                             android:thumb="@drawable/ic_slider_thumb_bright"
-                            android:thumbOffset="-4dp" />
+                            android:thumbOffset="4dp" />
 
                         <LinearLayout
                             android:id="@+id/slider_physical_signs"
@@ -410,8 +411,10 @@
                             android:id="@+id/slider_food"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:paddingLeft="56dp"
+                            android:paddingRight="56dp"
                             android:thumb="@drawable/ic_slider_thumb_bright"
-                            android:thumbOffset="-4dp" />
+                            android:thumbOffset="4dp" />
 
                         <LinearLayout
                             android:id="@+id/slider_food_signs"
