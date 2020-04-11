@@ -61,8 +61,6 @@ public class DreamInputPresenter {
                 checklist.setExperience(progress);
                 dreamPrefEditor.putBoolean("hasMood", true).apply();
                 dreamPrefEditor.putInt("mood", progress).apply();
-                if (progress == 1) {
-                }
                 seekBar.setMax(2);
             }
 
