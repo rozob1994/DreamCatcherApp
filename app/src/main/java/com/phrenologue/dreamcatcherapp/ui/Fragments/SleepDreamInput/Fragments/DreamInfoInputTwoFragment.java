@@ -19,7 +19,6 @@ import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDreamInputDialog;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -101,9 +100,6 @@ public class DreamInfoInputTwoFragment extends Fragment {
                         dreamOne.edit(), dreamTwo.edit());
                 /**Dream.delDream();
                 Sleep.delSleep();**/
-
-                ViewDreamInputDialog dialog = new ViewDreamInputDialog();
-                dialog.showDialog(getActivity(), getContext(), "");
             }
         });
 
