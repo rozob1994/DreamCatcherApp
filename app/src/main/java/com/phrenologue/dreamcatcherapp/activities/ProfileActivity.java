@@ -85,60 +85,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //=========================== Determine User's Level =================================
-        int level = user.getLevel();
-        switch (level){
-            case 1:
-                levelAnim.setImageAssetsFolder("images/level_one");
-                levelAnim.setAnimation("level1.json");
-                levelTitle.setText(R.string.LevelOneTitle);
-                break;
-            case 2:
-                levelAnim.setImageAssetsFolder("images/level_two");
-                levelAnim.setAnimation("level2.json");
-                levelTitle.setText(R.string.LevelTwoTitle);
-                break;
-            case 3:
-                binding.levelAnimation.setImageAssetsFolder("images/level_three");
-                binding.levelAnimation.setAnimation("level3.json");
-                levelTitle.setText(R.string.LevelThreeTitle);
-                break;
-            case 4:
-                levelAnim.setImageAssetsFolder("images/level_four");
-                levelAnim.setAnimation("level4.json");
-                levelTitle.setText(R.string.LevelFourTitle);
-                break;
-            case 5:
-                levelAnim.setImageAssetsFolder("images/level_five");
-                levelAnim.setAnimation("level5.json");
-                levelTitle.setText(R.string.LevelFiveTitle);
-                break;
-            case 6:
-                levelAnim.setImageAssetsFolder("images/level_six");
-                levelAnim.setAnimation("level6.json");
-                levelTitle.setText(R.string.LevelSixTitle);
-                break;
-            case 7:
-                levelAnim.setImageAssetsFolder("images/level_seven");
-                levelAnim.setAnimation("level7.json");
-                levelTitle.setText(R.string.LevelSevenTitle);
-                break;
-            case 8:
-                levelAnim.setImageAssetsFolder("images/level_eight");
-                levelAnim.setAnimation("level8.json");
-                levelTitle.setText(R.string.LevelEightTitle);
-                break;
-            case 9:
-                levelAnim.setImageAssetsFolder("images/level_nine");
-                levelAnim.setAnimation("level9.json");
-                levelTitle.setText(R.string.LevelNineTitle);
-                break;
-            case 10:
-                levelAnim.setImageAssetsFolder("images/level_ten");
-                levelAnim.setAnimation("level10.json");
-                levelTitle.setText(R.string.LevelTenTitle);
-                break;
-        }
-
+        ProfilePresenter.setLevel(levelAnim, levelTitle);
 
         Log.e("","");
 

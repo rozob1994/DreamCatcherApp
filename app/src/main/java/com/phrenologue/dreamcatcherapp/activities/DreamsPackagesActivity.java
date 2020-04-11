@@ -7,23 +7,18 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.airbnb.lottie.LottieAnimationView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
-
-import java.util.List;
+import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
 import maes.tech.intentanim.CustomIntent;
 
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
-    private List<String> titles;
-    private List<String> contents;
-    private DreamsPresenter presenter;
-    private RecyclerView dreamsRecycler;
-    private MoonTextView dreamCount;
-    private MoonTextView dreamHours;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +26,13 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         binding = ActivityDreamsPackagesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        dreamsRecycler = binding.dreamsRecycler;
-        dreamCount = binding.titleDreamsCount;
-        dreamHours = binding.titleDreamHours;
-        presenter = new DreamsPresenter(this);
+        LottieAnimationView levelAnim = binding.levelAnimation;
+        RecyclerView dreamsRecycler = binding.dreamsRecycler;
+        MoonTextView dreamCount = binding.titleDreamsCount;
+        DreamsPresenter presenter = new DreamsPresenter(this);
         presenter.getDescription(getApplicationContext(),
                 binding.loadingBg, dreamsRecycler, dreamCount);
-
+        ProfilePresenter.setLevel(levelAnim, binding.titleDreamHours);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

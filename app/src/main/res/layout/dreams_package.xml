@@ -66,8 +66,7 @@
             android:id="@+id/package_mood"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:srcCompat="@drawable/ic_smile_emoji"
-            app:tint="@color/white" />
+             />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/package_day_time"
@@ -76,7 +75,7 @@
             android:layout_height="24dp"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/package_mood"
-            app:srcCompat="@drawable/ic_day_symbol" />
+             />
 
         <View
             android:layout_marginBottom="2dp"

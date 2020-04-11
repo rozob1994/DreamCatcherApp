@@ -209,13 +209,10 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private void setExperienceView(int experience, DreamsPackagesHolder holder) {
         if (experience == 0) {
             holder.experience.setImageResource(R.drawable.ic_sad_emoji);
-            holder.experience.setColorFilter(R.color.txt_glow);
         } else if (experience == 2) {
             holder.experience.setImageResource(R.drawable.ic_happy_emoji);
-            holder.experience.setColorFilter(R.color.txt_glow);
         } else {
             holder.experience.setImageResource(R.drawable.ic_poker_face_emoji);
-            holder.experience.setColorFilter(R.color.txt_glow);
         }
     }
 }
