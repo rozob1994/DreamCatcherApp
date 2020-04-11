@@ -31,7 +31,6 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDreamInputDialog;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -848,8 +847,7 @@ public class DreamInputPresenter {
                                   AppCompatEditText title, AppCompatEditText content,
                                   Spinner daySp, Spinner monthSp, Spinner yearSp, RelativeLayout loadingBg,
                                   SharedPreferences.Editor dreamPref, SharedPreferences.Editor dreamPrefTwo) {
-        loadingBg.setVisibility(View.VISIBLE);
-        loadingBg.setAlpha(0.5f);
+        setLoadingVisible(loadingBg);
         date = Date.getInstance();
         description = DreamDescription.getInstance();
         DreamInterpretation dreamInterpretation = DreamInterpretation.getInstance();
@@ -883,12 +881,9 @@ public class DreamInputPresenter {
                                             JSONObject jsonObject1 = new JSONObject(response.toString());
                                             boolean status1 = jsonObject1.getBoolean("status");
                                             if (status1) {
-                                                dreamPref.clear().apply();
-                                                dreamPrefTwo.clear().apply();
-                                                Dream.delDream();
-                                                Sleep.delSleep();
                                                 ViewDreamInputDialog dialog = new ViewDreamInputDialog();
-                                                dialog.showDialog(activity, context, "");
+                                                dialog.showDialog(activity, context, dreamPref,
+                                                        dreamPrefTwo);
                                             } else {
                                                 loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
@@ -943,12 +938,9 @@ public class DreamInputPresenter {
                                             JSONObject jsonObject1 = new JSONObject(response.toString());
                                             boolean status1 = jsonObject1.getBoolean("status");
                                             if (status1) {
-                                                dreamPref.clear().apply();
-                                                dreamPrefTwo.clear().apply();
-                                                Dream.delDream();
-                                                Sleep.delSleep();
                                                 ViewDreamInputDialog dialog = new ViewDreamInputDialog();
-                                                dialog.showDialog(activity, context, "");
+                                                dialog.showDialog(activity, context, dreamPref,
+                                                        dreamPrefTwo);
                                             } else {
                                                 loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
@@ -985,6 +977,11 @@ public class DreamInputPresenter {
 
         }
 
+    }
+
+    private void setLoadingVisible(RelativeLayout loadingBg) {
+        loadingBg.setVisibility(View.VISIBLE);
+        loadingBg.setAlpha(0.5f);
     }
 
 

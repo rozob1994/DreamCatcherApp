@@ -16,13 +16,16 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.activities.LucidDreamingQuestionnaireActivity;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 
 public class ViewDreamInputDialog {
 
     private Context context;
     SharedPreferences sp;
 
-    public void showDialog(Activity activity, Context context, String msg) {
+    public void showDialog(Activity activity, Context context, SharedPreferences.Editor dreamPref,
+                           SharedPreferences.Editor dreamPrefTwo) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -39,6 +42,7 @@ public class ViewDreamInputDialog {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, LucidDreamingQuestionnaireActivity.class);
                 context.startActivity(intent);
             }
@@ -48,6 +52,10 @@ public class ViewDreamInputDialog {
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dreamPref.clear().apply();
+                dreamPrefTwo.clear().apply();
+                Dream.delDream();
+                Sleep.delSleep();
                 Intent intent = new Intent(context, DreamsPackagesActivity.class);
                 context.startActivity(intent);
             }
