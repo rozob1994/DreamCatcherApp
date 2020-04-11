@@ -5,7 +5,7 @@
     android:id="@+id/frame_dream_info_input_one"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Fragments.SleepDreamInput.Fragments.DreamInfoInputOneFragment">
+    tools:context=".ui.Fragments.SleepDreamInput.Fragments.inputs.DreamInfoInputOneFragment">
 
 
     <ScrollView

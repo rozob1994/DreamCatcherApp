@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLucidDreamingQuestionnaireBinding;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.QuestionOneFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire.QuestionOneFragment;
 
 import maes.tech.intentanim.CustomIntent;
 

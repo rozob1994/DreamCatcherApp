@@ -9,7 +9,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    tools:context=".ui.Fragments.SleepDreamInput.Fragments.QuestionOneFragment"
+    tools:context=".ui.Fragments.SleepDreamInput.Fragments.questionnaire.QuestionOneFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.DreamInfoInputOneFragment;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.DreamInfoInputTwoFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.inputs.DreamInfoInputOneFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.inputs.DreamInfoInputTwoFragment;
 
 import java.util.ArrayList;
 import java.util.List;

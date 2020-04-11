@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.NegativeFeelingFragment;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.NeutralFeelingFragment;
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.PositiveFeelingFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.people.NegativeFeelingFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.people.NeutralFeelingFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.people.PositiveFeelingFragment;
 
 public class FeelingsTabsAdapter extends FragmentStatePagerAdapter {
 

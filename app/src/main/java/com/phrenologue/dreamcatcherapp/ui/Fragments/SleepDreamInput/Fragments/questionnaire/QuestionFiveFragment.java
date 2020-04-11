@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
+package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionSixteenBinding;
+import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionFiveBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import java.util.Objects;
@@ -25,14 +25,14 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionSixteenFragment extends Fragment {
+public class QuestionFiveFragment extends Fragment {
 
-    private FragmentQuestionSixteenBinding binding;
+    private FragmentQuestionFiveBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
     private int questionNo;
     private QuestionnairePresenter presenter;
 
-    public QuestionSixteenFragment() {
+    public QuestionFiveFragment() {
         // Required empty public constructor
     }
 
@@ -41,8 +41,8 @@ public class QuestionSixteenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= FragmentQuestionSixteenBinding.inflate(inflater, container, false);
-        View view= binding.getRoot();
+        binding= FragmentQuestionFiveBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
@@ -50,7 +50,7 @@ public class QuestionSixteenFragment extends Fragment {
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
-        questionNo = 16;
+        questionNo = 5;
 
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
@@ -58,15 +58,15 @@ public class QuestionSixteenFragment extends Fragment {
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
-        binding.questionSixteen.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionSixteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionSixteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        binding.questionFive.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFiveTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFive.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionSeventeenFragment fragment = new QuestionSeventeenFragment();
+                QuestionSixFragment fragment = new QuestionSixFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -78,13 +78,15 @@ public class QuestionSixteenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionFifteenFragment fragment = new QuestionFifteenFragment();
+                QuestionFourFragment fragment = new QuestionFourFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
                 container.removeAllViews();
             }
         });
+
+
 
         return view;
     }

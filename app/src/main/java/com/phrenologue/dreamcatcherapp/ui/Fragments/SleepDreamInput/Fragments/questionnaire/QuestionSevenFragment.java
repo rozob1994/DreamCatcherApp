@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
+package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionElevenBinding;
+import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionSevenBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import java.util.Objects;
@@ -25,14 +25,14 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionElevenFragment extends Fragment {
+public class QuestionSevenFragment extends Fragment {
 
-    private FragmentQuestionElevenBinding binding;
+    private FragmentQuestionSevenBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
     private int questionNo;
     private QuestionnairePresenter presenter;
 
-    public QuestionElevenFragment() {
+    public QuestionSevenFragment() {
         // Required empty public constructor
     }
 
@@ -41,8 +41,8 @@ public class QuestionElevenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= FragmentQuestionElevenBinding.inflate(inflater,container,false);
-        View view= binding.getRoot();
+        binding= FragmentQuestionSevenBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
@@ -50,7 +50,7 @@ public class QuestionElevenFragment extends Fragment {
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
-        questionNo = 11;
+        questionNo = 7;
 
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
@@ -58,15 +58,15 @@ public class QuestionElevenFragment extends Fragment {
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
-        binding.questionEleven.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionElevenTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionEleven.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        binding.questionSeven.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSevenTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSeven.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionTwelveFragment fragment = new QuestionTwelveFragment();
+                QuestionEightFragment fragment = new QuestionEightFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -78,13 +78,14 @@ public class QuestionElevenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionTenFragment fragment = new QuestionTenFragment();
+                QuestionFiveFragment fragment = new QuestionFiveFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
                 container.removeAllViews();
             }
         });
+
 
         return view;
     }

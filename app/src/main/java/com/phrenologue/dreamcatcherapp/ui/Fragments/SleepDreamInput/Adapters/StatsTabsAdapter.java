@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.PeopleFragment;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.people.PeopleFragment;
 import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.StatsFragment;
 
 public class StatsTabsAdapter extends FragmentStatePagerAdapter {

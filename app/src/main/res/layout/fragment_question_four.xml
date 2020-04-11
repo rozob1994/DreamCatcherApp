@@ -11,7 +11,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.Fragments.SleepDreamInput.Fragments.QuestionFourFragment">
+    tools:context=".ui.Fragments.SleepDreamInput.Fragments.questionnaire.QuestionFourFragment">
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
         android:id="@+id/question_four_title"

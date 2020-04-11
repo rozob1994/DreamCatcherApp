@@ -22,7 +22,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters
 public class ViewDreamInputDialog {
 
     private Context context;
-    SharedPreferences sp;
+    private SharedPreferences sp, sp2;
 
     public void showDialog(Activity activity, Context context, SharedPreferences.Editor dreamPref,
                            SharedPreferences.Editor dreamPrefTwo) {
@@ -34,6 +34,7 @@ public class ViewDreamInputDialog {
         this.context = context;
 
         sp = context.getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
+        sp2 = context.getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
         QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
         int res = Math.round(entry.getResultPercentage());
         String result = "%" + res + "";
@@ -42,7 +43,7 @@ public class ViewDreamInputDialog {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sp2.edit().putBoolean("fromDream", true).apply();
                 Intent intent = new Intent(context, LucidDreamingQuestionnaireActivity.class);
                 context.startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
+package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionThirteenBinding;
+import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionSixBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import java.util.Objects;
@@ -25,14 +25,14 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionThirteenFragment extends Fragment {
+public class QuestionSixFragment extends Fragment {
 
-    private FragmentQuestionThirteenBinding binding;
+    private FragmentQuestionSixBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
     private int questionNo;
     private QuestionnairePresenter presenter;
 
-    public QuestionThirteenFragment() {
+    public QuestionSixFragment() {
         // Required empty public constructor
     }
 
@@ -41,8 +41,8 @@ public class QuestionThirteenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= FragmentQuestionThirteenBinding.inflate(inflater, container, false);
-        View view= binding.getRoot();
+        binding= FragmentQuestionSixBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
@@ -50,7 +50,7 @@ public class QuestionThirteenFragment extends Fragment {
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
-        questionNo = 13;
+        questionNo = 6;
 
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
@@ -58,15 +58,15 @@ public class QuestionThirteenFragment extends Fragment {
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
-        binding.questionThirteen.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionThirteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionThirteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        binding.questionSix.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSixTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionSix.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionFourteenFragment fragment = new QuestionFourteenFragment();
+                QuestionSevenFragment fragment = new QuestionSevenFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -78,7 +78,7 @@ public class QuestionThirteenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionTwelveFragment fragment = new QuestionTwelveFragment();
+                QuestionFiveFragment fragment = new QuestionFiveFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();

@@ -123,7 +123,8 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameOne.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameOne.setBackground(context.getResources().getDrawable(R.drawable.bg_simple));
+                                nameOne.setBackgroundColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
                                 nameOne.setBackgroundColor(context.getResources().getColor(R.color.purple));
@@ -368,12 +369,14 @@ public class DreamExpandedPresenter {
 
     private void setSoundToImageView(AppCompatImageView soundImg) {
         DreamSound sound = DreamSound.getInstance();
-        if (sound.getSound() == 1) {
-            soundImg.setImageResource(R.drawable.ic_musical);
-            soundImg.setColorFilter(R.color.txt_glow);
-        } else if (sound.getSound()==0) {
-            soundImg.setImageResource(R.drawable.ic_musical);
-            soundImg.setColorFilter(R.color.gray);
+        int soundInt = sound.getSound();
+        switch (soundInt) {
+            case 0:
+            case 1:
+                soundImg.setImageResource(R.drawable.ic_non_musical);
+                break;
+            case 2:
+                soundImg.setImageResource(R.drawable.ic_musical);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments;
+package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,36 +15,34 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionTwoBinding;
+import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionFifteenBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import java.util.Objects;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionTwoFragment extends Fragment {
+public class QuestionFifteenFragment extends Fragment {
 
-    private FragmentQuestionTwoBinding binding;
+    private FragmentQuestionFifteenBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
     private int questionNo;
     private QuestionnairePresenter presenter;
 
-
-    public QuestionTwoFragment() {
+    public QuestionFifteenFragment() {
         // Required empty public constructor
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        binding = FragmentQuestionTwoBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        binding= FragmentQuestionFifteenBinding.inflate(inflater, container, false);
+        View view= binding.getRoot();
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
@@ -52,7 +50,7 @@ public class QuestionTwoFragment extends Fragment {
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
-        questionNo = 2;
+        questionNo = 15;
 
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
@@ -60,15 +58,15 @@ public class QuestionTwoFragment extends Fragment {
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
 
-        binding.questionTwo.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionTwoTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionTwo.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        binding.questionFifteen.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFifteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFifteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionThreeFragment fragment = new QuestionThreeFragment();
+                QuestionSixteenFragment fragment = new QuestionSixteenFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -80,7 +78,7 @@ public class QuestionTwoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();;
-                QuestionOneFragment fragment = new QuestionOneFragment();
+                QuestionFourteenFragment fragment = new QuestionFourteenFragment();
                 transaction.replace(R.id.your_placeholder, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
@@ -90,6 +88,5 @@ public class QuestionTwoFragment extends Fragment {
 
 
         return view;
-
     }
 }
