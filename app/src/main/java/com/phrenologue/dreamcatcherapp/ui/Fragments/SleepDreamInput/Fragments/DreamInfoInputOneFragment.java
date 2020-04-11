@@ -25,6 +25,7 @@ import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,27 +33,23 @@ import java.util.List;
 public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private FragmentDreamInfoInputOneBinding binding;
-    DreamInputPresenter presenter;
-    private SeekBar experience;
-    private AppCompatEditText peopleNames;
-    LinearLayout positiveBtnOn, positiveBtnOn2, positiveBtnOn3, positiveBtnOn4, positiveBtnOn5,
+    private DreamInputPresenter presenter;
+    private LinearLayout positiveBtnOn, positiveBtnOn2, positiveBtnOn3, positiveBtnOn4, positiveBtnOn5,
             positiveBtnOn6, positiveBtnOn7, positiveBtnOn8, positiveBtnOn9, positiveBtnOn10,
-            positiveBtnOff, positiveBtnOffTwo, neutralBtnOn,
-            neutralBtnOn2, neutralBtnOn3, neutralBtnOn4, neutralBtnOn5, neutralBtnOn6, neutralBtnOn7,
-            neutralBtnOn8, neutralBtnOn9, neutralBtnOn10,
-            neutralBtnOff, neutralBtnOffTwo, negativeBtnOn, negativeBtnOn2, negativeBtnOn3,
+            neutralBtnOn, neutralBtnOn2, neutralBtnOn3, neutralBtnOn4, neutralBtnOn5, neutralBtnOn6,
+            neutralBtnOn7, neutralBtnOn8, neutralBtnOn9, neutralBtnOn10,
+            negativeBtnOn, negativeBtnOn2, negativeBtnOn3,
             negativeBtnOn4, negativeBtnOn5, negativeBtnOn6, negativeBtnOn7, negativeBtnOn8,
             negativeBtnOn9, negativeBtnOn10,
-            negativeBtnOff, negativeBtnOffTwo, colorOn, colorOff, grayOn, grayOff, museOn, museOff,
+             colorOn, colorOff, grayOn, grayOff, museOn, museOff,
             nonMuseOn, nonMuseOff;
-    RelativeLayout peopleExpanded, peopleClosed, soundsExpanded, soundsClosed, colorfulOff,
+    private RelativeLayout peopleExpanded, peopleClosed, soundsExpanded, soundsClosed, colorfulOff,
             feelingsOn1, feelingsOn2, feelingsOn3, feelingsOn4, feelingsOn5, feelingsOn6, feelingsOn7,
             feelingsOn8, feelingsOn9, feelingsOn10, feelingsOff1, feelingsOff2, feelingsOff3,
             feelingsOff4, feelingsOff5, feelingsOff6, feelingsOff7, feelingsOff8, feelingsOff9,
             feelingsOff10;
-    SharedPreferences dreamPrefs;
-    SharedPreferences.Editor dreamPrefsEditor;
-    AppCompatTextView namesHint1, namesHint2, namesHint3, namesHint4, namesHint5, namesHint6, namesHint7,
+    private SharedPreferences.Editor dreamPrefsEditor;
+    private AppCompatTextView namesHint1, namesHint2, namesHint3, namesHint4, namesHint5, namesHint6, namesHint7,
             namesHint8, namesHint9, namesHint10;
 
 
@@ -67,7 +64,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         binding = FragmentDreamInfoInputOneBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         presenter = new DreamInputPresenter();
-        experience = binding.sliderMood;
+        SeekBar experience = binding.sliderMood;
         peopleExpanded = binding.relPeopleExpanded;
         feelingsOn1 = binding.relFeelingsOn;
         feelingsOn2 = binding.relFeelingsOn2;
@@ -112,8 +109,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         positiveBtnOn8 = binding.linPositiveOn8;
         positiveBtnOn9 = binding.linPositiveOn9;
         positiveBtnOn10 = binding.linPositiveOn10;
-        positiveBtnOff = binding.linPositiveOff;
-        positiveBtnOffTwo = binding.linPositiveOff2;
         neutralBtnOn = binding.linNeutralOn;
         neutralBtnOn2 = binding.linNeutralOn2;
         neutralBtnOn3 = binding.linNeutralOn3;
@@ -124,8 +119,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         neutralBtnOn8 = binding.linNeutralOn8;
         neutralBtnOn9 = binding.linNeutralOn9;
         neutralBtnOn10 = binding.linNeutralOn10;
-        neutralBtnOff = binding.linNeutralOff;
-        neutralBtnOffTwo = binding.linNeutralOff2;
         negativeBtnOn = binding.linNegativeOn;
         negativeBtnOn2 = binding.linNegativeOn2;
         negativeBtnOn3 = binding.linNegativeOn3;
@@ -136,8 +129,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         negativeBtnOn8 = binding.linNegativeOn8;
         negativeBtnOn9 = binding.linNegativeOn9;
         negativeBtnOn10 = binding.linNegativeOn10;
-        negativeBtnOff = binding.linNegativeOff;
-        negativeBtnOffTwo = binding.linNegativeOff2;
         colorOn = binding.linColorfulOn;
         colorOff = binding.linColorfulOff;
         grayOn = binding.linGrayscaleOn;
@@ -147,8 +138,9 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         museOff = binding.linBtnMusicalOff;
         nonMuseOn = binding.linBtnNonMusicalOn;
         nonMuseOff = binding.linBtnNonMusicalOff;
-        peopleNames = binding.edtTxtNames;
-        dreamPrefs = getContext().getSharedPreferences("dream", Context.MODE_PRIVATE);
+        AppCompatEditText peopleNames = binding.edtTxtNames;
+        SharedPreferences dreamPrefs = Objects.requireNonNull(getContext())
+                .getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamPrefsEditor = dreamPrefs.edit();
 
         if (getContext().getClass() == EditDreamInputActivity.class) {
@@ -161,7 +153,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
             experience.setProgress(dreamPrefs.getInt("mood", 0));
         }
         experience.setOnSeekBarChangeListener(this);
-        presenter.setMoodSeekBar(dreamPrefsEditor, experience);
+        presenter.setMoodSeekBar(dreamPrefsEditor, experience, getContext());
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[PEOPLE BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 

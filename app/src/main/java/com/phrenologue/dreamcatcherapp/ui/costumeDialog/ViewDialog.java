@@ -12,43 +12,45 @@ import android.view.Window;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.phrenologue.dreamcatcherapp.activities.DreamChoosingActivity;
+import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
-import com.phrenologue.dreamcatcherapp.activities.LucidDreamingQuestionnaireActivity;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 
-public class ViewDreamInputDialog {
+public class ViewDialog {
 
     private Context context;
+    MoonTextView percentage;
     SharedPreferences sp;
 
     public void showDialog(Activity activity, Context context, String msg) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
-        dialog.setContentView(R.layout.dream_input_dialog);
+        dialog.setContentView(R.layout.dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         this.context = context;
-
+        percentage = dialog.findViewById(R.id.txt_percentage);
         sp = context.getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
         int res = Math.round(entry.getResultPercentage());
         String result = "%" + res + "";
-
-        AppCompatButton yesButton = dialog.findViewById(R.id.btn_yes);
-        yesButton.setOnClickListener(new View.OnClickListener() {
+        percentage.setText(result);
+        AppCompatButton addButton = dialog.findViewById(R.id.btn_add);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LucidDreamingQuestionnaireActivity.class);
+                sp.edit().putBoolean("fromLucidityQuestionnaire", true).apply();
+                Intent intent = new Intent(context, DreamChoosingActivity.class);
                 context.startActivity(intent);
             }
         });
-
-        AppCompatButton noButton = dialog.findViewById(R.id.btn_no);
-        noButton.setOnClickListener(new View.OnClickListener() {
+        AppCompatButton returnButton = dialog.findViewById(R.id.btn_return);
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DreamsPackagesActivity.class);
+                Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
         });
