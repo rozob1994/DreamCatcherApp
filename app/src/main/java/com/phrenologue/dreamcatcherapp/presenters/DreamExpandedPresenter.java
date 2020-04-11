@@ -29,14 +29,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DreamExpandedPresenter {
-    public DreamExpandedPresenter() {}
+    public DreamExpandedPresenter() {
+    }
 
     public void retrievePeople(Context context, int postId, SharedPreferencesManager spManager,
                                RelativeLayout loadingBg, ProgressBar progressBar,
                                MoonTextView nameOne, MoonTextView nameTwo, MoonTextView nameThree,
                                MoonTextView nameFour, MoonTextView nameFive, MoonTextView nameSix,
                                MoonTextView nameSeven, MoonTextView nameEight,
-                               MoonTextView nameNine, MoonTextView nameTen){
+                               MoonTextView nameNine, MoonTextView nameTen) {
         setLoadingVisible(loadingBg, progressBar);
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
@@ -332,7 +333,7 @@ public class DreamExpandedPresenter {
 
                 setDreamPropertiesToViews(mood, color, dreamsPackageInterpretation,
                         dreamsPackageTitle, dreamsPackageDescription, soundImg, titleDate,
-                        dateLoaded);
+                        dateLoaded, context);
 
                 spManager.saveDreamToSp(context, Dream.getInstance(), DreamDate.getInstance());
 
@@ -346,38 +347,43 @@ public class DreamExpandedPresenter {
         });
     }
 
-    private void setMoodToImageView(AppCompatImageView mood) {
+    private void setMoodToImageView(AppCompatImageView mood, Context context) {
         DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getExperience() == 0) {
             mood.setImageResource(R.drawable.ic_sad_emoji);
-        } else if (checklist.getExperience() == 1) {
+            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
+        }
+        if (checklist.getExperience() == 1) {
             mood.setImageResource(R.drawable.ic_poker_face_emoji);
+            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
         } else if (checklist.getExperience() == 2) {
             mood.setImageResource(R.drawable.ic_happy_emoji);
+            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
+        } else {
+            mood.setImageResource(R.drawable.ic_poker_face_emoji);
+            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
         }
     }
 
     private void setColorToImageView(AppCompatImageView color) {
         DreamChecklist checklist = DreamChecklist.getInstance();
-        if (checklist.getGrayScale() == 1) {
-            color.setImageResource(R.drawable.ic_grayscale);
-
-        } else if (checklist.getGrayScale()==2) {
+        if (checklist.getGrayScale() == 2) {
             color.setImageResource(R.drawable.ic_colorful);
+        } else {
+            color.setImageResource(R.drawable.ic_grayscale);
         }
     }
 
     private void setSoundToImageView(AppCompatImageView soundImg) {
         DreamSound sound = DreamSound.getInstance();
         int soundInt = sound.getSound();
-        switch (soundInt) {
-            case 0:
-            case 1:
-                soundImg.setImageResource(R.drawable.ic_non_musical);
-                break;
-            case 2:
-                soundImg.setImageResource(R.drawable.ic_musical);
+        if (soundInt == 1) {
+            soundImg.setImageResource(R.drawable.ic_musical);
+        } else {
+            soundImg.setImageResource(R.drawable.ic_non_musical);
         }
+
+
     }
 
     private void setInterpretationToTextView(MoonTextView dreamsPackageInterpretation) {
@@ -402,8 +408,8 @@ public class DreamExpandedPresenter {
                                            MoonTextView dreamsPackageDescription,
                                            AppCompatImageView soundImg,
                                            MoonTextView titleDate,
-                                           String dateLoaded) {
-        setMoodToImageView(mood);
+                                           String dateLoaded, Context context) {
+        setMoodToImageView(mood, context);
         setColorToImageView(color);
         setInterpretationToTextView(dreamsPackageInterpretation);
         setTitleAndContentToTxtView(dreamsPackageTitle, dreamsPackageDescription);
@@ -431,7 +437,7 @@ public class DreamExpandedPresenter {
 
                 spManager.saveSleepToSp(context);
 
-                setSleepPropsToViews(dayTime, activity, food);
+                setSleepPropsToViews(dayTime, activity, food, context);
             }
 
             @Override
@@ -442,19 +448,21 @@ public class DreamExpandedPresenter {
     }
 
     private void setSleepPropsToViews(AppCompatImageView dayTime, AppCompatImageView activity,
-                                      AppCompatImageView food) {
-        setSleepTimeToView(dayTime);
+                                      AppCompatImageView food, Context context) {
+        setSleepTimeToView(dayTime, context);
         setPhysicalActivityToView(activity);
         setFoodToView(food);
     }
 
-    private void setSleepTimeToView(AppCompatImageView dayTime) {
+    private void setSleepTimeToView(AppCompatImageView dayTime, Context context) {
         Sleep sleep = Sleep.getInstance();
         if (sleep.getTime() == 1) {
             dayTime.setImageResource(R.drawable.ic_day_symbol);
         } else if (sleep.getTime() == 2) {
             dayTime.setImageResource(R.drawable.ic_night_symbol);
-            dayTime.setColorFilter(R.color.txt_glow);
+        } else {
+            dayTime.setImageResource(R.drawable.ic_night_symbol);
+            dayTime.setColorFilter(context.getResources().getColor(R.color.gray));
         }
     }
 

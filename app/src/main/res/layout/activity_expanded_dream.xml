@@ -143,8 +143,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_smile_emoji"
-                    app:tint="@color/txt_glow" />
+                     />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/day_time"
@@ -152,8 +151,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/mood"
-                    app:srcCompat="@drawable/ic_day_symbol"
-                    app:tint="@color/day_light" />
+                     />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/color"
@@ -161,7 +159,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/day_time"
-                    app:srcCompat="@drawable/ic_colorful" />
+                    />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/sound"
@@ -169,8 +167,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/color"
-                    app:srcCompat="@drawable/ic_musical"
-                    app:tint="@color/txt_glow" />
+                    />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/food"
@@ -178,7 +175,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/sound"
-                    app:srcCompat="@drawable/apple" />
+                     />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activity"
@@ -186,7 +183,7 @@
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     android:layout_toRightOf="@id/food"
-                    app:srcCompat="@drawable/stick_figure_3" />
+                     />
 
             </RelativeLayout>
 

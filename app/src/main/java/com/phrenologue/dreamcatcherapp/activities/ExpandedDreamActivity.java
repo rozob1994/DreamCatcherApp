@@ -1,5 +1,6 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
     DreamExpandedPresenter presenter;
     boolean clicked;
     private ActivityExpandedDreamBinding binding;
+    private SharedPreferences sp2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter();
+        sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
 
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
@@ -84,6 +87,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding.btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sp2.edit().putBoolean("fromDream", true).apply();
                 Intent intent = new Intent(getApplicationContext(), LucidDreamingQuestionnaireActivity.class);
                 startActivity(intent);
                 finish();
