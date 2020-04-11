@@ -218,5 +218,7 @@
     <string name="do_you_want_to_answer_the_questionnaire">Do you want to answer the Questionnaire?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="stats">stats</string>
+    <string name="dreams_btn">dreams</string>
 
 </resources>
