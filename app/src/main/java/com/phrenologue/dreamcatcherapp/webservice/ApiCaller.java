@@ -54,18 +54,12 @@ public class ApiCaller {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.e("", "");
-
-                assert response.body() != null;
                 try {
                     responseMessage.onSuccess(response.body().string());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-
-
+                Log.e("", "");
             }
 
             @Override

@@ -99,13 +99,14 @@ public class SleepInputPresenter {
 
     public void setPhysicalActivitySeekBar(SharedPreferences.Editor sleepSp, SeekBar physicalActivity){
         sleep = Sleep.getInstance();
-        physicalActivity.setMax(3);
+
         physicalActivity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setPhysicalActivity(progress);
                 sleepSp.putBoolean("hasPhysicalActivity", true).apply();
                 sleepSp.putInt("physicalActivity", progress).apply();
+                seekBar.setMax(3);
             }
 
             @Override
@@ -122,13 +123,13 @@ public class SleepInputPresenter {
 
     public void setFoodConsumptionSeekBar (SharedPreferences.Editor sleepSp, SeekBar foodConsumption){
         sleep = Sleep.getInstance();
-        foodConsumption.setMax(2);
         foodConsumption.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sleep.setFoodConsumption(progress);
                 sleepSp.putBoolean("hasFoodConsumption", true).apply();
                 sleepSp.putInt("foodConsumption", progress).apply();
+                seekBar.setMax(2);
             }
 
             @Override

@@ -53,39 +53,6 @@ public class Dream {
         instance = null;
     }
 
-    public static void setDreamProperties(int grayScale, int experience, int dayOfMonth,
-                                          int month, int year, String title, String content,
-                                          String interpretationTxt, int lucidityLevel,
-                                          int existent, int soundInput, int musical) {
-        DreamChecklist checklist = DreamChecklist.getInstance();
-        DreamDate date = DreamDate.getInstance();
-        DreamDescription description = DreamDescription.getInstance();
-        DreamInterpretation interpretation = DreamInterpretation.getInstance();
-        DreamLucidity lucidity = DreamLucidity.getInstance();
-        DreamPeople people = DreamPeople.getInstance();
-        DreamSound sound = DreamSound.getInstance();
-        Dream dream = Dream.getInstance();
-
-        checklist.setGrayScale(grayScale);
-        checklist.setExperience(experience);
-        date.setDayOfMonth(dayOfMonth);
-        date.setMonth(month);
-        date.setYear(year);
-        description.setTitle(title);
-        description.setContent(content);
-        interpretation.setInterpretation(interpretationTxt);
-        lucidity.setLucidityLevel(lucidityLevel);
-        people.setExistent(existent);
-        sound.setSound(soundInput);
-        sound.setMusical(musical);
-
-        dream.setDreamChecklist(checklist);
-        dream.setDreamDescription(description);
-        dream.setDreamInterpretation(interpretation);
-        dream.setDreamLucidity(lucidity);
-        dream.setDreamPeople(people);
-        dream.setDreamSound(sound);
-    }
 
     public DreamPeople getDreamPeople() {
         return dreamPeople;

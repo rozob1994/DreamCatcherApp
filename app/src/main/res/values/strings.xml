@@ -214,6 +214,8 @@
     <string name="description">Description</string>
     <string name="no_lucidity_data">No Lucidity Data.</string>
     <string name="take_test">take test</string>
-    <string name="percentage">Percentage</string>
+    <string name="do_you_want_to_answer_the_questionnaire">Do you want to answer the Questionnaire?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
 </resources>

@@ -24,7 +24,7 @@ import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDialog;
+import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewQuestionnaireDialog;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -92,7 +92,6 @@ public class QuestionNineteenFragment extends Fragment {
         });
         ApiPostCaller postCaller = new ApiPostCaller();
 
-
         binding.btnResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +125,6 @@ public class QuestionNineteenFragment extends Fragment {
                                 });
 
 
-
                             } else {
                                 Toast.makeText(getContext(), "Error Saving Results",
                                         Toast.LENGTH_LONG).show();
@@ -156,7 +154,7 @@ public class QuestionNineteenFragment extends Fragment {
                             if (status) {
                                 entry.setId(jsonObject.getInt("id"));
                                 binding.loadingBg.setVisibility(View.GONE);
-                                ViewDialog dialog = new ViewDialog();
+                                ViewQuestionnaireDialog dialog = new ViewQuestionnaireDialog();
                                 dialog.showDialog(getActivity(), getContext(), "");
                             }
                         }

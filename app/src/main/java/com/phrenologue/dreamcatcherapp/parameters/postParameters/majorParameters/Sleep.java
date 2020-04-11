@@ -33,13 +33,6 @@ public class Sleep {
         return instance;
     }
 
-    public static void setSleepProps(int time, int activity, int food) {
-        Sleep sleep = Sleep.getInstance();
-        sleep.setTime(time);
-        sleep.setPhysicalActivity(activity);
-        sleep.setFoodConsumption(food);
-    }
-
     public static void delSleep() {
         instance = null;
     }

@@ -10,6 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamLucidity;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
@@ -20,6 +27,13 @@ import maes.tech.intentanim.CustomIntent;
 public class ExpandedDreamActivity extends AppCompatActivity {
     SharedPreferencesManager spManager;
     Dream dream;
+    DreamPeople people;
+    DreamChecklist checklist;
+    DreamDate date;
+    DreamDescription description;
+    DreamInterpretation interpretation;
+    DreamLucidity lucidity;
+    DreamSound sound;
     Sleep sleep;
     DreamExpandedPresenter presenter;
     boolean clicked;
@@ -33,38 +47,36 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         setContentView(view);
 
         dream = Dream.getInstance();
+        people = DreamPeople.getInstance();
+        checklist = DreamChecklist.getInstance();
+        date = DreamDate.getInstance();
+        description = DreamDescription.getInstance();
+        interpretation = DreamInterpretation.getInstance();
+        lucidity = DreamLucidity.getInstance();
+        sound = DreamSound.getInstance();
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter();
-
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
-
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
-
         sp.edit().putInt("sleepTime", sleepTime).apply();
-
         String dateLoaded = getIntent().getStringExtra("date");
-
         sleep.setTime(sp.getInt("sleepTime", 0));
-
         clicked = false;
 
         dream.setPostId(postId);
 
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
-                binding.noDataRel, binding.txtPercentage);
+                binding.noDataRel);
 
-        presenter.retrievePeople(getApplicationContext(), postId, spManager, binding.loadingBg,
-                binding.progressBar, binding.nameOne, binding.nameTwo, binding.nameThree,
-                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
-                binding.nameEight, binding.nameNine, binding.nameTen);
+        presenter.retrievePeople(getApplicationContext(), postId, spManager);
         presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
                 binding.dreamsPackageInterpretation, binding.dreamsPackageTitle,
                 binding.dreamsPackageDescription, binding.sound, binding.titleDate, dateLoaded,
-                spManager, binding.loadingBg, binding.progressBar);
+                spManager);
         presenter.retrieveSleep(getApplicationContext(), postId, spManager, binding.dayTime,
-                binding.activity, binding.food, binding.loadingBg, binding.progressBar);
+                binding.activity, binding.food);
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,15 +90,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                     binding.titleDescription.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.gray));
                     clicked = false;
                 }
-            }
-        });
-
-        binding.btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LucidDreamingQuestionnaireActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
@@ -142,4 +145,4 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             }
         });
     }
-}
+    }

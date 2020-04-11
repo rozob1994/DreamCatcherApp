@@ -352,8 +352,7 @@ public class StatsPresenter {
 
     public static void drawSingleLucidityLevel(PieChart lucidityChart, int postId,
                                                MoonTextView percentageText,
-                                               RelativeLayout noDataRel,
-                                               MoonTextView percentage) {
+                                               RelativeLayout noDataRel) {
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getQResult(postId, new IResponseMessage() {
             @Override
@@ -367,13 +366,8 @@ public class StatsPresenter {
                     int result = jsonArray.getJSONObject(0).getInt("result");
                     if (result == 0) {
                         noDataRel.setVisibility(View.VISIBLE);
-                        lucidityChart.setVisibility(View.GONE);
-                        percentage.setVisibility(View.GONE);
                     } else {
                         lucidityChart.setVisibility(View.VISIBLE);
-                        noDataRel.setVisibility(View.GONE);
-                        percentage.setVisibility(View.VISIBLE);
-
                         int percentage = (int) (((float) result / 38f) * 100);
                         String percentageStr = "%" + percentage + "" + " Lucid";
                         percentageText.setText(percentageStr);
