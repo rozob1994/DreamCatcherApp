@@ -91,6 +91,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         String titlec = titles.get(position);
         String contentc = contents.get(position);
         int dayNightC = sleepTimes.get(position);
+        int experience = experiences.get(position);
         String day = days.get(position) + "";
         String month = months.get(position) + "";
         String year = years.get(position) + "";
@@ -99,10 +100,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         holder.title.setText(titlec);
         holder.content.setText(contentc);
 
-        if (dayNightC == 2) {
-            holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
-            holder.dayNight.setColorFilter(R.color.ic_night_light);
-        }
+        setViews(dayNightC, holder, experience);
 
         holder.dateTitle.setText(date);
 
@@ -177,6 +175,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         private AppCompatTextView title;
         private AppCompatTextView content;
         private AppCompatImageView dayNight;
+        private AppCompatImageView experience;
         private MoonTextView dateTitle;
         private RelativeLayout relativeLayout;
 
@@ -187,6 +186,36 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
             dayNight = itemView.findViewById(R.id.package_day_time);
             dateTitle = itemView.findViewById(R.id.title_date);
             relativeLayout = itemView.findViewById(R.id.rel_dreams_package);
+            experience = itemView.findViewById(R.id.package_mood);
+        }
+    }
+    private void setViews(int dayNightC, DreamsPackagesHolder holder,
+                          int experience){
+        setSleepTimeView(dayNightC, holder);
+        setExperienceView(experience, holder);
+    }
+
+    private void setSleepTimeView(int dayNightC, DreamsPackagesHolder holder) {
+        if (dayNightC == 2) {
+            holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
+        } else if (dayNightC == 1) {
+            holder.dayNight.setImageResource(R.drawable.ic_day_symbol);
+        } else {
+            holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
+            holder.dayNight.setColorFilter(R.color.gray);
+        }
+    }
+
+    private void setExperienceView(int experience, DreamsPackagesHolder holder) {
+        if (experience == 0) {
+            holder.experience.setImageResource(R.drawable.ic_sad_emoji);
+            holder.experience.setColorFilter(R.color.txt_glow);
+        } else if (experience == 2) {
+            holder.experience.setImageResource(R.drawable.ic_happy_emoji);
+            holder.experience.setColorFilter(R.color.txt_glow);
+        } else {
+            holder.experience.setImageResource(R.drawable.ic_poker_face_emoji);
+            holder.experience.setColorFilter(R.color.txt_glow);
         }
     }
 }
