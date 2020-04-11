@@ -1,7 +1,7 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.text.Editable;
@@ -20,7 +20,6 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -33,6 +32,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDreamInputDialog;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -844,7 +844,7 @@ public class DreamInputPresenter {
 
     }
 
-    public void saveCompleteDream(Context context, AppCompatEditText interpretation,
+    public void saveCompleteDream(Activity activity, Context context, AppCompatEditText interpretation,
                                   AppCompatEditText title, AppCompatEditText content,
                                   Spinner daySp, Spinner monthSp, Spinner yearSp, RelativeLayout loadingBg,
                                   SharedPreferences.Editor dreamPref, SharedPreferences.Editor dreamPrefTwo) {
@@ -887,8 +887,8 @@ public class DreamInputPresenter {
                                                 dreamPrefTwo.clear().apply();
                                                 Dream.delDream();
                                                 Sleep.delSleep();
-                                                Intent intent = new Intent(context, ProfileActivity.class);
-                                                context.startActivity(intent);
+                                                ViewDreamInputDialog dialog = new ViewDreamInputDialog();
+                                                dialog.showDialog(activity, context, "");
                                             } else {
                                                 loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
@@ -947,8 +947,8 @@ public class DreamInputPresenter {
                                                 dreamPrefTwo.clear().apply();
                                                 Dream.delDream();
                                                 Sleep.delSleep();
-                                                Intent intent = new Intent(context, ProfileActivity.class);
-                                                context.startActivity(intent);
+                                                ViewDreamInputDialog dialog = new ViewDreamInputDialog();
+                                                dialog.showDialog(activity, context, "");
                                             } else {
                                                 loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
