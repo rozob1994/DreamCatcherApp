@@ -53,15 +53,24 @@ public class DreamInputPresenter {
     public DreamInputPresenter() {
     }
 
-    public void setMoodSeekBar(SharedPreferences.Editor dreamPrefEditor, SeekBar experience) {
+    public void setMoodSeekBar(SharedPreferences.Editor dreamPrefEditor, SeekBar experience,
+                               Context context) {
         checklist = DreamChecklist.getInstance();
+        experience.setMax(2);
         experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 checklist.setExperience(progress);
                 dreamPrefEditor.putBoolean("hasMood", true).apply();
                 dreamPrefEditor.putInt("mood", progress).apply();
-                seekBar.setMax(2);
+                if (progress == 0) {
+                    experience.setThumb(context.getResources().getDrawable(R.drawable.ic_sad_emoji));
+                } else if (progress == 1) {
+                    experience.setThumb(context.getResources().getDrawable(R.drawable.ic_poker_face_emoji));
+                } else if (progress == 2) {
+                    experience.setThumb(context.getResources().getDrawable(R.drawable.ic_happy_emoji));
+                }
+
             }
 
             @Override
