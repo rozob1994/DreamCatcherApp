@@ -18,7 +18,12 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
+import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
+
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -54,6 +59,10 @@ public class DreamInfoInputTwoFragment extends Fragment {
         dreamTwo = getContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
         dreamToLuciditySp = getContext().getSharedPreferences("dreamToLucidityQuestionnaire",
                 Context.MODE_PRIVATE);
+        String dateStr = Calendar.getInstance().getTime().toString();
+        List<String> dateProps = Arrays.asList(dateStr.split(" "));
+        int dayInt = Integer.parseInt(dateProps.get(2));
+        Integer monthInt = Date.monthStrToInt(dateProps.get(1));
 
         if (dreamTwo.getBoolean("descriptionTitleExists", false)) {
             title.setText(dreamTwo.getString("descriptionTitle", ""));
@@ -69,14 +78,20 @@ public class DreamInfoInputTwoFragment extends Fragment {
 
         if (dreamTwo.getBoolean("dayIndExists", false)) {
             day.setSelection(dreamTwo.getInt("dayInd", 0));
+        } else {
+            day.setSelection(dayInt-1);
         }
 
         if (dreamTwo.getBoolean("monthIndExists", false)) {
             month.setSelection(dreamTwo.getInt("monthInd", 0));
+        } else {
+            month.setSelection(monthInt-1);
         }
 
         if (dreamTwo.getBoolean("yearIndExists", false)) {
             year.setSelection(dreamTwo.getInt("yearInd", 0));
+        } else {
+            year.setSelection(year.getFirstVisiblePosition());
         }
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[BUTTON]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
         presenter.setTextListener("descriptionTitle", title, dreamTwo);
@@ -99,7 +114,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
                         title, content, day, month, year, binding.loadingBg,
                         dreamOne.edit(), dreamTwo.edit());
                 /**Dream.delDream();
-                Sleep.delSleep();**/
+                 Sleep.delSleep();**/
 
             }
         });
@@ -112,7 +127,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
                 dreamOne.edit().clear().apply();
                 dreamTwo.edit().clear().apply();
                 /**Dream.delDream();
-                Sleep.delSleep();**/
+                 Sleep.delSleep();**/
                 Intent intent = new Intent(v.getContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(getContext(), "fadein-to-fadeout");

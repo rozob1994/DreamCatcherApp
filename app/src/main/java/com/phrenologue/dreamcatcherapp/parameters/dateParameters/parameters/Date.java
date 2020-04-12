@@ -91,21 +91,47 @@ public class Date {
      * @param month = full month's name.
      * @return int of month
      */
-    public int monthStrToInt(String month) {
-        HashMap<String, Integer> monthMap = new HashMap<>();
-        monthMap.put("january", 1);
-        monthMap.put("february", 2);
-        monthMap.put("march", 3);
-        monthMap.put("april", 4);
-        monthMap.put("may", 5);
-        monthMap.put("june", 6);
-        monthMap.put("july", 7);
-        monthMap.put("august", 8);
-        monthMap.put("september", 9);
-        monthMap.put("october", 10);
-        monthMap.put("november", 11);
-        monthMap.put("december", 12);
-        return monthMap.get(month.toLowerCase());
+    public static int monthStrToInt(String month) {
+        int monthInt = 0;
+       switch (month) {
+           case "Jan":
+               monthInt = 1;
+               break;
+           case "Feb":
+               monthInt = 2;
+               break;
+           case "Mar":
+               monthInt = 3;
+               break;
+           case "Apr":
+               monthInt = 4;
+               break;
+           case "May":
+               monthInt = 5;
+               break;
+           case "Jun":
+               monthInt = 6;
+               break;
+           case "Jul":
+               monthInt = 7;
+               break;
+           case "Aug":
+               monthInt = 8;
+               break;
+           case "Sep":
+               monthInt = 9;
+               break;
+           case "Oct":
+               monthInt = 10;
+               break;
+           case "Nov":
+               monthInt = 11;
+               break;
+           case "Dec":
+               monthInt = 12;
+               break;
+       }
+       return monthInt;
     }
     /**
      * @return 0 = Saturday, 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday,
