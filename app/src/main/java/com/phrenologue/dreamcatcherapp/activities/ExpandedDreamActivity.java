@@ -11,10 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
+import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -38,6 +43,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter();
+        SharedPreferences sp3 = getSharedPreferences("delCall", MODE_PRIVATE);
         sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
 
         int postId = getIntent().getIntExtra("postId", 0);
@@ -94,6 +100,16 @@ public class ExpandedDreamActivity extends AppCompatActivity {
             }
         });
 
+
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewThread thread = new NewThread();
+                thread.start();
+            }
+        });
+
+
         binding.relInterpretation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,5 +161,33 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
+    class NewThread extends Thread {
+        @Override
+        public void run() {
+            ApiPostCaller apiPostCaller = new ApiPostCaller();
+            apiPostCaller.delDream(new IResponseMessage() {
+                @Override
+                public void onSuccess(Object response) throws JSONException {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    boolean status = jsonObject.getBoolean("status");
+                    if (status) {
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+
+                }
+            });
+        }
+    }
+
+
+
+
 }
+

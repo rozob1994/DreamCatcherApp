@@ -163,6 +163,10 @@ public interface IPostService {
     Call<ResponseBody> addPostIdToIdQ(@Field("postId") int postId,
                                       @Field("id") int id);
 
+    @FormUrlEncoded
+    @POST("users/DelDream.php")
+    Call<ResponseBody> delDream(@Field("postId") int postId);
+
     @GET("users/QResult.php")
     Call<ResponseBody> getQResult(@Query("postId") int postId);
 

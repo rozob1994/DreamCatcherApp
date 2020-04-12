@@ -33,6 +33,28 @@ public class ApiPostCaller {
 
     IPostService postService = ApiClient.getRetrofit().create(IPostService.class);
 
+    public void delDream(IResponseMessage responseMessage) {
+        int postId = Dream.getInstance().getPostId();
+        Call<ResponseBody> call = postService.delDream(postId);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    assert response.body() != null;
+                    responseMessage.onSuccess(response.body().string());
+                    Log.e("","");
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseMessage.onFailure(t.getMessage().toString());
+            }
+        });
+    }
+
     public void postQEntry(IResponseMessage responseMessage, int postId) {
         Users user = Users.getInstance();
         QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
