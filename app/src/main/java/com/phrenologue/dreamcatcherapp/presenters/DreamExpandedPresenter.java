@@ -124,14 +124,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameOne.setBackground(context.getResources().getDrawable(R.drawable.bg_simple));
-                                nameOne.setBackgroundColor(context.getResources().getColor(R.color.day_light));
+                                nameOne.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameOne.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameOne.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameOne.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameOne.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -143,13 +142,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameTwo.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameTwo.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameTwo.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameTwo.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameTwo.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameTwo.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -161,13 +160,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameThree.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameThree.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameThree.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameThree.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameThree.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameThree.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -179,13 +178,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameFour.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameFour.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameFour.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameFour.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameFour.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameFour.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -197,13 +196,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameFive.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameFive.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameFive.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameFive.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameFive.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameFive.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -215,13 +214,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameSix.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameSix.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameSix.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameSix.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameSix.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameSix.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -233,13 +232,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameSeven.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameSeven.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameSeven.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameSeven.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameSeven.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameSeven.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -251,13 +250,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameEight.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameEight.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameEight.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameEight.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameEight.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameEight.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -269,13 +268,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameNine.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameNine.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameNine.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameNine.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameNine.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameNine.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
@@ -287,13 +286,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameTen.setBackgroundColor(context.getResources().getColor(R.color.red));
+                                nameTen.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                             case 2:
-                                nameTen.setBackgroundColor(context.getResources().getColor(R.color.purple));
+                                nameTen.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameTen.setBackgroundColor(context.getResources().getColor(R.color.txt_glow));
+                                nameTen.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                         }
                     }
