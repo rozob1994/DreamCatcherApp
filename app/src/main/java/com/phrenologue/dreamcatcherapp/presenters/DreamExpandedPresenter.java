@@ -124,13 +124,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameOne.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameOne.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameOne.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameOne.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameOne.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -142,13 +142,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameTwo.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameTwo.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameTwo.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameTwo.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameTwo.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -160,13 +160,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameThree.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameThree.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameThree.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameThree.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameThree.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -178,13 +178,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameFour.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameFour.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameFour.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameFour.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameFour.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -196,13 +196,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameFive.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameFive.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameFive.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameFive.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameFive.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -214,13 +214,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameSix.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameSix.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameSix.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameSix.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameSix.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -232,13 +232,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameSeven.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameSeven.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameSeven.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameSeven.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameSeven.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -250,13 +250,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameEight.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameEight.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameEight.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameEight.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameEight.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -268,13 +268,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameNine.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameNine.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameNine.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameNine.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameNine.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -286,13 +286,13 @@ public class DreamExpandedPresenter {
                     if (impression > 0) {
                         switch (impression) {
                             case 1:
-                                nameTen.setTextColor(context.getResources().getColor(R.color.day_light));
+                                nameTen.setTextColor(context.getResources().getColor(R.color.txt_glow));
                                 break;
                             case 2:
                                 nameTen.setTextColor(context.getResources().getColor(R.color.white));
                                 break;
                             case 3:
-                                nameTen.setTextColor(context.getResources().getColor(R.color.txt_glow));
+                                nameTen.setTextColor(context.getResources().getColor(R.color.day_light));
                                 break;
                         }
                     }
@@ -350,17 +350,12 @@ public class DreamExpandedPresenter {
         DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getExperience() == 0) {
             mood.setImageResource(R.drawable.ic_sad_emoji);
-            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
-        }
-        if (checklist.getExperience() == 1) {
+        } else if (checklist.getExperience() == 1) {
             mood.setImageResource(R.drawable.ic_poker_face_emoji);
-            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
         } else if (checklist.getExperience() == 2) {
             mood.setImageResource(R.drawable.ic_happy_emoji);
-            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
         } else {
-            mood.setImageResource(R.drawable.ic_poker_face_emoji);
-            mood.setColorFilter(context.getResources().getColor(R.color.txt_glow));
+            mood.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -457,11 +452,11 @@ public class DreamExpandedPresenter {
         Sleep sleep = Sleep.getInstance();
         if (sleep.getTime() == 1) {
             dayTime.setImageResource(R.drawable.ic_day_symbol);
+            dayTime.setColorFilter(R.color.day_light);
         } else if (sleep.getTime() == 2) {
             dayTime.setImageResource(R.drawable.ic_night_symbol);
         } else {
-            dayTime.setImageResource(R.drawable.ic_night_symbol);
-            dayTime.setColorFilter(context.getResources().getColor(R.color.gray));
+            dayTime.setVisibility(View.GONE);
         }
     }
 

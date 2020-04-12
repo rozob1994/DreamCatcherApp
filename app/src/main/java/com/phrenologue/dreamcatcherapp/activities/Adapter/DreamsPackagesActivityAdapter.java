@@ -201,18 +201,19 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         } else if (dayNightC == 1) {
             holder.dayNight.setImageResource(R.drawable.ic_day_symbol);
         } else {
-            holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
-            holder.dayNight.setColorFilter(R.color.gray);
+            holder.dayNight.setVisibility(View.INVISIBLE);
         }
     }
 
     private void setExperienceView(int experience, DreamsPackagesHolder holder) {
         if (experience == 0) {
             holder.experience.setImageResource(R.drawable.ic_sad_emoji);
+        } else if (experience == 1) {
+            holder.experience.setImageResource(R.drawable.ic_poker_face_emoji);
         } else if (experience == 2) {
             holder.experience.setImageResource(R.drawable.ic_happy_emoji);
         } else {
-            holder.experience.setImageResource(R.drawable.ic_poker_face_emoji);
+            holder.experience.setVisibility(View.INVISIBLE);
         }
     }
 }

@@ -92,7 +92,7 @@
 
                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                         android:id="@+id/btn_test"
-                        android:elevation="2dp"
+                        android:elevation="4dp"
                         android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="32dp"
@@ -140,6 +140,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mood"
+                    app:tint="@color/white"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
