@@ -43,7 +43,6 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter();
-        SharedPreferences sp3 = getSharedPreferences("delCall", MODE_PRIVATE);
         sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
 
         int postId = getIntent().getIntExtra("postId", 0);
@@ -173,7 +172,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     boolean status = jsonObject.getBoolean("status");
                     if (status) {
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                         startActivity(intent);
                     }
                 }

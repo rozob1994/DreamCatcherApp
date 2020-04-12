@@ -2584,23 +2584,23 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/prevBtn"
+                    android:id="@+id/nextBtn"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_gradient"
                     android:elevation="4dp"
-                    android:text="previous"
+                    android:text="@string/next_btn"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/nextBtn"
+                    android:id="@+id/prevBtn"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/bg_gradient"
                     android:elevation="4dp"
-                    android:text="next"
+                    android:text="@string/previous_btn"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
