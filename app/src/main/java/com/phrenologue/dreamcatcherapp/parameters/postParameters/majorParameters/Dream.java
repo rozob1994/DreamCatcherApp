@@ -1,7 +1,5 @@
 package com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters;
 
-import androidx.annotation.Nullable;
-
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
@@ -14,7 +12,7 @@ import java.util.Random;
 
 
 public class Dream {
-    private static Dream instance =null;
+    private static Dream instance = null;
     private DreamPeople dreamPeople;
     private DreamSound dreamSound;
     private DreamChecklist dreamChecklist;
@@ -26,14 +24,6 @@ public class Dream {
     private Dream() {
     }
 
-    private Dream(@Nullable DreamPeople dreamPeople, @Nullable DreamSound dreamSound, @Nullable DreamLucidity dreamLucidity,
-                  @Nullable DreamChecklist dreamChecklist, @Nullable DreamDescription dreamDescription) {
-        this.dreamPeople = dreamPeople;
-        this.dreamSound = dreamSound;
-        this.dreamLucidity = dreamLucidity;
-        this.dreamDescription = dreamDescription;
-        this.dreamChecklist = dreamChecklist;
-    }
 
     public static Dream getInstance() {
         if (instance == null){

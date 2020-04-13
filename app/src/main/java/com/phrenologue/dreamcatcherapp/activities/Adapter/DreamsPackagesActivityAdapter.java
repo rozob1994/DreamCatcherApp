@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +20,7 @@ import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Post;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -30,50 +30,16 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPackagesActivityAdapter.DreamsPackagesHolder> {
-    private List<String> titles;
-    private List<String> contents;
+    private List<Post> posts;
     private List<Integer> postIds;
-    private List<Integer> sounds;
-    private List<Integer> musics;
-    private List<Integer> grayScales;
-    private List<Integer> experiences;
-    private List<Integer> lucidityLevels;
-    private List<Integer> days;
-    private List<Integer> months;
-    private List<Integer> years;
-    private List<String> interpretations;
-    private List<Integer> sleepTimes;
     private Context context;
     private LayoutInflater inflater;
     private SharedPreferences sp;
 
-    public DreamsPackagesActivityAdapter(Context context, @Nullable List<String> titles,
-                                         @Nullable List<String> contents,
-                                         @Nullable List<Integer> postIds,
-                                         List<Integer> sounds,
-                                         List<Integer> musics,
-                                         List<Integer> grayScales,
-                                         List<Integer> experiences,
-                                         List<Integer> lucidityLevels,
-                                         List<Integer> days,
-                                         List<Integer> months,
-                                         List<Integer> years,
-                                         List<String> interpretations,
-                                         List<Integer> sleepTimes) {
-        this.titles = titles;
-        this.contents = contents;
-        this.context = context;
+    public DreamsPackagesActivityAdapter(Context context, List<Post> posts, List<Integer> postIds) {
         this.postIds = postIds;
-        this.sounds = sounds;
-        this.musics = musics;
-        this.grayScales = grayScales;
-        this.experiences = experiences;
-        this.lucidityLevels = lucidityLevels;
-        this.days = days;
-        this.months = months;
-        this.years = years;
-        this.interpretations = interpretations;
-        this.sleepTimes = sleepTimes;
+        this.context = context;
+        this.posts = posts;
         inflater = LayoutInflater.from(context);
 
     }
@@ -88,20 +54,19 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     @Override
     public void onBindViewHolder(@NonNull DreamsPackagesHolder holder, int position) {
 
-        String titlec = titles.get(position);
-        String contentc = contents.get(position);
-        int dayNightC = sleepTimes.get(position);
-        int experience = experiences.get(position);
-        String day = days.get(position) + "";
-        String month = months.get(position) + "";
-        String year = years.get(position) + "";
+        String titlec = posts.get(position).getTitle();
+        String contentc = posts.get(position).getContent();
+        int dayNightC = posts.get(position).getSleepTime();
+        int experience = posts.get(position).getExperience();
+        String day = posts.get(position).getDay() + "";
+        String month = posts.get(position).getMonth() + "";
+        String year = posts.get(position).getYear() + "";
         String date = year + "/" + month + "/" + day;
 
         holder.title.setText(titlec);
         holder.content.setText(contentc);
-        if (sleepTimes.size() == experiences.size()) {
-            setViews(dayNightC, holder, experience);
-        }
+
+        setViews(dayNightC, holder, experience);
 
 
         holder.dateTitle.setText(date);
@@ -170,7 +135,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return posts.size();
     }
 
     class DreamsPackagesHolder extends RecyclerView.ViewHolder {
