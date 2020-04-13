@@ -21,6 +21,7 @@ import java.util.List;
 
 public class DreamsPresenter {
     private Context context;
+
     public DreamsPresenter(Context context) {
         this.context = context;
     }
@@ -73,8 +74,8 @@ public class DreamsPresenter {
                     sleepTimes.add(jsonArrays.get(j).getInt(12));
                 }
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
-                        titles, contents, postIds, sounds, musics, grayScales,experiences,
-                        lucidityLevels,days,months,years,interpretations,sleepTimes);
+                        titles, contents, postIds, sounds, musics, grayScales, experiences,
+                        lucidityLevels, days, months, years, interpretations, sleepTimes);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
@@ -84,7 +85,7 @@ public class DreamsPresenter {
             @Override
             public void onFailure(String errorMessage) {
                 loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context,"Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
             }
 
         });
@@ -92,7 +93,7 @@ public class DreamsPresenter {
     }
 
     public void getDescriptionForChoice(Context context,
-                               RelativeLayout loadingBg, RecyclerView dreamsRecycler) {
+                                        RelativeLayout loadingBg, RecyclerView dreamsRecycler) {
         loadingBg.setVisibility(View.VISIBLE);
         loadingBg.setAlpha(0.5f);
         ApiPostCaller postCaller = new ApiPostCaller();
@@ -138,8 +139,8 @@ public class DreamsPresenter {
                     sleepTimes.add(jsonArrays.get(j).getInt(12));
                 }
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
-                        titles, contents, postIds, sounds, musics, grayScales,experiences,
-                        lucidityLevels,days,months,years,interpretations,sleepTimes);
+                        titles, contents, postIds, sounds, musics, grayScales, experiences,
+                        lucidityLevels, days, months, years, interpretations, sleepTimes);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
@@ -148,7 +149,7 @@ public class DreamsPresenter {
             @Override
             public void onFailure(String errorMessage) {
                 loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context,"Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
             }
 
         });

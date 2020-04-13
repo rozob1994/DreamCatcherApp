@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.view.MotionEventCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -218,5 +220,22 @@ public class ProfileActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = MotionEventCompat.getActionMasked(event);
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
+                startActivity(intent);
+                return true;
+            case MotionEvent.ACTION_POINTER_UP:
+                Intent intent1 = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onTouchEvent(event);
+        }
     }
 }

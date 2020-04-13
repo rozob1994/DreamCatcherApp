@@ -99,8 +99,10 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
         holder.title.setText(titlec);
         holder.content.setText(contentc);
+        if (sleepTimes.size() == experiences.size()) {
+            setViews(dayNightC, holder, experience);
+        }
 
-        setViews(dayNightC, holder, experience);
 
         holder.dateTitle.setText(date);
 
