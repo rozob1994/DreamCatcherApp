@@ -373,7 +373,6 @@ public class StatsPresenter {
                         lucidityChart.setVisibility(View.VISIBLE);
                         noDataRel.setVisibility(View.GONE);
                         percentage.setVisibility(View.VISIBLE);
-
                         int percentage = (int) (((float) result / 38f) * 100);
                         String percentageStr = "%" + percentage + "" + " Lucid";
                         percentageText.setText(percentageStr);
@@ -383,6 +382,7 @@ public class StatsPresenter {
                         entries.add(new PieEntry(remainder, "Not Lucid"));
                         PieDataSet dataSet = new PieDataSet(entries, "Lucidity Percentage");
                         PieData pieData = new PieData(dataSet);
+                        dataSet.setColors(ColorPalettes.DREAMS_EXPANDED);
                         lucidityChart.setData(pieData);
                         lucidityChart.invalidate();
                         lucidityChart.setDrawHoleEnabled(false);
