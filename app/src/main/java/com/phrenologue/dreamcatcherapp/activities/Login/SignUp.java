@@ -13,6 +13,7 @@ import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.activities.SleepDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySignUp2Binding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.SignUpPresenter;
@@ -33,6 +34,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(view);
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
+        SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
         sharedPreferences = getSharedPreferences("signUp", MODE_PRIVATE);
         spLogin = getSharedPreferences("login", MODE_PRIVATE);
         if ((sharedPreferences.getBoolean("signedUp", false))||(spLogin.getBoolean("logged", false))){

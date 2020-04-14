@@ -1,6 +1,5 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,12 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
-
-import maes.tech.intentanim.CustomIntent;
 
 public class DreamsPackagesActivity extends AppCompatActivity {
     private ActivityDreamsPackagesBinding binding;
@@ -36,10 +34,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-                CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
-                finish();
+                IntentManager.goToProfile(getApplicationContext());
             }
         });
 
@@ -47,9 +42,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
-                startActivity(intent);
-                CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
+                IntentManager.goToSleepDreamInput(DreamsPackagesActivity.this);
             }
         });
     }
@@ -57,10 +50,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        startActivity(intent);
-        CustomIntent.customType(DreamsPackagesActivity.this, "fadein-to-fadeout");
-        finish();
+        IntentManager.goToProfile(DreamsPackagesActivity.this);
     }
 
 }
