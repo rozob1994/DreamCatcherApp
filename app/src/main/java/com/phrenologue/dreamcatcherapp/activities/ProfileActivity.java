@@ -75,7 +75,12 @@ public class ProfileActivity extends AppCompatActivity {
         btnCancel= findViewById(R.id.btn_cancel_edt);
         dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         dreamChoosingOff.edit().clear().apply();
-
+        binding.levelSeekbar.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
