@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Post;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -45,19 +44,30 @@ public class DreamsPresenter {
                     jsonArrays.add(jsonArray.getJSONArray(i));
                 }
                 List<Integer> postIds = new ArrayList<>();
+                List<Integer> sleepTimes = new ArrayList<>();
+                List<Integer> experiences = new ArrayList<>();
+                List<Integer> days = new ArrayList<>();
+                List<Integer> months = new ArrayList<>();
+                List<Integer> years = new ArrayList<>();
+                List<String> titles = new ArrayList<>();
+                List<String> contents = new ArrayList<>();
 
                 for (int j = 0; j < jsonArrays.size(); j++) {
                     postIds.add(jsonArrays.get(j).getInt(2));
+                    experiences.add(jsonArrays.get(j).getInt(6));
+                    sleepTimes.add(jsonArrays.get(j).getInt(12));
+                    days.add(jsonArrays.get(j).getInt(8));
+                    months.add(jsonArrays.get(j).getInt(9));
+                    years.add(jsonArrays.get(j).getInt(10));
+                    titles.add(jsonArrays.get(j).getString(0));
+                    contents.add(jsonArrays.get(j).getString(1));
                 }
-                Post post = new Post();
-                List<Post> posts = post.getPosts(postIds);
-
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
-                        posts, postIds);
+                         postIds, sleepTimes, experiences, days, months, years, titles, contents);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
-                dreamCount.setText("Dream Count: " + posts.size() + "");
+                dreamCount.setText("Dream Count: " + postIds.size() + "");
             }
 
             @Override
@@ -87,15 +97,26 @@ public class DreamsPresenter {
                     jsonArrays.add(jsonArray.getJSONArray(i));
                 }
                 List<Integer> postIds = new ArrayList<>();
-
+                List<Integer> sleepTimes = new ArrayList<>();
+                List<Integer> experiences = new ArrayList<>();
+                List<Integer> days = new ArrayList<>();
+                List<Integer> months = new ArrayList<>();
+                List<Integer> years = new ArrayList<>();
+                List<String> titles = new ArrayList<>();
+                List<String> contents = new ArrayList<>();
 
                 for (int j = 0; j < jsonArrays.size(); j++) {
                     postIds.add(jsonArrays.get(j).getInt(2));
+                    experiences.add(jsonArrays.get(j).getInt(6));
+                    sleepTimes.add(jsonArrays.get(j).getInt(12));
+                    days.add(jsonArrays.get(j).getInt(8));
+                    months.add(jsonArrays.get(j).getInt(9));
+                    years.add(jsonArrays.get(j).getInt(10));
+                    titles.add(jsonArrays.get(j).getString(0));
+                    contents.add(jsonArrays.get(j).getString(1));
                 }
-                Post post = new Post();
-                List<Post> posts = post.getPosts(postIds);
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
-                        posts, postIds);
+                         postIds, sleepTimes, experiences, days, months, years, titles, contents);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);

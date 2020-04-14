@@ -20,7 +20,6 @@ import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Post;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -30,16 +29,32 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPackagesActivityAdapter.DreamsPackagesHolder> {
-    private List<Post> posts;
     private List<Integer> postIds;
+    private List<Integer> sleepTimes;
+    private List<Integer> experiences;
+    private List<Integer> days;
+    private List<Integer> months;
+    private List<Integer> years;
+    private List<String> titles;
+    private List<String> contents;
     private Context context;
     private LayoutInflater inflater;
     private SharedPreferences sp;
 
-    public DreamsPackagesActivityAdapter(Context context, List<Post> posts, List<Integer> postIds) {
+    public DreamsPackagesActivityAdapter(Context context, List<Integer> postIds,
+                                         List<Integer> sleepTimes, List<Integer> experiences,
+                                         List<Integer> days,List<Integer> months,
+                                         List<Integer> years, List<String> titles,
+                                         List<String> contents) {
         this.postIds = postIds;
         this.context = context;
-        this.posts = posts;
+        this.sleepTimes = sleepTimes;
+        this.experiences = experiences;
+        this.days = days;
+        this.months = months;
+        this.years = years;
+        this.titles = titles;
+        this.contents = contents;
         inflater = LayoutInflater.from(context);
 
     }
@@ -54,17 +69,17 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     @Override
     public void onBindViewHolder(@NonNull DreamsPackagesHolder holder, int position) {
 
-        String titlec = posts.get(position).getTitle();
-        String contentc = posts.get(position).getContent();
-        int dayNightC = posts.get(position).getSleepTime();
-        int experience = posts.get(position).getExperience();
-        String day = posts.get(position).getDay() + "";
-        String month = posts.get(position).getMonth() + "";
-        String year = posts.get(position).getYear() + "";
+        String titlec = titles.get(position);
+        String contentc = contents.get(position);
+        int dayNightC = sleepTimes.get(position);
+        int experience = experiences.get(position);
+        String day = days.get(position) + "";
+        String month = months.get(position) + "";
+        String year = years.get(position) + "";
         String date = year + "/" + month + "/" + day;
 
-        holder.title.setText(titlec);
-        holder.content.setText(contentc);
+        holder.title.setText(contentc);
+        holder.content.setText(titlec);
 
         setViews(dayNightC, holder, experience);
 
@@ -135,7 +150,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
 
     @Override
     public int getItemCount() {
-        return posts.size();
+        return postIds.size();
     }
 
     class DreamsPackagesHolder extends RecyclerView.ViewHolder {
@@ -165,6 +180,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private void setSleepTimeView(int dayNightC, DreamsPackagesHolder holder) {
         if (dayNightC == 2) {
             holder.dayNight.setImageResource(R.drawable.ic_night_symbol);
+            holder.dayNight.setColorFilter(context.getResources().getColor(R.color.ic_night_light));
         } else if (dayNightC == 1) {
             holder.dayNight.setImageResource(R.drawable.ic_day_symbol);
         } else {

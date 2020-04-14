@@ -26,6 +26,7 @@ public interface IPostService {
                                   @Nullable @Field("dreamLucidityLevel") Integer dreamLucidityLevel,
                                   @Nullable @Field("dreamTitle") String dreamTitle,
                                   @Nullable @Field("dreamContent") String dreamContent,
+                                  @Nullable @Field("sleepTime") Integer sleepTime,
                                   @Nullable @Field("dayOfWeek") Integer dayOfWeek,
                                   @Nullable @Field("dayOfMonth") Integer dayOfMonth,
                                   @Nullable @Field("dayOfYear") Integer dayOfYear,

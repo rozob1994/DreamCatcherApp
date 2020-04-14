@@ -294,6 +294,7 @@ public class ApiPostCaller {
         DreamChecklist checklist = DreamChecklist.getInstance();
         DreamPeople people = DreamPeople.getInstance();
         DreamSound sound = DreamSound.getInstance();
+        Sleep sleep = Sleep.getInstance();
         DreamLucidity lucidity = DreamLucidity.getInstance();
         DreamDescription description = DreamDescription.getInstance();
         DreamInterpretation interpretation = DreamInterpretation.getInstance();
@@ -307,7 +308,7 @@ public class ApiPostCaller {
                 checklist.getGrayScale(),
                 checklist.getExperience(),
                 lucidity.getLucidityLevel(),
-                description.getTitle(), description.getContent(),
+                description.getTitle(), description.getContent(), sleep.getTime(),
                 date.getDayOfWeek(), date.getDayOfMonth(), date.getDayOfYear(), date.getWeekOfMonth(),
                 date.getMonth(), date.getYear(), interpretation.getInterpretation());
         call.enqueue(new Callback<ResponseBody>() {
