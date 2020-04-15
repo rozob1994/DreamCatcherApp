@@ -19,6 +19,7 @@
         android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
@@ -34,6 +35,7 @@
         android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_password"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="32dp"
@@ -49,6 +51,7 @@
         android:text="@string/repeat_password" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/repeat_password"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="32dp"
