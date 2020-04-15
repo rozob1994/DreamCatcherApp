@@ -1,7 +1,6 @@
 package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.questionnaire;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -17,14 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
-import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionNineteenBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDialog;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
@@ -33,8 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Objects;
-
-import maes.tech.intentanim.CustomIntent;
 
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
@@ -98,6 +93,9 @@ public class QuestionNineteenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (sp2.getBoolean("fromDream", false)) {
+                    Users.getInstance().checkSetLevelChange(getContext());
+                    QuestionnaireEntry entry = QuestionnaireEntry.getInstance();
+                    entry.setResult();
                     postCaller.postQEntry(new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
@@ -110,14 +108,10 @@ public class QuestionNineteenFragment extends Fragment {
                                         JSONObject jsonObject1 = new JSONObject(response.toString());
                                         boolean status = jsonObject1.getBoolean("status");
                                         if (status) {
-                                            sp2.edit().clear().apply();
-                                            Dream.delDream();
-                                            Sleep.delSleep();
-                                            QuestionnaireEntry.delQuestionnaireEntry();
+                                            entry.setId(jsonObject.getInt("id"));
                                             SharedPreferencesManager.clearDreamSleepQuest(Objects.requireNonNull(getContext()));
-                                            Intent intent = new Intent(getContext(), ProfileActivity.class);
-                                            startActivity(intent);
-                                            CustomIntent.customType(getContext(), "fadein-to-fadeout");
+                                            ViewDialog dialog = new ViewDialog();
+                                            dialog.showDialog(getActivity(), getContext(), "");
                                         } else {
                                             Toast.makeText(getContext(), "Error Saving Results",
                                                     Toast.LENGTH_LONG).show();
@@ -164,11 +158,15 @@ public class QuestionNineteenFragment extends Fragment {
                                 binding.loadingBg.setVisibility(View.GONE);
                                 ViewDialog dialog = new ViewDialog();
                                 dialog.showDialog(getActivity(), getContext(), "");
+                            } else {
+                                Toast.makeText(getContext(), "Error Saving Resutls",
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(String errorMessage) {
+                            Toast.makeText(getContext(), "Connection Error.", Toast.LENGTH_LONG).show();
 
                         }
                     }, 0);
