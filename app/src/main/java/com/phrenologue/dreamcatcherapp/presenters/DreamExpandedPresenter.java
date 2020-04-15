@@ -452,7 +452,6 @@ public class DreamExpandedPresenter {
         Sleep sleep = Sleep.getInstance();
         if (sleep.getTime() == 1) {
             dayTime.setImageResource(R.drawable.ic_day_symbol);
-            dayTime.setColorFilter(R.color.day_light);
         } else if (sleep.getTime() == 2) {
             dayTime.setImageResource(R.drawable.ic_night_symbol);
         } else {

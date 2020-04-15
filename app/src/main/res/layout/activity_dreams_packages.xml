@@ -50,7 +50,6 @@
         android:src="@drawable/ic_add_circle_black_24dp"
         app:maxImageSize="60dp" />
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bg_lights"
         android:layout_width="match_parent"
@@ -61,22 +60,21 @@
         app:lottie_loop="true" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_view"
         android:gravity="center">
 
-
         <RelativeLayout
             android:id="@+id/top_main_bar"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/bg_simple_rounded"
-            android:backgroundTint="#7C000000"
-            android:padding="16dp">
-
+            android:backgroundTint="#7C000000">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/level_animation"
@@ -90,34 +88,43 @@
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dreams_count"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/level_animation"
-                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_simple"
+                android:backgroundTint="@color/txt_glow"
+                android:elevation="4dp"
+                android:padding="2dp"
                 android:text="@string/dream_count"
-                android:textColor="@color/white" />
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/hint_size" />
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dream_hours"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title_dreams_count"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_buttom_rounded"
+                android:backgroundTint="@color/purple"
+                android:padding="2dp"
                 android:text="@string/dream_hours"
-                android:textColor="@color/white" />
-
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/hint_size" />
 
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:elevation="40dp"
             android:id="@+id/dreams_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_main_bar"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="24dp"
+            android:elevation="40dp" />
 
     </RelativeLayout>
 

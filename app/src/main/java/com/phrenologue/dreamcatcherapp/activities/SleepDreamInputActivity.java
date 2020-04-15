@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySleepDreamInputBinding;
 import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.SleepDreamInputAdapter;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class SleepDreamInputActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private ActivitySleepDreamInputBinding binding;
@@ -28,6 +30,8 @@ public class SleepDreamInputActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        CustomIntent.customType(SleepDreamInputActivity.this,"fadein-to-fadeout");
+        finish();
         startActivity(intent);
     }
     protected void onDestroy(){
