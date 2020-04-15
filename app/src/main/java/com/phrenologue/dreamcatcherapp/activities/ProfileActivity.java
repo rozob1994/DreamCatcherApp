@@ -17,10 +17,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.MotionEventCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.navigation.NavigationView;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
@@ -47,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
     private MoonTextView levelTitle;
     private AppCompatButton btnCancel;
     private SharedPreferences dreamChoosingOff;
+    private AppCompatImageView exitDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
         Users user = Users.getInstance();
@@ -64,10 +70,6 @@ public class ProfileActivity extends AppCompatActivity {
         binding.userTitle.setText(user.getEmail());
         postCaller = new ApiPostCaller();
         presenter = new ProfilePresenter();
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        binding.toolbar.setTitle("");
-        binding.toolbar.setSubtitle("");
         levelAnim = binding.levelAnimation;
         levelTitle = binding.levelNumber;
         edt_profile=findViewById(R.id.lin_edt_profile);
@@ -75,12 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         btnCancel= findViewById(R.id.btn_cancel_edt);
         dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         dreamChoosingOff.edit().clear().apply();
-        binding.levelSeekbar.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e("","");
 
 
-        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
+        binding.levelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LevelsActivity.class);
@@ -145,8 +142,65 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        binding.navBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               binding.drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
 
+        binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                switch (item.getItemId()) {
+
+                    case R.id.edit:
+
+                        if (behavior.getState()!=BottomSheetBehavior.STATE_EXPANDED){
+                            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                            binding.drawerLayout.closeDrawers();
+                        } else {
+                            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        }
+
+                        break;
+
+                    case R.id.contact_us:
+                        Intent intentMail = new Intent(Intent.ACTION_SEND, Uri.parse(Addresses.mail));
+                        startActivity(Intent.createChooser(intentMail, "Mail Us."));
+                        binding.drawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.website:
+                        Intent intentSite = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.website));
+                        startActivity(intentSite);
+                        binding.drawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.instagram:
+                        Intent intentInsta = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.instagram));
+                        startActivity(intentInsta);
+                        binding.drawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.log_out:
+                        Users.delUser();
+                        sharedPreferences.edit().putBoolean("logged", false).apply();
+                        sp2.edit().putBoolean("signedUp", false).apply();
+                        sharedPreferences.edit().putString("username", "").apply();
+                        sharedPreferences.edit().putInt("uid", 0).apply();
+                        sharedPreferences.edit().putInt("level", 0).apply();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        binding.drawerLayout.closeDrawers();
+                        finish();
+                        break;
+
+                }
+                return onOptionsItemSelected(item);
+            }
+        });
 
 
     }
@@ -157,52 +211,6 @@ public class ProfileActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.edit:
-
-                if (behavior.getState()!=BottomSheetBehavior.STATE_EXPANDED){
-
-                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                } else {
-                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
-
-                break;
-
-            case R.id.contact_us:
-                Intent intentMail = new Intent(Intent.ACTION_SEND, Uri.parse(Addresses.mail));
-                startActivity(Intent.createChooser(intentMail, "Mail Us."));
-                break;
-
-            case R.id.website:
-                Intent intentSite = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.website));
-                startActivity(intentSite);
-                break;
-
-            case R.id.instagram:
-                Intent intentInsta = new Intent(Intent.ACTION_VIEW, Uri.parse(Addresses.instagram));
-                startActivity(intentInsta);
-                break;
-
-            case R.id.log_out:
-                Users.delUser();
-                sharedPreferences.edit().putBoolean("logged", false).apply();
-                sp2.edit().putBoolean("signedUp", false).apply();
-                sharedPreferences.edit().putString("username", "").apply();
-                sharedPreferences.edit().putInt("uid", 0).apply();
-                sharedPreferences.edit().putInt("level", 0).apply();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
     @Override

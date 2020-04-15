@@ -88,7 +88,7 @@
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dreams_count"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/level_animation"
                 android:background="@drawable/bg_simple"
@@ -96,21 +96,19 @@
                 android:elevation="4dp"
                 android:padding="2dp"
                 android:text="@string/dream_count"
-                android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hint_size" />
 
             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                 android:id="@+id/title_dream_hours"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title_dreams_count"
                 android:background="@drawable/bg_buttom_rounded"
                 android:backgroundTint="@color/purple"
                 android:padding="2dp"
                 android:text="@string/dream_hours"
-                android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hint_size" />
