@@ -386,6 +386,7 @@ public class StatsPresenter {
                         dataSet.setDrawValues(false);
                         Legend legend = lucidityChart.getLegend();
                         legend.setEnabled(false);
+                        lucidityChart.getDescription().setEnabled(false);
                         lucidityChart.setData(pieData);
                         lucidityChart.invalidate();
                         lucidityChart.setDrawHoleEnabled(false);
