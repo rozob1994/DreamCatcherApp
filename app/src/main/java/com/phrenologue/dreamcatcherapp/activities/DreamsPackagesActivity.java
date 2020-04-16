@@ -34,7 +34,7 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentManager.goToProfile(getApplicationContext());
+                IntentManager.goToProfile(DreamsPackagesActivity.this);
             }
         });
 

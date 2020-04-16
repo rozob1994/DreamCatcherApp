@@ -29,7 +29,7 @@ public class SleepDreamInputActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
         CustomIntent.customType(SleepDreamInputActivity.this,"fadein-to-fadeout");
         finish();
         startActivity(intent);
