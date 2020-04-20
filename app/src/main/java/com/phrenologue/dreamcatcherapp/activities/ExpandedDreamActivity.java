@@ -14,6 +14,8 @@ import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedV
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
@@ -70,12 +72,9 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
                 binding.noDataRel, binding.txtPercentage);
 
         presenter.retrievePeople(getApplicationContext(), postId, spManager);
-        presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
-                binding.dreamsPackageInterpretation, binding.dreamsPackageTitle,
-                binding.dreamsPackageDescription, binding.sound, binding.titleDate, dateLoaded,
+        presenter.retrieveDream(getApplicationContext(), postId, dateLoaded,
                 spManager);
-        presenter.retrieveSleep(getApplicationContext(), postId, spManager, binding.dayTime,
-                binding.activity, binding.food);
+        presenter.retrieveSleep(getApplicationContext(), postId, spManager);
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,8 +210,44 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     }
 
     @Override
+    public void setFoodView(int drawable) {
+        binding.food.setImageResource(drawable);
+    }
+
+    @Override
+    public void setPhysicalView(int drawable) {
+        binding.activity.setImageResource(drawable);
+    }
+
+    @Override
     public void setColorView(int drawable) {
         binding.color.setImageResource(drawable);
+    }
+
+    @Override
+    public void setMusicalView(int drawable) {
+        binding.sound.setImageResource(drawable);
+    }
+
+    @Override
+    public void setInterpretationText() {
+        binding.dreamsPackageInterpretation.setText(DreamInterpretation.getInstance()
+                .getInterpretation());
+    }
+
+    @Override
+    public void setTitleText() {
+        binding.dreamsPackageTitle.setText(DreamDescription.getInstance().getTitle());
+    }
+
+    @Override
+    public void setContentText() {
+        binding.dreamsPackageDescription.setText(DreamDescription.getInstance().getContent());
+    }
+
+    @Override
+    public void setDateText(String dateLoaded) {
+        binding.titleDate.setText(dateLoaded);
     }
 
     class NewThread extends Thread {

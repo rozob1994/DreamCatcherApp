@@ -3,21 +3,16 @@ package com.phrenologue.dreamcatcherapp.presenters;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.appcompat.widget.AppCompatImageView;
-
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
@@ -27,8 +22,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DreamExpandedPresenter {
-    IDreamExpandedView iDreamExpandedView;
-
+    private IDreamExpandedView iDreamExpandedView;
+    private Sleep sleep = Sleep.getInstance();
+    private DreamPeople people = DreamPeople.getInstance();
+    private DreamChecklist checklist = DreamChecklist.getInstance();
     public DreamExpandedPresenter(IDreamExpandedView iDreamExpandedView) {
         this.iDreamExpandedView = iDreamExpandedView;
     }
@@ -40,7 +37,6 @@ public class DreamExpandedPresenter {
             @Override
             public void onSuccess(Object response) throws JSONException {
                 iDreamExpandedView.hideProgressBar();
-                DreamPeople people = DreamPeople.getInstance();
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 ArrayList<Integer> impressions = new ArrayList<>();
@@ -93,7 +89,6 @@ public class DreamExpandedPresenter {
 
     private void setPeopleToViews() {
         int textColor = 0;
-        DreamPeople people = DreamPeople.getInstance();
         for (int i = 0; i < 9; i++) {
             String name = people.getName(i);
             if (!name.equals("")){
@@ -118,10 +113,7 @@ public class DreamExpandedPresenter {
     }
 
     public void retrieveDream(Context context,
-                              int postId, AppCompatImageView mood, AppCompatImageView color,
-                              MoonTextView dreamsPackageInterpretation,
-                              MoonTextView dreamsPackageTitle, MoonTextView dreamsPackageDescription,
-                              AppCompatImageView soundImg, MoonTextView titleDate,
+                              int postId,
                               String dateLoaded, SharedPreferencesManager spManager) {
 
         iDreamExpandedView.showProgressBar();
@@ -145,9 +137,7 @@ public class DreamExpandedPresenter {
                         jsonObject.getInt("dreamSound"),
                         jsonObject.getInt("dreamMusical"));
 
-                setDreamPropertiesToViews(mood, color, dreamsPackageInterpretation,
-                        dreamsPackageTitle, dreamsPackageDescription, soundImg, titleDate,
-                        dateLoaded);
+                setDreamPropertiesToViews(dateLoaded);
 
                 spManager.saveDreamToSp(context, Dream.getInstance(), DreamDate.getInstance());
 
@@ -161,80 +151,52 @@ public class DreamExpandedPresenter {
     }
 
     private void setMoodToImageView() {
-        int drawable;
-        DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getExperience() == 0) {
-            drawable = R.drawable.ic_sad_emoji;
-            iDreamExpandedView.setMoodView(drawable);
+            iDreamExpandedView.setMoodView(R.drawable.ic_sad_emoji);
         } else if (checklist.getExperience() == 1) {
-            drawable = R.drawable.ic_poker_face_emoji;
-            iDreamExpandedView.setMoodView(drawable);
+            iDreamExpandedView.setMoodView(R.drawable.ic_poker_face_emoji);
         } else if (checklist.getExperience() == 2) {
-            drawable = R.drawable.ic_happy_emoji;
-            iDreamExpandedView.setMoodView(drawable);
+            iDreamExpandedView.setMoodView(R.drawable.ic_happy_emoji);
         } else {
             iDreamExpandedView.hideMood();
         }
     }
 
-    private void setColorToImageView(AppCompatImageView color) {
-        int drawable;
-        DreamChecklist checklist = DreamChecklist.getInstance();
+    private void setColorToImageView() {
         if (checklist.getGrayScale() == 2) {
-            drawable = R.drawable.ic_colorful;
-            iDreamExpandedView.setColorView(drawable);
+            iDreamExpandedView.setColorView(R.drawable.ic_colorful);
         } else {
-            drawable = R.drawable.ic_grayscale;
-            iDreamExpandedView.setColorView(drawable);
+            iDreamExpandedView.setColorView(R.drawable.ic_grayscale);
         }
     }
 
-    private void setSoundToImageView(AppCompatImageView soundImg) {
+    private void setSoundToImageView() {
         DreamSound sound = DreamSound.getInstance();
         int soundInt = sound.getSound();
         if (soundInt == 1) {
-            soundImg.setImageResource(R.drawable.ic_musical);
+            iDreamExpandedView.setMusicalView(R.drawable.ic_musical);
         } else {
-            soundImg.setImageResource(R.drawable.ic_non_musical);
+            iDreamExpandedView.setMusicalView(R.drawable.ic_non_musical);
         }
 
 
     }
 
-    private void setInterpretationToTextView(MoonTextView dreamsPackageInterpretation) {
-        DreamInterpretation interpretation = DreamInterpretation.getInstance();
-        dreamsPackageInterpretation.setText(interpretation.getInterpretation());
+    private void setDate(String dateLoaded) {
+        iDreamExpandedView.setDateText(dateLoaded);
     }
 
-    private void setTitleAndContentToTxtView(MoonTextView dreamsPackageTitle,
-                                             MoonTextView dreamsPackageDescription) {
-        DreamDescription description = DreamDescription.getInstance();
-        dreamsPackageTitle.setText(description.getTitle());
-        dreamsPackageDescription.setText(description.getContent());
-    }
-
-    private void setDate(MoonTextView titleDate, String dateLoaded) {
-        titleDate.setText(dateLoaded);
-    }
-
-    private void setDreamPropertiesToViews(AppCompatImageView mood, AppCompatImageView color,
-                                           MoonTextView dreamsPackageInterpretation,
-                                           MoonTextView dreamsPackageTitle,
-                                           MoonTextView dreamsPackageDescription,
-                                           AppCompatImageView soundImg,
-                                           MoonTextView titleDate,
-                                           String dateLoaded) {
+    private void setDreamPropertiesToViews(String dateLoaded) {
         setMoodToImageView();
-        setColorToImageView(color);
-        setInterpretationToTextView(dreamsPackageInterpretation);
-        setTitleAndContentToTxtView(dreamsPackageTitle, dreamsPackageDescription);
-        setSoundToImageView(soundImg);
-        setDate(titleDate, dateLoaded);
+        setColorToImageView();
+        iDreamExpandedView.setInterpretationText();
+        iDreamExpandedView.setTitleText();
+        iDreamExpandedView.setContentText();
+        setSoundToImageView();
+        setDate(dateLoaded);
     }
 
-    public void retrieveSleep(Context context, int postId, SharedPreferencesManager spManager,
-                              AppCompatImageView dayTime, AppCompatImageView activity,
-                              AppCompatImageView food) {
+    public void retrieveSleep(Context context, int postId, SharedPreferencesManager spManager) {
         iDreamExpandedView.showProgressBar();
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getSleepProps(postId, new IResponseMessage() {
@@ -251,7 +213,7 @@ public class DreamExpandedPresenter {
 
                 spManager.saveSleepToSp(context);
 
-                setSleepPropsToViews(activity, food);
+                setSleepPropsToViews();
             }
 
             @Override
@@ -261,48 +223,41 @@ public class DreamExpandedPresenter {
         });
     }
 
-    private void setSleepPropsToViews(AppCompatImageView activity,
-                                      AppCompatImageView food) {
+    private void setSleepPropsToViews() {
         setSleepTimeToView();
-        setPhysicalActivityToView(activity);
-        setFoodToView(food);
+        setPhysicalActivityToView();
+        setFoodToView();
     }
 
     private void setSleepTimeToView() {
-        Sleep sleep = Sleep.getInstance();
-        int drawable;
         if (sleep.getTime() == 1) {
-            drawable = R.drawable.ic_day_symbol;
-            iDreamExpandedView.setSleepTimeView(drawable);
+            iDreamExpandedView.setSleepTimeView(R.drawable.ic_day_symbol);
         } else if (sleep.getTime() == 2) {
-            drawable = R.drawable.ic_night_symbol;
-            iDreamExpandedView.setSleepTimeView(drawable);
+            iDreamExpandedView.setSleepTimeView(R.drawable.ic_night_symbol);
         } else {
             iDreamExpandedView.hideSleepTime();
         }
     }
 
-    private void setPhysicalActivityToView(AppCompatImageView activity) {
-        Sleep sleep = Sleep.getInstance();
+    private void setPhysicalActivityToView() {
         if (sleep.getPhysicalActivity() == 0) {
-            activity.setImageResource(R.drawable.stick_figure_1);
+            iDreamExpandedView.setPhysicalView(R.drawable.stick_figure_1);
         } else if (sleep.getPhysicalActivity() == 1) {
-            activity.setImageResource(R.drawable.stick_figure_2);
+            iDreamExpandedView.setPhysicalView(R.drawable.stick_figure_2);
         } else if (sleep.getPhysicalActivity() == 2) {
-            activity.setImageResource(R.drawable.stick_figure_3);
+            iDreamExpandedView.setPhysicalView(R.drawable.stick_figure_3);
         } else if (sleep.getPhysicalActivity() == 3) {
-            activity.setImageResource(R.drawable.stick_figure_4);
+            iDreamExpandedView.setPhysicalView(R.drawable.stick_figure_4);
         }
     }
 
-    private void setFoodToView(AppCompatImageView food) {
-        Sleep sleep = Sleep.getInstance();
+    private void setFoodToView() {
         if (sleep.getFoodConsumption() == 0) {
-            food.setImageResource(R.drawable.apple);
+            iDreamExpandedView.setFoodView(R.drawable.apple);
         } else if (sleep.getFoodConsumption() == 1) {
-            food.setImageResource(R.drawable.steak);
+            iDreamExpandedView.setFoodView(R.drawable.steak);
         } else if (sleep.getFoodConsumption() == 2) {
-            food.setImageResource(R.drawable.hamburger_drink);
+            iDreamExpandedView.setFoodView(R.drawable.hamburger_drink);
         }
     }
 }
