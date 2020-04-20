@@ -64,10 +64,10 @@ public class DreamExpandedInteractor {
     }
 
     public void cachePost(SharedPreferences sleepSp, SharedPreferences dreamSp,
-                          SharedPreferences dreamSpTwo, SharedPreferences peopleSp){
+                          SharedPreferences dreamSpTwo){
         iSharedPreferencesManager.saveSleep(sleepSp);
         iSharedPreferencesManager.saveDream(dreamSp, dreamSpTwo);
-        iSharedPreferencesManager.savePeople(peopleSp);
+        iSharedPreferencesManager.savePeople(dreamSp);
     };
 
     private void setSleep(Object response) throws JSONException {

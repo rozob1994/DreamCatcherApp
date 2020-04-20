@@ -64,7 +64,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         String dateLoaded = getIntent().getStringExtra("date");
 
         presenter.loadPost(postId, dateLoaded);
-        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp, );
+        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp);
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 

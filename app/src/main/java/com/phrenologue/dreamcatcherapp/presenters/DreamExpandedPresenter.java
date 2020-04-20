@@ -28,8 +28,8 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     }
 
     public void savePostToSp(SharedPreferences sleepSp, SharedPreferences dreamSp,
-                             SharedPreferences dreamSpTwo, SharedPreferences peopleSp) {
-        interactor.cachePost(sleepSp, dreamSp, dreamSpTwo, peopleSp);
+                             SharedPreferences dreamSpTwo) {
+        interactor.cachePost(sleepSp, dreamSp, dreamSpTwo);
     }
 
 
