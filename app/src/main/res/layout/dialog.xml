@@ -54,7 +54,9 @@
             android:paddingRight="24dp"
             android:text="@string/add_to_dream"
             android:textColor="@color/white"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/title_size"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_return"
@@ -68,7 +70,9 @@
             android:paddingRight="24dp"
             android:text="@string/back_to_profile"
             android:textColor="@color/white"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/title_size"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp" />
 
     </LinearLayout>
 

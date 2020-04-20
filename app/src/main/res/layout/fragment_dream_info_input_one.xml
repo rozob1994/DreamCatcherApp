@@ -52,7 +52,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginRight="24dp">
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp">
 
 
                 //mood_section_main
@@ -64,6 +66,7 @@
 
                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                         android:id="@+id/title_mood"
+                        android:layoutDirection="locale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mood"
@@ -99,7 +102,9 @@
                             android:thumb="@drawable/ic_cry_emoji"
                             android:paddingRight="566dp"
                             android:paddingLeft="56dp"
-                            android:thumbTint="@color/white"/>
+                            android:thumbTint="@color/white"
+                            android:paddingEnd="566dp"
+                            android:paddingStart="56dp" />
 
                     </RelativeLayout>
 
@@ -203,7 +208,8 @@
                                 android:paddingTop="25dp"
                                 android:textColor="@color/white"
                                 android:textColorHint="@color/edt_text_color"
-                                android:textSize="@dimen/title_size" />
+                                android:textSize="@dimen/title_size"
+                                android:paddingStart="20dp" />
 
                             <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                 android:id="@+id/title_feelings"
@@ -249,7 +255,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on"
@@ -275,7 +282,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on"
@@ -300,7 +309,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on"
@@ -339,7 +349,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off"
@@ -363,7 +374,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_off">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off"
@@ -386,7 +399,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off"
@@ -438,7 +452,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on2"
@@ -464,7 +479,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on2"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on2"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on2"
@@ -489,7 +506,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on2"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on2"
@@ -528,7 +546,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off2"
@@ -552,7 +571,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off2"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_off2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off2"
@@ -575,7 +596,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off2"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off2"
@@ -627,7 +649,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on3"
@@ -653,7 +676,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on3"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on3"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on3"
@@ -678,7 +703,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on3"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on3">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on3"
@@ -717,7 +743,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off3"
@@ -741,7 +768,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off3"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_positive_off3"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off3"
@@ -764,7 +793,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off3"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off3">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off3"
@@ -816,7 +846,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on4"
@@ -842,7 +873,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on4"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on4"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on4"
@@ -867,7 +900,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on4"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on4"
@@ -906,7 +940,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off4"
@@ -930,7 +965,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off4"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_off4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off4"
@@ -953,7 +990,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off4"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off4"
@@ -1004,7 +1042,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on5"
@@ -1030,7 +1069,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on5"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_on5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on5"
@@ -1055,7 +1096,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on5"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on5"
@@ -1094,7 +1136,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off5"
@@ -1118,7 +1161,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off5"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_positive_off5"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off5"
@@ -1141,7 +1186,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off5"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off5"
@@ -1193,7 +1239,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on6"
@@ -1219,7 +1266,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on6"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_on6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on6"
@@ -1244,7 +1293,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on6"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on6"
@@ -1283,7 +1333,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off6"
@@ -1307,7 +1358,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off6"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_positive_off6"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off6"
@@ -1330,7 +1383,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off6"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off6"
@@ -1382,7 +1436,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on7"
@@ -1408,7 +1463,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on7"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on7"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on7"
@@ -1433,7 +1490,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on7"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on7"
@@ -1472,7 +1530,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off7"
@@ -1496,7 +1555,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off7"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_off7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off7"
@@ -1519,7 +1580,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off7"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off7"
@@ -1571,7 +1633,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on8"
@@ -1597,7 +1660,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on8"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_on8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on8"
@@ -1622,7 +1687,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on8"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on8"
@@ -1661,7 +1727,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off8"
@@ -1685,7 +1752,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off8"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_positive_off8"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off8"
@@ -1708,7 +1777,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off8"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off8"
@@ -1760,7 +1830,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on9"
@@ -1786,7 +1857,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on9"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on9"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on9"
@@ -1811,7 +1884,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on9"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on9">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on9"
@@ -1850,7 +1924,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off9"
@@ -1874,7 +1949,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off9"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_positive_off9"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off9"
@@ -1897,7 +1974,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off9"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off9">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off9"
@@ -1949,7 +2027,8 @@
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_on10"
@@ -1975,7 +2054,9 @@
                                     android:layout_toRightOf="@id/lin_positive_on10"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_positive_on10"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_on10"
@@ -2000,7 +2081,8 @@
                                     android:layout_toRightOf="@id/lin_neutral_on10"
                                     android:gravity="center"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@id/lin_neutral_on10">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_on10"
@@ -2039,7 +2121,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_positive_off10"
@@ -2063,7 +2146,9 @@
                                     android:layout_marginRight="8dp"
                                     android:layout_toRightOf="@id/lin_positive_off10"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toEndOf="@id/lin_positive_off10">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_neutral_off10"
@@ -2086,7 +2171,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/lin_neutral_off10"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@id/lin_neutral_off10">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_negative_off10"
@@ -2212,7 +2298,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="32dp"
                             android:orientation="vertical"
-                            android:visibility="invisible">
+                            android:visibility="invisible"
+                            android:layout_marginEnd="32dp">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/btn_colorful_on"
@@ -2234,7 +2321,8 @@
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@+id/lin_colorful_on"
                             android:orientation="vertical"
-                            android:visibility="invisible">
+                            android:visibility="invisible"
+                            android:layout_toEndOf="@+id/lin_colorful_on">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/btn_grayscale_on"
@@ -2270,7 +2358,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="32dp"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginEnd="32dp">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/btn_colorful_off"
@@ -2291,7 +2380,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@+id/lin_colorful_off"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@+id/lin_colorful_off">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/btn_grayscale_off"
@@ -2405,7 +2495,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="32dp"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_marginEnd="32dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_musical_on"
@@ -2428,7 +2519,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@+id/lin_btn_musical_on"
                                     android:orientation="vertical"
-                                    android:visibility="invisible">
+                                    android:visibility="invisible"
+                                    android:layout_toEndOf="@+id/lin_btn_musical_on">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_non_musical_on"
@@ -2465,7 +2557,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="32dp"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="32dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_musical_off"
@@ -2487,7 +2580,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@+id/lin_btn_musical_off"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_toEndOf="@+id/lin_btn_musical_off">
 
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:id="@+id/btn_non_musical_off"
@@ -2581,7 +2675,9 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginBottom="40dp"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/nextBtn"

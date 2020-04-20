@@ -197,11 +197,15 @@ public class ProfileActivity extends AppCompatActivity {
                         finish();
                         break;
 
+                    case R.id.language:
+                        Intent intentLanguage = new Intent(getApplicationContext(), SelectLanguageActivity.class);
+                        startActivity(intentLanguage);
+                        binding.drawerLayout.closeDrawers();
+
                 }
                 return onOptionsItemSelected(item);
             }
         });
-
 
     }
 
@@ -210,8 +214,6 @@ public class ProfileActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.tabs, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-
 
     @Override
     public void onBackPressed() {

@@ -16,11 +16,11 @@
         android:background="@drawable/bg_night">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_marginTop="-40dp"
             android:id="@+id/level_animation"
-            android:layout_width="350dp"
-            android:layout_height="650dp"
+            android:layout_width="220dp"
+            android:layout_height="440dp"
             android:layout_gravity="center"
+            android:layout_marginTop="-40dp"
             android:adjustViewBounds="true"
             app:lottie_autoPlay="true"
             app:lottie_fileName="level10.json"
@@ -72,20 +72,20 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_below="@+id/level_number"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_menu_black_24dp"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/level_btn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_below="@+id/level_number"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
                     android:src="@drawable/ic_merge_type_black_24dp"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp" />
 
             </RelativeLayout>
 
@@ -93,34 +93,34 @@
                 android:id="@+id/btn_answer_questionnaire"
                 android:layout_width="wrap_content"
                 android:layout_height="84dp"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="-38dp"
                 android:background="@drawable/bg_simple_rounded"
                 android:backgroundTint="#5709AE"
                 android:clickable="true"
                 android:elevation="10dp"
                 android:focusable="true"
-                android:paddingLeft="8dp"
-                android:paddingRight="42dp"
                 android:src="@drawable/ic_content_paste_black_24dp"
-                android:tint="@color/white" />
+                android:tint="@color/white"
+                android:paddingStart="8dp"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="42dp"
+                android:layout_marginEnd="-38dp" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_add_dream"
                 android:layout_width="wrap_content"
                 android:layout_height="84dp"
-                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="-38dp"
                 android:background="@drawable/bg_simple_rounded"
                 android:backgroundTint="@color/txt_glow"
                 android:clickable="true"
                 android:focusable="true"
-                android:paddingLeft="42dp"
-                android:paddingRight="8dp"
                 android:src="@drawable/ic_add_circle_black_24dp"
-                android:tint="@color/white" />
+                android:tint="@color/white"
+                android:paddingEnd="8dp"
+                android:layout_marginStart="-38dp"
+                android:layout_alignParentStart="true"
+                android:paddingStart="42dp" />
 
             <RelativeLayout
                 android:id="@+id/profile_tabs_buttons"
@@ -192,13 +192,18 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="250dp"
+        android:layout_width="210dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="24dp"
+        android:background="@drawable/bg_simple"
+        android:backgroundTint="#77000000"
         android:visibility="visible"
         app:headerLayout="@layout/header_layout"
-        app:menu="@menu/tabs" />
+        app:itemTextColor="@color/white"
+        app:menu="@menu/tabs" >
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
