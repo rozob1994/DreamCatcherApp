@@ -10,28 +10,36 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDescription;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamInterpretation;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import maes.tech.intentanim.CustomIntent;
 
-public class ExpandedDreamActivity extends AppCompatActivity {
+public class ExpandedDreamActivity extends AppCompatActivity implements IDreamExpandedView {
     SharedPreferencesManager spManager;
     Dream dream;
     Sleep sleep;
     DreamExpandedPresenter presenter;
     boolean clicked;
     private ActivityExpandedDreamBinding binding;
-    private SharedPreferences sp2;
+    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp, peopleSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,41 +47,41 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        sleepSp = getApplicationContext().getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        dreamOneSp = Objects.requireNonNull(getApplicationContext())
+                .getSharedPreferences("dream", Context.MODE_PRIVATE);
+        dreamTwoSp = getApplicationContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
         dream = Dream.getInstance();
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
-        presenter = new DreamExpandedPresenter();
+        presenter = new DreamExpandedPresenter(this);
         sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
 
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
 
+        dream.setPostId(postId);
+        String dateLoaded = getIntent().getStringExtra("date");
+
+        presenter.loadPost(postId, dateLoaded);
+        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp, );
+
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 
         sp.edit().putInt("sleepTime", sleepTime).apply();
 
-        String dateLoaded = getIntent().getStringExtra("date");
+
 
         sleep.setTime(sp.getInt("sleepTime", 0));
 
         clicked = false;
 
-        dream.setPostId(postId);
+
 
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
                 binding.noDataRel, binding.txtPercentage);
 
-        presenter.retrievePeople(getApplicationContext(), postId, spManager, binding.loadingBg,
-                binding.progressBar, binding.nameOne, binding.nameTwo, binding.nameThree,
-                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
-                binding.nameEight, binding.nameNine, binding.nameTen);
-        presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
-                binding.dreamsPackageInterpretation, binding.dreamsPackageTitle,
-                binding.dreamsPackageDescription, binding.sound, binding.titleDate, dateLoaded,
-                spManager, binding.loadingBg, binding.progressBar);
-        presenter.retrieveSleep(getApplicationContext(), postId, spManager, binding.dayTime,
-                binding.activity, binding.food, binding.loadingBg, binding.progressBar);
+
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +171,103 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void showProgressBar() {
+        binding.loadingBg.setVisibility(View.VISIBLE);
+        binding.loadingBg.setAlpha(0.95f);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        binding.loadingBg.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setPeopleView(int index, String name, int textColor) {
+        List<MoonTextView> names = Arrays.asList(binding.nameOne, binding.nameTwo, binding.nameThree,
+                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
+                binding.nameNine, binding.nameTen);
+        MoonTextView person = names.get(index);
+        person.setText(name);
+        person.setTextColor(getResources().getColor(textColor));
+
+    }
+
+    @Override
+    public void setMoodView(int drawable) {
+        binding.mood.setImageResource(drawable);
+    }
+
+    @Override
+    public void hideMood() {
+        binding.mood.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setSleepTimeView(int drawable) {
+        binding.dayTime.setImageResource(drawable);
+    }
+
+    @Override
+    public void hideSleepTime() {
+        binding.dayTime.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setFoodView(int drawable) {
+        binding.food.setImageResource(drawable);
+    }
+
+    @Override
+    public void setPhysicalView(int drawable) {
+        binding.activity.setImageResource(drawable);
+    }
+
+    @Override
+    public void setColorView(int drawable) {
+        binding.color.setImageResource(drawable);
+    }
+
+    @Override
+    public void setMusicalView(int drawable) {
+        binding.sound.setImageResource(drawable);
+    }
+
+    @Override
+    public void setInterpretationText() {
+        binding.dreamsPackageInterpretation.setText(DreamInterpretation.getInstance()
+                .getInterpretation());
+    }
+
+    @Override
+    public void setTitleText() {
+        binding.dreamsPackageTitle.setText(DreamDescription.getInstance().getTitle());
+    }
+
+    @Override
+    public void setContentText() {
+        binding.dreamsPackageDescription.setText(DreamDescription.getInstance().getContent());
+    }
+
+    @Override
+    public void setDateText(String dateLoaded) {
+        binding.titleDate.setText(dateLoaded);
+    }
+
+    @Override
+    public void onSuccess(Object responseMessage) {
+        presenter.setPeopleToViews();
+    }
+
+    @Override
+    public void onError() {
+        Toast.makeText(getApplicationContext(), "Loading failed.", Toast.LENGTH_LONG).show();
+
+    }
+
     class NewThread extends Thread {
         @Override
         public void run() {

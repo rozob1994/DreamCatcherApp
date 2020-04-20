@@ -54,40 +54,48 @@ public class SignUp extends AppCompatActivity {
                     spLogin.edit().putInt("uid",user.getUid()).apply();
                     String mail = binding.edtTxtUsername.getText().toString();
                     String pass = binding.edtTxtPassword.getText().toString();
-                    apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
-                        @Override
-                        public void onSuccess(Object response) throws JSONException {
-                            binding.loadingBg.setVisibility(View.GONE);
-                            binding.progressBar.setVisibility(View.GONE);
-                            JSONObject jsonObject = new JSONObject(response.toString());
-                            boolean status = jsonObject.getBoolean("status");
-                            String message = jsonObject.getString("message");
-                            Log.e("", "");
-                            if (status) {
-                                sharedPreferences.edit().putBoolean("signedUp", true).apply();
-                                user.setEmail(mail);
-                                spLogin.edit().putBoolean("logged", true).apply();
-                                spLogin.edit().putString("username", mail).apply();
-                                spLogin.edit().putInt("level", 1).apply();
-                                user.setPassword(pass);
-                                Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                    String secPass = binding.edtTxtPassword2.getText().toString();
+                    if (secPass.equals(pass)) {
+                        apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
+                            @Override
+                            public void onSuccess(Object response) throws JSONException {
+                                binding.loadingBg.setVisibility(View.GONE);
+                                binding.progressBar.setVisibility(View.GONE);
+                                JSONObject jsonObject = new JSONObject(response.toString());
+                                boolean status = jsonObject.getBoolean("status");
+                                String message = jsonObject.getString("message");
+                                Log.e("", "");
+                                if (status) {
+                                    sharedPreferences.edit().putBoolean("signedUp", true).apply();
+                                    user.setEmail(mail);
+                                    spLogin.edit().putBoolean("logged", true).apply();
+                                    spLogin.edit().putString("username", mail).apply();
+                                    spLogin.edit().putInt("level", 1).apply();
+                                    user.setPassword(pass);
+                                    Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                }
+
                             }
 
-                        }
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                binding.loadingBg.setVisibility(View.GONE);
+                                binding.progressBar.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
 
-                        @Override
-                        public void onFailure(String errorMessage) {
-                            binding.loadingBg.setVisibility(View.GONE);
-                            binding.progressBar.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
+                            }
 
-                        }
+                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.pass_not_match,
+                                Toast.LENGTH_LONG).show();
+                        binding.loadingBg.setVisibility(View.INVISIBLE);
+                    }
 
-                    });
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.field_not_filled_toast,
                             Toast.LENGTH_LONG).show();

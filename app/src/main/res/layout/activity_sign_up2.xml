@@ -38,8 +38,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/username_input_hint"
         android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size"
-        android:layout_marginStart="60dp" />
+        android:textSize="@dimen/edt_title_size" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edt_txt_username"
@@ -55,10 +54,7 @@
         android:paddingTop="2dp"
         android:textColor="@color/white"
         android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:layout_marginStart="50dp"
-        android:paddingStart="30dp"
-        android:layout_marginEnd="50dp" />
+        android:textSize="@dimen/edt_txt_size" />
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
         android:id="@+id/password_edt_txt_title"
@@ -69,8 +65,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/password_edt_txt_title"
         android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size"
-        android:layout_marginStart="60dp" />
+        android:textSize="@dimen/edt_title_size" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edt_txt_password"
@@ -86,10 +81,7 @@
         android:paddingTop="2dp"
         android:textColor="@color/white"
         android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:layout_marginEnd="50dp"
-        android:paddingStart="30dp"
-        android:layout_marginStart="50dp" />
+        android:textSize="@dimen/edt_txt_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,8 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:orientation="vertical"
-            android:layout_marginStart="40dp">
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signUp_decline"

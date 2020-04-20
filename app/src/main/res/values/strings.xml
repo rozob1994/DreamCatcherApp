@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DreamCatcher</string>
+    <string name="app_name">DreamCatcherApp</string>
     <string name="dream_description_hint">Describe your dream as clearly as you can.</string>
     <string-array name="year">
 
@@ -93,18 +93,18 @@
     <string name="hint_food">Slide the slider to choose either LOW, MEDIUM or HIGH.</string>
     <string name="hint_dream_description">Describe your dream...</string>
     <string name="signUpHeader">Sign Up</string>
-    <string name="username_input_hint">"username "</string>
-    <string name="username_edtxt_hint">"please enter your username "</string>
+    <string name="username_input_hint">username or email</string>
+    <string name="username_edtxt_hint">please enter your username or email</string>
     <string name="password_edt_txt_title">password</string>
     <string name="pass_edtxt_hint">please enter your password</string>
     <string name="acceptBtn">Accept</string>
     <string name="declineBtn">Decline</string>
     <string name="field_not_filled_toast">Please fill all the required fields.</string>
-    <string name="taken_username_error" translatable="false">This username is already taken.</string>
-    <string name="connection_error" translatable="false">Connection error.</string>
-    <string name="loginTitle" translatable="false">Login</string>
-    <string name="username_or_email_title" translatable="false">username</string>
-    <string name="login_username_edtxt_hint" translatable="false">please enter your username</string>
+    <string name="taken_username_error">This username is already taken.</string>
+    <string name="connection_error">Connection error.</string>
+    <string name="loginTitle">Login</string>
+    <string name="username_or_email_title">username or email</string>
+    <string name="login_username_edtxt_hint">please enter your username or email</string>
     <string name="password_edtxt_title">password</string>
     <string name="signInBtn">Enter</string>
     <string name="SignUpBtn">Register</string>
@@ -208,20 +208,5 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="log_out">Log Out</string>
     <string name="dialog_note_delete">Are you sure you want to delete your dream?</string>
-    <string name="language">Language</string>
-    <string name="persian">Persian</string>
-    <string name="english">English</string>
-    <string name="l_a_n_g_u_a_g_e">L A N G U A G E</string>
-    <string name="level_one">Level One</string>
-    <string name="levels">LEVELS</string>
-    <string name="level_two">Level Two</string>
-    <string name="level_three">Level Three</string>
-    <string name="level_four">Level Four</string>
-    <string name="level_five">Level Five</string>
-    <string name="level_six">Level Six</string>
-    <string name="level_seven">Level Seven</string>
-    <string name="level_eight">Level Eight</string>
-    <string name="level_nine">Level Nine</string>
-    <string name="level_ten">Level Ten</string>
 
 </resources>
