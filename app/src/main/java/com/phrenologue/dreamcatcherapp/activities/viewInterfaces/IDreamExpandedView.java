@@ -9,4 +9,5 @@ public interface IDreamExpandedView {
     void hideMood();
     void setSleepTimeView(int drawable);
     void hideSleepTime();
+    void setColorView(int drawable);
 }

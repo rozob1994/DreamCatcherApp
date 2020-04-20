@@ -210,6 +210,11 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding.dayTime.setVisibility(View.GONE);
     }
 
+    @Override
+    public void setColorView(int drawable) {
+        binding.color.setImageResource(drawable);
+    }
+
     class NewThread extends Thread {
         @Override
         public void run() {

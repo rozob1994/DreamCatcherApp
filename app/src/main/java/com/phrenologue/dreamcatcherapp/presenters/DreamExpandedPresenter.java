@@ -178,11 +178,14 @@ public class DreamExpandedPresenter {
     }
 
     private void setColorToImageView(AppCompatImageView color) {
+        int drawable;
         DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getGrayScale() == 2) {
-            color.setImageResource(R.drawable.ic_colorful);
+            drawable = R.drawable.ic_colorful;
+            iDreamExpandedView.setColorView(drawable);
         } else {
-            color.setImageResource(R.drawable.ic_grayscale);
+            drawable = R.drawable.ic_grayscale;
+            iDreamExpandedView.setColorView(drawable);
         }
     }
 
