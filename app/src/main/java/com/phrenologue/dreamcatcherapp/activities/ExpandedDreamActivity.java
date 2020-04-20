@@ -63,8 +63,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         dream.setPostId(postId);
         String dateLoaded = getIntent().getStringExtra("date");
 
-        presenter.loadPost(postId, dateLoaded);
-        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp, );
+        presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp);
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 
@@ -259,12 +258,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
     @Override
     public void onSuccess(Object responseMessage) {
-<<<<<<< HEAD
         presenter.peopleViewLogic();
-        presenter.peopleViewLogic();
-=======
-        presenter.setPeopleToViews();
->>>>>>> origin/master
     }
 
     @Override
