@@ -31,7 +31,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
 
 
-    public void peopleLogic() {
+    public void peopleViewLogic() {
         int textColor = 0;
         for (int i = 0; i < 9; i++) {
             String name = people.getName(i);
@@ -167,7 +167,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     @Override
     public void onPeopleRetrieved() {
         iDreamExpandedView.hideProgressBar();
-        peopleLogic();
+        peopleViewLogic();
     }
 
     @Override

@@ -256,7 +256,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
     @Override
     public void onSuccess(Object responseMessage) {
-        presenter.peopleLogic();
+        presenter.peopleViewLogic();
+        presenter.peopleViewLogic();
     }
 
     @Override
