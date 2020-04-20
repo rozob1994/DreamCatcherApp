@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DreamCatcher</string>
     <string name="dream_description_hint">خواب خود را تا حد ممکن دقیق توصیف کنید</string>
@@ -213,6 +212,5 @@
     <string name="d_r_e_a_m_s">رویاها</string>
     <string name="dream_count">تعداد رویاها</string>
     <string name="description">توصیف شما</string>
-    <string name="levelsTitle">L E V E L S</string>
 
 </resources>

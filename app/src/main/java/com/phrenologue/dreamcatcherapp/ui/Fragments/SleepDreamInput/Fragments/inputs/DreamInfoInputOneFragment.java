@@ -20,7 +20,6 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
 
 import java.util.Arrays;
@@ -236,7 +235,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
 
         if (dreamPrefs.getBoolean("hasPeople", false)) {
-            DreamPeople people = DreamPeople.getInstance();
 
             presenter.makePeopleWork(dreamPrefsEditor, getContext(), peopleNames, namesHints,
                     feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,

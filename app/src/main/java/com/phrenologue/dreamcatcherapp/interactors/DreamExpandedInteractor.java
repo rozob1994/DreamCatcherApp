@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.interactors;
 import android.content.SharedPreferences;
 
 import com.phrenologue.dreamcatcherapp.managersAndFilters.ISharedPreferencesManager;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
@@ -19,27 +20,29 @@ import java.util.ArrayList;
 public class DreamExpandedInteractor {
     private IDreamExpandedPresenter iPresenter;
     private ApiPostCaller apiPostCaller = new ApiPostCaller();
-    private ISharedPreferencesManager iSharedPreferencesManager;
+    private ISharedPreferencesManager iSharedPreferencesManager = new SharedPreferencesManager();
     public DreamExpandedInteractor(IDreamExpandedPresenter iPresenter) {
         this.iPresenter = iPresenter;
     }
 
-    public void getPost(int postId, String dateLoaded) {
+    public void getPost(int postId, String dateLoaded, SharedPreferences sleepSp,
+                        SharedPreferences dreamSp, SharedPreferences dreamSpTwo) {
         apiPostCaller.getSleepProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                iPresenter.onSleepRetrieved();
                 setSleep(response);
                 apiPostCaller.getDreamProps(postId, new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
-                        iPresenter.onDreamRetrieved(dateLoaded);
                         setDream(response);
                         apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
                             @Override
                             public void onSuccess(Object response) throws JSONException {
+                                iPresenter.onSleepRetrieved();
+                                iPresenter.onDreamRetrieved(dateLoaded);
                                 iPresenter.onPeopleRetrieved();
                                 setPeople(response);
+                                cachePost(sleepSp, dreamSp, dreamSpTwo);
                             }
 
                             @Override
@@ -64,10 +67,10 @@ public class DreamExpandedInteractor {
     }
 
     public void cachePost(SharedPreferences sleepSp, SharedPreferences dreamSp,
-                          SharedPreferences dreamSpTwo, SharedPreferences peopleSp){
+                          SharedPreferences dreamSpTwo){
         iSharedPreferencesManager.saveSleep(sleepSp);
         iSharedPreferencesManager.saveDream(dreamSp, dreamSpTwo);
-        iSharedPreferencesManager.savePeople(peopleSp);
+        iSharedPreferencesManager.savePeople(dreamSp);
     };
 
     private void setSleep(Object response) throws JSONException {
