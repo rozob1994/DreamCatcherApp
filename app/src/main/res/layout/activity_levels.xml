@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/levels"
+            android:text="@string/levelsTitle"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -83,7 +83,7 @@
                     android:layout_below="@id/level_one"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_one"
+                    android:text="@string/LevelOneTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -123,7 +123,7 @@
                     android:layout_below="@id/level_two"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_two"
+                    android:text="@string/LevelTwoTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -163,7 +163,7 @@
                     android:layout_below="@id/level_three"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_three"
+                    android:text="@string/LevelThreeTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -203,7 +203,7 @@
                     android:layout_below="@id/level_four"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_four"
+                    android:text="@string/LevelFourTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -243,7 +243,7 @@
                     android:layout_below="@id/level_five"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_five"
+                    android:text="@string/LevelFiveTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -281,7 +281,7 @@
                     android:layout_below="@id/level_six"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_six"
+                    android:text="@string/LevelSixTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -319,7 +319,7 @@
                     android:layout_below="@id/level_seven"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_seven"
+                    android:text="@string/LevelSevenTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -357,7 +357,7 @@
                     android:layout_below="@id/level_eight"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_eight"
+                    android:text="@string/LevelEightTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -395,7 +395,7 @@
                     android:layout_below="@id/level_nine"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_nine"
+                    android:text="@string/LevelNineTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>
@@ -433,7 +433,7 @@
                     android:layout_below="@id/level_ten"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
-                    android:text="@string/level_ten"
+                    android:text="@string/LevelTenTitle"
                     android:textColor="@color/white" />
 
             </RelativeLayout>

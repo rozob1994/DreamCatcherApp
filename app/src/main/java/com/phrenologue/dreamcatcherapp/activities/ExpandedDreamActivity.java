@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -47,7 +48,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        sleepSp = getApplicationContext().getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
+        sleepSp = Objects.requireNonNull(getApplicationContext()).getSharedPreferences("sleep", Context.MODE_PRIVATE);
         dreamOneSp = Objects.requireNonNull(getApplicationContext())
                 .getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamTwoSp = getApplicationContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
@@ -62,9 +64,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
         dream.setPostId(postId);
         String dateLoaded = getIntent().getStringExtra("date");
-
-        presenter.loadPost(postId, dateLoaded);
-        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp);
+        Log.e("","");
+        presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp);
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 

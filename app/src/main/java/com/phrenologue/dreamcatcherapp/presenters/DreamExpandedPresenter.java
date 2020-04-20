@@ -22,15 +22,13 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         this.iDreamExpandedView = iDreamExpandedView;
     }
 
-    public void loadPost(int postId, String dateLoaded) {
+    public void loadPost(int postId, String dateLoaded,
+                         SharedPreferences sleepSp, SharedPreferences dreamSp,
+                         SharedPreferences dreamSpTwo) {
         iDreamExpandedView.showProgressBar();
-        interactor.getPost(postId, dateLoaded);
+        interactor.getPost(postId, dateLoaded, sleepSp, dreamSp, dreamSpTwo);
     }
 
-    public void savePostToSp(SharedPreferences sleepSp, SharedPreferences dreamSp,
-                             SharedPreferences dreamSpTwo) {
-        interactor.cachePost(sleepSp, dreamSp, dreamSpTwo);
-    }
 
 
     public void setPeopleToViews() {
@@ -71,11 +69,14 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     }
 
     private void setColorToImageView() {
-        if (checklist.getGrayScale() == 2) {
-            iDreamExpandedView.setColorView(R.drawable.ic_colorful);
-        } else {
-            iDreamExpandedView.setColorView(R.drawable.ic_grayscale);
+        if (checklist.getGrayScale()!=null){
+            if (checklist.getGrayScale() == 2) {
+                iDreamExpandedView.setColorView(R.drawable.ic_colorful);
+            } else {
+                iDreamExpandedView.setColorView(R.drawable.ic_grayscale);
+            }
         }
+
     }
 
     private void setSoundToImageView() {
@@ -166,6 +167,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     @Override
     public void onPeopleRetrieved() {
         iDreamExpandedView.hideProgressBar();
+
         setPeopleToViews();
     }
 
