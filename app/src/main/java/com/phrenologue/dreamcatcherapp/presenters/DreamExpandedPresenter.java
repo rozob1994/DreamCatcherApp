@@ -1,97 +1,43 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
-import android.content.Context;
-import android.util.Log;
+import android.content.SharedPreferences;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
-import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
-import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.interactors.DreamExpandedInteractor;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
-import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
-import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamExpandedPresenter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-public class DreamExpandedPresenter {
+public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     private IDreamExpandedView iDreamExpandedView;
+    private DreamExpandedInteractor interactor = new DreamExpandedInteractor(this);
     private Sleep sleep = Sleep.getInstance();
     private DreamPeople people = DreamPeople.getInstance();
     private DreamChecklist checklist = DreamChecklist.getInstance();
+
     public DreamExpandedPresenter(IDreamExpandedView iDreamExpandedView) {
         this.iDreamExpandedView = iDreamExpandedView;
     }
 
-    public void retrievePeople(Context context, int postId, SharedPreferencesManager spManager) {
+    public void loadPost(int postId, String dateLoaded) {
         iDreamExpandedView.showProgressBar();
-        ApiPostCaller apiPostCaller = new ApiPostCaller();
-        apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
-                iDreamExpandedView.hideProgressBar();
-                JSONArray jsonArray = new JSONArray(response.toString());
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
-                ArrayList<Integer> impressions = new ArrayList<>();
-                impressions.add(0, jsonObject.getInt("firstImpression"));
-                impressions.add(1, jsonObject.getInt("secondImpression"));
-                impressions.add(2, jsonObject.getInt("thirdImpression"));
-                impressions.add(3, jsonObject.getInt("fourthImpression"));
-                impressions.add(4, jsonObject.getInt("fifthImpression"));
-                impressions.add(5, jsonObject.getInt("sixthImpression"));
-                impressions.add(6, jsonObject.getInt("seventhImpression"));
-                impressions.add(7, jsonObject.getInt("eighthImpression"));
-                impressions.add(8, jsonObject.getInt("ninthImpression"));
-                impressions.add(9, jsonObject.getInt("tenthImpression"));
+        interactor.getPost(postId, dateLoaded);
+    }
 
-                ArrayList<String> names = new ArrayList<>();
-                names.add(0, jsonObject.getString("firstPerson"));
-                names.add(1, jsonObject.getString("secondPerson"));
-                names.add(2, jsonObject.getString("thirdPerson"));
-                names.add(3, jsonObject.getString("fourthPerson"));
-                names.add(4, jsonObject.getString("fifthPerson"));
-                names.add(5, jsonObject.getString("sixthPerson"));
-                names.add(6, jsonObject.getString("seventhPerson"));
-                names.add(7, jsonObject.getString("eighthPerson"));
-                names.add(8, jsonObject.getString("ninthPerson"));
-                names.add(9, jsonObject.getString("tenthPerson"));
-                Log.e("", "");
-                for (int i = 0; i < 10; i++) {
-                    if (impressions.get(i) != null) {
-                        people.setImpression(i, impressions.get(i));
-                    }
-
-                }
-
-                for (int i = 0; i < 10; i++) {
-                    people.setName(i, names.get(i));
-                }
-
-                setPeopleToViews();
-
-                spManager.savePeopleToSp(context, people);
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                iDreamExpandedView.hideProgressBar();
-            }
-        });
+    public void savePostToSp(SharedPreferences sleepSp, SharedPreferences dreamSp,
+                             SharedPreferences dreamSpTwo, SharedPreferences peopleSp) {
+        interactor.cachePost(sleepSp, dreamSp, dreamSpTwo, peopleSp);
     }
 
 
-    private void setPeopleToViews() {
+    public void setPeopleToViews() {
         int textColor = 0;
         for (int i = 0; i < 9; i++) {
             String name = people.getName(i);
-            if (!name.equals("")){
+            if (!name.equals("")) {
                 Integer impression = people.getImpression(i);
                 if (impression > 0) {
                     switch (impression) {
@@ -110,44 +56,6 @@ public class DreamExpandedPresenter {
             }
 
         }
-    }
-
-    public void retrieveDream(Context context,
-                              int postId,
-                              String dateLoaded, SharedPreferencesManager spManager) {
-
-        iDreamExpandedView.showProgressBar();
-        ApiPostCaller apiPostCaller = new ApiPostCaller();
-        apiPostCaller.getDreamProps(postId, new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
-                iDreamExpandedView.hideProgressBar();
-                JSONArray jsonArray = new JSONArray(response.toString());
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
-                Dream.setDreamProperties(jsonObject.getInt("dreamGrayScale"),
-                        jsonObject.getInt("dreamExperience"),
-                        jsonObject.getInt("dayOfMonth"),
-                        jsonObject.getInt("month"),
-                        jsonObject.getInt("year"),
-                        jsonObject.getString("dreamTitle"),
-                        jsonObject.getString("dreamContent"),
-                        jsonObject.getString("interpretation"),
-                        jsonObject.getInt("dreamLucidityLevel"),
-                        jsonObject.getInt("dreamPeopleExist"),
-                        jsonObject.getInt("dreamSound"),
-                        jsonObject.getInt("dreamMusical"));
-
-                setDreamPropertiesToViews(dateLoaded);
-
-                spManager.saveDreamToSp(context, Dream.getInstance(), DreamDate.getInstance());
-
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                iDreamExpandedView.hideProgressBar();
-            }
-        });
     }
 
     private void setMoodToImageView() {
@@ -196,33 +104,6 @@ public class DreamExpandedPresenter {
         setDate(dateLoaded);
     }
 
-    public void retrieveSleep(Context context, int postId, SharedPreferencesManager spManager) {
-        iDreamExpandedView.showProgressBar();
-        ApiPostCaller apiPostCaller = new ApiPostCaller();
-        apiPostCaller.getSleepProps(postId, new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
-                iDreamExpandedView.hideProgressBar();
-
-                JSONArray jsonArray = new JSONArray(response.toString());
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
-
-                Sleep.setSleepProps(jsonObject.getInt("sleepTime"),
-                        jsonObject.getInt("sleepPhysicalActivity"),
-                        jsonObject.getInt("sleepFoodConsumption"));
-
-                spManager.saveSleepToSp(context);
-
-                setSleepPropsToViews();
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                iDreamExpandedView.hideProgressBar();
-            }
-        });
-    }
-
     private void setSleepPropsToViews() {
         setSleepTimeToView();
         setPhysicalActivityToView();
@@ -260,4 +141,37 @@ public class DreamExpandedPresenter {
             iDreamExpandedView.setFoodView(R.drawable.hamburger_drink);
         }
     }
+
+    @Override
+    public void onSleepRetrieved() {
+        setSleepPropsToViews();
+    }
+
+    @Override
+    public void onSleepError() {
+        iDreamExpandedView.onError();
+    }
+
+    @Override
+    public void onDreamRetrieved(String dateLoaded) {
+        setDreamPropertiesToViews(dateLoaded);
+
+    }
+
+    @Override
+    public void onDreamError() {
+        iDreamExpandedView.onError();
+    }
+
+    @Override
+    public void onPeopleRetrieved() {
+        iDreamExpandedView.hideProgressBar();
+        setPeopleToViews();
+    }
+
+    @Override
+    public void onPeopleError() {
+        iDreamExpandedView.onError();
+    }
+
 }

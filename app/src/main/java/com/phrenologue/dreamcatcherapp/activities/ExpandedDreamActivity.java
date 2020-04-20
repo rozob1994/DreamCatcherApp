@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -38,7 +39,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     DreamExpandedPresenter presenter;
     boolean clicked;
     private ActivityExpandedDreamBinding binding;
-    private SharedPreferences sp2;
+    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp, peopleSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,10 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        sleepSp = getApplicationContext().getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        dreamOneSp = Objects.requireNonNull(getApplicationContext())
+                .getSharedPreferences("dream", Context.MODE_PRIVATE);
+        dreamTwoSp = getApplicationContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
         dream = Dream.getInstance();
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
@@ -56,25 +60,28 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
 
+        dream.setPostId(postId);
+        String dateLoaded = getIntent().getStringExtra("date");
+
+        presenter.loadPost(postId, dateLoaded);
+        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp, );
+
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 
         sp.edit().putInt("sleepTime", sleepTime).apply();
 
-        String dateLoaded = getIntent().getStringExtra("date");
+
 
         sleep.setTime(sp.getInt("sleepTime", 0));
 
         clicked = false;
 
-        dream.setPostId(postId);
+
 
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
                 binding.noDataRel, binding.txtPercentage);
 
-        presenter.retrievePeople(getApplicationContext(), postId, spManager);
-        presenter.retrieveDream(getApplicationContext(), postId, dateLoaded,
-                spManager);
-        presenter.retrieveSleep(getApplicationContext(), postId, spManager);
+
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,6 +255,17 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     @Override
     public void setDateText(String dateLoaded) {
         binding.titleDate.setText(dateLoaded);
+    }
+
+    @Override
+    public void onSuccess(Object responseMessage) {
+        presenter.setPeopleToViews();
+    }
+
+    @Override
+    public void onError() {
+        Toast.makeText(getApplicationContext(), "Loading failed.", Toast.LENGTH_LONG).show();
+
     }
 
     class NewThread extends Thread {

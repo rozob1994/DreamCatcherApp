@@ -1,6 +1,6 @@
 package com.phrenologue.dreamcatcherapp.activities.viewInterfaces;
 
-public interface IDreamExpandedView {
+public interface IDreamExpandedView<T> {
 
     void showProgressBar();
     void hideProgressBar();
@@ -17,5 +17,7 @@ public interface IDreamExpandedView {
     void setTitleText();
     void setContentText();
     void setDateText(String dateLoaded);
+    void onSuccess(T responseMessage);
+    void onError();
 
 }
