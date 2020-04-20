@@ -1,7 +1,5 @@
 package com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters;
 
-import android.util.Log;
-
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -95,47 +93,45 @@ public class Date {
      */
     public static int monthStrToInt(String month) {
         int monthInt = 0;
-        Log.e("","");
        switch (month) {
            case "Jan":
                monthInt = 1;
-               return monthInt;
+               break;
            case "Feb":
                monthInt = 2;
-               return monthInt;
+               break;
            case "Mar":
                monthInt = 3;
-               return monthInt;
+               break;
            case "Apr":
                monthInt = 4;
-               return monthInt;
+               break;
            case "May":
                monthInt = 5;
-               return monthInt;
+               break;
            case "Jun":
                monthInt = 6;
-               return monthInt;
+               break;
            case "Jul":
                monthInt = 7;
-               return monthInt;
+               break;
            case "Aug":
                monthInt = 8;
-               return monthInt;
+               break;
            case "Sep":
                monthInt = 9;
-               return monthInt;
+               break;
            case "Oct":
                monthInt = 10;
-               return monthInt;
+               break;
            case "Nov":
                monthInt = 11;
-               return monthInt;
+               break;
            case "Dec":
                monthInt = 12;
-               return monthInt;
-           default: return monthInt;
-
+               break;
        }
+       return monthInt;
     }
     /**
      * @return 0 = Saturday, 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday,

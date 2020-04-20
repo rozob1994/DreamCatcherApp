@@ -39,7 +39,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     DreamExpandedPresenter presenter;
     boolean clicked;
     private ActivityExpandedDreamBinding binding;
-    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp;
+    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp, peopleSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding = ActivityExpandedDreamBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
-        sleepSp = Objects.requireNonNull(getApplicationContext()).getSharedPreferences("sleep", Context.MODE_PRIVATE);
+        sleepSp = getApplicationContext().getSharedPreferences("sleep", Context.MODE_PRIVATE);
         dreamOneSp = Objects.requireNonNull(getApplicationContext())
                 .getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamTwoSp = getApplicationContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
@@ -62,10 +61,10 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
 
         dream.setPostId(postId);
-
         String dateLoaded = getIntent().getStringExtra("date");
 
-        presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp);
+        presenter.loadPost(postId, dateLoaded);
+        presenter.savePostToSp(sleepSp, dreamOneSp, dreamTwoSp, );
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 
@@ -77,8 +76,12 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
         clicked = false;
 
+
+
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
                 binding.noDataRel, binding.txtPercentage);
+
+
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,7 +259,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
     @Override
     public void onSuccess(Object responseMessage) {
-        presenter.peopleLogic();
+        presenter.setPeopleToViews();
     }
 
     @Override
