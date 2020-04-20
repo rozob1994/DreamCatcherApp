@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DreamCatcherApp</string>
     <string name="dream_description_hint">Describe your dream as clearly as you can.</string>
@@ -212,7 +213,6 @@
     <string name="l_a_n_g_u_a_g_e">L A N G U A G E</string>
     <string name="log_out">Log Out</string>
     <string name="dialog_note_delete">Are you sure you want to delete your dream?</string>
-    <string name="levelsTitle">levels</string>
-    <string name="pass_not_match">passwords do not match.</string>
+    <string name="levelsTitle">L E V E L S</string>
 
 </resources>
