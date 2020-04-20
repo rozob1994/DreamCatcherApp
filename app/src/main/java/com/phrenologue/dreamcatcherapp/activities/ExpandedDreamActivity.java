@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     DreamExpandedPresenter presenter;
     boolean clicked;
     private ActivityExpandedDreamBinding binding;
-    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp, peopleSp;
+    private SharedPreferences sp2, sleepSp, dreamOneSp, dreamTwoSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +62,9 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
 
         dream.setPostId(postId);
+
         String dateLoaded = getIntent().getStringExtra("date");
-        Log.e("","");
+
         presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp);
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
@@ -77,12 +77,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
         clicked = false;
 
-
-
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
                 binding.noDataRel, binding.txtPercentage);
-
-
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,7 +256,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
     @Override
     public void onSuccess(Object responseMessage) {
-        presenter.setPeopleToViews();
+        presenter.peopleLogic();
     }
 
     @Override

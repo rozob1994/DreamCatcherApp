@@ -31,7 +31,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
 
 
-    public void setPeopleToViews() {
+    public void peopleLogic() {
         int textColor = 0;
         for (int i = 0; i < 9; i++) {
             String name = people.getName(i);
@@ -56,7 +56,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         }
     }
 
-    private void setMoodToImageView() {
+    private void moodLogic() {
         if (checklist.getExperience() == 0) {
             iDreamExpandedView.setMoodView(R.drawable.ic_sad_emoji);
         } else if (checklist.getExperience() == 1) {
@@ -68,7 +68,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         }
     }
 
-    private void setColorToImageView() {
+    private void colorLogic() {
         if (checklist.getGrayScale()!=null){
             if (checklist.getGrayScale() == 2) {
                 iDreamExpandedView.setColorView(R.drawable.ic_colorful);
@@ -79,7 +79,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     }
 
-    private void setSoundToImageView() {
+    private void soundLogic() {
         DreamSound sound = DreamSound.getInstance();
         int soundInt = sound.getSound();
         if (soundInt == 1) {
@@ -95,23 +95,23 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         iDreamExpandedView.setDateText(dateLoaded);
     }
 
-    private void setDreamPropertiesToViews(String dateLoaded) {
-        setMoodToImageView();
-        setColorToImageView();
+    private void dreamLogic(String dateLoaded) {
+        moodLogic();
+        colorLogic();
         iDreamExpandedView.setInterpretationText();
         iDreamExpandedView.setTitleText();
         iDreamExpandedView.setContentText();
-        setSoundToImageView();
+        soundLogic();
         setDate(dateLoaded);
     }
 
-    private void setSleepPropsToViews() {
-        setSleepTimeToView();
-        setPhysicalActivityToView();
-        setFoodToView();
+    private void sleepLogic() {
+        sleepTimeLogic();
+        activityLogic();
+        foodLogic();
     }
 
-    private void setSleepTimeToView() {
+    private void sleepTimeLogic() {
         if (sleep.getTime() == 1) {
             iDreamExpandedView.setSleepTimeView(R.drawable.ic_day_symbol);
         } else if (sleep.getTime() == 2) {
@@ -121,7 +121,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         }
     }
 
-    private void setPhysicalActivityToView() {
+    private void activityLogic() {
         if (sleep.getPhysicalActivity() == 0) {
             iDreamExpandedView.setPhysicalView(R.drawable.stick_figure_1);
         } else if (sleep.getPhysicalActivity() == 1) {
@@ -133,7 +133,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         }
     }
 
-    private void setFoodToView() {
+    private void foodLogic() {
         if (sleep.getFoodConsumption() == 0) {
             iDreamExpandedView.setFoodView(R.drawable.apple);
         } else if (sleep.getFoodConsumption() == 1) {
@@ -145,7 +145,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     @Override
     public void onSleepRetrieved() {
-        setSleepPropsToViews();
+        sleepLogic();
     }
 
     @Override
@@ -155,7 +155,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     @Override
     public void onDreamRetrieved(String dateLoaded) {
-        setDreamPropertiesToViews(dateLoaded);
+        dreamLogic(dateLoaded);
 
     }
 
@@ -167,8 +167,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     @Override
     public void onPeopleRetrieved() {
         iDreamExpandedView.hideProgressBar();
-
-        setPeopleToViews();
+        peopleLogic();
     }
 
     @Override
