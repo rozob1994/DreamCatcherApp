@@ -4,5 +4,9 @@ public interface IDreamExpandedView {
 
     void showProgressBar();
     void hideProgressBar();
-    void setPeopleToViews(int index, String name, int textColor);
+    void setPeopleView(int index, String name, int textColor);
+    void setMoodView(int drawable);
+    void hideMood();
+    void setSleepTimeView(int drawable);
+    void hideSleepTime();
 }

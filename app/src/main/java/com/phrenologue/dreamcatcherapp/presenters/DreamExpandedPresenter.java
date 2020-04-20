@@ -2,7 +2,6 @@ package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
@@ -112,7 +111,7 @@ public class DreamExpandedPresenter {
                             break;
                     }
                 }
-                iDreamExpandedView.setPeopleToViews(i, name, textColor);
+                iDreamExpandedView.setPeopleView(i, name, textColor);
             }
 
         }
@@ -161,16 +160,20 @@ public class DreamExpandedPresenter {
         });
     }
 
-    private void setMoodToImageView(AppCompatImageView mood) {
+    private void setMoodToImageView() {
+        int drawable;
         DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getExperience() == 0) {
-            mood.setImageResource(R.drawable.ic_sad_emoji);
+            drawable = R.drawable.ic_sad_emoji;
+            iDreamExpandedView.setMoodView(drawable);
         } else if (checklist.getExperience() == 1) {
-            mood.setImageResource(R.drawable.ic_poker_face_emoji);
+            drawable = R.drawable.ic_poker_face_emoji;
+            iDreamExpandedView.setMoodView(drawable);
         } else if (checklist.getExperience() == 2) {
-            mood.setImageResource(R.drawable.ic_happy_emoji);
+            drawable = R.drawable.ic_happy_emoji;
+            iDreamExpandedView.setMoodView(drawable);
         } else {
-            mood.setVisibility(View.INVISIBLE);
+            iDreamExpandedView.hideMood();
         }
     }
 
@@ -218,7 +221,7 @@ public class DreamExpandedPresenter {
                                            AppCompatImageView soundImg,
                                            MoonTextView titleDate,
                                            String dateLoaded) {
-        setMoodToImageView(mood);
+        setMoodToImageView();
         setColorToImageView(color);
         setInterpretationToTextView(dreamsPackageInterpretation);
         setTitleAndContentToTxtView(dreamsPackageTitle, dreamsPackageDescription);
@@ -245,7 +248,7 @@ public class DreamExpandedPresenter {
 
                 spManager.saveSleepToSp(context);
 
-                setSleepPropsToViews(dayTime, activity, food, context);
+                setSleepPropsToViews(activity, food);
             }
 
             @Override
@@ -255,21 +258,24 @@ public class DreamExpandedPresenter {
         });
     }
 
-    private void setSleepPropsToViews(AppCompatImageView dayTime, AppCompatImageView activity,
-                                      AppCompatImageView food, Context context) {
-        setSleepTimeToView(dayTime, context);
+    private void setSleepPropsToViews(AppCompatImageView activity,
+                                      AppCompatImageView food) {
+        setSleepTimeToView();
         setPhysicalActivityToView(activity);
         setFoodToView(food);
     }
 
-    private void setSleepTimeToView(AppCompatImageView dayTime, Context context) {
+    private void setSleepTimeToView() {
         Sleep sleep = Sleep.getInstance();
+        int drawable;
         if (sleep.getTime() == 1) {
-            dayTime.setImageResource(R.drawable.ic_day_symbol);
+            drawable = R.drawable.ic_day_symbol;
+            iDreamExpandedView.setSleepTimeView(drawable);
         } else if (sleep.getTime() == 2) {
-            dayTime.setImageResource(R.drawable.ic_night_symbol);
+            drawable = R.drawable.ic_night_symbol;
+            iDreamExpandedView.setSleepTimeView(drawable);
         } else {
-            dayTime.setVisibility(View.GONE);
+            iDreamExpandedView.hideSleepTime();
         }
     }
 

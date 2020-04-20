@@ -180,7 +180,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     }
 
     @Override
-    public void setPeopleToViews(int index, String name, int textColor) {
+    public void setPeopleView(int index, String name, int textColor) {
         List<MoonTextView> names = Arrays.asList(binding.nameOne, binding.nameTwo, binding.nameThree,
                 binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
                 binding.nameNine, binding.nameTen);
@@ -188,6 +188,26 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         person.setText(name);
         person.setTextColor(getResources().getColor(textColor));
 
+    }
+
+    @Override
+    public void setMoodView(int drawable) {
+        binding.mood.setImageResource(drawable);
+    }
+
+    @Override
+    public void hideMood() {
+        binding.mood.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setSleepTimeView(int drawable) {
+        binding.dayTime.setImageResource(drawable);
+    }
+
+    @Override
+    public void hideSleepTime() {
+        binding.dayTime.setVisibility(View.GONE);
     }
 
     class NewThread extends Thread {
