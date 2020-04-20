@@ -21,7 +21,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         binding= ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         View view= binding.getRoot();
         setContentView(view);
-        LocaleManager localeManager = null;
+        LocaleManager localeManager = new LocaleManager();
 
         binding.radioButtonEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
