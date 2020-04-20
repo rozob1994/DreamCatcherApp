@@ -208,5 +208,7 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="log_out">Log Out</string>
     <string name="dialog_note_delete">Are you sure you want to delete your dream?</string>
+    <string name="repeat_your_password">repeat password</string>
+    <string name="pass_not_match">Passwords do not match.</string>
 
 </resources>
