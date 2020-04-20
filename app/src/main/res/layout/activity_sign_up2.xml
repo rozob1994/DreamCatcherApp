@@ -81,41 +81,12 @@
         android:paddingTop="2dp"
         android:textColor="@color/white"
         android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:inputType="textPassword"/>
-
-    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-        android:id="@+id/password_edt_txt_title_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edt_txt_password"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/repeat_your_password"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_password_2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/password_edt_txt_title_2"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/pass_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:inputType="textPassword"/>
+        android:textSize="@dimen/edt_txt_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_txt_password_2"
+        android:layout_below="@+id/edt_txt_password"
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">

@@ -49,7 +49,8 @@
             android:buttonTint="@color/white"
             android:checked="false"
             android:text="@string/yes_checkbox"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkbox_notSure_btn"
@@ -60,7 +61,8 @@
             android:buttonTint="@color/white"
             android:checked="false"
             android:text="@string/not_sure_checkbox"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkbox_no_btn"
@@ -87,7 +89,9 @@
         android:paddingRight="24dp"
         android:text="@string/next_btn"
         android:textColor="@color/white"
-        android:textSize="@dimen/edt_txt_size" />
+        android:textSize="@dimen/edt_txt_size"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_prev"
@@ -101,7 +105,9 @@
         android:paddingRight="24dp"
         android:text="@string/previous_btn"
         android:textColor="@color/white"
-        android:textSize="@dimen/edt_txt_size" />
+        android:textSize="@dimen/edt_txt_size"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp" />
 
 
 </LinearLayout>

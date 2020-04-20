@@ -49,7 +49,9 @@
                 android:background="@drawable/bg_shape"
                 android:backgroundTint="@color/black"
                 android:backgroundTintMode="multiply"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp">
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                     android:id="@+id/title_sub"
@@ -174,7 +176,8 @@
                             android:background="@drawable/bg_shape"
                             android:entries="@array/year"
                             android:popupBackground="@color/txt_glow"
-                            android:popupElevation="3dp" />
+                            android:popupElevation="3dp"
+                            android:layout_marginEnd="8dp" />
 
                         <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/spinner_month"
@@ -185,7 +188,9 @@
                             android:background="@drawable/bg_shape"
                             android:entries="@array/month"
                             android:popupBackground="@color/txt_glow"
-                            android:popupElevation="3dp" />
+                            android:popupElevation="3dp"
+                            android:layout_toEndOf="@id/spinner_year"
+                            android:layout_marginEnd="8dp" />
 
                         <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/spinner_day"
@@ -195,7 +200,8 @@
                             android:background="@drawable/bg_shape"
                             android:entries="@array/day"
                             android:popupBackground="@color/txt_glow"
-                            android:popupElevation="3dp" />
+                            android:popupElevation="3dp"
+                            android:layout_toEndOf="@id/spinner_month" />
 
                     </RelativeLayout>
 
@@ -222,7 +228,8 @@
                     android:elevation="4dp"
                     android:text="@string/submit_dream"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/title_size" />
+                    android:textSize="@dimen/title_size"
+                    android:layout_marginEnd="32dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/prevBtn"
@@ -268,6 +275,8 @@
         android:elevation="2dp"
         android:padding="4dp"
         app:srcCompat="@drawable/ic_close_black_24dp"
-        app:tint="#8AFFFFFF" />
+        app:tint="#8AFFFFFF"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

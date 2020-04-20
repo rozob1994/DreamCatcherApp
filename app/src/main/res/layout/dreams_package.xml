@@ -11,7 +11,9 @@
     android:layout_marginBottom="5dp"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
     <RelativeLayout
         android:id="@+id/rel_dreams_package_text"
@@ -61,7 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/package_mood"
@@ -77,7 +80,8 @@
             android:layout_height="24dp"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/package_mood"
-             />
+            android:layout_toEndOf="@id/package_mood"
+            android:layout_marginStart="8dp" />
 
         <View
             android:layout_marginBottom="2dp"
