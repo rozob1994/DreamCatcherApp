@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -17,14 +18,18 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.List;
+
 import maes.tech.intentanim.CustomIntent;
 
-public class ExpandedDreamActivity extends AppCompatActivity {
+public class ExpandedDreamActivity extends AppCompatActivity implements IDreamExpandedView {
     SharedPreferencesManager spManager;
     Dream dream;
     Sleep sleep;
@@ -43,7 +48,7 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         dream = Dream.getInstance();
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
-        presenter = new DreamExpandedPresenter();
+        presenter = new DreamExpandedPresenter(this);
         sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
 
         int postId = getIntent().getIntExtra("postId", 0);
@@ -64,16 +69,13 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
                 binding.noDataRel, binding.txtPercentage);
 
-        presenter.retrievePeople(getApplicationContext(), postId, spManager, binding.loadingBg,
-                binding.progressBar, binding.nameOne, binding.nameTwo, binding.nameThree,
-                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
-                binding.nameEight, binding.nameNine, binding.nameTen);
+        presenter.retrievePeople(getApplicationContext(), postId, spManager);
         presenter.retrieveDream(getApplicationContext(), postId, binding.mood, binding.color,
                 binding.dreamsPackageInterpretation, binding.dreamsPackageTitle,
                 binding.dreamsPackageDescription, binding.sound, binding.titleDate, dateLoaded,
-                spManager, binding.loadingBg, binding.progressBar);
+                spManager);
         presenter.retrieveSleep(getApplicationContext(), postId, spManager, binding.dayTime,
-                binding.activity, binding.food, binding.loadingBg, binding.progressBar);
+                binding.activity, binding.food);
 
         binding.relDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +165,31 @@ public class ExpandedDreamActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void showProgressBar() {
+        binding.loadingBg.setVisibility(View.VISIBLE);
+        binding.loadingBg.setAlpha(0.95f);
+        binding.progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        binding.loadingBg.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setPeopleToViews(int index, String name, int textColor) {
+        List<MoonTextView> names = Arrays.asList(binding.nameOne, binding.nameTwo, binding.nameThree,
+                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
+                binding.nameNine, binding.nameTen);
+        MoonTextView person = names.get(index);
+        person.setText(name);
+        person.setTextColor(getResources().getColor(textColor));
+
+    }
+
     class NewThread extends Thread {
         @Override
         public void run() {

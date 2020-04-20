@@ -3,12 +3,11 @@ package com.phrenologue.dreamcatcherapp.presenters;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
@@ -29,21 +28,19 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DreamExpandedPresenter {
-    public DreamExpandedPresenter() {
+    IDreamExpandedView iDreamExpandedView;
+
+    public DreamExpandedPresenter(IDreamExpandedView iDreamExpandedView) {
+        this.iDreamExpandedView = iDreamExpandedView;
     }
 
-    public void retrievePeople(Context context, int postId, SharedPreferencesManager spManager,
-                               RelativeLayout loadingBg, ProgressBar progressBar,
-                               MoonTextView nameOne, MoonTextView nameTwo, MoonTextView nameThree,
-                               MoonTextView nameFour, MoonTextView nameFive, MoonTextView nameSix,
-                               MoonTextView nameSeven, MoonTextView nameEight,
-                               MoonTextView nameNine, MoonTextView nameTen) {
-        setLoadingVisible(loadingBg, progressBar);
+    public void retrievePeople(Context context, int postId, SharedPreferencesManager spManager) {
+        iDreamExpandedView.showProgressBar();
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getPeopleProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                setLoadingInvisible(loadingBg, progressBar);
+                iDreamExpandedView.hideProgressBar();
                 DreamPeople people = DreamPeople.getInstance();
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
@@ -82,222 +79,42 @@ public class DreamExpandedPresenter {
                     people.setName(i, names.get(i));
                 }
 
-                setPeopleToViews(nameOne, nameTwo, nameThree,
-                        nameFour, nameFive, nameSix,
-                        nameSeven, nameEight,
-                        nameNine, nameTen, context);
+                setPeopleToViews();
 
                 spManager.savePeopleToSp(context, people);
             }
 
             @Override
             public void onFailure(String errorMessage) {
-                setLoadingInvisible(loadingBg, progressBar);
+                iDreamExpandedView.hideProgressBar();
             }
         });
     }
 
-    private void setLoadingVisible(RelativeLayout loadingBg, ProgressBar progressBar) {
-        loadingBg.setVisibility(View.VISIBLE);
-        loadingBg.setAlpha(0.95f);
-        progressBar.setVisibility(View.VISIBLE);
-    }
 
-    private void setLoadingInvisible(RelativeLayout loadingBg, ProgressBar progressBar) {
-        loadingBg.setVisibility(View.GONE);
-        progressBar.setVisibility(View.GONE);
-    }
-
-    private void setPeopleToViews(MoonTextView nameOne, MoonTextView nameTwo, MoonTextView nameThree,
-                                  MoonTextView nameFour, MoonTextView nameFive, MoonTextView nameSix,
-                                  MoonTextView nameSeven, MoonTextView nameEight,
-                                  MoonTextView nameNine, MoonTextView nameTen, Context context) {
+    private void setPeopleToViews() {
+        int textColor = 0;
         DreamPeople people = DreamPeople.getInstance();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             String name = people.getName(i);
-            Integer impression = people.getImpression(i);
-            switch (i) {
-                case 0:
-                    if (!name.equals("")) {
-                        nameOne.setText(name);
+            if (!name.equals("")){
+                Integer impression = people.getImpression(i);
+                if (impression > 0) {
+                    switch (impression) {
+                        case 1:
+                            textColor = R.color.txt_glow;
+                            break;
+                        case 2:
+                            textColor = R.color.white;
+                            break;
+                        case 3:
+                            textColor = R.color.day_light;
+                            break;
                     }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameOne.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameOne.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameOne.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 1:
-                    if (!name.equals("")) {
-                        nameTwo.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameTwo.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameTwo.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameTwo.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 2:
-                    if (!name.equals("")) {
-                        nameThree.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameThree.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameThree.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameThree.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 3:
-                    if (!name.equals("")) {
-                        nameFour.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameFour.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameFour.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameFour.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 4:
-                    if (!name.equals("")) {
-                        nameFive.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameFive.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameFive.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameFive.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 5:
-                    if (!name.equals("")) {
-                        nameSix.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameSix.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameSix.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameSix.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 6:
-                    if (!name.equals("")) {
-                        nameSeven.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameSeven.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameSeven.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameSeven.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 7:
-                    if (!name.equals("")) {
-                        nameEight.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameEight.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameEight.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameEight.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 8:
-                    if (!name.equals("")) {
-                        nameNine.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameNine.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameNine.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameNine.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
-                case 9:
-                    if (!name.equals("")) {
-                        nameTen.setText(name);
-                    }
-                    if (impression > 0) {
-                        switch (impression) {
-                            case 1:
-                                nameTen.setTextColor(context.getResources().getColor(R.color.txt_glow));
-                                break;
-                            case 2:
-                                nameTen.setTextColor(context.getResources().getColor(R.color.white));
-                                break;
-                            case 3:
-                                nameTen.setTextColor(context.getResources().getColor(R.color.day_light));
-                                break;
-                        }
-                    }
-                    break;
+                }
+                iDreamExpandedView.setPeopleToViews(i, name, textColor);
             }
+
         }
     }
 
@@ -306,15 +123,14 @@ public class DreamExpandedPresenter {
                               MoonTextView dreamsPackageInterpretation,
                               MoonTextView dreamsPackageTitle, MoonTextView dreamsPackageDescription,
                               AppCompatImageView soundImg, MoonTextView titleDate,
-                              String dateLoaded, SharedPreferencesManager spManager,
-                              RelativeLayout loadingBg, ProgressBar progressBar) {
+                              String dateLoaded, SharedPreferencesManager spManager) {
 
-        setLoadingVisible(loadingBg, progressBar);
+        iDreamExpandedView.showProgressBar();
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getDreamProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                setLoadingInvisible(loadingBg, progressBar);
+                iDreamExpandedView.hideProgressBar();
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 Dream.setDreamProperties(jsonObject.getInt("dreamGrayScale"),
@@ -332,7 +148,7 @@ public class DreamExpandedPresenter {
 
                 setDreamPropertiesToViews(mood, color, dreamsPackageInterpretation,
                         dreamsPackageTitle, dreamsPackageDescription, soundImg, titleDate,
-                        dateLoaded, context);
+                        dateLoaded);
 
                 spManager.saveDreamToSp(context, Dream.getInstance(), DreamDate.getInstance());
 
@@ -340,13 +156,12 @@ public class DreamExpandedPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
-                loadingBg.setVisibility(View.GONE);
-                progressBar.setVisibility(View.GONE);
+                iDreamExpandedView.hideProgressBar();
             }
         });
     }
 
-    private void setMoodToImageView(AppCompatImageView mood, Context context) {
+    private void setMoodToImageView(AppCompatImageView mood) {
         DreamChecklist checklist = DreamChecklist.getInstance();
         if (checklist.getExperience() == 0) {
             mood.setImageResource(R.drawable.ic_sad_emoji);
@@ -402,8 +217,8 @@ public class DreamExpandedPresenter {
                                            MoonTextView dreamsPackageDescription,
                                            AppCompatImageView soundImg,
                                            MoonTextView titleDate,
-                                           String dateLoaded, Context context) {
-        setMoodToImageView(mood, context);
+                                           String dateLoaded) {
+        setMoodToImageView(mood);
         setColorToImageView(color);
         setInterpretationToTextView(dreamsPackageInterpretation);
         setTitleAndContentToTxtView(dreamsPackageTitle, dreamsPackageDescription);
@@ -413,14 +228,13 @@ public class DreamExpandedPresenter {
 
     public void retrieveSleep(Context context, int postId, SharedPreferencesManager spManager,
                               AppCompatImageView dayTime, AppCompatImageView activity,
-                              AppCompatImageView food,
-                              RelativeLayout loadingBg, ProgressBar progressBar) {
-        setLoadingVisible(loadingBg, progressBar);
+                              AppCompatImageView food) {
+        iDreamExpandedView.showProgressBar();
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getSleepProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                setLoadingInvisible(loadingBg, progressBar);
+                iDreamExpandedView.hideProgressBar();
 
                 JSONArray jsonArray = new JSONArray(response.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
@@ -436,7 +250,7 @@ public class DreamExpandedPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
-                setLoadingInvisible(loadingBg, progressBar);
+                iDreamExpandedView.hideProgressBar();
             }
         });
     }
