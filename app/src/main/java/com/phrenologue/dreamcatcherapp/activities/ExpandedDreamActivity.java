@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.mikephil.charting.data.PieData;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
@@ -19,7 +20,6 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
-import com.phrenologue.dreamcatcherapp.presenters.StatsPresenter;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
@@ -74,11 +74,6 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         sleep.setTime(sp.getInt("sleepTime", 0));
 
         clicked = false;
-
-
-
-        StatsPresenter.drawSingleLucidityLevel(binding.pieChart, postId, binding.txtPercentage,
-                binding.noDataRel, binding.txtPercentage);
 
 
 
@@ -265,6 +260,34 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     public void onError() {
         Toast.makeText(getApplicationContext(), "Loading failed.", Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public void onLucid() {
+        binding.pieChart.setVisibility(View.VISIBLE);
+        binding.noDataRel.setVisibility(View.GONE);
+        binding.txtPercentage.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onNonLucid() {
+        binding.noDataRel.setVisibility(View.VISIBLE);
+        binding.pieChart.setVisibility(View.GONE);
+        binding.txtPercentage.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setPercentage(String percentage) {
+        binding.txtPercentage.setText(percentage);
+    }
+
+    @Override
+    public void drawChart(PieData pieData) {
+        binding.pieChart.setData(pieData);
+        binding.pieChart.invalidate();
+        binding.pieChart.setDrawHoleEnabled(false);
+        binding.pieChart.getLegend().setEnabled(false);
+        binding.pieChart.getDescription().setEnabled(false);
     }
 
     class NewThread extends Thread {

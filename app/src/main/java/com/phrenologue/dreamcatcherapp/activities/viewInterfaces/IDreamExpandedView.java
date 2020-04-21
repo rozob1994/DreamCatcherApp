@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities.viewInterfaces;
 
+import com.github.mikephil.charting.data.PieData;
+
 public interface IDreamExpandedView<T> {
 
     void showProgressBar();
@@ -19,5 +21,9 @@ public interface IDreamExpandedView<T> {
     void setDateText(String dateLoaded);
     void onSuccess(T responseMessage);
     void onError();
+    void onLucid();
+    void onNonLucid();
+    void setPercentage(String percentage);
+    void drawChart(PieData pieData);
 
 }

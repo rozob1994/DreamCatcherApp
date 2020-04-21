@@ -1,15 +1,28 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.interactors.DreamExpandedInteractor;
+import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamExpandedPresenter;
+import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
+import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     private IDreamExpandedView iDreamExpandedView;
@@ -27,6 +40,51 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
                          SharedPreferences dreamSpTwo) {
         iDreamExpandedView.showProgressBar();
         interactor.getPost(postId, dateLoaded, sleepSp, dreamSp, dreamSpTwo);
+    }
+
+    public static void drawSingleLucidityLevel(IDreamExpandedView iDreamExpandedView, int postId) {
+        ApiPostCaller postCaller = new ApiPostCaller();
+        postCaller.getQResult(postId, new IResponseMessage() {
+            @Override
+            public void onSuccess(Object response) throws JSONException {
+
+                JSONObject jsonObject = new JSONObject(response.toString());
+                JSONArray jsonArray = jsonObject.getJSONArray("0");
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                Log.e("", "");
+            }
+        });
+    }
+
+    private static PieData createLucidityChart(int result){
+        int percentage = singlePercentCalc(result);
+        int remainder = 100 - percentage;
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        entries.add(new PieEntry(percentage, "Lucid"));
+        entries.add(new PieEntry(remainder, "Not Lucid"));
+        PieDataSet dataSet = new PieDataSet(entries, "Lucidity Percentage");
+        PieData pieData = new PieData(dataSet);
+        dataSet.setColors(ColorPalettes.DREAMS_EXPANDED);
+        dataSet.setDrawValues(false);
+        return pieData;
+    }
+
+    private static int singlePercentCalc(int result) {
+        return (int) (((float) result / 38f) * 100);
+    }
+
+    private static String singleStrPercentCalc(int result){
+        int percentage = singlePercentCalc(result);
+        return  "%" + percentage + "" + " Lucid";
     }
 
 
@@ -149,19 +207,9 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     }
 
     @Override
-    public void onSleepError() {
-        iDreamExpandedView.onError();
-    }
-
-    @Override
     public void onDreamRetrieved(String dateLoaded) {
         dreamLogic(dateLoaded);
 
-    }
-
-    @Override
-    public void onDreamError() {
-        iDreamExpandedView.onError();
     }
 
     @Override
@@ -170,9 +218,22 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         peopleViewLogic();
     }
 
+
     @Override
-    public void onPeopleError() {
+    public void checkLucidity(int result) {
+        if (result == 0) {
+            iDreamExpandedView.onNonLucid();
+        } else {
+            iDreamExpandedView.onLucid();
+            iDreamExpandedView.setPercentage(singleStrPercentCalc(result));
+            iDreamExpandedView.drawChart(createLucidityChart(result));
+        }
+    }
+
+    @Override
+    public void onError() {
         iDreamExpandedView.onError();
     }
+
 
 }

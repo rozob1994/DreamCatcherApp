@@ -214,5 +214,6 @@
     <string name="dialog_note_delete">Are you sure you want to delete your dream?</string>
     <string name="levelsTitle">levels</string>
     <string name="pass_not_match">passwords do not match.</string>
+    <string name="error">Error</string>
 
 </resources>

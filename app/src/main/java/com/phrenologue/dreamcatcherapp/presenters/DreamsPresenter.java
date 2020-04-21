@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
@@ -21,21 +22,23 @@ import java.util.List;
 
 public class DreamsPresenter {
     private Context context;
+    private IDreamChoosingView iDreamChoosing;
 
-    public DreamsPresenter(Context context) {
-        this.context = context;
+    public DreamsPresenter(IDreamChoosingView iDreamChoosing) {
+
+        this.iDreamChoosing = iDreamChoosing;
     }
 
     public void getDescription(Context context,
                                RelativeLayout loadingBg, RecyclerView dreamsRecycler,
                                MoonTextView dreamCount) {
 
-        setLoadingVisible(loadingBg);
+        iDreamChoosing.showProgressBar();
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                loadingBg.setVisibility(View.GONE);
+                iDreamChoosing.hideProgressBar();
                 JSONArray jsonArray = new JSONArray(response.toString());
 
                 ArrayList<JSONArray> jsonArrays = new ArrayList();
@@ -72,8 +75,8 @@ public class DreamsPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
-                loadingBg.setVisibility(View.GONE);
-                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+                iDreamChoosing.hideProgressBar();
+                iDreamChoosing.onError();
             }
 
         });

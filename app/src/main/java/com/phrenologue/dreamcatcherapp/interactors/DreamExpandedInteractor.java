@@ -43,25 +43,44 @@ public class DreamExpandedInteractor {
                                 iPresenter.onPeopleRetrieved();
                                 setPeople(response);
                                 cachePost(sleepSp, dreamSp, dreamSpTwo);
+                                apiPostCaller.getQResult(postId, new IResponseMessage() {
+                                    @Override
+                                    public void onSuccess(Object response) throws JSONException {
+                                        JSONObject jsonObject = new JSONObject(response.toString());
+                                        JSONArray jsonArray = jsonObject.getJSONArray("0");
+                                        boolean status = jsonObject.getBoolean("status");
+                                        if (status) {
+                                            int result = jsonArray.getJSONObject(0).getInt("result");
+                                            iPresenter.checkLucidity(result);
+                                        } else {
+                                            iPresenter.onError();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(String errorMessage) {
+                                        iPresenter.onError();
+                                    }
+                                });
                             }
 
                             @Override
                             public void onFailure(String errorMessage) {
-                                iPresenter.onPeopleError();
+                                iPresenter.onError();
                             }
                         });
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
-                        iPresenter.onDreamError();
+                        iPresenter.onError();
                     }
                 });
             }
 
             @Override
             public void onFailure(String errorMessage) {
-                iPresenter.onSleepError();
+                iPresenter.onError();
             }
         });
     }

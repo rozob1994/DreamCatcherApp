@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
@@ -14,7 +15,7 @@ import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
-public class DreamsPackagesActivity extends AppCompatActivity {
+public class DreamsPackagesActivity extends AppCompatActivity implements IDreamChoosingView {
     private ActivityDreamsPackagesBinding binding;
 
 
@@ -53,4 +54,23 @@ public class DreamsPackagesActivity extends AppCompatActivity {
         IntentManager.goToProfile(DreamsPackagesActivity.this);
     }
 
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
+    }
+
+    @Override
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void onError() {
+
+    }
 }
