@@ -2,20 +2,21 @@ package com.phrenologue.dreamcatcherapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
+import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
-public class DreamsPackagesActivity extends AppCompatActivity implements IDreamChoosingView {
+public class DreamsPackagesActivity extends AppCompatActivity implements IDreamPackagesView {
     private ActivityDreamsPackagesBinding binding;
 
 
@@ -56,12 +57,13 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamC
 
     @Override
     public void showProgressBar() {
-
+        binding.loadingBg.setVisibility(View.VISIBLE);
+        binding.loadingBg.setAlpha(0.5f);
     }
 
     @Override
     public void hideProgressBar() {
-
+        binding.loadingBg.setVisibility(View.GONE);
     }
 
     @Override
@@ -71,6 +73,6 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamC
 
     @Override
     public void onError() {
-
+        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
     }
 }

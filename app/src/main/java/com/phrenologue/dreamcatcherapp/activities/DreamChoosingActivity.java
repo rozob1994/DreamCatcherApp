@@ -6,19 +6,23 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamChoosingBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
-import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
+import com.phrenologue.dreamcatcherapp.parameters.postParameters.DreamChoosingItem;
+import com.phrenologue.dreamcatcherapp.presenters.DreamChoosingPresenter;
+
+import java.util.List;
 
 import maes.tech.intentanim.CustomIntent;
 
 public class DreamChoosingActivity extends AppCompatActivity implements IDreamChoosingView {
 
     private ActivityDreamChoosingBinding binding;
-    private DreamsPresenter presenter;
     private RecyclerView dreamsRecycler;
 
     @Override
@@ -29,9 +33,8 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
         setContentView(view);
 
         dreamsRecycler = binding.dreamsRecycler;
-        presenter = new DreamsPresenter(this);
-        presenter.getDescriptionForChoice(getApplicationContext(),
-                binding.loadingBg, dreamsRecycler);
+        DreamChoosingPresenter presenter = new DreamChoosingPresenter(this);
+        presenter.getDescription();
 
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +64,14 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
 
     @Override
     public void onSuccess() {
-
+        DreamChoosingItem item = DreamChoosingItem.getInstance();
+        List<Integer> postIds = item.getPostIds();
+        DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(getApplicationContext(),
+                item.getPostIds(), item.getSleepTimes(), item.getExperiences(), item.getDays(),
+                item.getMonths(), item.getYears(), item.getTitles(), item.getContents());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        dreamsRecycler.setLayoutManager(layoutManager);
+        dreamsRecycler.setAdapter(adapter);
     }
 
     @Override
