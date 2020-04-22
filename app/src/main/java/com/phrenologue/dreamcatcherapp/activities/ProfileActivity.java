@@ -27,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
@@ -37,6 +38,11 @@ import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 import maes.tech.intentanim.CustomIntent;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleManager.onAttach(newBase, "en"));
+    }
 
     private BottomSheetBehavior behavior;
     private LinearLayout edt_profile;
@@ -60,6 +66,8 @@ public class ProfileActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String mLanguageCode = "en";
+        LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
@@ -208,6 +216,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

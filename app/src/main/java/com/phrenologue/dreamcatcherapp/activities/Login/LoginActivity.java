@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.activities.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private ActivityLoginBinding binding;
@@ -35,6 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Locale locale= new Locale("en");
+        Locale.setDefault(locale);
+        Configuration configuration= new Configuration();
+        configuration.locale= locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("logged", false)) {
             Users user = Users.getInstance();

@@ -2,7 +2,6 @@ package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,16 +17,15 @@ public class SelectLanguageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivitySelectLanguageBinding.inflate(getLayoutInflater());
-        View view= binding.getRoot();
+        binding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
-        LocaleManager localeManager = new LocaleManager();
 
         binding.radioButtonEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                localeManager.setAppLocale(getApplicationContext(), "en");
+                LocaleManager.setLocale(getApplicationContext(), "en");
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 finishAffinity();
@@ -39,8 +37,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                localeManager.setAppLocale(getApplicationContext(), "fa");
-                Log.e("","");
+                LocaleManager.setLocale(getApplicationContext(), "fa-rIR");
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 finishAffinity();
@@ -49,4 +46,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 }
