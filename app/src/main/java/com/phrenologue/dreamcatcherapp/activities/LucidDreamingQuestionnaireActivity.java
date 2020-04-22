@@ -24,14 +24,11 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity {
         View view= binding.getRoot();
         setContentView(view);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-// Replace the contents of the container with the new fragment
+
         ft.replace(R.id.your_placeholder, new QuestionOneFragment());
-// or ft.add(R.id.your_placeholder, new FooFragment());
-// Complete the changes added above
+
         ft.commit();
-        //adapter= new QuestionnaireAdapter(getSupportFragmentManager());
-        //mPager = binding.questionsVp;
-        //mPager.setAdapter(adapter);
+
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
