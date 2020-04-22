@@ -16,8 +16,6 @@ import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManag
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.DreamChoosingItem;
 import com.phrenologue.dreamcatcherapp.presenters.DreamChoosingPresenter;
 
-import java.util.List;
-
 import maes.tech.intentanim.CustomIntent;
 
 public class DreamChoosingActivity extends AppCompatActivity implements IDreamChoosingView {
@@ -65,7 +63,6 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
     @Override
     public void onSuccess() {
         DreamChoosingItem item = DreamChoosingItem.getInstance();
-        List<Integer> postIds = item.getPostIds();
         DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(getApplicationContext(),
                 item.getPostIds(), item.getSleepTimes(), item.getExperiences(), item.getDays(),
                 item.getMonths(), item.getYears(), item.getTitles(), item.getContents());
