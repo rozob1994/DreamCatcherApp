@@ -1,69 +1,61 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
 public class ProfilePresenter {
-    public ProfilePresenter(){}
+    IProfileView iProfileView;
+
+    public ProfilePresenter(IProfileView iProfileView) {
+        this.iProfileView = iProfileView;
+    }
 
 
-
-
-    public static void setLevel(LottieAnimationView levelAnim, MoonTextView levelTitle) {
+    public void setLevel() {
         Users user = Users.getInstance();
         int level = user.getLevel();
-        switch (level){
+        switch (level) {
             case 1:
-                levelAnim.setImageAssetsFolder("images/level_one");
-                levelAnim.setAnimation("level1.json");
-                levelTitle.setText(R.string.LevelOneTitle);
+                iProfileView.setLevelView("images/level_one", "level1.json",
+                        R.string.LevelOneTitle);
+
                 break;
             case 2:
-                levelAnim.setImageAssetsFolder("images/level_two");
-                levelAnim.setAnimation("level2.json");
-                levelTitle.setText(R.string.LevelTwoTitle);
+                iProfileView.setLevelView("images/level_two", "level2.json",
+                        R.string.LevelTwoTitle);
                 break;
             case 3:
-                levelAnim.setImageAssetsFolder("images/level_three");
-                levelAnim.setAnimation("level3.json");
-                levelTitle.setText(R.string.LevelThreeTitle);
+                iProfileView.setLevelView("images/level_three", "level3.json",
+                        R.string.LevelThreeTitle);
                 break;
             case 4:
-                levelAnim.setImageAssetsFolder("images/level_four");
-                levelAnim.setAnimation("level4.json");
-                levelTitle.setText(R.string.LevelFourTitle);
+                iProfileView.setLevelView("images/level_four", "level4.json",
+                        R.string.LevelFourTitle);
                 break;
             case 5:
-                levelAnim.setImageAssetsFolder("images/level_five");
-                levelAnim.setAnimation("level5.json");
-                levelTitle.setText(R.string.LevelFiveTitle);
+                iProfileView.setLevelView("images/level_five", "level5.json",
+                        R.string.LevelFiveTitle);
                 break;
             case 6:
-                levelAnim.setImageAssetsFolder("images/level_six");
-                levelAnim.setAnimation("level6.json");
-                levelTitle.setText(R.string.LevelSixTitle);
+                iProfileView.setLevelView("images/level_six", "level6.json",
+                        R.string.LevelSixTitle);
                 break;
             case 7:
-                levelAnim.setImageAssetsFolder("images/level_seven");
-                levelAnim.setAnimation("level7.json");
-                levelTitle.setText(R.string.LevelSevenTitle);
+                iProfileView.setLevelView("images/level_seven", "level7.json",
+                        R.string.LevelSevenTitle);
                 break;
             case 8:
-                levelAnim.setImageAssetsFolder("images/level_eight");
-                levelAnim.setAnimation("level8.json");
-                levelTitle.setText(R.string.LevelEightTitle);
+                iProfileView.setLevelView("images/level_eight", "level8.json",
+                        R.string.LevelEightTitle);
                 break;
             case 9:
-                levelAnim.setImageAssetsFolder("images/level_nine");
-                levelAnim.setAnimation("level9.json");
-                levelTitle.setText(R.string.LevelNineTitle);
+                iProfileView.setLevelView("images/level_nine", "level9.json",
+                        R.string.LevelNineTitle);
                 break;
             case 10:
-                levelAnim.setImageAssetsFolder("images/level_ten");
-                levelAnim.setAnimation("level10.json");
-                levelTitle.setText(R.string.LevelTenTitle);
+                iProfileView.setLevelView("images/level_ten", "level10.json",
+                        R.string.LevelTenTitle);
                 break;
         }
 

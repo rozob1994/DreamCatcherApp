@@ -1,7 +1,6 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DreamsPresenter {
-    private Context context;
     private IDreamPackagesView iDreamPackagesView;
 
     public DreamsPresenter(IDreamPackagesView iDreamPackagesView) {
@@ -83,8 +82,42 @@ public class DreamsPresenter {
     }
 
 
-    private void setLoadingVisible(RelativeLayout loadingBg) {
-        loadingBg.setVisibility(View.VISIBLE);
-        loadingBg.setAlpha(0.5f);
+    public void setLevel() {
+        Users user = Users.getInstance();
+        int level = user.getLevel();
+        switch (level) {
+            case 1:
+                iDreamPackagesView.setLevelView("images/level_one", "level1.json");
+
+                break;
+            case 2:
+                iDreamPackagesView.setLevelView("images/level_two", "level2.json");
+                break;
+            case 3:
+                iDreamPackagesView.setLevelView("images/level_three", "level3.json");
+                break;
+            case 4:
+                iDreamPackagesView.setLevelView("images/level_four", "level4.json");
+                break;
+            case 5:
+                iDreamPackagesView.setLevelView("images/level_five", "level5.json");
+                break;
+            case 6:
+                iDreamPackagesView.setLevelView("images/level_six", "level6.json");
+                break;
+            case 7:
+                iDreamPackagesView.setLevelView("images/level_seven", "level7.json");
+                break;
+            case 8:
+                iDreamPackagesView.setLevelView("images/level_eight", "level8.json");
+                break;
+            case 9:
+                iDreamPackagesView.setLevelView("images/level_nine", "level9.json");
+                break;
+            case 10:
+                iDreamPackagesView.setLevelView("images/level_ten", "level10.json");
+                break;
+        }
+
     }
 }

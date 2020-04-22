@@ -6,5 +6,6 @@ public interface IDreamPackagesView {
     void hideProgressBar();
     void onSuccess();
     void onError();
+    void setLevelView(String folder, String json);
 
 }

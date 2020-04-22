@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,6 +25,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
@@ -37,7 +37,7 @@ import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import maes.tech.intentanim.CustomIntent;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -74,33 +74,27 @@ public class ProfileActivity extends AppCompatActivity {
         Users user = Users.getInstance();
         user.setUid(sharedPreferences.getInt("uid", 0));
         user.setEmail(sharedPreferences.getString("username", "Nothing Retrieved"));
-        user.setLevel(sharedPreferences.getInt("level",0));
+        user.setLevel(sharedPreferences.getInt("level", 0));
         binding.userTitle.setText(user.getEmail());
         postCaller = new ApiPostCaller();
-        presenter = new ProfilePresenter();
+        presenter = new ProfilePresenter(this);
         levelAnim = binding.levelAnimation;
         levelTitle = binding.levelNumber;
-        edt_profile=findViewById(R.id.lin_edt_profile);
-        behavior= BottomSheetBehavior.from(edt_profile);
-        btnCancel= findViewById(R.id.btn_cancel_edt);
+        edt_profile = findViewById(R.id.lin_edt_profile);
+        behavior = BottomSheetBehavior.from(edt_profile);
+        btnCancel = findViewById(R.id.btn_cancel_edt);
         dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         dreamChoosingOff.edit().clear().apply();
-
+        presenter.setLevel();
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (behavior.getState()==BottomSheetBehavior.STATE_EXPANDED){
+                if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
                     behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
             }
         });
-
-        //=========================== Determine User's Level =================================
-        ProfilePresenter.setLevel(levelAnim, levelTitle);
-
-        Log.e("","");
-
 
         binding.levelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +147,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               binding.drawerLayout.openDrawer(GravityCompat.START);
+                binding.drawerLayout.openDrawer(GravityCompat.START);
             }
         });
 
@@ -165,7 +159,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     case R.id.edit:
 
-                        if (behavior.getState()!=BottomSheetBehavior.STATE_EXPANDED){
+                        if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                             behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                             binding.drawerLayout.closeDrawers();
                         } else {
@@ -229,7 +223,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
             Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
             return;
@@ -261,5 +255,12 @@ public class ProfileActivity extends AppCompatActivity {
             default:
                 return super.onTouchEvent(event);
         }
+    }
+
+    @Override
+    public void setLevelView(String folder, String json, int title) {
+        levelAnim.setImageAssetsFolder(folder);
+        levelAnim.setAnimation(json);
+        levelTitle.setText(title);
     }
 }

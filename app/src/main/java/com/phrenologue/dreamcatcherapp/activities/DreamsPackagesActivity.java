@@ -7,12 +7,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
-import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
@@ -26,13 +24,13 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
         binding = ActivityDreamsPackagesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        LottieAnimationView levelAnim = binding.levelAnimation;
+
         RecyclerView dreamsRecycler = binding.dreamsRecycler;
         MoonTextView dreamCount = binding.titleDreamsCount;
         DreamsPresenter presenter = new DreamsPresenter(this);
         presenter.getDescription(getApplicationContext(),
                 binding.loadingBg, dreamsRecycler, dreamCount);
-        ProfilePresenter.setLevel(levelAnim, binding.titleDreamHours);
+        presenter.setLevel();
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,5 +72,12 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
     @Override
     public void onError() {
         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setLevelView(String folder, String json) {
+        binding.levelAnimation.setImageAssetsFolder(folder);
+        binding.levelAnimation.setAnimation(json);
+
     }
 }
