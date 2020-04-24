@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Dream Description"
+                    android:text="@string/dream_description"
                     android:textColor="@color/txt_glow"
                     android:textSize="@dimen/edt_title_size" />
 

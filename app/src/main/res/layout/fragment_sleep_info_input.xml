@@ -289,7 +289,7 @@
                                     android:id="@+id/sings_hint_none"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="None"
+                                    android:text="@string/none"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
                             </LinearLayout>
@@ -311,7 +311,7 @@
                                     android:id="@+id/signs_hint_usual"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Usual"
+                                    android:text="@string/usual"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
 
@@ -335,7 +335,7 @@
                                     android:id="@+id/signs_hint_workout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Work-Out"
+                                    android:text="@string/work_out"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
 
@@ -358,7 +358,7 @@
                                     android:id="@+id/signs_hint_excessive"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Excessive"
+                                    android:text="@string/excessive"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
 
@@ -452,7 +452,7 @@
                                     android:id="@+id/sings_hint_low"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Low"
+                                    android:text="@string/low"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
                             </LinearLayout>
@@ -475,7 +475,7 @@
                                     android:id="@+id/signs_hint_medium"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Medium"
+                                    android:text="@string/medium"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
 
@@ -499,7 +499,7 @@
                                     android:id="@+id/signs_hint_high"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="High"
+                                    android:text="@string/high"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/sings_txt_size" />
 

@@ -218,9 +218,28 @@
     <string name="today_s_physical_activity">Today’s physical activity</string>
     <string name="night">Night</string>
     <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="day">Day</string>
     <string name="time_of_day">Time of day</string>
     <string name="sleep_info">SLEEP INFO</string>
+    <string name="work_out">Work-Out</string>
+    <string name="excessive">Excessive</string>
+    <string name="usual">Usual</string>
+    <string name="none">None</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="mood">Mood</string>
+    <string name="names">Names</string>
+    <string name="enter_the_names_here_separate_them_by_commas">Enter the names here. Separate them by commas.</string>
+    <string name="positive">Positive</string>
+    <string name="neutral">Neutral</string>
+    <string name="negative">Negative</string>
+    <string name="colors">Colors</string>
+    <string name="colorful">Colorful</string>
+    <string name="grayscale">Grayscale</string>
+    <string name="sounds">Sounds</string>
+    <string name="what_kind_of_sounds">What kind of sounds?</string>
+    <string name="musical">Musical</string>
+    <string name="non_musical">Non-Musical</string>
+    <string name="dream_description">Dream Description</string>
 
 </resources>

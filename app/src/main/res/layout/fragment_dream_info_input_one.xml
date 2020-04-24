@@ -69,7 +69,7 @@
                         android:layoutDirection="locale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mood"
+                        android:text="@string/mood"
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 
@@ -142,7 +142,7 @@
                             android:id="@+id/title_people_expanded"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="People"
+                            android:text="@string/people"
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
@@ -180,7 +180,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/btn_people_on"
                                 android:layout_marginTop="16dp"
-                                android:text="Names"
+                                android:text="@string/names"
                                 android:textColor="@color/txt_glow"
                                 android:textSize="@dimen/title_size" />
 
@@ -203,7 +203,7 @@
                                 android:background="@drawable/bg_shape"
                                 android:backgroundTint="@color/gray"
                                 android:gravity="top"
-                                android:hint="Enter the names here. Separate them by commas."
+                                android:hint="@string/enter_the_names_here_separate_them_by_commas"
                                 android:paddingLeft="20dp"
                                 android:paddingTop="25dp"
                                 android:textColor="@color/white"
@@ -267,7 +267,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -295,7 +295,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -321,7 +321,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -361,7 +361,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -387,7 +387,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -411,7 +411,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -464,7 +464,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -492,7 +492,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -518,7 +518,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -558,7 +558,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -584,7 +584,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -608,7 +608,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -661,7 +661,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -689,7 +689,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -715,7 +715,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -755,7 +755,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -781,7 +781,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -805,7 +805,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -858,7 +858,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -886,7 +886,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -912,7 +912,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -952,7 +952,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -978,7 +978,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1002,7 +1002,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1054,7 +1054,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1082,7 +1082,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1108,7 +1108,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1148,7 +1148,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1174,7 +1174,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1198,7 +1198,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1251,7 +1251,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1279,7 +1279,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1305,7 +1305,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1345,7 +1345,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1371,7 +1371,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1395,7 +1395,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1448,7 +1448,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1476,7 +1476,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1502,7 +1502,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1542,7 +1542,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1568,7 +1568,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1592,7 +1592,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1645,7 +1645,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1673,7 +1673,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1699,7 +1699,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1739,7 +1739,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1765,7 +1765,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1789,7 +1789,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1842,7 +1842,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1870,7 +1870,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1896,7 +1896,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -1936,7 +1936,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1962,7 +1962,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -1986,7 +1986,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -2039,7 +2039,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/txt_glow"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -2067,7 +2067,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -2093,7 +2093,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/day_light"
                                         android:textSize="@dimen/hint_size" />
 
@@ -2133,7 +2133,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Positive"
+                                        android:text="@string/positive"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -2159,7 +2159,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Neutral"
+                                        android:text="@string/neutral"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
                                 </LinearLayout>
@@ -2183,7 +2183,7 @@
                                     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Negative"
+                                        android:text="@string/negative"
                                         android:textColor="@color/edt_text_color"
                                         android:textSize="@dimen/hint_size" />
 
@@ -2207,7 +2207,7 @@
                             android:id="@+id/title_people"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="People"
+                            android:text="@string/people"
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
@@ -2266,7 +2266,7 @@
                         android:id="@+id/title_sound"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Colors"
+                        android:text="@string/colors"
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 
@@ -2311,7 +2311,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Colorful"
+                                android:text="@string/colorful"
                                 android:textColor="#1AE5FF" />
                         </LinearLayout>
 
@@ -2334,7 +2334,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Grayscale"
+                                android:text="@string/grayscale"
                                 android:textColor="@color/white" />
 
                         </LinearLayout>
@@ -2371,7 +2371,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Colorful"
+                                android:text="@string/colorful"
                                 android:textColor="@color/edt_text_color" />
                         </LinearLayout>
 
@@ -2393,7 +2393,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Grayscale"
+                                android:text="@string/grayscale"
                                 android:textColor="@color/edt_text_color" />
 
                         </LinearLayout>
@@ -2434,7 +2434,7 @@
                             android:id="@+id/title_sounds"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Sounds"
+                            android:text="@string/sounds"
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
@@ -2474,7 +2474,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/lin_sounds_on"
                                 android:layout_marginTop="16dp"
-                                android:text="What kind of sounds?"
+                                android:text="@string/what_kind_of_sounds"
                                 android:textColor="@color/white" />
 
                             rel_sound_buttons_on
@@ -2508,7 +2508,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:text="Musical"
+                                        android:text="@string/musical"
                                         android:textColor="@color/txt_glow" />
 
                                 </LinearLayout>
@@ -2533,7 +2533,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:text="Non-Musical"
+                                        android:text="@string/non_musical"
                                         android:textColor="@color/white" />
 
                                 </LinearLayout>
@@ -2570,7 +2570,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:text="Musical"
+                                        android:text="@string/musical"
                                         android:textColor="@color/edt_text_color" />
 
                                 </LinearLayout>
@@ -2594,7 +2594,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:text="Non-Musical"
+                                        android:text="@string/non_musical"
                                         android:textColor="@color/edt_text_color" />
 
                                 </LinearLayout>
@@ -2616,7 +2616,7 @@
                             android:id="@+id/title_sounds_off"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Sounds"
+                            android:text="@string/sounds"
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
