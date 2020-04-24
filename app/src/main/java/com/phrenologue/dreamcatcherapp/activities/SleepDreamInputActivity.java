@@ -2,6 +2,7 @@ package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,10 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySleepDreamInputBinding;
 import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Adapters.SleepDreamInputAdapter;
 
+import java.util.Locale;
+
 import maes.tech.intentanim.CustomIntent;
 
 public class SleepDreamInputActivity extends AppCompatActivity {
-    private boolean doubleBackToExitPressedOnce = false;
     private ActivitySleepDreamInputBinding binding;
     SleepDreamInputAdapter adapter;
     SharedPreferences sleepSp, dreamSp, dreamTwoSp;
@@ -23,6 +25,15 @@ public class SleepDreamInputActivity extends AppCompatActivity {
         binding= ActivitySleepDreamInputBinding.inflate(getLayoutInflater());
         View view= binding.getRoot();
         setContentView(view);
+
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        String languageToLoad = languagePrefs.getString("language", "en");
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
 
         adapter= new SleepDreamInputAdapter(getSupportFragmentManager());
         binding.sleepDreamInputVp.setAdapter(adapter);

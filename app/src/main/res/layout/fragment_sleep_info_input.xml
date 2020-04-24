@@ -32,7 +32,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="48dp"
                     android:gravity="center_horizontal"
-                    android:text="SLEEP INFO"
+                    android:text="@string/sleep_info"
                     android:textColor="@color/white"
                     android:textSize="@dimen/header_title_size" />
 
@@ -62,7 +62,7 @@
                         android:id="@+id/title_time_of_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Time of day"
+                        android:text="@string/time_of_day"
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 
@@ -115,7 +115,7 @@
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Day"
+                                    android:text="@string/day"
                                     android:textColor="@color/day_light" />
 
                             </LinearLayout>
@@ -139,7 +139,7 @@
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Night"
+                                    android:text="@string/night"
                                     android:textColor="@color/txt_glow" />
 
                             </LinearLayout>
@@ -171,7 +171,7 @@
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Day"
+                                    android:text="@string/day"
                                     android:textColor="@color/gray" />
 
                             </LinearLayout>
@@ -194,7 +194,7 @@
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Night"
+                                    android:text="@string/night"
                                     android:textColor="@color/gray" />
                             </LinearLayout>
 
@@ -228,7 +228,7 @@
                         android:id="@+id/title_physical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Today’s physical activity"
+                        android:text="@string/today_s_physical_activity"
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 

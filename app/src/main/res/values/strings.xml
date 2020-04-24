@@ -215,5 +215,12 @@
     <string name="levelsTitle">levels</string>
     <string name="pass_not_match">passwords do not match.</string>
     <string name="error">Error</string>
+    <string name="today_s_physical_activity">Today’s physical activity</string>
+    <string name="night">Night</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="day">Day</string>
+    <string name="time_of_day">Time of day</string>
+    <string name="sleep_info">SLEEP INFO</string>
 
 </resources>

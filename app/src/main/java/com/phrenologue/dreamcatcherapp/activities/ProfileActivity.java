@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MotionEventCompat;
 
@@ -33,7 +33,8 @@ import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
-import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
+
+import java.util.Locale;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -45,18 +46,12 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     }
 
     private BottomSheetBehavior behavior;
-    private LinearLayout edt_profile;
     private ActivityProfileBinding binding;
     private SharedPreferences sharedPreferences;
     private SharedPreferences sp2;
     boolean doubleBackToExitPressedOnce = false;
-    private ApiPostCaller postCaller;
-    private ProfilePresenter presenter;
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
-    private AppCompatButton btnCancel;
-    private SharedPreferences dreamChoosingOff;
-    private AppCompatImageView exitDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +61,68 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         View view = binding.getRoot();
         setContentView(view);
 
-        String mLanguageCode = "en";
-        LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
+        /** bebin inja alan oon folderi ke tooye sharedPreferences ijad kardim be esme languages
+         * ro dobare baz mikonim injuri:
+         * **/
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        /** Badesh do ta kar mitoonim bokonim:
+         * 1. haminja check konim bebinim tarjihe save shodeye user englishe ya persian.
+         * 2. berim tooye presenter inkaro bokonim ke MVP ejra she.
+         *
+         * =========================================================================================
+         *
+         * man kare avalo inja too comment barat mizaram vali dar asl kare dovom ro mikonam.
+         *
+         * baraye inke bekhay bebini to foldere languages sharedPreferences ke khodemun qablan
+         * dorostesh kardim chi hast, vaqti folder ro baz kardi (languagePrefs) in dastur ro
+         * mizani ke chizi ke tooshe ro ba esmesh va ye default value begiri:
+         *
+         * Boolean english = languagePrefs.getBoolean("english", false);
+         *
+         * tooye parantez esme valueyi ke mikhay begiri ro mizani o oon false ke neveshtam ham ine
+         * ke age hamchin valueyi tooye sharedPreferences nabood, default chi bargardoone behem.
+         *
+         * badesh vaqti boolean ro az sharedPreferences gerefti, ye sharte if minevisi barash in
+         * shekli:
+         *
+         * if (english) {
+         *             String mLanguageCode = "en";
+         *             LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
+         *             recreate();
+         *         } else {
+         *             String mLanguageCode = "fa";
+         *             LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
+         *             recreate();
+         *         }
+         *
+         * yani ke age english true bood, zaboon english beshe dar qeyre insoorat farsi.
+         *
+         * hamin.
+         *
+         * =========================================================================================
+         *
+         * hala too raveshe dovom MVPsh ro ejra mikonam. Tooye MVP asl bar ine ke aslan tooye
+         * activity ha business logic nanevisi.
+         *
+         * Business Logic har codi be joz onClick o setText o injur code hayie ke mostaqim ba view ha
+         * saro kar daran.
+         *
+         * Tooye MVP bayad Business Logic ro tooye Presenter o Interactor benevisi.
+         *
+         * Baraye hamin, alan boro too ProfilePresenter jayi ke comment gozashtam barat.
+         *
+         * **/
+        String languageToLoad = languagePrefs.getString("language", "en");
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+
+        ProfilePresenter presenter = new ProfilePresenter(this);
+
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
@@ -76,14 +131,13 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         user.setEmail(sharedPreferences.getString("username", "Nothing Retrieved"));
         user.setLevel(sharedPreferences.getInt("level", 0));
         binding.userTitle.setText(user.getEmail());
-        postCaller = new ApiPostCaller();
-        presenter = new ProfilePresenter(this);
+
         levelAnim = binding.levelAnimation;
         levelTitle = binding.levelNumber;
-        edt_profile = findViewById(R.id.lin_edt_profile);
+        LinearLayout edt_profile = findViewById(R.id.lin_edt_profile);
         behavior = BottomSheetBehavior.from(edt_profile);
-        btnCancel = findViewById(R.id.btn_cancel_edt);
-        dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
+        AppCompatButton btnCancel = findViewById(R.id.btn_cancel_edt);
+        SharedPreferences dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         dreamChoosingOff.edit().clear().apply();
         presenter.setLevel();
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -263,4 +317,5 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         levelAnim.setAnimation(json);
         levelTitle.setText(title);
     }
+
 }

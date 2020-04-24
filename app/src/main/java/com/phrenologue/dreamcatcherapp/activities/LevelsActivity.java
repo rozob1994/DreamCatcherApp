@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLevelsBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
 
 import maes.tech.intentanim.CustomIntent;
 
@@ -22,6 +24,10 @@ public class LevelsActivity extends AppCompatActivity {
         binding=ActivityLevelsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        String mLanguageCode = languagePrefs.getString("language", "en");
+        LocaleManager.setLocale(LevelsActivity.this, mLanguageCode);
 
         binding.btnBackToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
