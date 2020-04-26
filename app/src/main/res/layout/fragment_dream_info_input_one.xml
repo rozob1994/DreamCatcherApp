@@ -259,7 +259,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -288,7 +287,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -315,7 +313,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -356,7 +353,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -383,7 +379,6 @@
                                     android:layout_toEndOf="@id/lin_positive_off">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -408,7 +403,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -462,7 +456,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -491,7 +484,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -518,7 +510,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -559,7 +550,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -586,7 +576,6 @@
                                     android:layout_toEndOf="@id/lin_positive_off2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -611,7 +600,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off2">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off2"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -665,7 +653,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -694,7 +681,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -721,7 +707,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on3">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -762,7 +747,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -789,7 +773,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -814,7 +797,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off3">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off3"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -868,7 +850,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -897,7 +878,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -924,7 +904,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -965,7 +944,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -992,7 +970,6 @@
                                     android:layout_toEndOf="@id/lin_positive_off4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -1017,7 +994,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off4">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off4"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -1070,7 +1046,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -1099,7 +1074,6 @@
                                     android:layout_toEndOf="@id/lin_positive_on5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -1126,7 +1100,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -1167,7 +1140,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -1194,7 +1166,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -1219,7 +1190,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off5">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off5"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -1273,7 +1243,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -1302,7 +1271,6 @@
                                     android:layout_toEndOf="@id/lin_positive_on6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -1329,7 +1297,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -1370,7 +1337,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -1397,7 +1363,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -1422,7 +1387,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off6">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off6"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -1476,7 +1440,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -1505,7 +1468,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -1532,7 +1494,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -1573,7 +1534,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -1600,7 +1560,6 @@
                                     android:layout_toEndOf="@id/lin_positive_off7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -1625,7 +1584,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off7">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off7"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -1679,7 +1637,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -1708,7 +1665,6 @@
                                     android:layout_toEndOf="@id/lin_positive_on8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -1735,7 +1691,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -1776,7 +1731,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -1803,7 +1757,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -1828,7 +1781,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off8">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off8"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -1882,7 +1834,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -1911,7 +1862,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -1938,7 +1888,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on9">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -1979,7 +1928,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
@@ -2006,7 +1954,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_off9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
@@ -2031,7 +1978,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_off9">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_off9"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
@@ -2085,7 +2031,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_on10"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
@@ -2114,7 +2059,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_neutral_on10"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
@@ -2141,7 +2085,6 @@
                                     android:layout_toEndOf="@id/lin_neutral_on10">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_negative_on10"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
@@ -2182,7 +2125,6 @@
                                     android:layout_marginEnd="8dp">
 
                                     <androidx.appcompat.widget.AppCompatImageView
-                                        android:id="@+id/btn_positive_off10"
                                         android:layout_width="60dp"
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
