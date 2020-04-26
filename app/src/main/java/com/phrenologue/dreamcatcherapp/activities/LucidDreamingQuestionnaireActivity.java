@@ -75,7 +75,7 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
         Typeface fontSubTitle = Typeface.createFromAsset(this.getAssets(), "fonts/kalameh_bold.ttf");
 
         binding.hintQuestionnaire.setTypeface(fontSubTitle);
-        binding.hintQuestionnaire.setTextSize(25f);
+        binding.hintQuestionnaire.setTextSize(20f);
     }
 
     @Override
