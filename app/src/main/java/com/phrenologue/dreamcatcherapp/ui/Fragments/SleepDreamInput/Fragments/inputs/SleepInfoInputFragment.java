@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.i
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.ISleepInfoInputFragment;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -34,7 +36,8 @@ import org.json.JSONObject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
+public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,
+        ISleepInfoInputFragment {
 
 
     private FragmentSleepInfoInputBinding binding;
@@ -56,7 +59,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                              Bundle savedInstanceState) {
         binding = FragmentSleepInfoInputBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        presenter = new SleepInputPresenter();
+        presenter = new SleepInputPresenter(this);
         dayOn = binding.linDayOn;
         dayOff = binding.linDayOff;
         nightOff = binding.linNightOff;
@@ -66,9 +69,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         sleepSp = sharedPref.edit();
         physicalActivity = binding.sliderPhysical;
         foodConsumption = binding.sliderFood;
-
-
-
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages", Context.MODE_PRIVATE);
+        presenter.setTypeFace(languagePrefs);
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[DAY BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
@@ -204,5 +206,31 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+    }
+
+    @Override
+    public void setPersianFont() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_regular.ttf");
+        binding.titleDreamInfo.setTypeface(fontTitle);
+        binding.titleTimeOfDay.setTypeface(fontTitle);
+        binding.titleFood.setTypeface(fontTitle);
+        binding.titlePhysical.setTypeface(fontTitle);
+        binding.btnToDreamInput.setTypeface(fontTitle);
+        binding.hintTimeOfDay.setTypeface(fontSubTitle);
+        binding.hintFood.setTypeface(fontSubTitle);
+        binding.hintPhysical.setTypeface(fontSubTitle);
+        binding.dayOn.setTypeface(fontReg);
+        binding.nightOn.setTypeface(fontReg);
+        binding.dayOff.setTypeface(fontReg);
+        binding.nightOff.setTypeface(fontReg);
+        binding.singsHintNone.setTypeface(fontReg);
+        binding.singsHintLow.setTypeface(fontReg);
+        binding.signsHintHigh.setTypeface(fontReg);
+        binding.signsHintExcessive.setTypeface(fontReg);
+        binding.signsHintUsual.setTypeface(fontReg);
+        binding.signsHintMedium.setTypeface(fontReg);
+        binding.signsHintWorkout.setTypeface(fontReg);
     }
 }

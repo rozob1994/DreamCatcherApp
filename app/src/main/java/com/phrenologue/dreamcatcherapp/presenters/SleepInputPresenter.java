@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.ISleepInfoInputFragment;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.OperationResults;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -25,12 +26,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SleepInputPresenter {
+    ISleepInfoInputFragment iSleepInfoInputFragment;
     public Sleep sleep;
     public Dream dream;
     public Date date;
     public DreamChecklist checklist;
     ApiPostCaller postCaller;
-    public SleepInputPresenter() {
+    public SleepInputPresenter(ISleepInfoInputFragment iSleepInfoInputFragment) {
+        this.iSleepInfoInputFragment = iSleepInfoInputFragment;
+    }
+
+    public void setTypeFace(SharedPreferences languagePrefs){
+        String language = languagePrefs.getString("language","");
+        if (language.equals("fa")){
+            iSleepInfoInputFragment.setPersianFont();
+        }
     }
 
     public void setDayBtnOn(SharedPreferences.Editor sleepSp, LinearLayout dayOn, LinearLayout dayOff,

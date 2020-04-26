@@ -113,6 +113,7 @@
                                     android:background="@drawable/button_day_on" />
 
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    android:id="@+id/dayOn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/day"
@@ -137,6 +138,7 @@
                                     android:background="@drawable/button_night_on" />
 
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    android:id="@+id/nightOn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/night"
@@ -169,6 +171,7 @@
                                     android:background="@drawable/button_day_off" />
 
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    android:id="@+id/dayOff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/day"
@@ -192,6 +195,7 @@
                                     android:background="@drawable/button_night_off" />
 
                                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    android:id="@+id/nightOff"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/night"

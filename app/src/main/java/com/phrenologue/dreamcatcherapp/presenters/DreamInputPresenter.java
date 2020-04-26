@@ -21,6 +21,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamInfoInput;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -48,15 +49,24 @@ public class DreamInputPresenter {
     DreamLucidity lucidity;
     DreamDescription description;
     Date date;
+    IDreamInfoInput iDreamInfoInput;
 
-    public DreamInputPresenter() {
+    public DreamInputPresenter(IDreamInfoInput iDreamInfoInput) {
+        this.iDreamInfoInput = iDreamInfoInput;
+    }
+
+    public void setPersianTypeFace(SharedPreferences sharedPreferences) {
+        String language = sharedPreferences.getString("language", "");
+        if (language.equals("fa")){
+            iDreamInfoInput.setPersianTypeFace();
+        }
     }
 
     public void setMoodSeekBar(SharedPreferences.Editor dreamPrefEditor, SeekBar experience,
                                Context context) {
         checklist = DreamChecklist.getInstance();
         experience.setMax(2);
-        experience.setPadding(56,0,56,0);
+        experience.setPadding(56, 0, 56, 0);
         experience.setThumbOffset(16);
         experience.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -106,11 +116,11 @@ public class DreamInputPresenter {
                                List<LinearLayout> neutralBtnsOn,
                                List<LinearLayout> neutralBtnsOff,
                                List<LinearLayout> negativeBtnsOn,
-                               List<LinearLayout> negativeBtnsOff){
+                               List<LinearLayout> negativeBtnsOff) {
         peopleNames.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (!s.toString().equals("")){
+                if (!s.toString().equals("")) {
                     String string = s.toString();
                     List<String> namesList = Arrays.asList(string.split(","));
                     String hint = context.getString(R.string.hint_feelings);
@@ -286,7 +296,7 @@ public class DreamInputPresenter {
                            List<LinearLayout> neutralBtnsOn,
                            List<LinearLayout> neutralBtnsOff,
                            List<LinearLayout> negativeBtnsOn,
-                           List<LinearLayout> negativeBtnsOff){
+                           List<LinearLayout> negativeBtnsOff) {
 
         for (int i = 0; i < 10; i++) {
             if (i == 0) {
@@ -879,7 +889,7 @@ public class DreamInputPresenter {
                             public void onSuccess(Object response) throws JSONException {
                                 JSONObject jsonObject1 = new JSONObject(response.toString());
                                 boolean status = jsonObject1.getBoolean("status");
-                                if (status){
+                                if (status) {
                                     postCaller.addDateToSleep(new IResponseMessage() {
                                         @Override
                                         public void onSuccess(Object response) throws JSONException {

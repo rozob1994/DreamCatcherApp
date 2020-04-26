@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamInfoInput;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -31,7 +32,7 @@ import maes.tech.intentanim.CustomIntent;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DreamInfoInputTwoFragment extends Fragment {
+public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInput {
 
     DreamInputPresenter presenter;
     private FragmentDreamInfoInputTwoBinding binding;
@@ -48,7 +49,7 @@ public class DreamInfoInputTwoFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDreamInfoInputTwoBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        presenter = new DreamInputPresenter();
+        presenter = new DreamInputPresenter(this);
         title = binding.edtTextTitle;
         content = binding.edtTxtContent;
         interpretation = binding.edtTxtInterpretation;
@@ -150,5 +151,10 @@ public class DreamInfoInputTwoFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void setPersianTypeFace() {
+
     }
 }

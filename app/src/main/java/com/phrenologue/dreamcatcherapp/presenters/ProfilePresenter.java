@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.content.SharedPreferences;
+
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
@@ -9,6 +11,13 @@ public class ProfilePresenter {
 
     public ProfilePresenter(IProfileView iProfileView) {
         this.iProfileView = iProfileView;
+    }
+
+    public void setTypeFace(SharedPreferences languagePrefs) {
+        String language = languagePrefs.getString("language", "");
+        if (language.equals("fa")){
+            iProfileView.setTypeFace();
+        }
     }
 
 

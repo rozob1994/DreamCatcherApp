@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,58 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-        /** bebin inja alan oon folderi ke tooye sharedPreferences ijad kardim be esme languages
-         * ro dobare baz mikonim injuri:
-         * **/
         SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
-        /** Badesh do ta kar mitoonim bokonim:
-         * 1. haminja check konim bebinim tarjihe save shodeye user englishe ya persian.
-         * 2. berim tooye presenter inkaro bokonim ke MVP ejra she.
-         *
-         * =========================================================================================
-         *
-         * man kare avalo inja too comment barat mizaram vali dar asl kare dovom ro mikonam.
-         *
-         * baraye inke bekhay bebini to foldere languages sharedPreferences ke khodemun qablan
-         * dorostesh kardim chi hast, vaqti folder ro baz kardi (languagePrefs) in dastur ro
-         * mizani ke chizi ke tooshe ro ba esmesh va ye default value begiri:
-         *
-         * Boolean english = languagePrefs.getBoolean("english", false);
-         *
-         * tooye parantez esme valueyi ke mikhay begiri ro mizani o oon false ke neveshtam ham ine
-         * ke age hamchin valueyi tooye sharedPreferences nabood, default chi bargardoone behem.
-         *
-         * badesh vaqti boolean ro az sharedPreferences gerefti, ye sharte if minevisi barash in
-         * shekli:
-         *
-         * if (english) {
-         *             String mLanguageCode = "en";
-         *             LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
-         *             recreate();
-         *         } else {
-         *             String mLanguageCode = "fa";
-         *             LocaleManager.setLocale(getApplicationContext(), mLanguageCode);
-         *             recreate();
-         *         }
-         *
-         * yani ke age english true bood, zaboon english beshe dar qeyre insoorat farsi.
-         *
-         * hamin.
-         *
-         * =========================================================================================
-         *
-         * hala too raveshe dovom MVPsh ro ejra mikonam. Tooye MVP asl bar ine ke aslan tooye
-         * activity ha business logic nanevisi.
-         *
-         * Business Logic har codi be joz onClick o setText o injur code hayie ke mostaqim ba view ha
-         * saro kar daran.
-         *
-         * Tooye MVP bayad Business Logic ro tooye Presenter o Interactor benevisi.
-         *
-         * Baraye hamin, alan boro too ProfilePresenter jayi ke comment gozashtam barat.
-         *
-         * **/
         String languageToLoad = languagePrefs.getString("language", "en");
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
@@ -140,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         SharedPreferences dreamChoosingOff = getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
         dreamChoosingOff.edit().clear().apply();
         presenter.setLevel();
+        presenter.setTypeFace(languagePrefs);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,6 +268,14 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         levelAnim.setImageAssetsFolder(folder);
         levelAnim.setAnimation(json);
         levelTitle.setText(title);
+    }
+
+    @Override
+    public void setTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getAssets(), "fonts/kalameh_black.ttf");
+        binding.levelNumber.setTypeface(fontTitle);
+        binding.btnDreams.setTypeface(fontTitle);
+        binding.btnStats.setTypeface(fontTitle);
     }
 
 }
