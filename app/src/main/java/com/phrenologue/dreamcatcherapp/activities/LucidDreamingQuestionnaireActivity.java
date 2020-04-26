@@ -77,4 +77,9 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
         binding.hintQuestionnaire.setTypeface(fontSubTitle);
         binding.hintQuestionnaire.setTextSize(25f);
     }
+
+    @Override
+    public void setEnglishTypeFace() {
+
+    }
 }

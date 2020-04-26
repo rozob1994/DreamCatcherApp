@@ -95,4 +95,9 @@ public class QuestionFifteenFragment extends Fragment implements IQuestionnaire 
     public void setPersianTypeFace() {
 
     }
+
+    @Override
+    public void setEnglishTypeFace() {
+
+    }
 }

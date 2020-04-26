@@ -94,4 +94,9 @@ public class QuestionSeventeenFragment extends Fragment implements IQuestionnair
     public void setPersianTypeFace() {
 
     }
+
+    @Override
+    public void setEnglishTypeFace() {
+
+    }
 }

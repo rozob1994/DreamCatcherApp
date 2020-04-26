@@ -89,11 +89,18 @@ public class QuestionOneFragment extends Fragment implements IQuestionnaire {
         Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
         Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
         binding.questionOneTitle.setTypeface(fontTitle);
-        binding.questionOne.setTypeface(fontSubTitle);
+        binding.questionOne.setTypeface(fontTitle);
         binding.checkboxYesBtn.setTypeface(fontSubTitle);
         binding.checkboxNoBtn.setTypeface(fontSubTitle);
         binding.checkboxNotSureBtn.setTypeface(fontSubTitle);
         binding.btnNext.setTypeface(fontTitle);
+
+        binding.questionOneTitle.setTextSize(30f);
+        binding.questionOne.setTextSize(25f);
+        binding.checkboxYesBtn.setTextSize(23f);
+        binding.checkboxNoBtn.setTextSize(23f);
+        binding.checkboxNotSureBtn.setTextSize(23f);
+        binding.btnNext.setTextSize(23f);
     }
 
     @Override

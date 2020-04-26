@@ -94,4 +94,9 @@ public class QuestionTenFragment extends Fragment implements IQuestionnaire {
     public void setPersianTypeFace() {
 
     }
+
+    @Override
+    public void setEnglishTypeFace() {
+
+    }
 }
