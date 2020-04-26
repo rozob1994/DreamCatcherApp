@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.i
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,6 +62,9 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
         dreamTwo = getContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
         dreamToLuciditySp = getContext().getSharedPreferences("dreamToLucidityQuestionnaire",
                 Context.MODE_PRIVATE);
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages",
+                Context.MODE_PRIVATE);
+        presenter.setPersianTypeFace(languagePrefs);
         String dateStr = Calendar.getInstance().getTime().toString();
         List<String> dateProps = Arrays.asList(dateStr.split(" "));
         int dayInt = Integer.parseInt(dateProps.get(2));
@@ -155,6 +159,21 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
 
     @Override
     public void setPersianTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_regular.ttf");
 
+        binding.titleDreamInfo.setTypeface(fontTitle);
+        binding.titleSub.setTypeface(fontSubTitle);
+        binding.edtTextTitle.setTypeface(fontReg);
+        binding.descriptionTitle.setTypeface(fontSubTitle);
+        binding.descriptionHint.setTypeface(fontReg);
+        binding.edtTxtContent.setTypeface(fontReg);
+        binding.titleInterpretation.setTypeface(fontSubTitle);
+        binding.hintInterpretation.setTypeface(fontReg);
+        binding.edtTxtInterpretation.setTypeface(fontReg);
+        binding.titleDate.setTypeface(fontTitle);
+        binding.btnSubmit.setTypeface(fontTitle);
+        binding.prevBtn.setTypeface(fontTitle);
     }
 }

@@ -241,5 +241,6 @@
     <string name="musical">Musical</string>
     <string name="non_musical">Non-Musical</string>
     <string name="dream_description">Dream Description</string>
+    <string name="question_1_title">Question 1</string>
 
 </resources>

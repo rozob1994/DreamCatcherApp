@@ -5,11 +5,22 @@ import android.view.View;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
 
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IQuestionnaire;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 
 public class QuestionnairePresenter {
+    private IQuestionnaire iQuestionnaire;
+    public QuestionnairePresenter(IQuestionnaire iQuestionnaire) {
+        this.iQuestionnaire = iQuestionnaire;
+    }
 
-    public QuestionnairePresenter() {
+    public void setTypeFace(SharedPreferences languagePrefs) {
+        String language = languagePrefs.getString("language", "");
+        if (language.equals("fa")){
+            iQuestionnaire.setPersianTypeFace();
+        } else {
+            iQuestionnaire.setEnglishTypeFace();
+        }
     }
 
     public void loadAns(SharedPreferences sp, int questionNo, AppCompatCheckBox yesBtn,

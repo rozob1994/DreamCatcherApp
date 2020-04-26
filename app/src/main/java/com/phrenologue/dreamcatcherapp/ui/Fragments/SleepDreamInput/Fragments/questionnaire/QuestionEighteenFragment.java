@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IQuestionnaire;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
 import java.util.Objects;
@@ -24,7 +25,7 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionEighteenFragment extends Fragment {
+public class QuestionEighteenFragment extends Fragment implements IQuestionnaire {
 
     private com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionEighteenBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
@@ -45,7 +46,7 @@ public class QuestionEighteenFragment extends Fragment {
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
-        presenter = new QuestionnairePresenter();
+        presenter = new QuestionnairePresenter(this);
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
@@ -86,5 +87,10 @@ public class QuestionEighteenFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void setPersianTypeFace() {
+
     }
 }

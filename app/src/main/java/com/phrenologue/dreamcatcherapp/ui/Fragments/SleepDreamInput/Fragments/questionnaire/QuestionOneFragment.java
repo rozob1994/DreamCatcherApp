@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IQuestionnaire;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionOneBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
@@ -26,7 +27,7 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionOneFragment extends Fragment {
+public class QuestionOneFragment extends Fragment implements IQuestionnaire {
 
     private FragmentQuestionOneBinding binding;
     private AppCompatCheckBox yesBtn, notSureBtn, noBtn;
@@ -34,8 +35,8 @@ public class QuestionOneFragment extends Fragment {
     private QuestionnairePresenter presenter;
 
 
+
     public QuestionOneFragment() {
-        // Required empty public constructor
     }
 
 
@@ -48,7 +49,10 @@ public class QuestionOneFragment extends Fragment {
 
         SharedPreferences sp = Objects.requireNonNull(getContext()).getSharedPreferences("questionnaire",
                 Context.MODE_PRIVATE);
-        presenter = new QuestionnairePresenter();
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages",
+                Context.MODE_PRIVATE);
+        presenter = new QuestionnairePresenter(this);
+        presenter.setTypeFace(languagePrefs);
         yesBtn = binding.checkboxYesBtn;
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
@@ -60,9 +64,7 @@ public class QuestionOneFragment extends Fragment {
 
         presenter.saveAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
 
-        binding.questionOne.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionOneTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionOne.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+
 
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
@@ -82,4 +84,22 @@ public class QuestionOneFragment extends Fragment {
 
     }
 
+    @Override
+    public void setPersianTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        binding.questionOneTitle.setTypeface(fontTitle);
+        binding.questionOne.setTypeface(fontSubTitle);
+        binding.checkboxYesBtn.setTypeface(fontSubTitle);
+        binding.checkboxNoBtn.setTypeface(fontSubTitle);
+        binding.checkboxNotSureBtn.setTypeface(fontSubTitle);
+        binding.btnNext.setTypeface(fontTitle);
+    }
+
+    @Override
+    public void setEnglishTypeFace() {
+        binding.questionOne.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionOneTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionOne.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+    }
 }

@@ -18,13 +18,13 @@
         android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="@color/txt_glow"
-        android:text="Question 1"
+        android:text="@string/question_1_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
-        android:textAlignment="textStart"
         android:id="@+id/question_one"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="@dimen/title_size"
         android:layout_marginTop="16dp"
