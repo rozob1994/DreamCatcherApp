@@ -97,6 +97,7 @@ public class QuestionSeventeenFragment extends Fragment implements IQuestionnair
         binding.checkboxNoBtn.setTypeface(fontTitle);
         binding.checkboxNotSureBtn.setTypeface(fontTitle);
         binding.btnNext.setTypeface(fontTitle);
+        binding.btnPrev.setTypeface(fontTitle);
     }
 
     @Override

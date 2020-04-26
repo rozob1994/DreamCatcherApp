@@ -187,7 +187,7 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
         binding.checkboxNoBtn.setTypeface(fontTitle);
         binding.checkboxNotSureBtn.setTypeface(fontTitle);
         binding.btnResults.setTypeface(fontTitle);
-
+        binding.btnPrev.setTypeface(fontTitle);
     }
 
     @Override
