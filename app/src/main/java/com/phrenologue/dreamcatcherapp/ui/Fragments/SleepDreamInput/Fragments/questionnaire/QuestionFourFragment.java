@@ -110,6 +110,7 @@ public class QuestionFourFragment extends Fragment implements IQuestionnaire {
         binding.checkboxNoBtn.setTextSize(20f);
         binding.checkboxNotSureBtn.setTextSize(20f);
         binding.btnNext.setTextSize(20f);
+        binding.btnPrev.setTextSize(20f);
     }
 
     @Override

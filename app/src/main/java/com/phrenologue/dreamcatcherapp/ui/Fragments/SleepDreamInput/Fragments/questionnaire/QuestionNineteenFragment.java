@@ -198,6 +198,7 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
         binding.checkboxNoBtn.setTextSize(20f);
         binding.checkboxNotSureBtn.setTextSize(20f);
         binding.btnResults.setTextSize(20f);
+        binding.btnPrev.setTextSize(20f);
     }
 
     @Override
