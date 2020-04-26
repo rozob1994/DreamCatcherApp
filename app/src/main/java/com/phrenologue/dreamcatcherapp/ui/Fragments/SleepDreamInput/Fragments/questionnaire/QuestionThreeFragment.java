@@ -54,16 +54,13 @@ public class QuestionThreeFragment extends Fragment implements IQuestionnaire {
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
         questionNo = 3;
-
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages", Context.MODE_PRIVATE);
+        presenter.setTypeFace(languagePrefs);
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
         }
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
-
-        binding.questionThree.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionThreeTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionThree.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,11 +91,30 @@ public class QuestionThreeFragment extends Fragment implements IQuestionnaire {
 
     @Override
     public void setPersianTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        binding.questionThreeTitle.setTypeface(fontTitle);
+        binding.questionThree.setTypeface(fontSubTitle);
+        binding.checkboxYesBtn.setTypeface(fontTitle);
+        binding.checkboxNoBtn.setTypeface(fontTitle);
+        binding.checkboxNotSureBtn.setTypeface(fontTitle);
+        binding.btnNext.setTypeface(fontTitle);
+    }
 
+    @Override
+    public void setPersianFontSize() {
+        binding.questionThreeTitle.setTextSize(30f);
+        binding.questionThree.setTextSize(25f);
+        binding.checkboxYesBtn.setTextSize(20f);
+        binding.checkboxNoBtn.setTextSize(20f);
+        binding.checkboxNotSureBtn.setTextSize(20f);
+        binding.btnNext.setTextSize(20f);
     }
 
     @Override
     public void setEnglishTypeFace() {
-
+        binding.questionThree.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionThreeTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionThree.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
 }

@@ -65,16 +65,13 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
         noBtn = binding.checkboxNoBtn;
         questionNo = 19;
         sp2 = getContext().getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
-
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages", Context.MODE_PRIVATE);
+        presenter.setTypeFace(languagePrefs);
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
         }
 
         presenter.saveAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
-
-        binding.questionNineteen.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionNineteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionNineteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,11 +179,31 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
 
     @Override
     public void setPersianTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        binding.questionNineteenTitle.setTypeface(fontTitle);
+        binding.questionNineteen.setTypeface(fontSubTitle);
+        binding.checkboxYesBtn.setTypeface(fontTitle);
+        binding.checkboxNoBtn.setTypeface(fontTitle);
+        binding.checkboxNotSureBtn.setTypeface(fontTitle);
+        binding.btnResults.setTypeface(fontTitle);
 
     }
 
     @Override
-    public void setEnglishTypeFace() {
+    public void setPersianFontSize() {
+        binding.questionNineteenTitle.setTextSize(30f);
+        binding.questionNineteen.setTextSize(25f);
+        binding.checkboxYesBtn.setTextSize(20f);
+        binding.checkboxNoBtn.setTextSize(20f);
+        binding.checkboxNotSureBtn.setTextSize(20f);
+        binding.btnResults.setTextSize(20f);
+    }
 
+    @Override
+    public void setEnglishTypeFace() {
+        binding.questionNineteen.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionNineteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionNineteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
 }

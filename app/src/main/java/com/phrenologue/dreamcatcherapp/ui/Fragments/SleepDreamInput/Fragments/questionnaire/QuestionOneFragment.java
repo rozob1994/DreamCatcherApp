@@ -89,18 +89,21 @@ public class QuestionOneFragment extends Fragment implements IQuestionnaire {
         Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
         Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
         binding.questionOneTitle.setTypeface(fontTitle);
-        binding.questionOne.setTypeface(fontTitle);
-        binding.checkboxYesBtn.setTypeface(fontSubTitle);
-        binding.checkboxNoBtn.setTypeface(fontSubTitle);
-        binding.checkboxNotSureBtn.setTypeface(fontSubTitle);
+        binding.questionOne.setTypeface(fontSubTitle);
+        binding.checkboxYesBtn.setTypeface(fontTitle);
+        binding.checkboxNoBtn.setTypeface(fontTitle);
+        binding.checkboxNotSureBtn.setTypeface(fontTitle);
         binding.btnNext.setTypeface(fontTitle);
+    }
 
+    @Override
+    public void setPersianFontSize() {
         binding.questionOneTitle.setTextSize(30f);
         binding.questionOne.setTextSize(25f);
-        binding.checkboxYesBtn.setTextSize(23f);
-        binding.checkboxNoBtn.setTextSize(23f);
-        binding.checkboxNotSureBtn.setTextSize(23f);
-        binding.btnNext.setTextSize(23f);
+        binding.checkboxYesBtn.setTextSize(20f);
+        binding.checkboxNoBtn.setTextSize(20f);
+        binding.checkboxNotSureBtn.setTextSize(20f);
+        binding.btnNext.setTextSize(20f);
     }
 
     @Override

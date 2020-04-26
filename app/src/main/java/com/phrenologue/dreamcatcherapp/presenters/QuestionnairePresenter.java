@@ -18,6 +18,7 @@ public class QuestionnairePresenter {
         String language = languagePrefs.getString("language", "");
         if (language.equals("fa")){
             iQuestionnaire.setPersianTypeFace();
+            iQuestionnaire.setPersianFontSize();
         } else {
             iQuestionnaire.setEnglishTypeFace();
         }

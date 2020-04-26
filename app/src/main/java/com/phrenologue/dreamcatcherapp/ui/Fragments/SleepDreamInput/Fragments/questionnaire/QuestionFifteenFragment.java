@@ -52,16 +52,13 @@ public class QuestionFifteenFragment extends Fragment implements IQuestionnaire 
         notSureBtn = binding.checkboxNotSureBtn;
         noBtn = binding.checkboxNoBtn;
         questionNo = 15;
-
+        SharedPreferences languagePrefs = getContext().getSharedPreferences("languages", Context.MODE_PRIVATE);
+        presenter.setTypeFace(languagePrefs);
         if (sp.getBoolean("hasAns" + questionNo + "", false)) {
             presenter.loadAns(sp, questionNo, yesBtn, notSureBtn, noBtn);
         }
 
         presenter.saveAns(sp, questionNo,yesBtn,notSureBtn,noBtn);
-
-        binding.questionFifteen.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionFifteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
-        binding.questionFifteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +90,30 @@ public class QuestionFifteenFragment extends Fragment implements IQuestionnaire 
 
     @Override
     public void setPersianTypeFace() {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        binding.questionFifteenTitle.setTypeface(fontTitle);
+        binding.questionFifteen.setTypeface(fontSubTitle);
+        binding.checkboxYesBtn.setTypeface(fontTitle);
+        binding.checkboxNoBtn.setTypeface(fontTitle);
+        binding.checkboxNotSureBtn.setTypeface(fontTitle);
+        binding.btnNext.setTypeface(fontTitle);
+    }
 
+    @Override
+    public void setPersianFontSize() {
+        binding.questionFifteenTitle.setTextSize(30f);
+        binding.questionFifteen.setTextSize(25f);
+        binding.checkboxYesBtn.setTextSize(20f);
+        binding.checkboxNoBtn.setTextSize(20f);
+        binding.checkboxNotSureBtn.setTextSize(20f);
+        binding.btnNext.setTextSize(20f);
     }
 
     @Override
     public void setEnglishTypeFace() {
-
+        binding.questionFifteen.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFifteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        binding.questionFifteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
 }

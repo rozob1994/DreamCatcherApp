@@ -79,6 +79,11 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
     }
 
     @Override
+    public void setPersianFontSize() {
+
+    }
+
+    @Override
     public void setEnglishTypeFace() {
 
     }
