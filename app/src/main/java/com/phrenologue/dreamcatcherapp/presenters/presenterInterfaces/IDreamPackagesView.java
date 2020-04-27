@@ -7,5 +7,6 @@ public interface IDreamPackagesView {
     void onSuccess();
     void onError();
     void setLevelView(String folder, String json);
-
+    void onLanguageChanged();
+    void setPersianTypeFace();
 }

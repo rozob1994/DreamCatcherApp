@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.activities.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.ExpandedDreamActivity;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
@@ -175,6 +177,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                           int experience){
         setSleepTimeView(dayNightC, holder);
         setExperienceView(experience, holder);
+        setLanguageFonts(holder);
     }
 
     private void setSleepTimeView(int dayNightC, DreamsPackagesHolder holder) {
@@ -197,6 +200,19 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
             holder.experience.setImageResource(R.drawable.ic_happy_emoji);
         } else {
             holder.experience.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setLanguageFonts(DreamsPackagesHolder holder){
+        SharedPreferences languagePrefs = context.getSharedPreferences("languages", Context.MODE_PRIVATE);
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("fa")) {
+            Typeface titleFont = Typeface.createFromAsset(context.getAssets(), PersianFont.title);
+            Typeface contentFont = Typeface.createFromAsset(context.getAssets(), PersianFont.subTitle);
+            Typeface dateFont = Typeface.createFromAsset(context.getAssets(), PersianFont.regular);
+            holder.title.setTypeface(titleFont);
+            holder.content.setTypeface(contentFont);
+            holder.dateTitle.setTypeface(dateFont);
         }
     }
 }

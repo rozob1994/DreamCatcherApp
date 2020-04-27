@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +26,22 @@ public class DreamsPresenter {
     public DreamsPresenter(IDreamPackagesView iDreamPackagesView) {
 
         this.iDreamPackagesView = iDreamPackagesView;
+    }
+
+    public boolean onLanguageChanged(SharedPreferences languagePrefs) {
+        boolean changed = languagePrefs.getBoolean("packagesLanguageChanged", false);
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("fa")){
+            iDreamPackagesView.setPersianTypeFace();
+        }
+        if (changed) {
+            iDreamPackagesView.onLanguageChanged();
+            languagePrefs.edit().putBoolean("packagesLanguageChanged", false).apply();
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public void getDescription(Context context,
