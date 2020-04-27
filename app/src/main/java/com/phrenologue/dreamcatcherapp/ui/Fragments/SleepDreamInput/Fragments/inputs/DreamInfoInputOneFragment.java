@@ -449,7 +449,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
         List<MoonTextView> titles = Arrays.asList(binding.titleDreamInfo, binding.titleMood, binding.titlePeople,
                 binding.titleColor, binding.titleFeelings, binding.titleSounds, binding.titleNames,
-                binding.titleSoundsOff);
+                binding.titleSoundsOff, binding.titlePeopleExpanded);
 
         presenter.setTitleFonts(titles);
 
