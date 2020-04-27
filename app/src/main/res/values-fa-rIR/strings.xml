@@ -36,39 +36,37 @@
     </string-array>
 
     <string-array name="day">
-
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-
+        <item name="1">۱</item>
+        <item name="2">۲</item>
+        <item name="3">۳</item>
+        <item name="4">۴</item>
+        <item name="5">۵</item>
+        <item name="6">۶</item>
+        <item name="7">۷</item>
+        <item name="8">۹</item>
+        <item name="9">۹</item>
+        <item name="10">۱۰</item>
+        <item name="11">۱۱</item>
+        <item name="12">۱۲</item>
+        <item name="13">۱۳</item>
+        <item name="14">۱۴</item>
+        <item name="15">۱۵</item>
+        <item name="16">۱۶</item>
+        <item name="17">۱۷</item>
+        <item name="18">۱۸</item>
+        <item name="19">۱۹</item>
+        <item name="20">۲۰</item>
+        <item name="21">۲۱</item>
+        <item name="22">۲۲</item>
+        <item name="23">۲۳</item>
+        <item name="24">۲۴</item>
+        <item name="25">۲۵</item>
+        <item name="26">۲۶</item>
+        <item name="27">۲۷</item>
+        <item name="28">۲۸</item>
+        <item name="29">۲۹</item>
+        <item name="30">۳۰</item>
+        <item name="31">۳۱</item>
     </string-array>
 
     <string-array name="gender">

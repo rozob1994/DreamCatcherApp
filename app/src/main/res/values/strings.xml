@@ -35,38 +35,37 @@
 
     <string-array name="day">
 
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="8">8</item>
+        <item name="9">9</item>
+        <item name="10">10</item>
+        <item name="11">11</item>
+        <item name="12">12</item>
+        <item name="13">13</item>
+        <item name="14">14</item>
+        <item name="15">15</item>
+        <item name="16">16</item>
+        <item name="17">17</item>
+        <item name="18">18</item>
+        <item name="19">19</item>
+        <item name="20">20</item>
+        <item name="21">21</item>
+        <item name="22">22</item>
+        <item name="23">23</item>
+        <item name="24">24</item>
+        <item name="25">25</item>
+        <item name="26">26</item>
+        <item name="27">27</item>
+        <item name="28">28</item>
+        <item name="29">29</item>
+        <item name="30">30</item>
+        <item name="31">31</item>
     </string-array>
 
     <string-array name="gender">
@@ -76,8 +75,8 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dreams_package_description_input">testing the description layout testing the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layout</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="dreams_package_description_input" translatable="false">testing the description layout testing the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layout</string>
     <string name="dream_info_mood_hint">Slide the slider to choose between nightmare, bad dream, neutral, good dream and happy dream</string>
     <string name="hint_people">Did your dream include familiar (or unfamiliar) faces?</string>
     <string name="hint_names">Write down the Names of the people in your dream.</string>
@@ -85,9 +84,7 @@
     <string name="hint_feelings">How would you describe your feelings when you encountered them in your dream?</string>
     <string name="hint_sound">Did you see colors or was it all grayed-out?</string>
     <string name="hint_sounds">Did you hear any sounds or was it a silent movie?</string>
-    <string name="hint_lucidity">How much did you feel in control and how clear was your dream?</string>
     <string name="hint_physical">Slide the slider to choose either NONE, USUAL, WORK OUT or EXCESSIVE.</string>
-    <string name="hint_sleep_duration">How much did you sleep? (Hours and Minutes)</string>
     <string name="hint_time_of_day">When did you sleep?</string>
     <string name="title_food">Today\'s food consumption</string>
     <string name="hint_food">Slide the slider to choose either LOW, MEDIUM or HIGH.</string>
