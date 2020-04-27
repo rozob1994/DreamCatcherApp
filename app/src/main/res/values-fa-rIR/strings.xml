@@ -238,4 +238,6 @@
     <string name="non_musical">اصوات دیگر</string>
     <string name="dream_description">وصف رؤیا</string>
     <string name="question_1_title">سوال ۱</string>
+    <string name="options">تنظیمات</string>
+    <string name="this_section_is_not_yet_ready_it_will_be_operational_in_future_updates">این بخش از اپلیکیشن هنوز تکمیل نشده. در آپدیتهای بعدی این بخش اضافه میشه.</string>
 </resources>

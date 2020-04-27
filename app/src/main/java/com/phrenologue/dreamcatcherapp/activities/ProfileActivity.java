@@ -35,6 +35,7 @@ import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManag
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewStatsDialog;
 import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
 import java.util.Locale;
@@ -124,9 +125,8 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding.btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), StatsActivity.class);
-                startActivity(intent);
-                CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+                ViewStatsDialog dialog= new ViewStatsDialog();
+                dialog.showDialog(ProfileActivity.this,getApplicationContext());
             }
         });
 

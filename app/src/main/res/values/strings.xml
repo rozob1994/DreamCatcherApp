@@ -239,5 +239,7 @@
     <string name="non_musical">Non-Musical</string>
     <string name="dream_description">Dream Description</string>
     <string name="question_1_title">Question 1</string>
+    <string name="options">Options</string>
+    <string name="this_section_is_not_yet_ready_it_will_be_operational_in_future_updates">This section is not yet ready. It will be operational in future updates.</string>
 
 </resources>

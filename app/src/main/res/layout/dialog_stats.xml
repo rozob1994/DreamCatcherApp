@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_shape_stroked"
+    android:backgroundTint="#88000000"
+    android:backgroundTintMode="add"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/this_section_is_not_yet_ready_it_will_be_operational_in_future_updates"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_size" />
+
+
+</LinearLayout>
