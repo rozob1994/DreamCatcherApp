@@ -20,10 +20,13 @@ import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 public class SleepInputPresenter {
     ISleepInfoInputFragment iSleepInfoInputFragment;
@@ -34,6 +37,24 @@ public class SleepInputPresenter {
     ApiPostCaller postCaller;
     public SleepInputPresenter(ISleepInfoInputFragment iSleepInfoInputFragment) {
         this.iSleepInfoInputFragment = iSleepInfoInputFragment;
+    }
+
+    public void setTitleFonts(List<MoonTextView> titles){
+        for (int i = 0; i < titles.size(); i++){
+            iSleepInfoInputFragment.setTitleFonts(titles.get(i));
+        }
+    }
+
+    public void setHintFonts(List<MoonTextView> hints) {
+        for (int i = 0; i < hints.size(); i++) {
+            iSleepInfoInputFragment.setHintFonts(hints.get(i));
+        }
+    }
+
+    public void setSubscriptFonts(List<MoonTextView> subscripts) {
+        for (int i = 0; i < subscripts.size(); i++){
+            iSleepInfoInputFragment.setSubscriptFonts(subscripts.get(i));
+        }
     }
 
     public void setTypeFace(SharedPreferences languagePrefs){

@@ -554,4 +554,9 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         subscript.setTypeface(fontReg);
         subscript.setTextSize(PersianFont.normalSmall);
     }
+
+    @Override
+    public void setEditTextHintFonts(AppCompatEditText editTextHint) {
+
+    }
 }

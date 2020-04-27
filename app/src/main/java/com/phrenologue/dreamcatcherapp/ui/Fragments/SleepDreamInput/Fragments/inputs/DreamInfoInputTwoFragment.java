@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.DreamsPackagesActivity;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamInfoInput;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBinding;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
@@ -160,36 +161,54 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
 
     @Override
     public void setPersianTypeFace() {
-        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
-        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
-        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_regular.ttf");
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
 
-        binding.titleDreamInfo.setTypeface(fontTitle);
-        binding.titleSub.setTypeface(fontSubTitle);
-        binding.edtTextTitle.setTypeface(fontReg);
-        binding.descriptionTitle.setTypeface(fontSubTitle);
-        binding.descriptionHint.setTypeface(fontReg);
-        binding.edtTxtContent.setTypeface(fontReg);
-        binding.titleInterpretation.setTypeface(fontSubTitle);
-        binding.hintInterpretation.setTypeface(fontReg);
-        binding.edtTxtInterpretation.setTypeface(fontReg);
-        binding.titleDate.setTypeface(fontTitle);
+
+
+        List<MoonTextView> titles = Arrays.asList(binding.titleDreamInfo, binding.titleDate,
+                binding.titleSub, binding.descriptionTitle,
+                binding.titleInterpretation);
+
+        presenter.setTitleFonts(titles);
+
+        List<MoonTextView> hints = Arrays.asList(binding.descriptionHint, binding.hintInterpretation);
+
+        presenter.setHintFonts(hints);
+
+        List<AppCompatEditText> editTexts = Arrays.asList(binding.edtTextTitle, binding.edtTxtContent,
+                binding.edtTxtInterpretation);
+
+        presenter.setEditTextFonts(editTexts);
+
         binding.btnSubmit.setTypeface(fontTitle);
+        binding.btnSubmit.setTextSize(PersianFont.large);
         binding.prevBtn.setTypeface(fontTitle);
+        binding.prevBtn.setTextSize(PersianFont.large);
     }
 
     @Override
     public void setTitleFonts(MoonTextView title) {
-
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
+        title.setTypeface(fontTitle);
+        title.setTextSize(PersianFont.normalLarge);
     }
 
     @Override
     public void setHintFonts(MoonTextView hint) {
-
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.subTitle);
+        hint.setTypeface(fontSubTitle);
+        hint.setTextSize(PersianFont.normal);
     }
 
     @Override
     public void setSubscriptFonts(MoonTextView subscript) {
 
+    }
+
+    @Override
+    public void setEditTextHintFonts(AppCompatEditText editTextHint) {
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), PersianFont.regular);
+        editTextHint.setTypeface(fontReg);
+        editTextHint.setTextSize(PersianFont.normal);
     }
 }

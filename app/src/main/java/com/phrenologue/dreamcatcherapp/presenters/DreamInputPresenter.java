@@ -74,6 +74,12 @@ public class DreamInputPresenter {
         }
     }
 
+    public void setEditTextFonts(List<AppCompatEditText> hints) {
+        for (int i = 0; i < hints.size(); i++) {
+            iDreamInfoInput.setEditTextHintFonts(hints.get(i));
+        }
+    }
+
     public void setPersianTypeFace(SharedPreferences sharedPreferences) {
         String language = sharedPreferences.getString("language", "");
         if (language.equals("fa")) {

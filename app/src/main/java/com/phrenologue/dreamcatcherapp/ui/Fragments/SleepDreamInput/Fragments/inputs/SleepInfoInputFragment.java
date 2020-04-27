@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.ISleepInfoInputFragment;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentSleepInfoInputBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -28,10 +29,14 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.SleepInputPresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -210,27 +215,49 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
 
     @Override
     public void setPersianFont() {
-        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
-        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
-        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_regular.ttf");
-        binding.titleDreamInfo.setTypeface(fontTitle);
-        binding.titleTimeOfDay.setTypeface(fontTitle);
-        binding.titleFood.setTypeface(fontTitle);
-        binding.titlePhysical.setTypeface(fontTitle);
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
+
+
+
+        List<MoonTextView> titles = Arrays.asList(binding.titleDreamInfo, binding.titleTimeOfDay,
+                binding.titleFood, binding.titlePhysical);
+
+        presenter.setTitleFonts(titles);
+
+        List<MoonTextView> hints = Arrays.asList(binding.hintTimeOfDay, binding.hintFood,
+                binding.hintPhysical);
+
+        presenter.setHintFonts(hints);
+
+        List<MoonTextView> subscripts = Arrays.asList(binding.dayOn, binding.dayOff,
+                binding.nightOn, binding.nightOff, binding.singsHintNone, binding.singsHintLow,
+                binding.signsHintHigh, binding.signsHintExcessive, binding.signsHintUsual,
+                binding.signsHintMedium, binding.signsHintWorkout);
+
+        presenter.setSubscriptFonts(subscripts);
+
         binding.btnToDreamInput.setTypeface(fontTitle);
-        binding.hintTimeOfDay.setTypeface(fontSubTitle);
-        binding.hintFood.setTypeface(fontSubTitle);
-        binding.hintPhysical.setTypeface(fontSubTitle);
-        binding.dayOn.setTypeface(fontReg);
-        binding.nightOn.setTypeface(fontReg);
-        binding.dayOff.setTypeface(fontReg);
-        binding.nightOff.setTypeface(fontReg);
-        binding.singsHintNone.setTypeface(fontReg);
-        binding.singsHintLow.setTypeface(fontReg);
-        binding.signsHintHigh.setTypeface(fontReg);
-        binding.signsHintExcessive.setTypeface(fontReg);
-        binding.signsHintUsual.setTypeface(fontReg);
-        binding.signsHintMedium.setTypeface(fontReg);
-        binding.signsHintWorkout.setTypeface(fontReg);
+        binding.btnToDreamInput.setTextSize(PersianFont.large);
+    }
+
+    @Override
+    public void setTitleFonts(MoonTextView title) {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
+        title.setTypeface(fontTitle);
+        title.setTextSize(PersianFont.normalLarge);
+    }
+
+    @Override
+    public void setHintFonts(MoonTextView hint) {
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.subTitle);
+        hint.setTypeface(fontSubTitle);
+        hint.setTextSize(PersianFont.normal);
+    }
+
+    @Override
+    public void setSubscriptFonts(MoonTextView subscript) {
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), PersianFont.regular);
+        subscript.setTypeface(fontReg);
+        subscript.setTextSize(PersianFont.normalSmall);
     }
 }
