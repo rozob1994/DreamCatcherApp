@@ -117,4 +117,9 @@ public class QuestionSixteenFragment extends Fragment implements IQuestionnaire 
         binding.questionSixteenTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionSixteen.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
+
+    @Override
+    public void onLanguageChanged() {
+
+    }
 }

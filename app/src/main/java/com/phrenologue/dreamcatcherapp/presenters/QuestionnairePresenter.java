@@ -24,6 +24,15 @@ public class QuestionnairePresenter {
         }
     }
 
+    public boolean onLanguageChanged(boolean languageChanged){
+        if (languageChanged) {
+            iQuestionnaire.onLanguageChanged();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void loadAns(SharedPreferences sp, int questionNo, AppCompatCheckBox yesBtn,
                         AppCompatCheckBox notSureBtn,
                         AppCompatCheckBox noBtn) {

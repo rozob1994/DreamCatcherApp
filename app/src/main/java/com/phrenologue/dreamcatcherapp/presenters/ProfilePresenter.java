@@ -20,11 +20,14 @@ public class ProfilePresenter {
         }
     }
 
-    public void checkLanguageChanged(SharedPreferences languagePrefs) {
+    public boolean checkLanguageChanged(SharedPreferences languagePrefs) {
         boolean changed = languagePrefs.getBoolean("justChanged", false);
         if (changed) {
             iProfileView.onLanguageChanged();
             languagePrefs.edit().putBoolean("justChanged", false).apply();
+            return true;
+        } else {
+            return false;
         }
 
     }

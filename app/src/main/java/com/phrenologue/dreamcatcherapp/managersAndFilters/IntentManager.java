@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.managersAndFilters;
 import android.content.Context;
 import android.content.Intent;
 
+import com.phrenologue.dreamcatcherapp.activities.LucidDreamingQuestionnaireActivity;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.activities.SleepDreamInputActivity;
 
@@ -23,5 +24,13 @@ public class IntentManager {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
         CustomIntent.customType(context, "fadein-to-fadeout");
+    }
+
+    public static void goToQuestionnaireFromProfile(Context context, boolean languageChanged){
+        Intent intent = new Intent(context, LucidDreamingQuestionnaireActivity.class);
+        intent.putExtra("languageChanged", languageChanged);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
     }
 }

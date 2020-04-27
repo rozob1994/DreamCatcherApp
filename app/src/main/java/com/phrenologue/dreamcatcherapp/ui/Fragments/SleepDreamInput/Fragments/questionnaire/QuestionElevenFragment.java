@@ -117,4 +117,9 @@ public class QuestionElevenFragment extends Fragment implements IQuestionnaire {
         binding.questionElevenTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionEleven.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
+
+    @Override
+    public void onLanguageChanged() {
+
+    }
 }

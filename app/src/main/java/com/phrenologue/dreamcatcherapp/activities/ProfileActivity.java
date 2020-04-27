@@ -28,6 +28,7 @@ import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
@@ -72,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
         ProfilePresenter presenter = new ProfilePresenter(this);
 
-        presenter.checkLanguageChanged(languagePrefs);
+        boolean languageChanged = presenter.checkLanguageChanged(languagePrefs);
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
@@ -142,10 +143,8 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
             @Override
             public void onClick(View v) {
                 SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), LucidDreamingQuestionnaireActivity.class);
-                startActivity(intent);
+                IntentManager.goToQuestionnaireFromProfile(getApplicationContext(), languageChanged);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
-
             }
         });
 
@@ -155,6 +154,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 binding.drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
 
         binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -275,6 +275,9 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding.levelNumber.setTypeface(fontTitle);
         binding.btnDreams.setTypeface(fontTitle);
         binding.btnStats.setTypeface(fontTitle);
+        binding.levelNumber.setTextSize(15f);
+        binding.btnDreams.setTextSize(30f);
+        binding.btnStats.setTextSize(30f);
     }
 
     @Override

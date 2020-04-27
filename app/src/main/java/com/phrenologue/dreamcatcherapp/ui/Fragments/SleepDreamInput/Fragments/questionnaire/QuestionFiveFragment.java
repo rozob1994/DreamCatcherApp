@@ -119,4 +119,9 @@ public class QuestionFiveFragment extends Fragment implements IQuestionnaire {
         binding.questionFiveTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionFive.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
+
+    @Override
+    public void onLanguageChanged() {
+
+    }
 }

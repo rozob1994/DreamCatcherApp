@@ -119,4 +119,9 @@ public class QuestionThreeFragment extends Fragment implements IQuestionnaire {
         binding.questionThreeTitle.setTypeface(Typeface.DEFAULT_BOLD);
         binding.questionThree.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
     }
+
+    @Override
+    public void onLanguageChanged() {
+
+    }
 }

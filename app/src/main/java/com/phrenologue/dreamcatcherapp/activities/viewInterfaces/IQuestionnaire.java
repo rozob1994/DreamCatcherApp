@@ -4,4 +4,5 @@ public interface IQuestionnaire {
     void setPersianTypeFace();
     void setPersianFontSize();
     void setEnglishTypeFace();
+    void onLanguageChanged();
 }

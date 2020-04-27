@@ -39,6 +39,9 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
                 getBaseContext().getResources().getDisplayMetrics());
 
         QuestionnairePresenter presenter = new QuestionnairePresenter(this);
+        Intent intent = getIntent();
+        boolean changed = intent.getBooleanExtra("languageChanged", false);
+        boolean languageChanged = presenter.onLanguageChanged(changed);
 
         presenter.setTypeFace(languagePrefs);
 
@@ -47,6 +50,7 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
         ft.replace(R.id.your_placeholder, new QuestionOneFragment());
 
         ft.commit();
+
 
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +90,10 @@ public class LucidDreamingQuestionnaireActivity extends FragmentActivity impleme
     @Override
     public void setEnglishTypeFace() {
 
+    }
+
+    @Override
+    public void onLanguageChanged() {
+        this.recreate();
     }
 }
