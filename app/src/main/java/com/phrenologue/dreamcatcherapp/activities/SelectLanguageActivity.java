@@ -8,13 +8,16 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySelectLanguageBinding;
+import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
 
 import java.util.Locale;
 
 public class SelectLanguageActivity extends AppCompatActivity {
 
     private ActivitySelectLanguageBinding binding;
+    private ProfilePresenter profilePresenter;
 
 
     @Override
@@ -24,6 +27,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        IProfileView iProfileView = new ProfileActivity();
         /** In khat payini ye folder misaze tooye fazaye majazie sharedpreferences be esme languages
          * ke toosh save mikonim ke preference user chie, mikhad barname english bashe ya farsi. **/
 
@@ -51,6 +55,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                  * valuesh ro ham gozashtam "en".
                  *
                  * Bad az inke put ro neveshti hatman bayad .apply ro bezari vagarna save nemishe.**/
+                sp.edit().putBoolean("justChanged", true).apply();
                 String languageToLoad  = "en";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
@@ -58,7 +63,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 config.locale = locale;
                 getBaseContext().getResources().updateConfiguration(config,
                         getBaseContext().getResources().getDisplayMetrics());
-
                 sp.edit().putString("language", "en").apply();
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
@@ -77,6 +81,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                  * Inja niazi nist setLocale koni chon inja inkaro bokoni app tooye activitye badi
                  * yadesh nemimoone ke to inkaro kardi.
                  * **/
+                sp.edit().putBoolean("justChanged", true).apply();
                 String languageToLoad  = "fa";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
@@ -84,7 +89,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 config.locale = locale;
                 getBaseContext().getResources().updateConfiguration(config,
                         getBaseContext().getResources().getDisplayMetrics());
-
                 sp.edit().putString("language", "fa").apply();
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);

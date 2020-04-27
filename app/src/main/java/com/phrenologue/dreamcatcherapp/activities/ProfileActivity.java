@@ -53,8 +53,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     boolean doubleBackToExitPressedOnce = false;
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
         ProfilePresenter presenter = new ProfilePresenter(this);
 
+        presenter.checkLanguageChanged(languagePrefs);
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         sp2 = getSharedPreferences("signUp", MODE_PRIVATE);
@@ -276,6 +275,11 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding.levelNumber.setTypeface(fontTitle);
         binding.btnDreams.setTypeface(fontTitle);
         binding.btnStats.setTypeface(fontTitle);
+    }
+
+    @Override
+    public void onLanguageChanged() {
+        this.recreate();
     }
 
 }
