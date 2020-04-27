@@ -100,8 +100,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:thumb="@drawable/ic_cry_emoji"
-                            android:paddingRight="566dp"
-                            android:paddingLeft="56dp"
                             android:thumbTint="@color/white"
                             android:paddingEnd="566dp"
                             android:paddingStart="56dp" />

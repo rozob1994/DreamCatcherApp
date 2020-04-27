@@ -264,8 +264,8 @@
                             android:paddingRight="56dp"
                             android:thumb="@drawable/ic_slider_thumb_bright"
                             android:thumbOffset="4dp"
-                            android:paddingEnd="56dp"
-                            android:paddingStart="56dp" />
+                            android:paddingEnd="16dp"
+                            android:paddingStart="16dp" />
 
                         <LinearLayout
                             android:id="@+id/slider_physical_signs"
@@ -427,8 +427,8 @@
                             android:paddingRight="56dp"
                             android:thumb="@drawable/ic_slider_thumb_bright"
                             android:thumbOffset="4dp"
-                            android:paddingStart="56dp"
-                            android:paddingEnd="56dp" />
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
 
                         <LinearLayout
                             android:id="@+id/slider_food_signs"

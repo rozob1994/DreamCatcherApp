@@ -56,7 +56,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
                  *
                  * Bad az inke put ro neveshti hatman bayad .apply ro bezari vagarna save nemishe.**/
                 sp.edit().putBoolean("justChanged", true).apply();
-                sp.edit().putBoolean("packagesLanguageChanged", true).apply();
                 String languageToLoad  = "en";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
@@ -83,7 +82,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
                  * yadesh nemimoone ke to inkaro kardi.
                  * **/
                 sp.edit().putBoolean("justChanged", true).apply();
-                sp.edit().putBoolean("packagesLanguageChanged", true).apply();
                 String languageToLoad  = "fa";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);

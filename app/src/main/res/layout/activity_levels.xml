@@ -70,6 +70,8 @@
                     android:layout_width="240dp"
                     android:layout_height="360dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -78,10 +80,12 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_one"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelOneTitle"
                     android:textColor="@color/white" />
@@ -112,15 +116,20 @@
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     app:lottie_autoPlay="false"
                     app:lottie_fileName="level2.json"
                     app:lottie_imageAssetsFolder="images/level_two"
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_two"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelTwoTitle"
@@ -150,6 +159,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -158,9 +169,12 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_three"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelThreeTitle"
@@ -190,6 +204,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -198,9 +214,12 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_four"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelFourTitle"
@@ -230,6 +249,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -238,9 +259,12 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_five"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelFiveTitle"
@@ -270,15 +294,20 @@
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     app:lottie_autoPlay="false"
                     app:lottie_fileName="level6.json"
                     app:lottie_imageAssetsFolder="images/level_six"
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_six"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelSixTitle"
@@ -306,6 +335,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -314,10 +345,13 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_seven"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelSevenTitle"
                     android:textColor="@color/white" />
@@ -346,16 +380,21 @@
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     app:lottie_autoPlay="false"
                     app:lottie_fileName="level8.json"
                     app:lottie_imageAssetsFolder="images/level_eight"
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_eight"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelEightTitle"
                     android:textColor="@color/white" />
@@ -382,6 +421,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -390,9 +431,12 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_nine"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelNineTitle"
@@ -420,6 +464,8 @@
                     android:layout_width="280dp"
                     android:layout_height="400dp"
                     android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true"
                     app:lottie_autoPlay="false"
@@ -428,10 +474,13 @@
                     app:lottie_loop="true" />
 
                 <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/level_ten"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/bg_shape_stroked"
                     android:text="@string/LevelTenTitle"
                     android:textColor="@color/white" />

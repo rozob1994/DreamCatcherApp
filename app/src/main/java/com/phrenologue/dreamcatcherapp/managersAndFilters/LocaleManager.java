@@ -60,6 +60,7 @@ public class LocaleManager {
 
         Configuration configuration = context.getResources().getConfiguration();
         configuration.setLocale(locale);
+        configuration.setLayoutDirection(locale);
 
         return context.createConfigurationContext(configuration);
     }
