@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.EditDreamInputActivity;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamInfoInput;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
@@ -442,105 +443,115 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
     @Override
     public void setPersianTypeFace() {
-        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
-        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
-        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_regular.ttf");
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
 
-        binding.titleDreamInfo.setTypeface(fontTitle);
-        binding.titleMood.setTypeface(fontTitle);
-        binding.hintMood.setTypeface(fontSubTitle);
-        binding.titlePeople.setTypeface(fontTitle);
-        binding.hintPeopleExpanded.setTypeface(fontSubTitle);
-        binding.titleNames.setTypeface(fontTitle);
-        binding.hintNames.setTypeface(fontSubTitle);
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), PersianFont.regular);
+
+        List<MoonTextView> titles = Arrays.asList(binding.titleDreamInfo, binding.titleMood, binding.titlePeople,
+                binding.titleColor, binding.titleFeelings, binding.titleSounds, binding.titleNames,
+                binding.titleSoundsOff);
+
+        presenter.setTitleFonts(titles);
+
+        List<MoonTextView> hints = Arrays.asList(binding.hintMood, binding.hintPeople, binding.hintPeopleExpanded,
+                binding.hintNames, binding.hintFeelings, binding.hintFeelings2, binding.hintFeelings3,
+                binding.hintFeelings4, binding.hintFeelings5, binding.hintFeelings6,
+                binding.hintFeelings7, binding.hintFeelings8, binding.hintFeelings9,
+                binding.hintFeelings10, binding.hintColor, binding.hintSounds, binding.hintSoundsOff,
+                binding.hintSoundsTwo);
+
+        presenter.setHintFonts(hints);
+
+        List<MoonTextView> subscripts = Arrays.asList(binding.positive1On,
+                binding.positive2On,
+                binding.positive3On,
+                binding.positive4On,
+                binding.positive5On,
+                binding.positiveOn6,
+                binding.positiveOn7,
+                binding.positiveOn8,
+                binding.positiveOn9,
+                binding.positiveOn10,
+                binding.positive1Off,
+                binding.positive2Off,
+                binding.positive3Off,
+                binding.positive4Off,
+                binding.positive5Off,
+                binding.positiveOff6,
+                binding.positiveOff7,
+                binding.positiveOff8,
+                binding.positiveOff9,
+                binding.positiveOff10,
+                binding.neutral1On,
+                binding.neutral2On,
+                binding.neutral3On,
+                binding.neutral4On,
+                binding.neutral5On,
+                binding.neutralOn6,
+                binding.neutralOn7,
+                binding.neutralOn8,
+                binding.neutralOn9,
+                binding.neutralOn10,
+                binding.neutral1Off,
+                binding.neutral2Off,
+                binding.neutral3Off,
+                binding.neutral4Off,
+                binding.neutral5Off,
+                binding.neutralOff6,
+                binding.neutralOff7,
+                binding.neutralOff8,
+                binding.neutralOff9,
+                binding.neutralOff10,
+                binding.negative1On,
+                binding.negative2On,
+                binding.negative3On,
+                binding.negative4On,
+                binding.negative5On,
+                binding.negativeOn6,
+                binding.negativeOn7,
+                binding.negativeOn8,
+                binding.negativeOn9,
+                binding.negativeOn10,
+                binding.negative1Off,
+                binding.negative2Off,
+                binding.negative3Off,
+                binding.negative4Off,
+                binding.negative5Off,
+                binding.negativeOff6,
+                binding.negativeOff7,
+                binding.negativeOff8,
+                binding.negativeOff9,
+                binding.negativeOff10, binding.colorful, binding.grayscale, binding.colorfulOff,
+                binding.grayscaleOff, binding.musicalOn, binding.musicalOff, binding.nonMusicalOn,
+                binding.nonMusicalOff);
+
+        presenter.setSubscriptFonts(subscripts);
+
         binding.edtTxtNames.setTypeface(fontReg);
-        binding.titleFeelings.setTypeface(fontTitle);
-        binding.hintFeelings.setTypeface(fontSubTitle);
-        binding.hintFeelings2.setTypeface(fontSubTitle);
-        binding.hintFeelings3.setTypeface(fontSubTitle);
-        binding.hintFeelings4.setTypeface(fontSubTitle);
-        binding.hintFeelings5.setTypeface(fontSubTitle);
-        binding.hintFeelings6.setTypeface(fontSubTitle);
-        binding.hintFeelings7.setTypeface(fontSubTitle);
-        binding.hintFeelings8.setTypeface(fontSubTitle);
-        binding.hintFeelings9.setTypeface(fontSubTitle);
-        binding.hintFeelings10.setTypeface(fontSubTitle);
-        binding.positive1On.setTypeface(fontReg);
-        binding.positive1Off.setTypeface(fontReg);
-        binding.positive2On.setTypeface(fontReg);
-        binding.positive2Off.setTypeface(fontReg);
-        binding.positive3On.setTypeface(fontReg);
-        binding.positive3Off.setTypeface(fontReg);
-        binding.positive4On.setTypeface(fontReg);
-        binding.positive4Off.setTypeface(fontReg);
-        binding.positive5On.setTypeface(fontReg);
-        binding.positive5Off.setTypeface(fontReg);
-        binding.positiveOn6.setTypeface(fontReg);
-        binding.positiveOff6.setTypeface(fontReg);
-        binding.positiveOn7.setTypeface(fontReg);
-        binding.positiveOff7.setTypeface(fontReg);
-        binding.positiveOn8.setTypeface(fontReg);
-        binding.positiveOff8.setTypeface(fontReg);
-        binding.positiveOn9.setTypeface(fontReg);
-        binding.positiveOff9.setTypeface(fontReg);
-        binding.positiveOn10.setTypeface(fontReg);
-        binding.positiveOff10.setTypeface(fontReg);
-        binding.neutral1On.setTypeface(fontReg);
-        binding.neutral1Off.setTypeface(fontReg);
-        binding.neutral2On.setTypeface(fontReg);
-        binding.neutral2Off.setTypeface(fontReg);
-        binding.neutral3On.setTypeface(fontReg);
-        binding.neutral3Off.setTypeface(fontReg);
-        binding.neutral4On.setTypeface(fontReg);
-        binding.neutral4Off.setTypeface(fontReg);
-        binding.neutral5On.setTypeface(fontReg);
-        binding.neutral5Off.setTypeface(fontReg);
-        binding.neutralOn6.setTypeface(fontReg);
-        binding.neutralOff6.setTypeface(fontReg);
-        binding.neutralOn7.setTypeface(fontReg);
-        binding.neutralOff7.setTypeface(fontReg);
-        binding.neutralOn8.setTypeface(fontReg);
-        binding.neutralOff8.setTypeface(fontReg);
-        binding.neutralOn9.setTypeface(fontReg);
-        binding.neutralOff9.setTypeface(fontReg);
-        binding.neutralOn10.setTypeface(fontReg);
-        binding.neutralOff10.setTypeface(fontReg);
-        binding.negative1On.setTypeface(fontReg);
-        binding.negative1Off.setTypeface(fontReg);
-        binding.negative2On.setTypeface(fontReg);
-        binding.negative2Off.setTypeface(fontReg);
-        binding.negative3On.setTypeface(fontReg);
-        binding.negative3Off.setTypeface(fontReg);
-        binding.negative4On.setTypeface(fontReg);
-        binding.negative4Off.setTypeface(fontReg);
-        binding.negative5On.setTypeface(fontReg);
-        binding.negative5Off.setTypeface(fontReg);
-        binding.negativeOn6.setTypeface(fontReg);
-        binding.negativeOff6.setTypeface(fontReg);
-        binding.negativeOn7.setTypeface(fontReg);
-        binding.negativeOff7.setTypeface(fontReg);
-        binding.negativeOn8.setTypeface(fontReg);
-        binding.negativeOff8.setTypeface(fontReg);
-        binding.negativeOn9.setTypeface(fontReg);
-        binding.negativeOff9.setTypeface(fontReg);
-        binding.negativeOn10.setTypeface(fontReg);
-        binding.negativeOff10.setTypeface(fontReg);
-        binding.titleColor.setTypeface(fontTitle);
-        binding.hintColor.setTypeface(fontSubTitle);
-        binding.colorful.setTypeface(fontReg);
-        binding.grayscale.setTypeface(fontReg);
-        binding.colorfulOff.setTypeface(fontReg);
-        binding.grayscaleOff.setTypeface(fontReg);
-        binding.titleSounds.setTypeface(fontTitle);
-        binding.hintSounds.setTypeface(fontSubTitle);
-        binding.hintSoundsTwo.setTypeface(fontSubTitle);
-        binding.musicalOn.setTypeface(fontReg);
-        binding.nonMusicalOn.setTypeface(fontReg);
-        binding.musicalOff.setTypeface(fontReg);
-        binding.nonMusicalOff.setTypeface(fontReg);
-        binding.titleSoundsOff.setTypeface(fontTitle);
-        binding.hintSoundsOff.setTypeface(fontSubTitle);
         binding.nextBtn.setTypeface(fontTitle);
         binding.prevBtn.setTypeface(fontTitle);
+        binding.nextBtn.setTextSize(PersianFont.large);
+        binding.prevBtn.setTextSize(PersianFont.large);
+    }
+
+    @Override
+    public void setTitleFonts(MoonTextView title) {
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
+        title.setTypeface(fontTitle);
+        title.setTextSize(PersianFont.normalLarge);
+    }
+
+    @Override
+    public void setHintFonts(MoonTextView hint) {
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.subTitle);
+        hint.setTypeface(fontSubTitle);
+        hint.setTextSize(PersianFont.normal);
+    }
+
+    @Override
+    public void setSubscriptFonts(MoonTextView subscript) {
+        Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), PersianFont.regular);
+        subscript.setTypeface(fontReg);
+        subscript.setTextSize(PersianFont.normalSmall);
     }
 }

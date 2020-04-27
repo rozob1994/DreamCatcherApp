@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IQuestionnaire;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentQuestionElevenBinding;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
 
@@ -89,8 +90,8 @@ public class QuestionElevenFragment extends Fragment implements IQuestionnaire {
 
     @Override
     public void setPersianTypeFace() {
-        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_black.ttf");
-        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), "fonts/kalameh_bold.ttf");
+        Typeface fontTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.title);
+        Typeface fontSubTitle = Typeface.createFromAsset(getContext().getAssets(), PersianFont.subTitle);
         binding.questionElevenTitle.setTypeface(fontTitle);
         binding.questionEleven.setTypeface(fontSubTitle);
         binding.checkboxYesBtn.setTypeface(fontTitle);
@@ -102,13 +103,13 @@ public class QuestionElevenFragment extends Fragment implements IQuestionnaire {
 
     @Override
     public void setPersianFontSize() {
-        binding.questionElevenTitle.setTextSize(30f);
-        binding.questionEleven.setTextSize(25f);
-        binding.checkboxYesBtn.setTextSize(20f);
-        binding.checkboxNoBtn.setTextSize(20f);
-        binding.checkboxNotSureBtn.setTextSize(20f);
-        binding.btnNext.setTextSize(20f);
-        binding.btnPrev.setTextSize(20f);
+        binding.questionElevenTitle.setTextSize(PersianFont.large);
+        binding.questionEleven.setTextSize(PersianFont.normalLarge);
+        binding.checkboxYesBtn.setTextSize(PersianFont.normal);
+        binding.checkboxNoBtn.setTextSize(PersianFont.normal);
+        binding.checkboxNotSureBtn.setTextSize(PersianFont.normal);
+        binding.btnNext.setTextSize(PersianFont.normal);
+        binding.btnPrev.setTextSize(PersianFont.normal);
     }
 
     @Override

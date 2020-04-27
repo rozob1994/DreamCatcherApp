@@ -23,6 +23,7 @@ import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputTwoBind
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.dateParameters.parameters.Date;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -175,5 +176,20 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
         binding.titleDate.setTypeface(fontTitle);
         binding.btnSubmit.setTypeface(fontTitle);
         binding.prevBtn.setTypeface(fontTitle);
+    }
+
+    @Override
+    public void setTitleFonts(MoonTextView title) {
+
+    }
+
+    @Override
+    public void setHintFonts(MoonTextView hint) {
+
+    }
+
+    @Override
+    public void setSubscriptFonts(MoonTextView subscript) {
+
     }
 }

@@ -33,6 +33,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDreamInputDialog;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -55,9 +56,27 @@ public class DreamInputPresenter {
         this.iDreamInfoInput = iDreamInfoInput;
     }
 
+    public void setTitleFonts(List<MoonTextView> titles) {
+        for (int i = 0; i < titles.size(); i++) {
+            iDreamInfoInput.setTitleFonts(titles.get(i));
+        }
+    }
+
+    public void setHintFonts(List<MoonTextView> hints) {
+        for (int i = 0; i < hints.size(); i++) {
+            iDreamInfoInput.setHintFonts(hints.get(i));
+        }
+    }
+
+    public void setSubscriptFonts(List<MoonTextView> subscripts) {
+        for (int i = 0; i < subscripts.size(); i++) {
+            iDreamInfoInput.setSubscriptFonts(subscripts.get(i));
+        }
+    }
+
     public void setPersianTypeFace(SharedPreferences sharedPreferences) {
         String language = sharedPreferences.getString("language", "");
-        if (language.equals("fa")){
+        if (language.equals("fa")) {
             iDreamInfoInput.setPersianTypeFace();
         }
     }

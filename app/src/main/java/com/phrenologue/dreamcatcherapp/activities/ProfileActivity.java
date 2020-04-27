@@ -27,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IProfileView;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityProfileBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
@@ -271,13 +272,13 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
     @Override
     public void setTypeFace() {
-        Typeface fontTitle = Typeface.createFromAsset(getAssets(), "fonts/kalameh_black.ttf");
+        Typeface fontTitle = Typeface.createFromAsset(getAssets(), PersianFont.title);
         binding.levelNumber.setTypeface(fontTitle);
         binding.btnDreams.setTypeface(fontTitle);
         binding.btnStats.setTypeface(fontTitle);
-        binding.levelNumber.setTextSize(15f);
-        binding.btnDreams.setTextSize(30f);
-        binding.btnStats.setTextSize(30f);
+        binding.levelNumber.setTextSize(PersianFont.small);
+        binding.btnDreams.setTextSize(PersianFont.large);
+        binding.btnStats.setTextSize(PersianFont.large);
     }
 
     @Override

@@ -76,7 +76,7 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hint_people">چه کسایی تو خوابت بودند؟</string>
+    <string name="hint_people">آیا خواب کسی رو دیدی؟</string>
     <string name="hint_names">اسم هرکسی که تو خوابت بود رو اینجا بنویس. بعد از هر اسم ویرگول بذار.</string>
     <string name="title_people_feelings">احساساتت نسبت به این افراد:</string>
     <string name="hint_feelings">چه حسی نسبت به اون داشتی؟</string>
