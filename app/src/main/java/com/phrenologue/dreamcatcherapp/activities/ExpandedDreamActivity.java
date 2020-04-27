@@ -3,6 +3,7 @@ package com.phrenologue.dreamcatcherapp.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.mikephil.charting.data.PieData;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityExpandedDreamBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
@@ -51,12 +53,13 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         dreamOneSp = Objects.requireNonNull(getApplicationContext())
                 .getSharedPreferences("dream", Context.MODE_PRIVATE);
         dreamTwoSp = getApplicationContext().getSharedPreferences("dreamTwo", Context.MODE_PRIVATE);
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
         dream = Dream.getInstance();
         sleep = Sleep.getInstance();
         spManager = new SharedPreferencesManager();
         presenter = new DreamExpandedPresenter(this);
         sp2 = getSharedPreferences("dreamToLucidityQuestionnaire", Context.MODE_PRIVATE);
-
+        presenter.checkLanguage(languagePrefs);
         int postId = getIntent().getIntExtra("postId", 0);
         int sleepTime = getIntent().getIntExtra("sleepTime", 0);
 
@@ -288,6 +291,35 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding.pieChart.setDrawHoleEnabled(false);
         binding.pieChart.getLegend().setEnabled(false);
         binding.pieChart.getDescription().setEnabled(false);
+    }
+
+    @Override
+    public void setPersianFont() {
+        Typeface title = Typeface.createFromAsset(getAssets(), PersianFont.title);
+        Typeface subTitle = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
+        Typeface regFont = Typeface.createFromAsset(getAssets(), PersianFont.regular);
+        binding.dreamsPackageTitle.setTypeface(title);
+        binding.titleDate.setTypeface(subTitle);
+        binding.noDataTxt.setTypeface(subTitle);
+        binding.btnTest.setTypeface(title);
+        binding.txtPercentage.setTypeface(title);
+        binding.titleDescription.setTypeface(title);
+        binding.titleInterpretation.setTypeface(title);
+        binding.titlePeople.setTypeface(title);
+        binding.dreamsPackageDescription.setTypeface(regFont);
+        binding.dreamsPackageInterpretation.setTypeface(regFont);
+
+        List<MoonTextView> names = Arrays.asList(binding.nameOne, binding.nameTwo, binding.nameThree,
+                binding.nameFour, binding.nameFive, binding.nameSix, binding.nameSeven,
+                binding.nameEight, binding.nameNine, binding.nameTen);
+
+        presenter.setPersianNameFonts(names);
+    }
+
+    @Override
+    public void setPersianNameFonts(MoonTextView name) {
+        Typeface regFont = Typeface.createFromAsset(getAssets(), PersianFont.regular);
+        name.setTypeface(regFont);
     }
 
     class NewThread extends Thread {

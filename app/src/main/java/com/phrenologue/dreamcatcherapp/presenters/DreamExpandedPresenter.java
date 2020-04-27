@@ -16,6 +16,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamExpandedPresenter;
 import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
+import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
@@ -23,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DreamExpandedPresenter implements IDreamExpandedPresenter {
     private IDreamExpandedView iDreamExpandedView;
@@ -33,6 +35,19 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     public DreamExpandedPresenter(IDreamExpandedView iDreamExpandedView) {
         this.iDreamExpandedView = iDreamExpandedView;
+    }
+
+    public void checkLanguage(SharedPreferences languagePrefs){
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("fa")){
+            iDreamExpandedView.setPersianFont();
+        }
+    }
+
+    public void setPersianNameFonts(List<MoonTextView> names) {
+        for (int i = 0; i < names.size(); i++) {
+            iDreamExpandedView.setPersianNameFonts(names.get(i));
+        }
     }
 
     public void loadPost(int postId, String dateLoaded,
