@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
+import android.content.SharedPreferences;
+
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
 import com.phrenologue.dreamcatcherapp.interactors.DreamChoosingInteractor;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamChoosingPresenter;
@@ -15,6 +17,12 @@ public class DreamChoosingPresenter implements IDreamChoosingPresenter {
         interactor.getDreamDescription();
     }
 
+    public void setLanguage(SharedPreferences languagePrefs) {
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("fa")) {
+            iDreamChoosingView.setPersianTypeFace();
+        }
+    }
 
     @Override
     public void loading() {

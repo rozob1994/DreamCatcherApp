@@ -5,4 +5,5 @@ public interface IDreamChoosingView {
     void hideProgressBar();
     void onSuccess();
     void onError();
+    void setPersianTypeFace();
 }

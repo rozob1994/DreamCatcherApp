@@ -18,6 +18,7 @@
         android:elevation="4dp">
 
         <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+            android:id="@+id/dreamsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

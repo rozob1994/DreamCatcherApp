@@ -1,6 +1,8 @@
 package com.phrenologue.dreamcatcherapp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamChoosingView;
+import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamChoosingBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.DreamChoosingItem;
@@ -22,6 +25,7 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
 
     private ActivityDreamChoosingBinding binding;
     private RecyclerView dreamsRecycler;
+    private SharedPreferences languagePrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +33,12 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
         binding= ActivityDreamChoosingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
 
         dreamsRecycler = binding.dreamsRecycler;
         DreamChoosingPresenter presenter = new DreamChoosingPresenter(this);
         presenter.getDescription();
-
+        presenter.setLanguage(languagePrefs);
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,5 +79,13 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
     @Override
     public void onError() {
         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setPersianTypeFace() {
+        Typeface title = Typeface.createFromAsset(getAssets(), PersianFont.title);
+        Typeface text = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
+        binding.dreamsTitle.setTypeface(title);
+        binding.hintChooseDream.setTypeface(text);
     }
 }
