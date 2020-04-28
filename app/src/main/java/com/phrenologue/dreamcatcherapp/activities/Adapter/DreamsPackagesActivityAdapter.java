@@ -71,7 +71,8 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     @Override
     public void onBindViewHolder(@NonNull DreamsPackagesHolder holder, int position) {
 
-        String titlec = titles.get(position);
+        String titleci = titles.get(position);
+        String titlec = contentShort(titleci);
         String contentc = contents.get(position);
         int dayNightC = sleepTimes.get(position);
         int experience = experiences.get(position);
@@ -213,6 +214,22 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
             holder.title.setTypeface(titleFont);
             holder.content.setTypeface(contentFont);
             holder.dateTitle.setTypeface(dateFont);
+        }
+    }
+
+    private String contentShort(String content) {
+        SharedPreferences languagePrefs = context.getSharedPreferences("languages", Context.MODE_PRIVATE);
+        String language = languagePrefs.getString("language", "en");
+        if (content.length()>40){
+            if (language.equals("fa")) {
+                String shortened = content.substring(0,126) + "... دیدن ادامه‌ی رؤیا";
+                return shortened;
+            } else {
+                String shortened = content.substring(0,126) + "... read more.";
+                return shortened;
+            }
+        } else {
+            return content;
         }
     }
 }
