@@ -63,7 +63,7 @@
         android:textColor="@color/white"
         android:text="@string/apply"
         android:background="@drawable/bg_simple_rounded"
-        android:backgroundTint="@color/purple"
+        android:backgroundTint="@color/txt_glow"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

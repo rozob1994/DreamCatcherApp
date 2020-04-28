@@ -79,35 +79,37 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
-        android:layout_width="125dp"
-        android:layout_height="29dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/bg_simple_rounded"
+        android:backgroundTint="@color/txt_glow"
         android:elevation="4dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:text="@string/next_btn"
         android:textColor="@color/white"
         android:textSize="@dimen/edt_txt_size"
-        android:paddingEnd="24dp"
-        android:paddingStart="24dp" />
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_prev"
-        android:layout_width="125dp"
-        android:layout_height="29dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@drawable/bg_simple_rounded"
+        android:backgroundTint="@color/inactive"
         android:elevation="4dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:text="@string/previous_btn"
         android:textColor="@color/white"
         android:textSize="@dimen/edt_txt_size"
-        android:paddingEnd="24dp"
-        android:paddingStart="24dp" />
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp" />
 
 
 </LinearLayout>

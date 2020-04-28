@@ -2689,9 +2689,10 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/nextBtn"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/bg_gradient"
+                    android:background="@drawable/bg_simple_rounded"
+                    android:backgroundTint="@color/txt_glow"
                     android:elevation="4dp"
                     android:text="@string/next_btn"
                     android:textColor="@color/white"
@@ -2699,10 +2700,11 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/prevBtn"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/bg_gradient"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_simple_rounded"
+                    android:backgroundTint="@color/inactive"
                     android:elevation="4dp"
                     android:text="@string/previous_btn"
                     android:textColor="@color/white"
