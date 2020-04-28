@@ -31,7 +31,7 @@
                 android:background="@drawable/bg_shape"
                 android:backgroundTint="@color/txt_glow">
 
-                <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                     android:id="@+id/title_dream_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                         android:id="@+id/title_mood"
                         android:layoutDirection="locale"
                         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                         android:id="@+id/hint_mood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone">
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/title_people_expanded"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                             android:textSize="@dimen/title_size" />
 
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/hint_people_expanded"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:background="@drawable/button_on" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/title_names"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
                                 android:textColor="@color/txt_glow"
                                 android:textSize="@dimen/title_size" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_names"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                                 android:textSize="@dimen/title_size"
                                 android:paddingStart="20dp" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/title_feelings"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -222,7 +222,7 @@
 
                             //===================== First Person ==================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -261,7 +261,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive1_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -289,7 +289,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral1_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -315,7 +315,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative1_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -355,7 +355,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive1_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral1_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -405,7 +405,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative1_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -419,7 +419,7 @@
 
                             //===================== Second Person ==================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -458,7 +458,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive2_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -486,7 +486,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral2_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -512,7 +512,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative2_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -552,7 +552,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive2_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -578,7 +578,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral2_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -602,7 +602,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative2_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -616,7 +616,7 @@
 
                             //===================== Third Person ===================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -655,7 +655,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive3_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -683,7 +683,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral3_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -709,7 +709,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative3_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -749,7 +749,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive3_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -775,7 +775,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral3_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -799,7 +799,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative3_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -813,7 +813,7 @@
 
                             //===================== Fourth Person ==================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -852,7 +852,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive4_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -880,7 +880,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral4_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -906,7 +906,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative4_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -946,7 +946,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive4_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -972,7 +972,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral4_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -996,7 +996,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative4_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1009,7 +1009,7 @@
 
                             //===================== Fifth Person ===================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1048,7 +1048,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive5_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1076,7 +1076,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral5_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1102,7 +1102,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative5_on"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1142,7 +1142,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive5_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1168,7 +1168,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral5_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1192,7 +1192,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative5_off"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1206,7 +1206,7 @@
 
                             //===================== Sixth Person ===================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1245,7 +1245,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_on6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1273,7 +1273,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_on6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1299,7 +1299,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_on6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1339,7 +1339,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_off6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1365,7 +1365,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_off6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1389,7 +1389,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_off6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1403,7 +1403,7 @@
 
                             //===================== Seventh Person =================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1442,7 +1442,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_on7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1470,7 +1470,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_on7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1496,7 +1496,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_on7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1536,7 +1536,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_off7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1562,7 +1562,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_off7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1586,7 +1586,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_off7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1600,7 +1600,7 @@
 
                             //===================== Eighth Person ==================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1639,7 +1639,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_on8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1667,7 +1667,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_on8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1693,7 +1693,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_on8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1733,7 +1733,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_off8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1759,7 +1759,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_off8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1783,7 +1783,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_off8"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1797,7 +1797,7 @@
 
                             //===================== Ninth Person ===================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1836,7 +1836,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_on9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1864,7 +1864,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_on9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1890,7 +1890,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_on9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1930,7 +1930,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_off9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1956,7 +1956,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_off9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1980,7 +1980,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_off9"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -1994,7 +1994,7 @@
 
                             //===================== Tenth Person ===================================
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_feelings10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -2033,7 +2033,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_on10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2061,7 +2061,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_on10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2087,7 +2087,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_on10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2127,7 +2127,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_positive_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/positive_off10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2154,7 +2154,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_neutral_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/neutral_off10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2179,7 +2179,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_negative_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/negative_off10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2203,7 +2203,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="visible">
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/title_people"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -2211,7 +2211,7 @@
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/hint_people"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -2262,7 +2262,7 @@
                     android:layout_below="@id/separator_two"
                     android:layout_marginTop="16dp">
 
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                         android:id="@+id/title_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2270,7 +2270,7 @@
                         android:textColor="@color/txt_glow"
                         android:textSize="@dimen/title_size" />
 
-                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                         android:id="@+id/hint_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2307,7 +2307,7 @@
                                 android:layout_height="60dp"
                                 app:srcCompat="@drawable/button_colorful_on" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/colorful"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -2331,7 +2331,7 @@
                                 android:layout_height="60dp"
                                 app:srcCompat="@drawable/button_grayscale_on" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/grayscale"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -2369,7 +2369,7 @@
                                 android:layout_height="60dp"
                                 app:srcCompat="@drawable/button_colorful_off" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/colorfulOff"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -2392,7 +2392,7 @@
                                 android:layout_height="60dp"
                                 app:srcCompat="@drawable/button_grayscale_off" />
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/grayscaleOff"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -2434,7 +2434,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone">
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/title_sounds"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -2442,7 +2442,7 @@
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/hint_sounds"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -2472,7 +2472,7 @@
 
                             </LinearLayout>
 
-                            <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                            <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                 android:id="@+id/hint_sounds_two"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -2508,7 +2508,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_musical_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/musicalOn"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2534,7 +2534,7 @@
                                         android:layout_gravity="center_horizontal"
                                         app:srcCompat="@drawable/button_non_musical_on" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/nonMusicalOn"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2572,7 +2572,7 @@
                                         android:layout_height="60dp"
                                         app:srcCompat="@drawable/button_musical_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/musicalOff"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2597,7 +2597,7 @@
                                         android:layout_gravity="center_horizontal"
                                         app:srcCompat="@drawable/button_non_musical_off" />
 
-                                    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                                    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                                         android:id="@+id/nonMusicalOff"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -2620,7 +2620,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/title_sounds_off"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -2628,7 +2628,7 @@
                             android:textColor="@color/txt_glow"
                             android:textSize="@dimen/title_size" />
 
-                        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+                        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
                             android:id="@+id/hint_sounds_off"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

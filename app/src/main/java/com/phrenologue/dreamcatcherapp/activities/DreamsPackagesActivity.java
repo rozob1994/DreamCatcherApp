@@ -10,13 +10,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityDreamsPackagesBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.IntentManager;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManager;
 import com.phrenologue.dreamcatcherapp.presenters.DreamsPresenter;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 
 import java.util.Locale;
 
@@ -39,11 +39,9 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
         RecyclerView dreamsRecycler = binding.dreamsRecycler;
-        MoonTextView dreamCount = binding.titleDreamsCount;
         DreamsPresenter presenter = new DreamsPresenter(this);
         boolean languageChanged = presenter.onLanguageChanged(languagePrefs);
-        presenter.getDescription(getApplicationContext(),
-                binding.loadingBg, dreamsRecycler, dreamCount);
+        presenter.getDescription(getApplicationContext(), dreamsRecycler);
         presenter.setLevel();
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +101,14 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
     @Override
     public void setPersianTypeFace() {
         Typeface title = Typeface.createFromAsset(getAssets(), PersianFont.title);
+        Typeface subTitle = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
         binding.dreamsHeader.setTypeface(title);
+        binding.titleDreamsCount.setTypeface(subTitle);
+    }
+
+    @Override
+    public void setDreamCount(int count) {
+        String dreamCount = getString(R.string.set_dream_count) + count + "";
+        binding.titleDreamsCount.setText(dreamCount);
     }
 }

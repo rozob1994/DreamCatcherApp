@@ -32,8 +32,8 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDreamInputDialog;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customDialog.dialogViews.ViewDreamInputDialog;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;

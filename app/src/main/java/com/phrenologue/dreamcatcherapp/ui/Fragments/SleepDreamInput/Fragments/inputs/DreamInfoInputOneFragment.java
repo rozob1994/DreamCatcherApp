@@ -25,7 +25,7 @@ import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.databinding.FragmentDreamInfoInputOneBinding;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.presenters.DreamInputPresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
 import java.util.Arrays;
 import java.util.List;

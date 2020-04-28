@@ -24,7 +24,7 @@ import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.presenters.QuestionnairePresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewDialog;
+import com.phrenologue.dreamcatcherapp.ui.customDialog.dialogViews.LucidityResutlsDialog;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -108,7 +108,7 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
                                         if (status) {
                                             entry.setId(jsonObject.getInt("id"));
                                             SharedPreferencesManager.clearDreamSleepQuest(Objects.requireNonNull(getContext()));
-                                            ViewDialog dialog = new ViewDialog();
+                                            LucidityResutlsDialog dialog = new LucidityResutlsDialog();
                                             dialog.showDialog(getActivity(), getContext(), "");
                                         } else {
                                             Toast.makeText(getContext(), "Error Saving Results",
@@ -154,7 +154,7 @@ public class QuestionNineteenFragment extends Fragment implements IQuestionnaire
                             if (status) {
                                 entry.setId(jsonObject.getInt("id"));
                                 binding.loadingBg.setVisibility(View.GONE);
-                                ViewDialog dialog = new ViewDialog();
+                                LucidityResutlsDialog dialog = new LucidityResutlsDialog();
                                 dialog.showDialog(getActivity(), getContext(), "");
                             } else {
                                 Toast.makeText(getContext(), "Error Saving Resutls",

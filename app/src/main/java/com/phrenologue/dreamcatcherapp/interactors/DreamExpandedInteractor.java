@@ -26,7 +26,8 @@ public class DreamExpandedInteractor {
     }
 
     public void getPost(int postId, String dateLoaded, SharedPreferences sleepSp,
-                        SharedPreferences dreamSp, SharedPreferences dreamSpTwo) {
+                        SharedPreferences dreamSp, SharedPreferences dreamSpTwo,
+                        SharedPreferences languagePrefs) {
         apiPostCaller.getSleepProps(postId, new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
@@ -51,7 +52,7 @@ public class DreamExpandedInteractor {
                                         boolean status = jsonObject.getBoolean("status");
                                         if (status) {
                                             int result = jsonArray.getJSONObject(0).getInt("result");
-                                            iPresenter.checkLucidity(result);
+                                            iPresenter.checkLucidity(result, languagePrefs);
                                         } else {
                                             iPresenter.onError();
                                         }

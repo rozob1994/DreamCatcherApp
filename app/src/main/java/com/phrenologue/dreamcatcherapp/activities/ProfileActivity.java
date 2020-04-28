@@ -35,8 +35,8 @@ import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManag
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeDialog.ViewStatsDialog;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customDialog.dialogViews.ViewStatsDialog;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
 import java.util.Locale;
 
@@ -273,6 +273,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     @Override
     public void setTypeFace() {
         Typeface fontTitle = Typeface.createFromAsset(getAssets(), PersianFont.title);
+        binding.userTitle.setTypeface(fontTitle);
         binding.levelNumber.setTypeface(fontTitle);
         binding.btnDreams.setTypeface(fontTitle);
         binding.btnStats.setTypeface(fontTitle);

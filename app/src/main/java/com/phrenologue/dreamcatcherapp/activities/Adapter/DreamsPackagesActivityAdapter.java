@@ -22,7 +22,7 @@ import com.phrenologue.dreamcatcherapp.constants.PersianFont;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.QuestionnaireEntry;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;

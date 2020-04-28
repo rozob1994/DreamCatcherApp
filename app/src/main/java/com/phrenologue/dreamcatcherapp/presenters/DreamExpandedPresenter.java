@@ -1,7 +1,6 @@
 package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -9,19 +8,14 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.viewInterfaces.IDreamExpandedView;
 import com.phrenologue.dreamcatcherapp.interactors.DreamExpandedInteractor;
-import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.FormatHelper;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamSound;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamExpandedPresenter;
 import com.phrenologue.dreamcatcherapp.ui.colorPalette.ColorPalettes;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
-import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +31,13 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         this.iDreamExpandedView = iDreamExpandedView;
     }
 
-    public void checkLanguage(SharedPreferences languagePrefs){
+    public String checkLanguage(SharedPreferences languagePrefs){
         String language = languagePrefs.getString("language", "en");
         if (language.equals("fa")){
             iDreamExpandedView.setPersianFont();
+            return "fa";
+        } else {
+            return "en";
         }
     }
 
@@ -52,35 +49,14 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     public void loadPost(int postId, String dateLoaded,
                          SharedPreferences sleepSp, SharedPreferences dreamSp,
-                         SharedPreferences dreamSpTwo) {
+                         SharedPreferences dreamSpTwo, SharedPreferences languagePrefs) {
         iDreamExpandedView.showProgressBar();
-        interactor.getPost(postId, dateLoaded, sleepSp, dreamSp, dreamSpTwo);
+        interactor.getPost(postId, dateLoaded, sleepSp, dreamSp, dreamSpTwo, languagePrefs);
     }
 
-    public static void drawSingleLucidityLevel(IDreamExpandedView iDreamExpandedView, int postId) {
-        ApiPostCaller postCaller = new ApiPostCaller();
-        postCaller.getQResult(postId, new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
+ 
 
-                JSONObject jsonObject = new JSONObject(response.toString());
-                JSONArray jsonArray = jsonObject.getJSONArray("0");
-
-
-
-
-
-
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                Log.e("", "");
-            }
-        });
-    }
-
-    private static PieData createLucidityChart(int result){
+    private PieData createLucidityChart(int result){
         int percentage = singlePercentCalc(result);
         int remainder = 100 - percentage;
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -93,15 +69,27 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
         return pieData;
     }
 
+    private PieData createLucidityChartPer(int result){
+        int percentage = singlePercentCalc(result);
+        int remainder = 100 - percentage;
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        entries.add(new PieEntry(percentage, "هشیاری در رؤیا"));
+        entries.add(new PieEntry(remainder, "ناهشیار"));
+        PieDataSet dataSet = new PieDataSet(entries, "درصد هشیاری در رؤیا");
+        PieData pieData = new PieData(dataSet);
+        dataSet.setColors(ColorPalettes.DREAMS_EXPANDED);
+        dataSet.setDrawValues(false);
+        return pieData;
+    }
+
     private static int singlePercentCalc(int result) {
         return (int) (((float) result / 38f) * 100);
     }
 
-    private static String singleStrPercentCalc(int result){
-        int percentage = singlePercentCalc(result);
-        return  "%" + percentage + "" + " Lucid";
+    private static String singlePercentCalcPer(int result) {
+        String percentage = (int) (((float) result / 38f) * 100) + "";
+        return FormatHelper.toPersianNumber(percentage);
     }
-
 
 
     public void peopleViewLogic() {
@@ -235,13 +223,20 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
 
     @Override
-    public void checkLucidity(int result) {
+    public void checkLucidity(int result, SharedPreferences languagePrefs) {
+        String language = languagePrefs.getString("language", "en");
         if (result == 0) {
             iDreamExpandedView.onNonLucid();
         } else {
             iDreamExpandedView.onLucid();
-            iDreamExpandedView.setPercentage(singleStrPercentCalc(result));
-            iDreamExpandedView.drawChart(createLucidityChart(result));
+            if (language.equals("en")) {
+                iDreamExpandedView.setPercentage(singlePercentCalc(result));
+                iDreamExpandedView.drawChart(createLucidityChart(result));
+            } else {
+                iDreamExpandedView.setPercentagePer(singlePercentCalcPer(result));
+                iDreamExpandedView.drawChartPer(createLucidityChart(result));
+            }
+
         }
     }
 

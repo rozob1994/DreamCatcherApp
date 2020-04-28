@@ -22,7 +22,7 @@ import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Dream;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.majorParameters.Sleep;
 import com.phrenologue.dreamcatcherapp.presenters.DreamExpandedPresenter;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONException;
@@ -66,7 +66,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         dream.setPostId(postId);
         String dateLoaded = getIntent().getStringExtra("date");
 
-        presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp);
+        presenter.loadPost(postId, dateLoaded, sleepSp, dreamOneSp, dreamTwoSp, languagePrefs);
 
         SharedPreferences sp = getSharedPreferences("loadedSleepProps", MODE_PRIVATE);
 
@@ -280,12 +280,28 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     }
 
     @Override
-    public void setPercentage(String percentage) {
-        binding.txtPercentage.setText(percentage);
+    public void setPercentage(int percentage) {
+        String percentageStr = "%" + percentage + getString(R.string.lucid);
+        binding.txtPercentage.setText(percentageStr);
+    }
+
+    @Override
+    public void setPercentagePer(String percentage) {
+        String percentageStr = "%" + percentage + getString(R.string.lucid);
+        binding.txtPercentage.setText(percentageStr);
     }
 
     @Override
     public void drawChart(PieData pieData) {
+        binding.pieChart.setData(pieData);
+        binding.pieChart.invalidate();
+        binding.pieChart.setDrawHoleEnabled(false);
+        binding.pieChart.getLegend().setEnabled(false);
+        binding.pieChart.getDescription().setEnabled(false);
+    }
+
+    @Override
+    public void drawChartPer(PieData pieData) {
         binding.pieChart.setData(pieData);
         binding.pieChart.invalidate();
         binding.pieChart.setDrawHoleEnabled(false);
@@ -334,7 +350,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
                     if (status) {
                         Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                         startActivity(intent);
-                        Toast.makeText(ExpandedDreamActivity.this, "Dream was Successfully deleted!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ExpandedDreamActivity.this, R.string.dream_del_success, Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -9,4 +9,5 @@ public interface IDreamPackagesView {
     void setLevelView(String folder, String json);
     void onLanguageChanged();
     void setPersianTypeFace();
+    void setDreamCount(int count);
 }

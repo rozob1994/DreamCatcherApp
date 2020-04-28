@@ -17,7 +17,7 @@
         android:backgroundTint="#77000000"
         android:elevation="4dp">
 
-        <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,7 +37,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
         android:gravity="center_horizontal"
         android:layout_below="@+id/card_view"
         android:padding="8dp"

@@ -12,7 +12,7 @@
     android:padding="16dp">
 
 
-    <com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView
+    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
         android:textAlignment="center"
         android:id="@+id/txt_percentage"
         android:layout_width="wrap_content"

@@ -1,5 +1,7 @@
 package com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces;
 
+import android.content.SharedPreferences;
+
 public interface IDreamExpandedPresenter {
 
     void onSleepRetrieved();
@@ -8,7 +10,7 @@ public interface IDreamExpandedPresenter {
 
     void onPeopleRetrieved();
 
-    void checkLucidity(int result);
+    void checkLucidity(int result, SharedPreferences languagePrefs);
 
     void onError();
 }

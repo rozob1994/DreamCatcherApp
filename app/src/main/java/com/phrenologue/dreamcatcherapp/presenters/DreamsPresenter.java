@@ -2,7 +2,6 @@ package com.phrenologue.dreamcatcherapp.presenters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +10,6 @@ import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivity
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
 import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 
 import org.json.JSONArray;
@@ -44,9 +42,7 @@ public class DreamsPresenter {
 
     }
 
-    public void getDescription(Context context,
-                               RelativeLayout loadingBg, RecyclerView dreamsRecycler,
-                               MoonTextView dreamCount) {
+    public void getDescription(Context context, RecyclerView dreamsRecycler) {
 
         iDreamPackagesView.showProgressBar();
         ApiPostCaller postCaller = new ApiPostCaller();
@@ -85,7 +81,7 @@ public class DreamsPresenter {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
-                dreamCount.setText("Dream Count: " + postIds.size() + "");
+                iDreamPackagesView.setDreamCount(postIds.size());;
             }
 
             @Override

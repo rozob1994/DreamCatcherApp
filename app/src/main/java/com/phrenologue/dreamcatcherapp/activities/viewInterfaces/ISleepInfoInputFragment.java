@@ -1,6 +1,6 @@
 package com.phrenologue.dreamcatcherapp.activities.viewInterfaces;
 
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
 public interface ISleepInfoInputFragment {
     void setPersianFont();

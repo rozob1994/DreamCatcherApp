@@ -1,4 +1,4 @@
-package com.phrenologue.dreamcatcherapp.ui.costumeFont;
+package com.phrenologue.dreamcatcherapp.ui.customFont;
 
 import android.content.Context;
 import android.graphics.Typeface;

@@ -1,7 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities.viewInterfaces;
 
 import com.github.mikephil.charting.data.PieData;
-import com.phrenologue.dreamcatcherapp.ui.costumeFont.MoonTextView;
+import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
 public interface IDreamExpandedView<T> {
 
@@ -24,8 +24,10 @@ public interface IDreamExpandedView<T> {
     void onError();
     void onLucid();
     void onNonLucid();
-    void setPercentage(String percentage);
+    void setPercentage(int percentage);
+    void setPercentagePer(String percentage);
     void drawChart(PieData pieData);
+    void drawChartPer(PieData pieData);
     void setPersianFont();
     void setPersianNameFonts(MoonTextView name);
 }
