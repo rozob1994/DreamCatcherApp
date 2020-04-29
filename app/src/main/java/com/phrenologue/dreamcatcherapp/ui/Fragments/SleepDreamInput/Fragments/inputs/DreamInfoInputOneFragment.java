@@ -88,6 +88,16 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
         feelingsOn8 = binding.relFeelingsOn8;
         feelingsOn9 = binding.relFeelingsOn9;
         feelingsOn10 = binding.relFeelingsOn10;
+        feelingsOff1 = binding.relFeelingsOff;
+        feelingsOff2 = binding.relFeelingsOff2;
+        feelingsOff3 = binding.relFeelingsOff3;
+        feelingsOff4 = binding.relFeelingsOff4;
+        feelingsOff5 = binding.relFeelingsOff5;
+        feelingsOff6 = binding.relFeelingsOff6;
+        feelingsOff7 = binding.relFeelingsOff7;
+        feelingsOff8 = binding.relFeelingsOff8;
+        feelingsOff9 = binding.relFeelingsOff9;
+        feelingsOff10 = binding.relFeelingsOff10;
         peopleClosed = binding.relPeopleClosed;
         soundsExpanded = binding.relSoundsExpanded;
         soundsClosed = binding.relSoundsClosed;
@@ -274,7 +284,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
         if (dreamPrefs.getBoolean("hasPeople", false)) {
 
-            presenter.makePeopleWork(dreamPrefsEditor, getContext(), peopleNames, namesHints,
+            presenter.splitNames(languagePrefs, dreamPrefsEditor, getContext(), peopleNames, namesHints,
                     feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
                     neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
 
@@ -284,7 +294,7 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
 
         }
-        presenter.makePeopleWork(dreamPrefsEditor, getContext(), peopleNames, namesHints,
+        presenter.splitNames(languagePrefs, dreamPrefsEditor, getContext(), peopleNames, namesHints,
                 feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
                 neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
 
@@ -559,4 +569,5 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
     public void setEditTextHintFonts(AppCompatEditText editTextHint) {
 
     }
+
 }

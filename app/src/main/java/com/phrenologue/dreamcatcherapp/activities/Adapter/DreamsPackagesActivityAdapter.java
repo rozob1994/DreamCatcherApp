@@ -222,11 +222,9 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         String language = languagePrefs.getString("language", "en");
         if (content.length()>40){
             if (language.equals("fa")) {
-                String shortened = content.substring(0,126) + "... دیدن ادامه‌ی رؤیا";
-                return shortened;
+                return content.substring(0,126) + "... دیدن ادامه‌ی رؤیا";
             } else {
-                String shortened = content.substring(0,126) + "... read more.";
-                return shortened;
+                return content.substring(0,126) + "... read more.";
             }
         } else {
             return content;

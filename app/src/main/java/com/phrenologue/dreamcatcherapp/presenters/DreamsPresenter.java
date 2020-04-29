@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phrenologue.dreamcatcherapp.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.phrenologue.dreamcatcherapp.managersAndFilters.FormatHelper;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.presenterInterfaces.IDreamPackagesView;
@@ -43,7 +44,9 @@ public class DreamsPresenter {
     }
 
     public void getDescription(Context context, RecyclerView dreamsRecycler) {
-
+        SharedPreferences languagePrefs = context.getSharedPreferences("languages",
+                Context.MODE_PRIVATE);
+        String language = languagePrefs.getString("language", "en");
         iDreamPackagesView.showProgressBar();
         ApiPostCaller postCaller = new ApiPostCaller();
         postCaller.getDreamDescription(new IResponseMessage() {
@@ -81,7 +84,14 @@ public class DreamsPresenter {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
-                iDreamPackagesView.setDreamCount(postIds.size());;
+                if (language.equals("en")) {
+                    iDreamPackagesView.setEngDreamCount(postIds.size());;
+                } else if (language.equals("fa")) {
+                    String engCount = String.valueOf(postIds.size());
+                    String perCount = FormatHelper.toPersianNumber(engCount);
+                    iDreamPackagesView.setPerDreamCount(perCount);
+                }
+
             }
 
             @Override

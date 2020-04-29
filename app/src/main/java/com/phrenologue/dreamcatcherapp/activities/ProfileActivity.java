@@ -35,6 +35,7 @@ import com.phrenologue.dreamcatcherapp.managersAndFilters.SharedPreferencesManag
 import com.phrenologue.dreamcatcherapp.parameters.Addresses;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
 import com.phrenologue.dreamcatcherapp.presenters.ProfilePresenter;
+import com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.inputs.SleepInfoInputFragment;
 import com.phrenologue.dreamcatcherapp.ui.customDialog.dialogViews.ViewStatsDialog;
 import com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView;
 
@@ -101,6 +102,14 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
                     behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
+            }
+        });
+
+        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                startActivity(intent);
             }
         });
 

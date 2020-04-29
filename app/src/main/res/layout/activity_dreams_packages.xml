@@ -38,7 +38,7 @@
     </androidx.cardview.widget.CardView>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+   <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_add_circle_black_24dp"
-        app:maxImageSize="60dp" />
+        app:maxImageSize="60dp" />-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bg_lights"

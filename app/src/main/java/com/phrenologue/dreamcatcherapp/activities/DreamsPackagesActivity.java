@@ -50,7 +50,7 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
             }
         });
 
-        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
@@ -107,8 +107,14 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
     }
 
     @Override
-    public void setDreamCount(int count) {
+    public void setEngDreamCount(int count) {
         String dreamCount = getString(R.string.set_dream_count) + count + "";
+        binding.titleDreamsCount.setText(dreamCount);
+    }
+
+    @Override
+    public void setPerDreamCount(String count) {
+        String dreamCount = getString(R.string.set_dream_count) + count;
         binding.titleDreamsCount.setText(dreamCount);
     }
 }

@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -59,6 +60,29 @@ public class DreamInputPresenter {
     public void setTitleFonts(List<MoonTextView> titles) {
         for (int i = 0; i < titles.size(); i++) {
             iDreamInfoInput.setTitleFonts(titles.get(i));
+        }
+    }
+
+    public void splitNames(SharedPreferences languagePrefs, SharedPreferences.Editor dreamPrefsEditor,
+                           Context context, AppCompatEditText peopleNames,
+                           List<AppCompatTextView> namesHints,
+                           List<RelativeLayout> feelingsOnLayouts,
+                           List<RelativeLayout> feelingsOffLayouts,
+                           List<LinearLayout> positiveBtnsOn,
+                           List<LinearLayout> positiveBtnsOff,
+                           List<LinearLayout> neutralBtnsOn,
+                           List<LinearLayout> neutralBtnsOff,
+                           List<LinearLayout> negativeBtnsOn,
+                           List<LinearLayout> negativeBtnsOff){
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("en")){
+            makeEngPeopleWork(dreamPrefsEditor, context, peopleNames, namesHints, feelingsOnLayouts,
+                    feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff, neutralBtnsOn,
+                    neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
+        } else if (language.equals("fa")) {
+            makePerPeopleWork(dreamPrefsEditor, context, peopleNames, namesHints, feelingsOnLayouts,
+                    feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff, neutralBtnsOn,
+                    neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
         }
     }
 
@@ -131,7 +155,7 @@ public class DreamInputPresenter {
         feelingsOff.setVisibility(View.VISIBLE);
     }
 
-    public void makePeopleWork(SharedPreferences.Editor dreamPrefsEditor,
+    public void makeEngPeopleWork(SharedPreferences.Editor dreamPrefsEditor,
                                Context context, AppCompatEditText peopleNames,
                                List<AppCompatTextView> namesHints,
                                List<RelativeLayout> feelingsOnLayouts,
@@ -251,6 +275,187 @@ public class DreamInputPresenter {
                         SpannableString ss = new SpannableString(indexedHint);
                         ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
                         ss.setSpan(fcs, 58, 58 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        namesHints.get(i).setText(ss);
+                        int finalI = i;
+                        positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                        positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+                        negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                        neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                        negativeBtnsOff.get(finalI));
+                            }
+                        });
+
+                    }
+                }
+            }
+        });
+    }
+
+    public void makePerPeopleWork(SharedPreferences.Editor dreamPrefsEditor,
+                               Context context, AppCompatEditText peopleNames,
+                               List<AppCompatTextView> namesHints,
+                               List<RelativeLayout> feelingsOnLayouts,
+                               List<RelativeLayout> feelingsOffLayouts,
+                               List<LinearLayout> positiveBtnsOn,
+                               List<LinearLayout> positiveBtnsOff,
+                               List<LinearLayout> neutralBtnsOn,
+                               List<LinearLayout> neutralBtnsOff,
+                               List<LinearLayout> negativeBtnsOn,
+                               List<LinearLayout> negativeBtnsOff) {
+        peopleNames.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().equals("")) {
+                    String string = s.toString();
+                    List<String> namesList = Arrays.asList(string.split(" "));
+                    String hint = context.getString(R.string.hint_feelings);
+                    for (int i = 0; i < namesList.size(); i++) {
+                        if (i < 10) {
+                            DreamPeople people = DreamPeople.getInstance();
+                            people.setName(i, namesList.get(i));
+                            Dream dream = Dream.getInstance();
+                            dream.setDreamPeople(people);
+
+                            makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
+                                    feelingsOffLayouts.get(i));
+
+                            String indexedHint = hint.replace("اون‌", namesList.get(i));
+
+                            int nameLength = namesList.get(i).length();
+                            SpannableString ss = new SpannableString(indexedHint);
+                            ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
+                            ss.setSpan(fcs, 15, 15 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            namesHints.get(i).setText(ss);
+                            int finalI = i;
+                            positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setPositiveBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            positiveBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setPositiveBtnOff(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOff.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            neutralBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNeutralBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            neutralBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNeutralBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                            neutralBtnsOn.get(finalI), neutralBtnsOff.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            negativeBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNegativeBtnOn(dreamPrefsEditor, positiveBtnsOn.get(finalI),
+                                            positiveBtnsOff.get(finalI), neutralBtnsOn.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+                            negativeBtnsOn.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    setNegativeBtnOff(dreamPrefsEditor, positiveBtnsOff.get(finalI),
+                                            neutralBtnsOff.get(finalI), negativeBtnsOn.get(finalI),
+                                            negativeBtnsOff.get(finalI));
+                                }
+                            });
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String string = s.toString();
+                List<String> namesList = Arrays.asList(string.split(" "));
+                String hint = context.getString(R.string.hint_feelings);
+                for (int i = 0; i < namesList.size(); i++) {
+                    if (i < 10) {
+                        DreamPeople people = DreamPeople.getInstance();
+                        people.setName(i, namesList.get(i));
+                        Log.e("","");
+                        Dream dream = Dream.getInstance();
+                        dream.setDreamPeople(people);
+
+                        makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
+                                feelingsOffLayouts.get(i));
+
+                        String indexedHint = hint.replace("اون", namesList.get(i));
+
+                        int nameLength = namesList.get(i).length();
+                        SpannableString ss = new SpannableString(indexedHint);
+                        ForegroundColorSpan fcs = new ForegroundColorSpan(Color.CYAN);
+                        ss.setSpan(fcs, 15, 15 + nameLength, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                         namesHints.get(i).setText(ss);
                         int finalI = i;
                         positiveBtnsOff.get(i).setOnClickListener(new View.OnClickListener() {
@@ -672,30 +877,6 @@ public class DreamInputPresenter {
         }
     }
 
-
-    public void setLuciditySeekBar(SharedPreferences.Editor dreamPrefEditor, SeekBar lucidityLevel) {
-        lucidity = DreamLucidity.getInstance();
-        lucidityLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                lucidity.setLucidityLevel(progress);
-                dreamPrefEditor.putBoolean("hasLucidity", true).apply();
-                dreamPrefEditor.putInt("lucidity", progress).apply();
-                seekBar.setMax(3);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-    }
-
     public void setTextListener(String textTitle, AppCompatEditText text, SharedPreferences sp) {
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -732,14 +913,6 @@ public class DreamInputPresenter {
         });
     }
 
-    public void cancelDreamInput(SharedPreferences.Editor dreamPrefEditor,
-                                 SharedPreferences.Editor dreamPrefEditorTwo) {
-        checklist = DreamChecklist.getInstance();
-        dream = Dream.getInstance();
-        Dream.delDream();
-        dreamPrefEditor.clear().apply();
-        dream.setDreamChecklist(checklist);
-    }
 
     public void saveHalfWayDream(AppCompatEditText edtTxtNames,
                                  LinearLayout positiveOn,
