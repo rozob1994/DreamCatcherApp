@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
     android:orientation="vertical"
-    tools:context="com.phrenologue.dreamcatcherapp.activities.DreamChoosingActivity">
+    tools:context="com.catchydreams.dreamcatcher.activities.DreamChoosingActivity">
 
 
     <androidx.cardview.widget.CardView
@@ -17,7 +17,7 @@
         android:backgroundTint="#77000000"
         android:elevation="4dp">
 
-        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+        <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
             android:id="@+id/dreamsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:gravity="center_horizontal"
         android:layout_below="@+id/card_view"
         android:padding="8dp"

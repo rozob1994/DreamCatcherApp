@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:id="@+id/preResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:text="@string/dialog_txt_one"
         android:textColor="@color/white" />
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:id="@+id/txt_percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:textColor="@color/white"
         android:textSize="40dp" />
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:id="@+id/warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="60dp">
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:textColor="@color/white"
         android:layout_centerInParent="true"
         android:text="name"

@@ -6,7 +6,7 @@
     android:background="@drawable/bg_night"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.StatsFragment">
+    tools:context="com.catchydreams.dreamcatcher.ui.Fragments.SleepDreamInput.Fragments.StatsFragment">
 
     <ScrollView
         android:layout_width="match_parent"

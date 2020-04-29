@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp" />
 
-   <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+   <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
        android:text="@string/options"
        android:textAllCaps="true"
        android:layout_gravity="center_vertical"

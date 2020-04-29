@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.phrenologue.dreamcatcherapp.ui.Fragments.SleepDreamInput.Fragments.people.PositiveFeelingFragment">
+    tools:context="com.catchydreams.dreamcatcher.ui.Fragments.SleepDreamInput.Fragments.people.PositiveFeelingFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/positive_recycler"

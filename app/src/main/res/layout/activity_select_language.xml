@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
-    tools:context="com.phrenologue.dreamcatcherapp.activities.SelectLanguageActivity">
+    tools:context="com.catchydreams.dreamcatcher.activities.SelectLanguageActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+        <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
             android:id="@+id/pageTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

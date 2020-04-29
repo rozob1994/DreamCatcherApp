@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:elevation="4dp">
 
-                <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+                <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
                     android:id="@+id/user_title"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
@@ -52,7 +52,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size" />
 
-                <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+                <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
                     android:id="@+id/level_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

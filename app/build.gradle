@@ -5,9 +5,9 @@ android {
         enabled = true
     }
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.example.dreamcatcherapp"
+        applicationId "com.catchydreams.dreamcatcher"
         minSdkVersion 21
         targetSdkVersion 29
         multiDexEnabled true

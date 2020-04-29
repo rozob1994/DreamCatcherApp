@@ -12,7 +12,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_username"
@@ -26,7 +26,7 @@
         android:backgroundTint="@color/gray"
         android:textColor="@color/white" />
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -41,7 +41,7 @@
         android:background="@drawable/bg_simple"
         android:backgroundTint="@color/gray" />
 
-    <com.phrenologue.dreamcatcherapp.ui.customFont.MoonTextView
+    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
