@@ -1,6 +1,7 @@
 package com.phrenologue.dreamcatcherapp.activities.Splash;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import com.phrenologue.dreamcatcherapp.activities.Login.LoginActivity;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivitySplashBinding;
 import com.phrenologue.dreamcatcherapp.managersAndFilters.LocaleManager;
+import com.phrenologue.dreamcatcherapp.parameters.Users;
 
 import java.util.Locale;
 
@@ -21,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding binding;
     boolean clickState = false;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -35,16 +38,25 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-
         if (clickState){
             new Handler().postDelayed(new Runnable() {
 
                 @Override
                 public void run() {
+                    sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                    if (sharedPreferences.getBoolean("logged", false)) {
+                        Users user = Users.getInstance();
+                        user.setUid(sharedPreferences.getInt("uid", 0));
+                        user.setEmail(sharedPreferences.getString("username", ""));
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
 
-                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(i);
-                    finish();
                 }
             }, 10000);
 
@@ -54,10 +66,20 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     clickState = true;
-                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                    startActivity(intent);
+                    sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                    if (sharedPreferences.getBoolean("logged", false)) {
+                        Users user = Users.getInstance();
+                        user.setUid(sharedPreferences.getInt("uid", 0));
+                        user.setEmail(sharedPreferences.getString("username", ""));
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                     CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
-                    finish();
                 }
             });
         }

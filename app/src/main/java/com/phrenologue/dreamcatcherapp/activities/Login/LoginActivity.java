@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.phrenologue.dreamcatcherapp.R;
 import com.phrenologue.dreamcatcherapp.activities.ProfileActivity;
+import com.phrenologue.dreamcatcherapp.activities.Splash.SplashActivity;
 import com.phrenologue.dreamcatcherapp.databinding.ActivityLoginBinding;
 import com.phrenologue.dreamcatcherapp.parameters.IResponseMessage;
 import com.phrenologue.dreamcatcherapp.parameters.Users;
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             Users user = Users.getInstance();
             user.setUid(sharedPreferences.getInt("uid", 0));
             user.setEmail(sharedPreferences.getString("username", ""));
-            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
             startActivity(intent);
             finish();
         }
