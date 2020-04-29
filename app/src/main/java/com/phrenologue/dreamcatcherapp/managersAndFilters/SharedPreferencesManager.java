@@ -2,7 +2,6 @@ package com.phrenologue.dreamcatcherapp.managersAndFilters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamDate;
 import com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameters.DreamPeople;
@@ -76,7 +75,6 @@ public class SharedPreferencesManager implements ISharedPreferencesManager {
         sp.edit().putBoolean("dreamExists", true).apply();
 
         int postId = dream.getPostId();
-        Log.e("","");
         Integer grayscale = dream.getDreamChecklist().getGrayScale();
         Integer experience = dream.getDreamChecklist().getExperience();
         Integer lucidityLevel = dream.getDreamLucidity().getLucidityLevel();

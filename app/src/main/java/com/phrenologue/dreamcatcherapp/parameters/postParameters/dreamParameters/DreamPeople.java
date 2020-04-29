@@ -2,6 +2,9 @@ package com.phrenologue.dreamcatcherapp.parameters.postParameters.dreamParameter
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class DreamPeople {
     private static DreamPeople instance = null;
     private String name = "";
@@ -27,6 +30,7 @@ public class DreamPeople {
     private int eighthImpression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
     private int ninthImpression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
     private int tenthImpression; // 0 = null, 1 = negative, 2 = neutral, 3 = positive.
+    private int peopleCount = 0;
 
     private DreamPeople() {
     }
@@ -41,6 +45,26 @@ public class DreamPeople {
             instance = new DreamPeople();
         }
         return instance;
+    }
+
+    public int getPeopleCount() {
+        List<String> names = Arrays.asList(firstName, secondName, thirdName, fourthName, fifthName,
+                sixthName, seventhName, eighthName, ninthName, tenthName);
+        int count = 0;
+        for (int i = 0; i <= names.size(); i++) {
+            if (!names.get(i).equals("")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getCount() {
+        return peopleCount;
+    }
+
+    public void setPeopleCount(int peopleCount){
+        this.peopleCount = peopleCount;
     }
 
     public void setImpression(@Nullable Integer index, @Nullable Integer value) {

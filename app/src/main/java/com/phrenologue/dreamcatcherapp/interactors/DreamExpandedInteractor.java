@@ -41,12 +41,12 @@ public class DreamExpandedInteractor {
                             public void onSuccess(Object response) throws JSONException {
                                 iPresenter.onSleepRetrieved();
                                 iPresenter.onDreamRetrieved(dateLoaded);
-                                iPresenter.onPeopleRetrieved();
                                 setPeople(response);
-                                cachePost(sleepSp, dreamSp, dreamSpTwo);
+                                iPresenter.onPeopleRetrieved();
                                 apiPostCaller.getQResult(postId, new IResponseMessage() {
                                     @Override
                                     public void onSuccess(Object response) throws JSONException {
+                                        cachePost(sleepSp, dreamSp, dreamSpTwo);
                                         JSONObject jsonObject = new JSONObject(response.toString());
                                         JSONArray jsonArray = jsonObject.getJSONArray("0");
                                         boolean status = jsonObject.getBoolean("status");

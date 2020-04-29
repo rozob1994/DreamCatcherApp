@@ -40,6 +40,7 @@ import com.phrenologue.dreamcatcherapp.webservice.ApiPostCaller;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -155,6 +156,13 @@ public class DreamInputPresenter {
         feelingsOff.setVisibility(View.VISIBLE);
     }
 
+    private void makeExcessiveFeelingsInvisible(AppCompatTextView textView, RelativeLayout feelingsOn,
+                                                RelativeLayout feelingsOff) {
+        textView.setVisibility(View.GONE);
+        feelingsOn.setVisibility(View.GONE);
+        feelingsOff.setVisibility(View.GONE);
+    }
+
     public void makeEngPeopleWork(SharedPreferences.Editor dreamPrefsEditor,
                                Context context, AppCompatEditText peopleNames,
                                List<AppCompatTextView> namesHints,
@@ -245,6 +253,7 @@ public class DreamInputPresenter {
 
                         }
                     }
+                    DreamPeople.getInstance().setPeopleCount(namesList.size());
                 }
 
             }
@@ -258,9 +267,28 @@ public class DreamInputPresenter {
             public void afterTextChanged(Editable s) {
                 String string = s.toString();
                 List<String> namesList = Arrays.asList(string.split(","));
+                int prevCount = DreamPeople.getInstance().getCount();
+                if (namesList.size() < prevCount) {
+                    Log.e("","");
+                    List<Integer> disposables = new ArrayList<>();
+                    for (int i = 0; i <= prevCount; i++) {
+                        if (i > namesList.size()){
+                            disposables.add(i);
+                        }
+                    }
+                    for (int i = 0; i < disposables.size();i++){
+                        int disposable = disposables.get(i);
+                        makeExcessiveFeelingsInvisible(namesHints.get(disposable),
+                                feelingsOnLayouts.get(disposable), feelingsOffLayouts.get(disposable));
+                        Log.e("","");
+                    }
+                    DreamPeople.delPeople();
+                }
+
                 String hint = context.getString(R.string.hint_feelings);
                 for (int i = 0; i < namesList.size(); i++) {
                     if (i < 10) {
+
                         DreamPeople people = DreamPeople.getInstance();
                         people.setName(i, namesList.get(i));
                         Dream dream = Dream.getInstance();
@@ -268,6 +296,7 @@ public class DreamInputPresenter {
 
                         makeFeelingVisible(namesHints.get(i), feelingsOnLayouts.get(i),
                                 feelingsOffLayouts.get(i));
+
 
                         String indexedHint = hint.replace("them", namesList.get(i));
 
@@ -352,6 +381,7 @@ public class DreamInputPresenter {
                 if (!s.toString().equals("")) {
                     String string = s.toString();
                     List<String> namesList = Arrays.asList(string.split(" "));
+                    Log.e("","");
                     String hint = context.getString(R.string.hint_feelings);
                     for (int i = 0; i < namesList.size(); i++) {
                         if (i < 10) {
@@ -425,6 +455,7 @@ public class DreamInputPresenter {
 
                         }
                     }
+                    DreamPeople.getInstance().setPeopleCount(namesList.size());
                 }
 
             }
@@ -438,6 +469,9 @@ public class DreamInputPresenter {
             public void afterTextChanged(Editable s) {
                 String string = s.toString();
                 List<String> namesList = Arrays.asList(string.split(" "));
+                if (namesList.size() < DreamPeople.getInstance().getCount()) {
+                    DreamPeople.delPeople();
+                }
                 String hint = context.getString(R.string.hint_feelings);
                 for (int i = 0; i < namesList.size(); i++) {
                     if (i < 10) {

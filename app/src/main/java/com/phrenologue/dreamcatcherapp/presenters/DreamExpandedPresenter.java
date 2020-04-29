@@ -115,6 +115,7 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
             }
 
         }
+        iDreamExpandedView.hideProgressBar();
     }
 
     private void moodLogic() {
@@ -217,15 +218,16 @@ public class DreamExpandedPresenter implements IDreamExpandedPresenter {
 
     @Override
     public void onPeopleRetrieved() {
-        iDreamExpandedView.hideProgressBar();
         peopleViewLogic();
     }
 
 
     @Override
     public void checkLucidity(int result, SharedPreferences languagePrefs) {
+
         String language = languagePrefs.getString("language", "en");
         if (result == 0) {
+
             iDreamExpandedView.onNonLucid();
         } else {
             iDreamExpandedView.onLucid();

@@ -1318,7 +1318,7 @@
                                 android:id="@+id/rel_feelings_off6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/hint_feelings2"
+                                android:layout_below="@+id/hint_feelings6"
                                 android:layout_marginTop="16dp"
                                 android:gravity="center"
                                 android:visibility="gone">

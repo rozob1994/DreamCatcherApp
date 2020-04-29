@@ -61,7 +61,6 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
     private SharedPreferences.Editor dreamPrefsEditor;
     private AppCompatTextView namesHint1, namesHint2, namesHint3, namesHint4, namesHint5, namesHint6, namesHint7,
             namesHint8, namesHint9, namesHint10;
-    private MoonTextView positiveOn, positiveOn2, positiveOn3, positiveOn4;
 
 
     public DreamInfoInputOneFragment() {
