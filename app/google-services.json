@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "790095291686",
+    "firebase_url": "https://dreamcatcher-echodevgrp.firebaseio.com",
+    "project_id": "dreamcatcher-echodevgrp",
+    "storage_bucket": "dreamcatcher-echodevgrp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790095291686:android:bde5ac36cc7aa4a9b4cde7",
+        "android_client_info": {
+          "package_name": "com.catchydreams.dreamcatcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790095291686-pft19l8e7cih0e180b6lvhn5uks9ttsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzmRXLlrQRmf7wsDcF_74Az0ipo2S2NSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790095291686-pft19l8e7cih0e180b6lvhn5uks9ttsi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
