@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity;
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivitySignUp2Binding;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
@@ -32,6 +34,7 @@ public class SignUp extends AppCompatActivity {
         binding = ActivitySignUp2Binding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        Database db = Database.getInstance(this);
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
         SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
@@ -72,6 +75,8 @@ public class SignUp extends AppCompatActivity {
                                     spLogin.edit().putString("username", mail).apply();
                                     spLogin.edit().putInt("level", 1).apply();
                                     user.setPassword(pass);
+                                    UserEntity userEntity = new UserEntity(user.getUid(), user.getLevel(), user.getEmail(), "en");
+                                    db.userDao().insertUser(userEntity);
                                     Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                                     startActivity(intent);
                                     finish();
