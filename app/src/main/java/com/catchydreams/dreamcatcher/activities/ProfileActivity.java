@@ -26,6 +26,8 @@ import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IProfileView;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivityProfileBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IntentManager;
 import com.catchydreams.dreamcatcher.managersAndFilters.LocaleManager;
@@ -64,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        Database db = Database.getInstance(this);
         if (RefreshChecker.getInstance().isStarted()) {
             recreate();
             RefreshChecker.getInstance().setStarted(false);
@@ -208,6 +210,9 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                         break;
 
                     case R.id.log_out:
+                        UserEntity userEntity = new UserEntity(user.getUid(), user.getLevel(),
+                                user.getEmail(), languagePrefs.getString("language", "en"));
+                        db.userDao().deleteUser(userEntity);
                         Users.delUser();
                         sharedPreferences.edit().putBoolean("logged", false).apply();
                         sp2.edit().putBoolean("signedUp", false).apply();

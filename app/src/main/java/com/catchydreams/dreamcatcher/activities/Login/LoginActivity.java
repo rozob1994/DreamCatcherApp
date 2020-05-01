@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.Splash.SplashActivity;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivityLoginBinding;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
@@ -36,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        Database db = Database.getInstance(this);
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("logged", false)) {
@@ -84,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
                                         sharedPreferences.edit().putInt("uid", uid).apply();
                                         sharedPreferences.edit().putString("username", username).apply();
                                         user.setUid(uid);
+                                        UserEntity userEntity = new UserEntity(uid, level, username, "en");
+                                        db.userDao().insertUser(userEntity);
                                         Log.e("","");
                                         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                                         startActivity(intent);
