@@ -3,6 +3,7 @@ package com.catchydreams.dreamcatcher.presenters;
 import android.content.SharedPreferences;
 
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamChoosingView;
+import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.interactors.DreamChoosingInteractor;
 import com.catchydreams.dreamcatcher.presenters.presenterInterfaces.IDreamChoosingPresenter;
 
@@ -13,8 +14,8 @@ public class DreamChoosingPresenter implements IDreamChoosingPresenter {
         this.iDreamChoosingView = iDreamChoosingView;
     }
 
-    public void getDescription() {
-        interactor.getDreamDescription();
+    public void getDescription(Database db) {
+        interactor.getDreamDescription(db);
     }
 
     public void setLanguage(SharedPreferences languagePrefs) {

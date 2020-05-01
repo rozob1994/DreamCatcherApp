@@ -184,7 +184,6 @@ public class SleepInputPresenter {
 
         String duration = edtHours.getText().toString() + " Hours, " +
                 edtMinutes.getText().toString() + " Minutes.";
-        sleep.setDuration(duration);
         dream.setDreamChecklist(checklist);
         dream.setPostId(sleep.generatePostId());
         postCaller = new ApiPostCaller();
@@ -226,7 +225,6 @@ public class SleepInputPresenter {
             duration = "";
         }
 
-        sleep.setDuration(duration); // Storing sleep duration in the instance of Sleep.class.
         sleep.generatePostId();
         dream.setDreamChecklist(checklist);
         date.setDateToday(); // Setting today's date in our instance of date.

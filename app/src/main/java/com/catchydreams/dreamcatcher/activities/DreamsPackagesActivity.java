@@ -16,7 +16,6 @@ import com.catchydreams.dreamcatcher.databinding.ActivityDreamsPackagesBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IntentManager;
 import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
-import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.presenters.DreamsPresenter;
 import com.catchydreams.dreamcatcher.presenters.presenterInterfaces.IDreamPackagesView;
 
@@ -24,15 +23,10 @@ import java.util.Locale;
 
 public class DreamsPackagesActivity extends AppCompatActivity implements IDreamPackagesView {
     private ActivityDreamsPackagesBinding binding;
-    SharedPreferences kill;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        kill = getSharedPreferences("kill", MODE_PRIVATE);
-        if (kill.getBoolean("isKilled", false)){
-            onRestoreInstanceState(savedInstanceState);
-            kill.edit().putBoolean("isKilled", false).apply();
-        }
+
 
         binding = ActivityDreamsPackagesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -129,35 +123,6 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
     public void setPerDreamCount(String count) {
         String dreamCount = getString(R.string.set_dream_count) + count;
         binding.titleDreamsCount.setText(dreamCount);
-    }
-
-    @Override
-    public void onRestart() {
-
-        super.onRestart();
-    }
-
-    @Override
-    public void onDestroy() {
-        kill = getSharedPreferences("kill", MODE_PRIVATE);
-        kill.edit().putBoolean("isKilled", true).apply();
-        super.onDestroy();
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.clear();
-        savedInstanceState.putInt("uid", Users.getInstance().getUid());
-        savedInstanceState.putInt("level", Users.getInstance().getLevel());
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Users.getInstance().setUid(savedInstanceState.getInt("uid"));
-        Users.getInstance().setLevel(savedInstanceState.getInt("level"));
     }
 
 }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamChoosingView;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
+import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.databinding.ActivityDreamChoosingBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.postParameters.DreamChoosingItem;
@@ -25,7 +26,6 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
 
     private ActivityDreamChoosingBinding binding;
     private RecyclerView dreamsRecycler;
-    private SharedPreferences languagePrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,11 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
         binding= ActivityDreamChoosingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
-
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        Database db = Database.getInstance(this);
         dreamsRecycler = binding.dreamsRecycler;
         DreamChoosingPresenter presenter = new DreamChoosingPresenter(this);
-        presenter.getDescription();
+        presenter.getDescription(db);
         presenter.setLanguage(languagePrefs);
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override

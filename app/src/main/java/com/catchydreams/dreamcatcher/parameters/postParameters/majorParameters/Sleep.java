@@ -6,24 +6,20 @@ import java.util.Random;
 
 public class Sleep {
     private static Sleep instance = null;
-    private String duration = "";
     private int time = 0;  // 0 = no input, 1 = day, 2 = night
     private int physicalActivity = 0;
     private int foodConsumption = 0;
-    private int sleepParalysis;
     private int postId;
 
 
     private Sleep() {
     }
 
-    private Sleep(@Nullable String duration, @Nullable int time, @Nullable int physicalActivity,
-                  @Nullable int foodConsumption, @Nullable int sleepParalysis) {
-        this.duration = duration;
+    private Sleep(@Nullable int time, @Nullable int physicalActivity,
+                  @Nullable int foodConsumption) {
         this.time = time;
         this.physicalActivity = physicalActivity;
         this.foodConsumption = foodConsumption;
-        this.sleepParalysis = sleepParalysis;
     }
 
     public static Sleep getInstance() {
@@ -42,14 +38,6 @@ public class Sleep {
 
     public static void delSleep() {
         instance = null;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
     }
 
     public int getTime() {
@@ -75,14 +63,6 @@ public class Sleep {
 
     public void setFoodConsumption(int foodConsumption) {
         this.foodConsumption = foodConsumption;
-    }
-
-    public int getSleepParalysis() {
-        return sleepParalysis;
-    }
-
-    public void setSleepParalysis(int sleepParalysis) {
-        this.sleepParalysis = sleepParalysis;
     }
 
     public int getPostId() {

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
 import com.catchydreams.dreamcatcher.managersAndFilters.FormatHelper;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
@@ -47,19 +49,10 @@ public class DreamsPresenter {
         SharedPreferences languagePrefs = context.getSharedPreferences("languages",
                 Context.MODE_PRIVATE);
         String language = languagePrefs.getString("language", "en");
-        iDreamPackagesView.showProgressBar();
-        ApiPostCaller postCaller = new ApiPostCaller();
-        postCaller.getDreamDescription(new IResponseMessage() {
-            @Override
-            public void onSuccess(Object response) throws JSONException {
-                iDreamPackagesView.hideProgressBar();
-                JSONArray jsonArray = new JSONArray(response.toString());
-
-                ArrayList<JSONArray> jsonArrays = new ArrayList();
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    jsonArrays.add(jsonArray.getJSONArray(i));
-                }
+        Database db = Database.getInstance(context);
+        List<PostsEntity> posts = db.postDao().getAllPosts();
+        if (posts!=null){
+            if (posts.size()>0){
                 List<Integer> postIds = new ArrayList<>();
                 List<Integer> sleepTimes = new ArrayList<>();
                 List<Integer> experiences = new ArrayList<>();
@@ -68,19 +61,19 @@ public class DreamsPresenter {
                 List<Integer> years = new ArrayList<>();
                 List<String> titles = new ArrayList<>();
                 List<String> contents = new ArrayList<>();
-
-                for (int j = 0; j < jsonArrays.size(); j++) {
-                    postIds.add(jsonArrays.get(j).getInt(2));
-                    experiences.add(jsonArrays.get(j).getInt(6));
-                    sleepTimes.add(jsonArrays.get(j).getInt(12));
-                    days.add(jsonArrays.get(j).getInt(8));
-                    months.add(jsonArrays.get(j).getInt(9));
-                    years.add(jsonArrays.get(j).getInt(10));
-                    titles.add(jsonArrays.get(j).getString(0));
-                    contents.add(jsonArrays.get(j).getString(1));
+                for(int i = 0; i < posts.size(); i++){
+                    postIds.add(posts.get(i).getPostId());
+                    sleepTimes.add(posts.get(i).getTime());
+                    experiences.add(posts.get(i).getExperience());
+                    days.add(posts.get(i).getDay());
+                    months.add(posts.get(i).getMonth());
+                    years.add(posts.get(i).getYear());
+                    titles.add(posts.get(i).getTitle());
+                    contents.add(posts.get(i).getContent());
                 }
+
                 DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
-                         postIds, sleepTimes, experiences, days, months, years, titles, contents);
+                        postIds, sleepTimes, experiences, days, months, years, titles, contents);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
                 dreamsRecycler.setLayoutManager(layoutManager);
                 dreamsRecycler.setAdapter(adapter);
@@ -91,16 +84,64 @@ public class DreamsPresenter {
                     String perCount = FormatHelper.toPersianNumber(engCount);
                     iDreamPackagesView.setPerDreamCount(perCount);
                 }
-
             }
+        } else {
+            iDreamPackagesView.showProgressBar();
+            ApiPostCaller postCaller = new ApiPostCaller();
+            postCaller.getDreamDescription(new IResponseMessage() {
+                @Override
+                public void onSuccess(Object response) throws JSONException {
+                    iDreamPackagesView.hideProgressBar();
+                    JSONArray jsonArray = new JSONArray(response.toString());
 
-            @Override
-            public void onFailure(String errorMessage) {
-                iDreamPackagesView.hideProgressBar();
-                iDreamPackagesView.onError();
-            }
+                    ArrayList<JSONArray> jsonArrays = new ArrayList();
 
-        });
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jsonArrays.add(jsonArray.getJSONArray(i));
+                    }
+                    List<Integer> postIds = new ArrayList<>();
+                    List<Integer> sleepTimes = new ArrayList<>();
+                    List<Integer> experiences = new ArrayList<>();
+                    List<Integer> days = new ArrayList<>();
+                    List<Integer> months = new ArrayList<>();
+                    List<Integer> years = new ArrayList<>();
+                    List<String> titles = new ArrayList<>();
+                    List<String> contents = new ArrayList<>();
+
+                    for (int j = 0; j < jsonArrays.size(); j++) {
+                        postIds.add(jsonArrays.get(j).getInt(2));
+                        experiences.add(jsonArrays.get(j).getInt(6));
+                        sleepTimes.add(jsonArrays.get(j).getInt(12));
+                        days.add(jsonArrays.get(j).getInt(8));
+                        months.add(jsonArrays.get(j).getInt(9));
+                        years.add(jsonArrays.get(j).getInt(10));
+                        titles.add(jsonArrays.get(j).getString(0));
+                        contents.add(jsonArrays.get(j).getString(1));
+                    }
+                    DreamsPackagesActivityAdapter adapter = new DreamsPackagesActivityAdapter(context,
+                            postIds, sleepTimes, experiences, days, months, years, titles, contents);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                    dreamsRecycler.setLayoutManager(layoutManager);
+                    dreamsRecycler.setAdapter(adapter);
+                    if (language.equals("en")) {
+                        iDreamPackagesView.setEngDreamCount(postIds.size());;
+                    } else if (language.equals("fa")) {
+                        String engCount = String.valueOf(postIds.size());
+                        String perCount = FormatHelper.toPersianNumber(engCount);
+                        iDreamPackagesView.setPerDreamCount(perCount);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    iDreamPackagesView.hideProgressBar();
+                    iDreamPackagesView.onError();
+                }
+
+            });
+        }
+
 
     }
 

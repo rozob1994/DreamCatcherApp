@@ -104,7 +104,7 @@ public class QuestionnaireEntry {
         return qOne;
     }
 
-    private void setqOne(int qOne) {
+    public void setqOne(int qOne) {
         this.qOne = qOne;
     }
 

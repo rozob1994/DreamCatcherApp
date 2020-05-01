@@ -207,4 +207,5 @@ public interface IPostService {
     @GET("users/PeopleProps.php")
     Call<ResponseBody> getPeopleProps(@Query("postId") int postId);
 
+
 }

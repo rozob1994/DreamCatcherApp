@@ -1,5 +1,6 @@
 package com.catchydreams.dreamcatcher.activities.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivityLoginBinding;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
+import com.catchydreams.dreamcatcher.presenters.LoginPresenter;
 import com.catchydreams.dreamcatcher.webservice.ApiCaller;
 import com.catchydreams.dreamcatcher.webservice.ApiPostCaller;
 
@@ -77,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                     JSONObject jsonObject1 = new JSONObject(response.toString());
                                     boolean status = jsonObject.getBoolean("status");
                                     if (status) {
+
                                         int level = jsonObject.getInt("level");
                                         user.setLevel(level);
                                         sharedPreferences.edit().putInt("level", level).apply();
@@ -88,6 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                                         user.setUid(uid);
                                         UserEntity userEntity = new UserEntity(uid, level, username, "en");
                                         db.userDao().insertUser(userEntity);
+                                        PostLoadingThread postLoadingThread = new PostLoadingThread(getApplicationContext());
+                                        postLoadingThread.start();
                                         Log.e("","");
                                         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                                         startActivity(intent);
@@ -142,5 +147,16 @@ public class LoginActivity extends AppCompatActivity {
         homeIntent.addCategory( Intent.CATEGORY_HOME );
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
+    }
+    class PostLoadingThread extends Thread{
+        Database db;
+        public PostLoadingThread(Context context){
+            this.db = Database.getInstance(context);
+        }
+        @Override
+        public void run(){
+            LoginPresenter presenter = new LoginPresenter();
+            presenter.savePosts(db);
+        }
     }
 }

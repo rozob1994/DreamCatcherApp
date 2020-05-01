@@ -213,6 +213,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                         UserEntity userEntity = new UserEntity(user.getUid(), user.getLevel(),
                                 user.getEmail(), languagePrefs.getString("language", "en"));
                         db.userDao().deleteUser(userEntity);
+                        db.postDao().deleteAllPosts();
                         Users.delUser();
                         sharedPreferences.edit().putBoolean("logged", false).apply();
                         sp2.edit().putBoolean("signedUp", false).apply();

@@ -1,5 +1,8 @@
 package com.catchydreams.dreamcatcher.parameters.postParameters;
 
+import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DreamChoosingItem {
@@ -14,10 +17,43 @@ public class DreamChoosingItem {
     private List<String> contents;
 
     public static DreamChoosingItem getInstance() {
-        if (instance == null){
+        if (instance == null) {
             instance = new DreamChoosingItem();
         }
         return instance;
+    }
+
+    public void setLists(List<PostsEntity> posts) {
+        List<Integer> postIds = new ArrayList<>();
+        List<Integer> sleepTimes = new ArrayList<>();
+        List<Integer> experiences = new ArrayList<>();
+        List<Integer> days = new ArrayList<>();
+        List<Integer> months = new ArrayList<>();
+        List<Integer> years = new ArrayList<>();
+        List<String> titles = new ArrayList<>();
+        List<String> contents = new ArrayList<>();
+        if (posts.size()>0){
+            for (int i = 0; i < posts.size(); i++) {
+                PostsEntity post = posts.get(i);
+                postIds.add(post.getPostId());
+                sleepTimes.add(post.getTime());
+                experiences.add(post.getExperience());
+                days.add(post.getDay());
+                months.add(post.getMonth());
+                years.add(post.getYear());
+                titles.add(post.getTitle());
+                contents.add(post.getContent());
+            }
+            this.postIds = postIds;
+            this.sleepTimes = sleepTimes;
+            this.experiences = experiences;
+            this.days = days;
+            this.months = months;
+            this.years = years;
+            this.titles = titles;
+            this.contents = contents;
+        }
+
     }
 
     public List<Integer> getPostIds() {

@@ -182,37 +182,37 @@ public class DreamPeople {
     public String getName(int index) {
         switch (index) {
             case 0:
-                name = getFirstName();
+                setName(getFirstName());
                 break;
             case 1:
-                name = getSecondName();
+                setName(getSecondName());
                 break;
             case 2:
-                name = getThirdName();
+                setName(getThirdName());
                 break;
             case 3:
-                name = getFourthName();
+                setName(getFourthName());
                 break;
             case 4:
-                name = getFifthName();
+                setName(getFifthName());
                 break;
             case 5:
-                name = getSixthName();
+                setName(getSixthName());
                 break;
             case 6:
-                name = getSeventhName();
+                setName(getSeventhName());
                 break;
             case 7:
-                name = getEighthName();
+                setName(getEighthName());
                 break;
             case 8:
-                name = getNinthName();
+                setName(getNinthName());
                 break;
             case 9:
-                name = getTenthName();
+                setName(getTenthName());
                 break;
         }
-        return name;
+        return getName();
     }
 
     public String getFirstName() {
@@ -381,5 +381,13 @@ public class DreamPeople {
 
     public void setTenthImpression(int tenthImpression) {
         this.tenthImpression = tenthImpression;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
