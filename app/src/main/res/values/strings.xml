@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DreamCatcherApp</string>
+    <string name="app_name">DreamCatcher</string>
     <string name="dream_description_hint">Describe your dream as clearly as you can.</string>
     <string-array name="year">
 
@@ -239,5 +239,6 @@
     <string name="lucid"> Lucid</string>
     <string name="set_dream_count">Dream Count: </string>
     <string name="back_to_dream">Back to Dream</string>
+    <string name="press_back_again">Please click BACK again to exit</string>
 
 </resources>

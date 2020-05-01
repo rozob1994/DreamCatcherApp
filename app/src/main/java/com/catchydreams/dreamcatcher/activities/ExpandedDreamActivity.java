@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.github.mikephil.charting.data.PieData;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamExpandedView;
@@ -191,6 +192,15 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         person.setText(name);
         person.setTextColor(getResources().getColor(textColor));
 
+    }
+
+
+
+    @Override
+    public void onDestroy(){
+        RefreshChecker.getInstance().setStarted(true);
+        super.onDestroy();
+        finish();
     }
 
     @Override

@@ -22,8 +22,6 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.MotionEventCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.navigation.NavigationView;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IProfileView;
@@ -31,12 +29,15 @@ import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.ActivityProfileBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IntentManager;
 import com.catchydreams.dreamcatcher.managersAndFilters.LocaleManager;
+import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.Addresses;
 import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.presenters.ProfilePresenter;
 import com.catchydreams.dreamcatcher.ui.customDialog.dialogViews.ViewStatsDialog;
 import com.catchydreams.dreamcatcher.ui.customFont.MoonTextView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
 
@@ -63,6 +64,12 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        if (RefreshChecker.getInstance().isStarted()) {
+            recreate();
+            RefreshChecker.getInstance().setStarted(false);
+        }
+
         SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
         String languageToLoad = languagePrefs.getString("language", "en");
         Locale locale = new Locale(languageToLoad);
@@ -244,7 +251,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.press_back_again, Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -295,4 +302,13 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         this.recreate();
     }
 
+    @Override
+    public void onRestart() {
+        RefreshChecker.getInstance().setStarted(true);
+        if (RefreshChecker.getInstance().isStarted()) {
+            recreate();
+            RefreshChecker.getInstance().setStarted(false);
+        }
+        super.onRestart();
+    }
 }

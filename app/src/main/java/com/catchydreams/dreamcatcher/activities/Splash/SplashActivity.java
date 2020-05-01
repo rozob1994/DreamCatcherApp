@@ -13,6 +13,7 @@ import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.databinding.ActivitySplashBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.LocaleManager;
+import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.catchydreams.dreamcatcher.parameters.Users;
 
 import java.util.Locale;
@@ -36,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         LocaleManager.setLocale(getApplicationContext(), LocaleManager.getLanguage(getApplicationContext()));
         setLocale();
 
+        RefreshChecker.getInstance().setStarted(true);
 
 
         if (clickState){

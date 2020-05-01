@@ -219,7 +219,7 @@
     <string name="low">کم</string>
     <string name="mood">احساسات</string>
     <string name="names">اسامی افراد</string>
-    <string name="enter_the_names_here_separate_them_by_commas">اسم‌های کسانی که تو خواب دیدی رو اینجا وارد کن و بینشون ویرگول (،) بذار.</string>
+    <string name="enter_the_names_here_separate_them_by_commas">اسم‌های کسانی که تو خواب دیدی رو اینجا وارد کن و بینشون فاصله بذار.</string>
     <string name="positive">مثبت</string>
     <string name="neutral">خنثی</string>
     <string name="negative">منفی</string>
