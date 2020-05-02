@@ -20,6 +20,7 @@ import com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IFinishListener;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
+import com.catchydreams.dreamcatcher.managersAndFilters.FormatHelper;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.QuestionnaireEntry;
 import com.catchydreams.dreamcatcher.parameters.postParameters.majorParameters.Dream;
@@ -35,6 +36,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private List<Integer> postIds;
     private List<Integer> sleepTimes;
     private List<Integer> experiences;
+    String year, month, day;
     private List<Integer> days;
     private List<Integer> months;
     private List<Integer> years;
@@ -44,6 +46,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private LayoutInflater inflater;
     private SharedPreferences sp;
     private IFinishListener iFinishListener;
+
     public DreamsPackagesActivityAdapter(Context context, List<Integer> postIds,
                                          List<Integer> sleepTimes, List<Integer> experiences,
                                          List<Integer> days, List<Integer> months,
@@ -77,10 +80,19 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         String contentc = contents.get(position);
         int dayNightC = sleepTimes.get(position);
         int experience = experiences.get(position);
-        String day = days.get(position) + "";
-        String month = months.get(position) + "";
-        String year = years.get(position) + "";
+        SharedPreferences languagePrefs = context.getSharedPreferences("languages", Context.MODE_PRIVATE);
+        String language = languagePrefs.getString("language", "en");
+        if (language.equals("fa")) {
+            this.day = FormatHelper.toPersianNumber(days.get(position) + "");
+            this.month = FormatHelper.toPersianNumber(months.get(position) + "");
+            this.year = FormatHelper.toPersianNumber(years.get(position) + "");
+        } else {
+            this.day = days.get(position) + "";
+            this.month = months.get(position) + "";
+            this.year = years.get(position) + "";
+        }
         String date = year + "/" + month + "/" + day;
+
 
         holder.title.setText(contentc);
         holder.content.setText(titlec);
@@ -175,8 +187,9 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
             experience = itemView.findViewById(R.id.package_mood);
         }
     }
+
     private void setViews(int dayNightC, DreamsPackagesHolder holder,
-                          int experience){
+                          int experience) {
         setSleepTimeView(dayNightC, holder);
         setExperienceView(experience, holder);
         setLanguageFonts(holder);
@@ -205,7 +218,7 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
         }
     }
 
-    private void setLanguageFonts(DreamsPackagesHolder holder){
+    private void setLanguageFonts(DreamsPackagesHolder holder) {
         SharedPreferences languagePrefs = context.getSharedPreferences("languages", Context.MODE_PRIVATE);
         String language = languagePrefs.getString("language", "en");
         if (language.equals("fa")) {
@@ -221,11 +234,11 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private String contentShort(String content) {
         SharedPreferences languagePrefs = context.getSharedPreferences("languages", Context.MODE_PRIVATE);
         String language = languagePrefs.getString("language", "en");
-        if (content.length()>40){
+        if (content.length() > 40) {
             if (language.equals("fa")) {
-                return content.substring(0,126) + "... دیدن ادامه‌ی رؤیا";
+                return content.substring(0, 126) + "... دیدن ادامه‌ی رؤیا";
             } else {
-                return content.substring(0,126) + "... read more.";
+                return content.substring(0, 126) + "... read more.";
             }
         } else {
             return content;

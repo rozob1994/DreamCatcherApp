@@ -134,6 +134,42 @@ public class Date {
             case "dec":
                 monthInt = 12;
                 break;
+            case "فروردین":
+                monthInt = 1;
+                break;
+            case "اردیبهشت":
+                monthInt = 2;
+                break;
+            case "خرداد":
+                monthInt = 3;
+                break;
+            case "تیر":
+                monthInt = 4;
+                break;
+            case "مرداد":
+                monthInt = 5;
+                break;
+            case "شهریور":
+                monthInt = 6;
+                break;
+            case "مهر":
+                monthInt = 7;
+                break;
+            case "آبان":
+                monthInt = 8;
+                break;
+            case "آذر":
+                monthInt = 9;
+                break;
+            case "دی":
+                monthInt = 10;
+                break;
+            case "بهمن":
+                monthInt = 11;
+                break;
+            case "اسفند":
+                monthInt = 12;
+                break;
         }
         return monthInt;
     }
