@@ -38,15 +38,14 @@ import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.presenters.ProfilePresenter;
 import com.catchydreams.dreamcatcher.ui.customDialog.dialogViews.ViewStatsDialog;
 import com.catchydreams.dreamcatcher.ui.customFont.MoonTextView;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
 
 import maes.tech.intentanim.CustomIntent;
-import smartdevelop.ir.eram.showcaseviewlib.GuideView;
-import smartdevelop.ir.eram.showcaseviewlib.config.DismissType;
-import smartdevelop.ir.eram.showcaseviewlib.config.Gravity;
 
 public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
@@ -107,16 +106,74 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         presenter.setLevel();
         presenter.setTypeFace(languagePrefs);
 
-        new GuideView.Builder(this)
-                .setTitle("DreamCatcher")
-                .setContentText("this is your Dreamcatcher\n it represents your level\n you can also click on it to start adding a dream")
-                .setGravity(Gravity.center) //optional
-                .setDismissType(DismissType.anywhere) //optional - default DismissType.targetView
-                .setTargetView(findViewById(R.id.level_animation))
-                .setContentTextSize(12)//optional
-                .setTitleTextSize(14)//optional
-                .build()
-                .show();
+        new TapTargetSequence(this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.level_animation), getString(R.string.avatar), getString(R.string.tutorial_one))
+                                .targetRadius(140)
+                                .dimColor(R.color.inactive)
+                                .targetCircleColor(R.color.invisible)
+                                .textColor(android.R.color.black)
+                                .outerCircleColor(R.color.white)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+
+                        TapTarget.forView(findViewById(R.id.btn_add_dream), getString(R.string.add_a_dream), getString(R.string.tutorial_two))
+                                .dimColor(R.color.inactive)
+                                .targetRadius(40)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+                        TapTarget.forView(findViewById(R.id.btn_answer_questionnaire), getString(R.string.questionnaire), getString(R.string.tutorial_three))
+                                .targetRadius(40)
+                                .dimColor(R.color.inactive)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+
+                        TapTarget.forView(findViewById(R.id.btn_dreams), getString(R.string.dreams), getString(R.string.tutorial_four))
+                                .targetRadius(60)
+                                .dimColor(R.color.inactive)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+                        TapTarget.forView(findViewById(R.id.btn_stats), getString(R.string.stats), getString(R.string.tutorial_five))
+                                .targetRadius(60)
+                                .dimColor(R.color.inactive)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+                        TapTarget.forView(findViewById(R.id.level_btn), getString(R.string.levelsTitle), getString(R.string.tutorial_six))
+                                .targetRadius(30)
+                                .dimColor(R.color.inactive)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true),
+
+                        TapTarget.forView(findViewById(R.id.nav_btn), getString(R.string.options), getString(R.string.tutorial_seven))
+                                .targetRadius(30)
+                                .dimColor(R.color.inactive)
+                                .outerCircleColor(R.color.white)
+                                .targetCircleColor(R.color.white)
+                                .textColor(android.R.color.black)
+                                .transparentTarget(true)
+                                .drawShadow(true)
+
+                ).start();
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,8 +218,8 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding.btnStats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewStatsDialog dialog= new ViewStatsDialog();
-                dialog.showDialog(ProfileActivity.this,getApplicationContext());
+                ViewStatsDialog dialog = new ViewStatsDialog();
+                dialog.showDialog(ProfileActivity.this, getApplicationContext());
             }
         });
 

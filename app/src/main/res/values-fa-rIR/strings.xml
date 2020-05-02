@@ -241,4 +241,8 @@
     <string name="press_back_again">برای خارج شدن، دوباره کلید برگشت رو بزن.</string>
     <string name="reload_dreams">اگه می‌خوای رؤیاهات رو ببینی، دوباره وارد این صفحه شو.</string>
     <string name="reloadBtn">ورود مجدد</string>
+    <string name="avatar">آواتار</string>
+    <string name="tutorial_one">این آواتار توئه. هر چی بیشتر پیشرفت کنی، آواتارت هم تغییر میکنه. تو حتی میتونی روی آواتارت کلیک کنی تا رؤیات رو ثبت کنی.</string>
+    <string name="tutorial_two">با کلیک روی این دکمه، میتونی رؤیات رو ثبت کنی.</string>
+    <string name="tutorial_four">ب</string>
 </resources>

@@ -171,11 +171,10 @@
     <string name="LevelNineTitle">Level Nine</string>
     <string name="LevelTenTitle">Level Ten</string>
     <string name="choose_your_dream_or_create_a_new_one">Choose your Dream or create a new one</string>
-    <string name="dreams">DREAMS</string>
-    <string name="questionnaire">Questionnaire</string>
-    <string name="cancel">cancel</string>
+    <string name="dreams">Dreams</string>
+    <string name="cancel">Cancel</string>
     <string name="repeat_password">Repeat Password</string>
-    <string name="apply">apply</string>
+    <string name="apply">Apply</string>
     <string name="submit_dream">submit dream</string>
     <string name="d_r_e_a_m_s">D R E A M S</string>
     <string name="dream_count">Dream Count</string>
@@ -188,8 +187,8 @@
     <string name="do_you_want_to_answer_the_questionnaire">Do you want to answer the Questionnaire?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="stats">stats</string>
-    <string name="dreams_btn">dreams</string>
+    <string name="stats">Stats</string>
+    <string name="dreams_btn">Dreams</string>
     <string name="people">People</string>
     <string name="edit_username">Edit Username</string>
     <string name="edit_password">Edit Password</string>
@@ -200,10 +199,10 @@
     <string name="language">Language</string>
     <string name="persian">Persian</string>
     <string name="english">English</string>
-    <string name="l_a_n_g_u_a_g_e">L A N G U A G E</string>
+    <string name="l_a_n_g_u_a_g_e">Language</string>
     <string name="log_out">Log Out</string>
     <string name="dialog_note_delete">Are you sure you want to delete your dream?</string>
-    <string name="levelsTitle">levels</string>
+    <string name="levelsTitle">Levels</string>
     <string name="pass_not_match">passwords do not match.</string>
     <string name="error">Error</string>
     <string name="today_s_physical_activity">Today’s physical activity</string>
@@ -242,5 +241,15 @@
     <string name="press_back_again">Please click BACK again to exit</string>
     <string name="reload_dreams">Please reload the page to see your dreams.</string>
     <string name="reloadBtn">reload</string>
+    <string name="avatar">Avatar</string>
+    <string name="tutorial_one">this is your Avatar. It shows your level and changes as you progress. You can also click it to start adding a Dream.</string>
+    <string name="tutorial_two">You can click on this button to start adding a dream</string>
+    <string name="tutorial_three">You can answer this Questionnaire to figure out the amount of lucidity of your dream</string>
+    <string name="tutorial_four">You can click this button to view a list of your Dreams. You can also click on each dream to see its details</string>
+    <string name="tutorial_five">You can click this button to view detailed stats of your dreams.</string>
+    <string name="tutorial_six">Click here to view the Avatars of each level.</string>
+    <string name="tutorial_seven">Here are some options as well as our social media information.</string>
+    <string name="add_a_dream">Add a Dream</string>
+    <string name="questionnaire">Questionnaire</string>
 
 </resources>
