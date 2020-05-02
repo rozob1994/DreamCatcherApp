@@ -42,6 +42,7 @@ public class Date {
         this.dayOfMonth = day;
         this.dayOfWeek = dayToWeekOfMonth(day);
         this.month = monthStrToInt(month);
+        Log.e("","");
         this.year = Integer.parseInt(year);
         this.weekOfMonth = dayToWeekOfMonth(day);
         this.dayOfYear = dayOfYear(this.year,this.month,day);
@@ -94,48 +95,47 @@ public class Date {
      * @return int of month
      */
     public static int monthStrToInt(String month) {
+        String month2 = month.toLowerCase();
         int monthInt = 0;
-        Log.e("","");
-       switch (month) {
-           case "Jan":
-               monthInt = 1;
-               return monthInt;
-           case "Feb":
-               monthInt = 2;
-               return monthInt;
-           case "Mar":
-               monthInt = 3;
-               return monthInt;
-           case "Apr":
-               monthInt = 4;
-               return monthInt;
-           case "May":
-               monthInt = 5;
-               return monthInt;
-           case "Jun":
-               monthInt = 6;
-               return monthInt;
-           case "Jul":
-               monthInt = 7;
-               return monthInt;
-           case "Aug":
-               monthInt = 8;
-               return monthInt;
-           case "Sep":
-               monthInt = 9;
-               return monthInt;
-           case "Oct":
-               monthInt = 10;
-               return monthInt;
-           case "Nov":
-               monthInt = 11;
-               return monthInt;
-           case "Dec":
-               monthInt = 12;
-               return monthInt;
-           default: return monthInt;
-
-       }
+        switch (month2) {
+            case "jan":
+                monthInt = 1;
+                break;
+            case "feb":
+                monthInt = 2;
+                break;
+            case "mar":
+                monthInt = 3;
+                break;
+            case "apr":
+                monthInt = 4;
+                break;
+            case "may":
+                monthInt = 5;
+                break;
+            case "jun":
+                monthInt = 6;
+                break;
+            case "jul":
+                monthInt = 7;
+                break;
+            case "aug":
+                monthInt = 8;
+                break;
+            case "sep":
+                monthInt = 9;
+                break;
+            case "oct":
+                monthInt = 10;
+                break;
+            case "nov":
+                monthInt = 11;
+                break;
+            case "dec":
+                monthInt = 12;
+                break;
+        }
+        return monthInt;
     }
     /**
      * @return 0 = Saturday, 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday,

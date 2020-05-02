@@ -928,7 +928,6 @@ public class DreamInputPresenter {
             @Override
             public void afterTextChanged(Editable s) {
                 sp.edit().putBoolean(textTitle + "Exists", true).apply();
-                ;
                 sp.edit().putString(textTitle, s.toString()).apply();
             }
         });
