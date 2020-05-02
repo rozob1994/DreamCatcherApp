@@ -4,34 +4,34 @@
     <string name="dream_description_hint">هرچی از خوابت یادت میاد رو یادداشت کن، اگر هم چیزی یادت نمیاد بنویس که یادت نمیاد.</string>
     <string-array name="year">
 
-        <item>2020</item>
-        <item>2019</item>
-        <item>2018</item>
-        <item>2017</item>
-        <item>2016</item>
-        <item>2015</item>
-        <item>2014</item>
-        <item>2013</item>
-        <item>2012</item>
-        <item>2011</item>
-        <item>2010</item>
+        <item name="2020">۱۳۹۹</item>
+        <item name="2019">۱۳۹۸</item>
+        <item name="2018">۱۳۹۷</item>
+        <item name="2017">۱۳۹۶</item>
+        <item name="2016">۱۳۹۵</item>
+        <item name="2015">۱۳۹۴</item>
+        <item name="2014">۱۳۹۳</item>
+        <item name="2013">۱۳۹۲</item>
+        <item name="2012">۱۳۹۱</item>
+        <item name="2011">۱۳۹۰</item>
+        <item name="2010">۱۳۸۹</item>
 
     </string-array>
 
     <string-array name="month">
 
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
+        <item name="january">فروردین</item>
+        <item name="february">اردیبهشت</item>
+        <item name="march">خرداد</item>
+        <item name="april">تیر</item>
+        <item name="may">مرداد</item>
+        <item name="june">شهریور</item>
+        <item name="july">مهر</item>
+        <item name="august">آبان</item>
+        <item name="september">آذر</item>
+        <item name="october">دی</item>
+        <item name="november">بهمن</item>
+        <item name="december">اسفند</item>
 
     </string-array>
 
