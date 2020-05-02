@@ -44,6 +44,9 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
 import maes.tech.intentanim.CustomIntent;
+import smartdevelop.ir.eram.showcaseviewlib.GuideView;
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType;
+import smartdevelop.ir.eram.showcaseviewlib.config.Gravity;
 
 public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
@@ -59,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     boolean doubleBackToExitPressedOnce = false;
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +85,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
 
-
         ProfilePresenter presenter = new ProfilePresenter(this);
 
         boolean languageChanged = presenter.checkLanguageChanged(languagePrefs);
@@ -103,6 +106,18 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         dreamChoosingOff.edit().clear().apply();
         presenter.setLevel();
         presenter.setTypeFace(languagePrefs);
+
+        new GuideView.Builder(this)
+                .setTitle("DreamCatcher")
+                .setContentText("this is your Dreamcatcher\n it represents your level\n you can also click on it to start adding a dream")
+                .setGravity(Gravity.center) //optional
+                .setDismissType(DismissType.anywhere) //optional - default DismissType.targetView
+                .setTargetView(findViewById(R.id.level_animation))
+                .setContentTextSize(12)//optional
+                .setTitleTextSize(14)//optional
+                .build()
+                .show();
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,7 +193,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 binding.drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
 
         binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
