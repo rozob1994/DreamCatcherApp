@@ -185,6 +185,7 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
             @Override
             public void onClick(View v) {
                 SharedPreferencesManager.clearDreamSleepQuest(getContext());
+                Sleep.delSleep();
                 Intent intent = new Intent(getContext(), ProfileActivity.class);
                 startActivity(intent);
             }

@@ -1,5 +1,7 @@
 package com.catchydreams.dreamcatcher.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
@@ -31,14 +33,29 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
         binding = ActivityDreamsPackagesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        String languageToLoad = languagePrefs.getString("language", "en");
+        if(savedInstanceState!=null){
+            boolean destroyed = savedInstanceState.getBoolean("destroyed");
+            if (destroyed) {
+                binding.dreamsRecycler.setVisibility(View.GONE);
+                binding.reloadDreams.setVisibility(View.VISIBLE);
+                binding.btnReload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
         if (RefreshChecker.getInstance().isStarted()) {
             recreate();
             RefreshChecker.getInstance().setStarted(false);
         }
 
-        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
-        String languageToLoad = languagePrefs.getString("language", "en");
+
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -65,6 +82,20 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
             }
         });
     }
+
+    @Override
+    public void onDestroy(){
+        getSharedPreferences("destruction", Context.MODE_PRIVATE).edit().putBoolean("destroyed",true).apply();
+        super.onDestroy();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.clear();
+        savedInstanceState.putBoolean("destroyed", true);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+
 
 
     @Override

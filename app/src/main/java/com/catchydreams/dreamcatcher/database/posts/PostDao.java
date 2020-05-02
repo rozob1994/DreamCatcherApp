@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,5 +18,8 @@ public interface PostDao {
 
     @Query("DELETE FROM posts")
     void deleteAllPosts();
+
+    @Update
+    void updatePost(PostsEntity post);
 
 }

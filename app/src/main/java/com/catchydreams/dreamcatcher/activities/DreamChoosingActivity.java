@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAdapter;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamChoosingView;
+import com.catchydreams.dreamcatcher.activities.viewInterfaces.IFinishListener;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.databinding.ActivityDreamChoosingBinding;
@@ -22,7 +23,8 @@ import com.catchydreams.dreamcatcher.presenters.DreamChoosingPresenter;
 
 import maes.tech.intentanim.CustomIntent;
 
-public class DreamChoosingActivity extends AppCompatActivity implements IDreamChoosingView {
+public class DreamChoosingActivity extends AppCompatActivity implements IDreamChoosingView,
+        IFinishListener {
 
     private ActivityDreamChoosingBinding binding;
     private RecyclerView dreamsRecycler;
@@ -87,5 +89,10 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
         Typeface text = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
         binding.dreamsTitle.setTypeface(title);
         binding.hintChooseDream.setTypeface(text);
+    }
+
+    @Override
+    public void onFinish() {
+        this.finish();
     }
 }

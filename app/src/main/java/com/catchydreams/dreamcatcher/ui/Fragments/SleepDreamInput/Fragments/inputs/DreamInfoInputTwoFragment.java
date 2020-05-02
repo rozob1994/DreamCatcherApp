@@ -20,6 +20,8 @@ import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamInfoInput;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.FragmentDreamInfoInputTwoBinding;
 import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.parameters.dateParameters.parameters.Date;
@@ -115,15 +117,21 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences databasePrefs = getContext().getSharedPreferences("database", Context.MODE_PRIVATE);
+                databasePrefs.edit().putBoolean("changed", true).apply();
                 dreamToLuciditySp.edit().putBoolean("fromDream", false).apply();
                 Users user = Users.getInstance();
                 user.checkSetLevelChange(getContext());
+                if(user.isLevelChanged()) {
+                    Database db = Database.getInstance(getContext());
+                    db.userDao().updateUser(new UserEntity(languagePrefs.getString("language","en")));
+                }
+
                 sleepPrefs.edit().clear().apply();
                 presenter.saveCompleteDream(getActivity(), getContext(), interpretation,
-                        title, content, day, month, year, binding.loadingBg,
+                        title, content, day, month, year,
                         dreamOne.edit(), dreamTwo.edit());
-                /**Dream.delDream();
-                 Sleep.delSleep();**/
+
 
             }
         });
@@ -135,8 +143,6 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
                 sleepPrefs.edit().clear().apply();
                 dreamOne.edit().clear().apply();
                 dreamTwo.edit().clear().apply();
-                /**Dream.delDream();
-                 Sleep.delSleep();**/
                 Intent intent = new Intent(v.getContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(getContext(), "fadein-to-fadeout");

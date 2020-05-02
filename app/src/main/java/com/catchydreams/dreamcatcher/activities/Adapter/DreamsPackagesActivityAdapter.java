@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.viewInterfaces.IFinishListener;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.QuestionnaireEntry;
@@ -42,10 +43,10 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
     private Context context;
     private LayoutInflater inflater;
     private SharedPreferences sp;
-
+    private IFinishListener iFinishListener;
     public DreamsPackagesActivityAdapter(Context context, List<Integer> postIds,
                                          List<Integer> sleepTimes, List<Integer> experiences,
-                                         List<Integer> days,List<Integer> months,
+                                         List<Integer> days, List<Integer> months,
                                          List<Integer> years, List<String> titles,
                                          List<String> contents) {
         this.postIds = postIds;

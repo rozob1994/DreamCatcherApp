@@ -23,6 +23,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamInfoInput;
+import com.catchydreams.dreamcatcher.database.Database;
+import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.dateParameters.parameters.Date;
@@ -1092,9 +1094,9 @@ public class DreamInputPresenter {
 
     public void saveCompleteDream(Activity activity, Context context, AppCompatEditText interpretation,
                                   AppCompatEditText title, AppCompatEditText content,
-                                  Spinner daySp, Spinner monthSp, Spinner yearSp, RelativeLayout loadingBg,
+                                  Spinner daySp, Spinner monthSp, Spinner yearSp,
                                   SharedPreferences.Editor dreamPref, SharedPreferences.Editor dreamPrefTwo) {
-        setLoadingVisible(loadingBg);
+
         date = Date.getInstance();
         description = DreamDescription.getInstance();
         DreamInterpretation dreamInterpretation = DreamInterpretation.getInstance();
@@ -1108,8 +1110,16 @@ public class DreamInputPresenter {
         String month = monthSp.getSelectedItem().toString();
         String year = yearSp.getSelectedItem().toString();
         date.setCustomDay(year, month, day);
+        Database db = Database.getInstance(context);
+        PostsEntity post = new PostsEntity();
+
         ApiPostCaller postCaller = new ApiPostCaller();
         if (SharedPreferencesManager.dreamIsLoaded(context)) {
+            db.postDao().updatePost(post);
+
+            ViewDreamInputDialog dialog = new ViewDreamInputDialog();
+            dialog.showDialog(activity, context, dreamPref,
+                    dreamPrefTwo);
             postCaller.editDream(new IResponseMessage() {
                 @Override
                 public void onSuccess(Object response) throws JSONException {
@@ -1132,14 +1142,12 @@ public class DreamInputPresenter {
                                                 dialog.showDialog(activity, context, dreamPref,
                                                         dreamPrefTwo);
                                             } else {
-                                                loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(String errorMessage) {
-                                            loadingBg.setVisibility(View.GONE);
                                             Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                                         }
                                     });
@@ -1154,18 +1162,21 @@ public class DreamInputPresenter {
 
 
                     } else {
-                        loadingBg.setVisibility(View.GONE);
                         Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(String errorMessage) {
-                    loadingBg.setVisibility(View.GONE);
                     Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
                 }
             });
         } else {
+            db.postDao().post(post);
+
+            ViewDreamInputDialog dialog = new ViewDreamInputDialog();
+            dialog.showDialog(activity, context, dreamPref,
+                    dreamPrefTwo);
             postCaller.postPeople(new IResponseMessage() {
                 @Override
                 public void onSuccess(Object response) throws JSONException {
@@ -1185,31 +1196,25 @@ public class DreamInputPresenter {
                                             JSONObject jsonObject1 = new JSONObject(response.toString());
                                             boolean status1 = jsonObject1.getBoolean("status");
                                             if (status1) {
-                                                ViewDreamInputDialog dialog = new ViewDreamInputDialog();
-                                                dialog.showDialog(activity, context, dreamPref,
-                                                        dreamPrefTwo);
+
                                             } else {
-                                                loadingBg.setVisibility(View.GONE);
                                                 Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(String errorMessage) {
-                                            loadingBg.setVisibility(View.GONE);
                                             Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                                         }
                                     });
 
                                 } else {
-                                    loadingBg.setVisibility(View.GONE);
                                     Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(String errorMessage) {
-                                loadingBg.setVisibility(View.GONE);
                                 Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
                             }
                         });

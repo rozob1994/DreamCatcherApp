@@ -116,8 +116,10 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -127,6 +129,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 Intent intent = new Intent(getApplicationContext(), LevelsActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+                finish();
             }
         });
 
@@ -136,6 +139,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+                finish();
             }
         });
 
@@ -154,6 +158,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+                finish();
             }
         });
 
@@ -163,6 +168,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                 SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
                 IntentManager.goToQuestionnaireFromProfile(getApplicationContext(), languageChanged);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
+                finish();
             }
         });
 
@@ -210,8 +216,8 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                         break;
 
                     case R.id.log_out:
-                        UserEntity userEntity = new UserEntity(user.getUid(), user.getLevel(),
-                                user.getEmail(), languagePrefs.getString("language", "en"));
+                        UserEntity userEntity = new UserEntity(
+                                languagePrefs.getString("language", "en"));
                         db.userDao().deleteUser(userEntity);
                         db.postDao().deleteAllPosts();
                         Users.delUser();

@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                                         sharedPreferences.edit().putInt("uid", uid).apply();
                                         sharedPreferences.edit().putString("username", username).apply();
                                         user.setUid(uid);
-                                        UserEntity userEntity = new UserEntity(uid, level, username, "en");
+                                        UserEntity userEntity = new UserEntity("en");
                                         db.userDao().insertUser(userEntity);
                                         PostLoadingThread postLoadingThread = new PostLoadingThread(getApplicationContext());
                                         postLoadingThread.start();

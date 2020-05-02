@@ -238,4 +238,7 @@
     <string name="lucid"> هشیاری در رؤیا</string>
     <string name="set_dream_count">تعداد رؤیاها: </string>
     <string name="back_to_dream">برگرد به رؤیا</string>
+    <string name="press_back_again">برای خارج شدن، دوباره کلید برگشت رو بزن.</string>
+    <string name="reload_dreams">اگه می‌خوای رؤیاهات رو ببینی، دوباره وارد این صفحه شو.</string>
+    <string name="reloadBtn">ورود مجدد</string>
 </resources>

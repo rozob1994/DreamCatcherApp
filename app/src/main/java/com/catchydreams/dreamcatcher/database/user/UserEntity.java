@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.catchydreams.dreamcatcher.parameters.Users;
+
 @Entity(tableName = "user")
 public class UserEntity {
     @PrimaryKey
@@ -23,10 +25,11 @@ public class UserEntity {
 
     public UserEntity(){}
 
-    public UserEntity(int uid, int level, String username, String language){
-        this.uid = uid;
-        this.level = level;
-        this.username = username;
+    public UserEntity(String language){
+        Users user = Users.getInstance();
+        this.uid = user.getUid();
+        this.level = user.getLevel();
+        this.username = user.getEmail();
         this.language = language;
     }
 

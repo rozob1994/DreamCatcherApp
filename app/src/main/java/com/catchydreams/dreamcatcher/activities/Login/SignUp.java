@@ -75,7 +75,7 @@ public class SignUp extends AppCompatActivity {
                                     spLogin.edit().putString("username", mail).apply();
                                     spLogin.edit().putInt("level", 1).apply();
                                     user.setPassword(pass);
-                                    UserEntity userEntity = new UserEntity(user.getUid(), user.getLevel(), user.getEmail(), "en");
+                                    UserEntity userEntity = new UserEntity("en");
                                     db.userDao().insertUser(userEntity);
                                     Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
                                     startActivity(intent);

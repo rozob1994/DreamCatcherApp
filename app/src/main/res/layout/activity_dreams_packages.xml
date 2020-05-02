@@ -105,6 +105,41 @@
 
 
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/reloadDreams"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_main_bar"
+            >
+            <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/reload_dreams"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:elevation="40dp"
+                android:textSize="20sp"
+                android:layout_margin="20dp"
+                android:layout_centerInParent="true" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_reload"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_simple_rounded"
+                android:backgroundTint="@color/txt_glow"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:text="@string/reloadBtn"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dreams_recycler"
