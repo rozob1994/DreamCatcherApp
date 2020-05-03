@@ -31,7 +31,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
         if (firstLogin) {
             language = "en";
         } else {
-            String language = sp.getString("language", "en");
+            language = sp.getString("language", "en");
         }
         if (language.equals("fa")) {
             Typeface font = Typeface.createFromAsset(getAssets(), PersianFont.title);

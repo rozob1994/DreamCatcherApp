@@ -242,7 +242,7 @@
     <string name="reload_dreams">Please reload the page to see your dreams.</string>
     <string name="reloadBtn">reload</string>
     <string name="avatar">Avatar</string>
-    <string name="tutorial_one">this is your Avatar. It shows your level and changes as you progress. You can also click it to start adding a Dream.</string>
+    <string name="tutorial_one">this is your Avatar. It shows your level and changes as you enter your dreams. You can also click on it to start adding a Dream.</string>
     <string name="tutorial_two">You can click on this button to start adding a dream</string>
     <string name="tutorial_three">You can answer this Questionnaire to figure out the degree of lucidity in your dream</string>
     <string name="tutorial_four">You can click this button to view a list of your Dreams. You can also click on each dream to see its details</string>
