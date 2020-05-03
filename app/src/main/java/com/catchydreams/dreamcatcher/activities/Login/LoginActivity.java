@@ -3,6 +3,7 @@ package com.catchydreams.dreamcatcher.activities.Login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,8 @@ import com.catchydreams.dreamcatcher.webservice.ApiPostCaller;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private ActivityLoginBinding binding;
@@ -41,7 +44,14 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         Database db = Database.getInstance(this);
-
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        String languageToLoad = languagePrefs.getString("language", "en");
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("logged", false)) {
             Users user = Users.getInstance();

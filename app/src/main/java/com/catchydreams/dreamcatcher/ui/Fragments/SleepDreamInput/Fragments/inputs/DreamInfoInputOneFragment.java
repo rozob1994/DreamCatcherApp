@@ -283,15 +283,9 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
         if (dreamPrefs.getBoolean("hasPeople", false)) {
 
-            presenter.splitNames(languagePrefs, dreamPrefsEditor, getContext(), peopleNames, namesHints,
-                    feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
-                    neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
-
             presenter.loadPeople(dreamPrefs, dreamPrefsEditor, peopleNames, namesHints,
                     feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
                     neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
-
-
         }
         presenter.splitNames(languagePrefs, dreamPrefsEditor, getContext(), peopleNames, namesHints,
                 feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,

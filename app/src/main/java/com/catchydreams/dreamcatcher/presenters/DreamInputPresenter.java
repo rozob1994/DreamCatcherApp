@@ -274,7 +274,7 @@ public class DreamInputPresenter {
                     Log.e("","");
                     List<Integer> disposables = new ArrayList<>();
                     for (int i = 0; i <= prevCount; i++) {
-                        if (i > namesList.size()){
+                        if (i >= namesList.size()){
                             disposables.add(i);
                         }
                     }
@@ -385,10 +385,12 @@ public class DreamInputPresenter {
                     List<String> namesList = Arrays.asList(string.split(" "));
                     Log.e("","");
                     String hint = context.getString(R.string.hint_feelings);
+                    DreamPeople.getInstance().setPeopleCount(namesList.size());
                     for (int i = 0; i < namesList.size(); i++) {
                         if (i < 10) {
                             DreamPeople people = DreamPeople.getInstance();
                             people.setName(i, namesList.get(i));
+                            Log.e("","");
                             Dream dream = Dream.getInstance();
                             dream.setDreamPeople(people);
 
@@ -457,7 +459,7 @@ public class DreamInputPresenter {
 
                         }
                     }
-                    DreamPeople.getInstance().setPeopleCount(namesList.size());
+
                 }
 
             }
@@ -471,7 +473,21 @@ public class DreamInputPresenter {
             public void afterTextChanged(Editable s) {
                 String string = s.toString();
                 List<String> namesList = Arrays.asList(string.split(" "));
-                if (namesList.size() < DreamPeople.getInstance().getCount()) {
+                int prevCount = DreamPeople.getInstance().getCount();
+                if (namesList.size() < prevCount) {
+                    Log.e("","");
+                    List<Integer> disposables = new ArrayList<>();
+                    for (int i = 0; i <= prevCount; i++) {
+                        if (i >= namesList.size()){
+                            disposables.add(i);
+                        }
+                    }
+                    for (int i = 0; i < disposables.size();i++){
+                        int disposable = disposables.get(i);
+                        makeExcessiveFeelingsInvisible(namesHints.get(disposable),
+                                feelingsOnLayouts.get(disposable), feelingsOffLayouts.get(disposable));
+                        Log.e("","");
+                    }
                     DreamPeople.delPeople();
                 }
                 String hint = context.getString(R.string.hint_feelings);
@@ -479,7 +495,6 @@ public class DreamInputPresenter {
                     if (i < 10) {
                         DreamPeople people = DreamPeople.getInstance();
                         people.setName(i, namesList.get(i));
-                        Log.e("","");
                         Dream dream = Dream.getInstance();
                         dream.setDreamPeople(people);
 
@@ -548,6 +563,7 @@ public class DreamInputPresenter {
 
                     }
                 }
+
             }
         });
     }
