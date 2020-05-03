@@ -3,6 +3,7 @@ package com.catchydreams.dreamcatcher.activities.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -15,6 +16,7 @@ import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.Splash.SplashActivity;
 import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
+import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.ActivityLoginBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
@@ -48,6 +50,20 @@ public class LoginActivity extends AppCompatActivity implements IConnectionCheck
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
+        if (languageToLoad.equals("fa")){
+            Typeface title = Typeface.createFromAsset(getAssets(), PersianFont.title);
+            Typeface subTitle = Typeface.createFromAsset(getAssets(), PersianFont.regular);
+            binding.loginTitle.setTypeface(title);
+            binding.loginTitle.setTextSize(PersianFont.normalLarge);
+            binding.passwordEdtTxtTitle.setTypeface(title);
+            binding.usernameEdtTxtTitle.setTypeface(title);
+            binding.passwordEdtTxtTitle.setTextSize(PersianFont.normal);
+            binding.usernameEdtTxtTitle.setTextSize(PersianFont.normal);
+            binding.registerBtnTitle.setTypeface(subTitle);
+            binding.enterBtnTitle.setTypeface(subTitle);
+            binding.registerBtnTitle.setTextSize(PersianFont.normalSmall);
+            binding.enterBtnTitle.setTextSize(PersianFont.normalSmall);
+        }
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("logged", false)) {
             Users user = Users.getInstance();

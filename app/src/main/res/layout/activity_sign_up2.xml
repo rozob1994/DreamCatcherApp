@@ -81,7 +81,8 @@
         android:paddingTop="2dp"
         android:textColor="@color/white"
         android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size" />
+        android:textSize="@dimen/edt_txt_size"
+        android:inputType="textPassword"/>
 
     <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
         android:id="@+id/password_edt_txt_title_two"
@@ -108,7 +109,8 @@
         android:paddingTop="2dp"
         android:textColor="@color/white"
         android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size" />
+        android:textSize="@dimen/edt_txt_size"
+        android:inputType="textPassword"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -130,6 +132,7 @@
                 android:background="@drawable/button_accept" />
 
             <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                android:id="@+id/signUpBtnTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_signUp_accept"
@@ -152,6 +155,7 @@
                 android:background="@drawable/button_decline" />
 
             <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                android:id="@+id/signinBtnTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_signUp_decline"

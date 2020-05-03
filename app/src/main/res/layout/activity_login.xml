@@ -81,7 +81,8 @@
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginStart="50dp" />
+            android:layout_marginStart="50dp"
+            android:inputType="textPassword"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -103,6 +104,7 @@
                     android:background="@drawable/button_accept" />
 
                 <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                    android:id="@+id/enterBtnTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/btn_login_accept"
                     android:textColor="@color/white"
@@ -125,6 +127,7 @@
                     android:background="@drawable/button_decline" />
 
                 <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                    android:id="@+id/registerBtnTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/btn_login_decline"
                     android:textColor="@color/white"

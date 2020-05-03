@@ -2,6 +2,8 @@ package com.catchydreams.dreamcatcher.activities.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
 import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
+import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.ActivitySignUp2Binding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
@@ -23,6 +26,8 @@ import com.catchydreams.dreamcatcher.webservice.ApiCaller;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Locale;
 
 public class SignUp extends AppCompatActivity implements IConnectionChecker {
     ActivitySignUp2Binding binding;
@@ -35,6 +40,30 @@ public class SignUp extends AppCompatActivity implements IConnectionChecker {
         View view = binding.getRoot();
         setContentView(view);
         ConnectionChecker connection = new ConnectionChecker(this);
+        SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
+        String languageToLoad = languagePrefs.getString("language", "en");
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+        if (languageToLoad.equals("fa")){
+            Typeface title = Typeface.createFromAsset(getAssets(), PersianFont.title);
+            Typeface subTitle = Typeface.createFromAsset(getAssets(), PersianFont.regular);
+            binding.signUpTitle.setTypeface(title);
+            binding.signUpTitle.setTextSize(PersianFont.normalLarge);
+            binding.passwordEdtTxtTitle.setTypeface(title);
+            binding.usernameEdtTxtTitle.setTypeface(title);
+            binding.passwordEdtTxtTitleTwo.setTypeface(title);
+            binding.passwordEdtTxtTitle.setTextSize(PersianFont.normal);
+            binding.passwordEdtTxtTitleTwo.setTextSize(PersianFont.normal);
+            binding.usernameEdtTxtTitle.setTextSize(PersianFont.normal);
+            binding.signUpBtnTitle.setTypeface(subTitle);
+            binding.signinBtnTitle.setTypeface(subTitle);
+            binding.signUpBtnTitle.setTextSize(PersianFont.normalSmall);
+            binding.signinBtnTitle.setTextSize(PersianFont.normalSmall);
+        }
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
         SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
