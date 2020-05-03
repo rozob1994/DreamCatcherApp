@@ -251,5 +251,5 @@
     <string name="tutorial_seven">Here are some options as well as our social media information.</string>
     <string name="add_a_dream">Add a Dream</string>
     <string name="questionnaire">Questionnaire</string>
-
+    <string name="dreams_packages_tutorial">You have no dreams yet, click here to start adding dreams.</string>
 </resources>

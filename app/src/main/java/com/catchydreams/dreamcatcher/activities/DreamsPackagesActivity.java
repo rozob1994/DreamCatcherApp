@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,11 +21,15 @@ import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.presenters.DreamsPresenter;
 import com.catchydreams.dreamcatcher.presenters.presenterInterfaces.IDreamPackagesView;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.Locale;
 
 public class DreamsPackagesActivity extends AppCompatActivity implements IDreamPackagesView {
     private ActivityDreamsPackagesBinding binding;
+    private Typeface tutorialFont, tutorialTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,30 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
                     }
                 });
             }
+        }
+        Intent intent = getIntent();
+        boolean firstLogin = intent.getBooleanExtra("firstLogin", false);
+        Log.e("","");
+        if (firstLogin) {
+            if (languageToLoad.equals("fa")){
+                tutorialFont = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
+                tutorialTitle = Typeface.createFromAsset(getAssets(), PersianFont.title);
+            } else {
+                tutorialFont = Typeface.createFromAsset(getAssets(), "fonts/sofiapro-light.otf");
+                tutorialTitle = Typeface.createFromAsset(getAssets(), "fonts/sofiapro-light.otf");
+            }
+            new TapTargetSequence(this)
+                    .targets(
+                            TapTarget.forView(findViewById(R.id.level_animation), getString(R.string.avatar), getString(R.string.dreams_packages_tutorial))
+                                    .targetRadius(140)
+                                    .dimColor(R.color.inactive)
+                                    .targetCircleColor(R.color.invisible)
+                                    .textColor(android.R.color.black)
+                                    .outerCircleColor(R.color.white)
+                                    .transparentTarget(true)
+                                    .drawShadow(true)
+                                    .textTypeface(tutorialFont)
+                                    .titleTypeface(tutorialTitle));
         }
         if (RefreshChecker.getInstance().isStarted()) {
             recreate();

@@ -62,7 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     private LottieAnimationView levelAnim;
     private MoonTextView levelTitle;
     private Typeface tutorialFont, tutorialTitle;
-
+    private boolean firstLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
         Intent intent = getIntent();
-        boolean firstLogin = intent.getBooleanExtra("firstLogin", false);
+        firstLogin = intent.getBooleanExtra("firstLogin", false);
         if (firstLogin) {
             if (languageToLoad.equals("fa")) {
                 tutorialFont = Typeface.createFromAsset(getAssets(), PersianFont.subTitle);
@@ -234,6 +234,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
+                intent.putExtra("firstLogin", firstLogin);
                 startActivity(intent);
                 CustomIntent.customType(ProfileActivity.this, "fadein-to-fadeout");
                 finish();
