@@ -55,7 +55,7 @@ public class DreamInputPresenter {
     DreamDescription description;
     Date date;
     IDreamInfoInput iDreamInfoInput;
-
+    String newNames;
     public DreamInputPresenter(IDreamInfoInput iDreamInfoInput) {
         this.iDreamInfoInput = iDreamInfoInput;
     }
@@ -484,9 +484,10 @@ public class DreamInputPresenter {
                     }
                     for (int i = 0; i < disposables.size();i++){
                         int disposable = disposables.get(i);
-                        makeExcessiveFeelingsInvisible(namesHints.get(disposable),
-                                feelingsOnLayouts.get(disposable), feelingsOffLayouts.get(disposable));
-                        Log.e("","");
+                        if (disposable < namesHints.size()){
+                            makeExcessiveFeelingsInvisible(namesHints.get(disposable),
+                                    feelingsOnLayouts.get(disposable), feelingsOffLayouts.get(disposable));
+                        }
                     }
                     DreamPeople.delPeople();
                 }
@@ -563,9 +564,10 @@ public class DreamInputPresenter {
 
                     }
                 }
-
             }
-        });
+        }
+        );
+
     }
 
     public void loadPeople(SharedPreferences dreamPrefs, SharedPreferences.Editor dreamPrefsEditor,
@@ -578,7 +580,7 @@ public class DreamInputPresenter {
                            List<LinearLayout> neutralBtnsOn,
                            List<LinearLayout> neutralBtnsOff,
                            List<LinearLayout> negativeBtnsOn,
-                           List<LinearLayout> negativeBtnsOff) {
+                           List<LinearLayout> negativeBtnsOff, String language) {
 
         for (int i = 0; i < 10; i++) {
             if (i == 0) {
@@ -590,7 +592,12 @@ public class DreamInputPresenter {
                 if (!people.getName(i).equals("")) {
                     String name = people.getName(i);
                     String loadedNames = peopleNames.getText().toString();
-                    String newNames = loadedNames + ", " + name;
+                    if (language.equals("en")){
+                        newNames = loadedNames + ", " + name;
+                    } else if (language.equals("fa")){
+                        newNames = loadedNames + " " + name;
+                    }
+
                     peopleNames.setText(newNames);
                 }
             }
@@ -1012,7 +1019,6 @@ public class DreamInputPresenter {
         lucidity = DreamLucidity.getInstance();
         String string = edtTxtNames.getText().toString();
         List<String> namesList = Arrays.asList(string.split(","));
-        setNamesList(namesList);
         setImpressions(positiveOn, positiveOn2, positiveOn3, positiveOn4, positiveOn5, positiveOn6,
                 positiveOn7, positiveOn8, positiveOn9, positiveOn10, neutralOn, neutralOn2, neutralOn3,
                 neutralOn4, neutralOn5, neutralOn6, neutralOn7, neutralOn8, neutralOn9, neutralOn10,

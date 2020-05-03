@@ -14,7 +14,7 @@ import android.view.Window;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.catchydreams.dreamcatcher.R;
-import com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity;
+import com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity;
 import com.catchydreams.dreamcatcher.activities.LucidDreamingQuestionnaireActivity;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.parameters.QuestionnaireEntry;
@@ -68,12 +68,14 @@ public class ViewDreamInputDialog {
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, ExpandedDreamActivity.class);
+                intent.putExtra("postId", Dream.getInstance().getPostId());
+                intent.putExtra("sleepTime", Sleep.getInstance().getTime());
+                context.startActivity(intent);
                 dreamPref.clear().apply();
                 dreamPrefTwo.clear().apply();
                 Dream.delDream();
                 Sleep.delSleep();
-                Intent intent = new Intent(context, DreamsPackagesActivity.class);
-                context.startActivity(intent);
             }
         });
         dialog.show();

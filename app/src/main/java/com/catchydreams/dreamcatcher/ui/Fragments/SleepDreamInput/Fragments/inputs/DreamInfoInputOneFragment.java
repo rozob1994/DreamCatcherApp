@@ -285,12 +285,11 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
 
             presenter.loadPeople(dreamPrefs, dreamPrefsEditor, peopleNames, namesHints,
                     feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
-                    neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
+                    neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff, languagePrefs.getString("language","en"));
         }
         presenter.splitNames(languagePrefs, dreamPrefsEditor, getContext(), peopleNames, namesHints,
                 feelingsOnLayouts, feelingsOffLayouts, positiveBtnsOn, positiveBtnsOff,
                 neutralBtnsOn, neutralBtnsOff, negativeBtnsOn, negativeBtnsOff);
-
 
         //_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_[COLOR BUTTON CODE]_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
 
