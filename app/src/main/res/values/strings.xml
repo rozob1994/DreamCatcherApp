@@ -253,4 +253,5 @@
     <string name="questionnaire">Questionnaire</string>
     <string name="dreams_packages_tutorial">You have no dreams yet, click here to start adding dreams.</string>
     <string name="del_dream">Dream Deleted.</string>
+    <string name="connectionTimerFailed">Connection failed. Please, check your internet connection and try again</string>
 </resources>

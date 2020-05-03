@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
 import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
 import com.catchydreams.dreamcatcher.managersAndFilters.FormatHelper;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.presenters.presenterInterfaces.IDreamPackagesView;
@@ -45,7 +47,9 @@ public class DreamsPresenter {
 
     }
 
-    public void getDescription(Context context, RecyclerView dreamsRecycler) {
+    public void getDescription(IConnectionChecker connection, Context context, RecyclerView dreamsRecycler) {
+        ConnectionChecker connectionChecker = new ConnectionChecker(connection);
+        Users.getInstance().setConnected(false);
         SharedPreferences languagePrefs = context.getSharedPreferences("languages",
                 Context.MODE_PRIVATE);
         String language = languagePrefs.getString("language", "en");
@@ -54,6 +58,7 @@ public class DreamsPresenter {
         postCaller.getDreamDescription(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
+                Users.getInstance().setConnected(true);
                 iDreamPackagesView.hideProgressBar();
                 JSONArray jsonArray = new JSONArray(response.toString());
 
@@ -98,14 +103,13 @@ public class DreamsPresenter {
 
             @Override
             public void onFailure(String errorMessage) {
+                Users.getInstance().setConnected(false);
                 iDreamPackagesView.hideProgressBar();
-                iDreamPackagesView.onError();
             }
 
         });
 
-
-
+        connectionChecker.checkConnection();
     }
 
 

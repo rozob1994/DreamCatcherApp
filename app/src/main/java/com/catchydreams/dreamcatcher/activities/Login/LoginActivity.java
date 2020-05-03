@@ -1,11 +1,9 @@
 package com.catchydreams.dreamcatcher.activities.Login;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -16,12 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.Splash.SplashActivity;
-import com.catchydreams.dreamcatcher.database.Database;
-import com.catchydreams.dreamcatcher.database.user.UserEntity;
+import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
 import com.catchydreams.dreamcatcher.databinding.ActivityLoginBinding;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
-import com.catchydreams.dreamcatcher.presenters.LoginPresenter;
 import com.catchydreams.dreamcatcher.webservice.ApiCaller;
 import com.catchydreams.dreamcatcher.webservice.ApiPostCaller;
 
@@ -30,12 +27,11 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements IConnectionChecker {
     private SharedPreferences sharedPreferences;
     private ActivityLoginBinding binding;
     private RelativeLayout loadingBg;
     private ProgressBar progressBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        Database db = Database.getInstance(this);
+        ConnectionChecker connection = new ConnectionChecker(this);
         SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
         String languageToLoad = languagePrefs.getString("language", "en");
         Locale locale = new Locale(languageToLoad);
@@ -61,11 +57,13 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
         progressBar = binding.progressBar;
         loadingBg = binding.loadingBg;
         binding.btnLoginAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Users.getInstance().setConnected(false);
                 loadingBg.setVisibility(View.VISIBLE);
                 loadingBg.setAlpha(0.5f);
                 progressBar.setVisibility(View.VISIBLE);
@@ -76,8 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                 apiCaller.login(username, pass, new IResponseMessage() {
                     @Override
                     public void onSuccess(Object response) throws JSONException {
-                        loadingBg.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                         Users user = Users.getInstance();
                         JSONObject jsonObject = new JSONObject(response.toString());
                         boolean status = jsonObject.getBoolean("status");
@@ -88,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onSuccess(Object response) throws JSONException {
                                     JSONObject jsonObject1 = new JSONObject(response.toString());
                                     boolean status = jsonObject.getBoolean("status");
+                                    Users.getInstance().setConnected(true);
                                     if (status) {
 
                                         int level = jsonObject.getInt("level");
@@ -99,14 +96,6 @@ public class LoginActivity extends AppCompatActivity {
                                         sharedPreferences.edit().putInt("uid", uid).apply();
                                         sharedPreferences.edit().putString("username", username).apply();
                                         user.setUid(uid);
-                                        UserEntity userEntity = new UserEntity("en");
-                                        db.userDao().insertUser(userEntity);
-                                        PostLoadingThread postLoadingThread = new PostLoadingThread(getApplicationContext());
-                                        postLoadingThread.start();
-                                        Log.e("","");
-                                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                                        startActivity(intent);
-                                        finish();
                                     } else {
                                         Toast.makeText(getApplicationContext(),
                                                 "Level retrieval failed!",Toast.LENGTH_LONG).show();
@@ -115,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onFailure(String errorMessage) {
+                                    Users.getInstance().setConnected(false);
                                     Toast.makeText(getApplicationContext(),
                                             "Level retrieval failed!",Toast.LENGTH_LONG).show();
                                 }
@@ -122,20 +112,18 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         } else {
+                            Users.getInstance().setConnected(true);
                             Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
-                            Log.e("","");
                         }
 
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
-                        Log.e("","");
-                        loadingBg.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "Error!", Toast.LENGTH_LONG).show();
+                        Users.getInstance().setConnected(false);
                     }
                 });
+                connection.checkConnection();
 
             }
         });
@@ -158,15 +146,18 @@ public class LoginActivity extends AppCompatActivity {
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
     }
-    class PostLoadingThread extends Thread{
-        Database db;
-        public PostLoadingThread(Context context){
-            this.db = Database.getInstance(context);
-        }
-        @Override
-        public void run(){
-            LoginPresenter presenter = new LoginPresenter();
-            presenter.savePosts(db);
-        }
+
+    @Override
+    public void onConnected() {
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onConnectionFailure() {
+        Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
+        binding.loadingBg.setVisibility(View.GONE);
     }
 }

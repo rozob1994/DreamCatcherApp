@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.ActivityDreamsPackagesBinding;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.IntentManager;
 import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
@@ -26,7 +27,8 @@ import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.Locale;
 
-public class DreamsPackagesActivity extends AppCompatActivity implements IDreamPackagesView {
+public class DreamsPackagesActivity extends AppCompatActivity implements IDreamPackagesView,
+        IConnectionChecker {
     private ActivityDreamsPackagesBinding binding;
     private Typeface tutorialFont, tutorialTitle;
 
@@ -94,7 +96,7 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
         RecyclerView dreamsRecycler = binding.dreamsRecycler;
         DreamsPresenter presenter = new DreamsPresenter(this);
         boolean languageChanged = presenter.onLanguageChanged(languagePrefs);
-        presenter.getDescription(getApplicationContext(), dreamsRecycler);
+        presenter.getDescription(this,getApplicationContext(), dreamsRecycler);
         presenter.setLevel();
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +152,8 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
 
     @Override
     public void onError() {
-        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -185,4 +188,15 @@ public class DreamsPackagesActivity extends AppCompatActivity implements IDreamP
         binding.titleDreamsCount.setText(dreamCount);
     }
 
+    @Override
+    public void onConnected() {
+
+    }
+
+    @Override
+    public void onConnectionFailure() {
+        Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
+        binding.loadingBg.setVisibility(View.GONE);
+    }
 }

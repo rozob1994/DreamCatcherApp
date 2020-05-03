@@ -168,14 +168,16 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
                             container.removeAllViews();
                         } else {
                             loadingBg.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
                         loadingBg.setVisibility(View.GONE);
-                        Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                                Toast.LENGTH_LONG).show();
                     }
                 },1);
             }

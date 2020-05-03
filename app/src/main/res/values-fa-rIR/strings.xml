@@ -252,4 +252,5 @@
     <string name="add_a_dream">اضافه کردن یک رؤیا</string>
     <string name="dreams_packages_tutorial">هنوز رؤیایی وارد نکردی. اینجا کلیک کن تا اولین رؤیات رو وارد کنی.</string>
     <string name="del_dream">رؤیای مورد نظر پاک شد.</string>
+    <string name="connectionTimerFailed">خطا در اتصال به اینترنت. لطفا بعدا دوباره تلاش کنید.</string>
 </resources>

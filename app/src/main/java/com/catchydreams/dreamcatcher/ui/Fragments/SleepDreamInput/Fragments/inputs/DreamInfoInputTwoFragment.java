@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
@@ -23,6 +24,7 @@ import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.FragmentDreamInfoInputTwoBinding;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.parameters.dateParameters.parameters.Date;
 import com.catchydreams.dreamcatcher.presenters.DreamInputPresenter;
@@ -37,7 +39,7 @@ import maes.tech.intentanim.CustomIntent;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInput {
+public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInput, IConnectionChecker {
 
     DreamInputPresenter presenter;
     private FragmentDreamInfoInputTwoBinding binding;
@@ -128,7 +130,18 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
                 }
 
                 sleepPrefs.edit().clear().apply();
-                presenter.saveCompleteDream(getActivity(), getContext(), interpretation,
+                presenter.saveCompleteDream(new IConnectionChecker() {
+                                                @Override
+                                                public void onConnected() {
+
+                                                }
+
+                                                @Override
+                                                public void onConnectionFailure() {
+                                                    Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                                                            Toast.LENGTH_LONG).show();
+                                                }
+                                            }, getActivity(), getContext(), interpretation,
                         title, content, day, month, year,
                         dreamOne.edit(), dreamTwo.edit());
 
@@ -216,5 +229,22 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
         Typeface fontReg = Typeface.createFromAsset(getContext().getAssets(), PersianFont.regular);
         editTextHint.setTypeface(fontReg);
         editTextHint.setTextSize(PersianFont.normal);
+    }
+
+    @Override
+    public void onError() {
+        Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConnected() {
+
+    }
+
+    @Override
+    public void onConnectionFailure() {
+        Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
     }
 }

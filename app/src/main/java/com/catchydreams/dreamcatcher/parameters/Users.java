@@ -19,6 +19,7 @@ public class Users {
     private String email;
     private int uid;
     private int level;
+    private boolean connected;
     private int newLevel = 0;
     private boolean levelChanged;
     int gender;
@@ -236,5 +237,13 @@ public class Users {
 
     public void setLevelChanged(boolean levelChanged) {
         this.levelChanged = levelChanged;
+    }
+
+    public boolean isConnected() {
+        return connected;
+    }
+
+    public void setConnected(boolean connected) {
+        this.connected = connected;
     }
 }

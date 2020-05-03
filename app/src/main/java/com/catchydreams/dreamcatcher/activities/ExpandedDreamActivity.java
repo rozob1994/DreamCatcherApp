@@ -272,7 +272,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
     @Override
     public void onError() {
-        Toast.makeText(getApplicationContext(), "Loading failed.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
 
     }
 
@@ -367,7 +368,8 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
 
                 @Override
                 public void onFailure(String errorMessage) {
-
+                    Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                            Toast.LENGTH_LONG).show();
                 }
             });
         }

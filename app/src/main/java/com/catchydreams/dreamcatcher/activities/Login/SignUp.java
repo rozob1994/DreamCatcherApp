@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
-import com.catchydreams.dreamcatcher.database.Database;
-import com.catchydreams.dreamcatcher.database.user.UserEntity;
+import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
 import com.catchydreams.dreamcatcher.databinding.ActivitySignUp2Binding;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
@@ -24,7 +24,7 @@ import com.catchydreams.dreamcatcher.webservice.ApiCaller;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity implements IConnectionChecker {
     ActivitySignUp2Binding binding;
     SignUpPresenter presenter;
     private SharedPreferences sharedPreferences, spLogin;
@@ -34,7 +34,7 @@ public class SignUp extends AppCompatActivity {
         binding = ActivitySignUp2Binding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        Database db = Database.getInstance(this);
+        ConnectionChecker connection = new ConnectionChecker(this);
         presenter = new SignUpPresenter();
         ApiCaller apiCaller = new ApiCaller();
         SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
@@ -48,6 +48,7 @@ public class SignUp extends AppCompatActivity {
         binding.btnSignUpAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Users.getInstance().setConnected(false);
                 binding.loadingBg.setVisibility(View.VISIBLE);
                 binding.loadingBg.setAlpha(0.5f);
                 binding.progressBar.setVisibility(View.VISIBLE);
@@ -62,6 +63,7 @@ public class SignUp extends AppCompatActivity {
                         apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
                             @Override
                             public void onSuccess(Object response) throws JSONException {
+                                Users.getInstance().setConnected(true);
                                 JSONObject jsonObject = new JSONObject(response.toString());
                                 boolean status = jsonObject.getBoolean("status");
                                 String message = jsonObject.getString("message");
@@ -73,14 +75,6 @@ public class SignUp extends AppCompatActivity {
                                     spLogin.edit().putString("username", mail).apply();
                                     spLogin.edit().putInt("level", 1).apply();
                                     user.setPassword(pass);
-                                    UserEntity userEntity = new UserEntity("en");
-                                    db.userDao().insertUser(userEntity);
-                                    Intent intent = new Intent(getApplicationContext(), SelectLanguageActivity.class);
-                                    intent.putExtra("firstLogin", true);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                                 }
 
                             }
@@ -89,7 +83,7 @@ public class SignUp extends AppCompatActivity {
                             public void onFailure(String errorMessage) {
                                 binding.loadingBg.setVisibility(View.GONE);
                                 binding.progressBar.setVisibility(View.GONE);
-                                Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_LONG).show();
+                                Users.getInstance().setConnected(false);
 
                             }
 
@@ -104,6 +98,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.field_not_filled_toast,
                             Toast.LENGTH_LONG).show();
                 }
+                connection.checkConnection();
             }
         });
 
@@ -125,6 +120,21 @@ public class SignUp extends AppCompatActivity {
         homeIntent.addCategory( Intent.CATEGORY_HOME );
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
+    }
+
+    @Override
+    public void onConnected() {
+        Intent intent = new Intent(getApplicationContext(), SelectLanguageActivity.class);
+        intent.putExtra("firstLogin", true);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onConnectionFailure() {
+        Toast.makeText(getApplicationContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
+        binding.loadingBg.setVisibility(View.GONE);
     }
 }
 

@@ -10,4 +10,5 @@ public interface IDreamInfoInput {
     void setHintFonts(MoonTextView hint);
     void setSubscriptFonts(MoonTextView subscript);
     void setEditTextHintFonts(AppCompatEditText editTextHint);
+    void onError();
 }

@@ -16,17 +16,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamInfoInput;
+import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
 import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
+import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
+import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.parameters.dateParameters.parameters.Date;
 import com.catchydreams.dreamcatcher.parameters.postParameters.dreamParameters.DreamChecklist;
 import com.catchydreams.dreamcatcher.parameters.postParameters.dreamParameters.DreamDescription;
@@ -1113,11 +1115,11 @@ public class DreamInputPresenter {
 
     }
 
-    public void saveCompleteDream(Activity activity, Context context, AppCompatEditText interpretation,
+    public void saveCompleteDream(IConnectionChecker connectionChecker, Activity activity, Context context, AppCompatEditText interpretation,
                                   AppCompatEditText title, AppCompatEditText content,
                                   Spinner daySp, Spinner monthSp, Spinner yearSp,
                                   SharedPreferences.Editor dreamPref, SharedPreferences.Editor dreamPrefTwo) {
-
+        ConnectionChecker connection = new ConnectionChecker(connectionChecker);
         date = Date.getInstance();
         description = DreamDescription.getInstance();
         DreamInterpretation dreamInterpretation = DreamInterpretation.getInstance();
@@ -1137,10 +1139,7 @@ public class DreamInputPresenter {
         ApiPostCaller postCaller = new ApiPostCaller();
         if (SharedPreferencesManager.dreamIsLoaded(context)) {
             db.postDao().updatePost(post);
-
-            ViewDreamInputDialog dialog = new ViewDreamInputDialog();
-            dialog.showDialog(activity, context, dreamPref,
-                    dreamPrefTwo);
+            Users.getInstance().setConnected(false);
             postCaller.editDream(new IResponseMessage() {
                 @Override
                 public void onSuccess(Object response) throws JSONException {
@@ -1156,6 +1155,7 @@ public class DreamInputPresenter {
                                     postCaller.addDateToSleep(new IResponseMessage() {
                                         @Override
                                         public void onSuccess(Object response) throws JSONException {
+                                            Users.getInstance().setConnected(true);
                                             JSONObject jsonObject1 = new JSONObject(response.toString());
                                             boolean status1 = jsonObject1.getBoolean("status");
                                             if (status1) {
@@ -1163,13 +1163,13 @@ public class DreamInputPresenter {
                                                 dialog.showDialog(activity, context, dreamPref,
                                                         dreamPrefTwo);
                                             } else {
-                                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                                iDreamInfoInput.onError();
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(String errorMessage) {
-                                            Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                            iDreamInfoInput.onError();
                                         }
                                     });
                                 }
@@ -1177,24 +1177,24 @@ public class DreamInputPresenter {
 
                             @Override
                             public void onFailure(String errorMessage) {
-
+                                iDreamInfoInput.onError();
                             }
                         });
 
 
                     } else {
-                        Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                        iDreamInfoInput.onError();
                     }
                 }
 
                 @Override
                 public void onFailure(String errorMessage) {
-                    Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
+                    iDreamInfoInput.onError();
                 }
             });
         } else {
             db.postDao().post(post);
-
+            Users.getInstance().setConnected(false);
             ViewDreamInputDialog dialog = new ViewDreamInputDialog();
             dialog.showDialog(activity, context, dreamPref,
                     dreamPrefTwo);
@@ -1214,29 +1214,30 @@ public class DreamInputPresenter {
                                     postCaller.addDateToSleep(new IResponseMessage() {
                                         @Override
                                         public void onSuccess(Object response) throws JSONException {
+                                            Users.getInstance().setConnected(true);
                                             JSONObject jsonObject1 = new JSONObject(response.toString());
                                             boolean status1 = jsonObject1.getBoolean("status");
                                             if (status1) {
 
                                             } else {
-                                                Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                                iDreamInfoInput.onError();
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(String errorMessage) {
-                                            Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                            iDreamInfoInput.onError();
                                         }
                                     });
 
                                 } else {
-                                    Toast.makeText(context, "Error.", Toast.LENGTH_LONG).show();
+                                    iDreamInfoInput.onError();
                                 }
                             }
 
                             @Override
                             public void onFailure(String errorMessage) {
-                                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
+                                iDreamInfoInput.onError();
                             }
                         });
                     }
@@ -1244,12 +1245,12 @@ public class DreamInputPresenter {
 
                 @Override
                 public void onFailure(String errorMessage) {
-
+                    iDreamInfoInput.onError();
                 }
             });
 
         }
-
+        connection.checkConnection();
     }
 
     private void setLoadingVisible(RelativeLayout loadingBg) {

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -560,6 +561,12 @@ public class DreamInfoInputOneFragment extends Fragment implements SeekBar.OnSee
     @Override
     public void setEditTextHintFonts(AppCompatEditText editTextHint) {
 
+    }
+
+    @Override
+    public void onError() {
+        Toast.makeText(getContext(), R.string.connectionTimerFailed,
+                Toast.LENGTH_LONG).show();
     }
 
 }
