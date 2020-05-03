@@ -17,7 +17,7 @@ import java.util.Locale;
 public class SelectLanguageActivity extends AppCompatActivity {
 
     private ActivitySelectLanguageBinding binding;
-
+    String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,15 @@ public class SelectLanguageActivity extends AppCompatActivity {
         binding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        Intent intent = getIntent();
+        boolean firstLogin = intent.getBooleanExtra("firstLogin", false);
         SharedPreferences sp = getSharedPreferences("languages", MODE_PRIVATE);
-        String language = sp.getString("language", "en");
-        if (language.equals("fa")){
+        if (firstLogin) {
+            language = "en";
+        } else {
+            String language = sp.getString("language", "en");
+        }
+        if (language.equals("fa")) {
             Typeface font = Typeface.createFromAsset(getAssets(), PersianFont.title);
             binding.radioButtonPersian.setTypeface(font);
             binding.radioButtonEnglish.setTypeface(font);
@@ -40,7 +46,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sp.edit().putBoolean("justChanged", true).apply();
-                String languageToLoad  = "en";
+                String languageToLoad = "en";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -49,6 +55,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                         getBaseContext().getResources().getDisplayMetrics());
                 sp.edit().putString("language", "en").apply();
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                intent.putExtra("firstLogin", firstLogin);
                 startActivity(intent);
                 finishAffinity();
 
@@ -59,7 +66,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sp.edit().putBoolean("justChanged", true).apply();
-                String languageToLoad  = "fa";
+                String languageToLoad = "fa";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -68,6 +75,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                         getBaseContext().getResources().getDisplayMetrics());
                 sp.edit().putString("language", "fa").apply();
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                intent.putExtra("firstLogin", firstLogin);
                 startActivity(intent);
                 finishAffinity();
 
@@ -75,7 +83,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
         });
 
     }
-
 
 
 }

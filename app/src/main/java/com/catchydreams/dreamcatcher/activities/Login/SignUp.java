@@ -9,9 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
-import com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity;
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
 import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivitySignUp2Binding;
@@ -62,8 +62,6 @@ public class SignUp extends AppCompatActivity {
                         apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
                             @Override
                             public void onSuccess(Object response) throws JSONException {
-                                binding.loadingBg.setVisibility(View.GONE);
-                                binding.progressBar.setVisibility(View.GONE);
                                 JSONObject jsonObject = new JSONObject(response.toString());
                                 boolean status = jsonObject.getBoolean("status");
                                 String message = jsonObject.getString("message");
@@ -77,7 +75,8 @@ public class SignUp extends AppCompatActivity {
                                     user.setPassword(pass);
                                     UserEntity userEntity = new UserEntity("en");
                                     db.userDao().insertUser(userEntity);
-                                    Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), SelectLanguageActivity.class);
+                                    intent.putExtra("firstLogin", true);
                                     startActivity(intent);
                                     finish();
                                 } else {

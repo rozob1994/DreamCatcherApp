@@ -69,11 +69,86 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Intent intent = getIntent();
+        boolean firstLogin = intent.getBooleanExtra("firstLogin",false);
+        if (firstLogin){
+
+            new TapTargetSequence(this)
+                    .targets(
+                            TapTarget.forView(findViewById(R.id.level_animation), getString(R.string.avatar), getString(R.string.tutorial_one))
+                                    .targetRadius(140)
+                                    .dimColor(R.color.inactive)
+                                    .targetCircleColor(R.color.invisible)
+                                    .textColor(android.R.color.black)
+                                    .outerCircleColor(R.color.white)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+
+                            TapTarget.forView(findViewById(R.id.btn_add_dream), getString(R.string.add_a_dream), getString(R.string.tutorial_two))
+                                    .dimColor(R.color.inactive)
+                                    .targetRadius(40)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+                            TapTarget.forView(findViewById(R.id.btn_answer_questionnaire), getString(R.string.questionnaire), getString(R.string.tutorial_three))
+                                    .targetRadius(40)
+                                    .dimColor(R.color.inactive)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+
+                            TapTarget.forView(findViewById(R.id.btn_dreams), getString(R.string.dreams), getString(R.string.tutorial_four))
+                                    .targetRadius(60)
+                                    .dimColor(R.color.inactive)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+                            TapTarget.forView(findViewById(R.id.btn_stats), getString(R.string.stats), getString(R.string.tutorial_five))
+                                    .targetRadius(60)
+                                    .dimColor(R.color.inactive)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+                            TapTarget.forView(findViewById(R.id.level_btn), getString(R.string.levelsTitle), getString(R.string.tutorial_six))
+                                    .targetRadius(30)
+                                    .dimColor(R.color.inactive)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true),
+
+                            TapTarget.forView(findViewById(R.id.nav_btn), getString(R.string.options), getString(R.string.tutorial_seven))
+                                    .targetRadius(30)
+                                    .dimColor(R.color.inactive)
+                                    .outerCircleColor(R.color.white)
+                                    .targetCircleColor(R.color.white)
+                                    .textColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .drawShadow(true)
+
+                    ).start();
+        }
         Database db = Database.getInstance(this);
         if (RefreshChecker.getInstance().isStarted()) {
             recreate();
             RefreshChecker.getInstance().setStarted(false);
         }
+
 
         SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
         String languageToLoad = languagePrefs.getString("language", "en");
@@ -106,74 +181,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         presenter.setLevel();
         presenter.setTypeFace(languagePrefs);
 
-        new TapTargetSequence(this)
-                .targets(
-                        TapTarget.forView(findViewById(R.id.level_animation), getString(R.string.avatar), getString(R.string.tutorial_one))
-                                .targetRadius(140)
-                                .dimColor(R.color.inactive)
-                                .targetCircleColor(R.color.invisible)
-                                .textColor(android.R.color.black)
-                                .outerCircleColor(R.color.white)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-
-                        TapTarget.forView(findViewById(R.id.btn_add_dream), getString(R.string.add_a_dream), getString(R.string.tutorial_two))
-                                .dimColor(R.color.inactive)
-                                .targetRadius(40)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-                        TapTarget.forView(findViewById(R.id.btn_answer_questionnaire), getString(R.string.questionnaire), getString(R.string.tutorial_three))
-                                .targetRadius(40)
-                                .dimColor(R.color.inactive)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-
-                        TapTarget.forView(findViewById(R.id.btn_dreams), getString(R.string.dreams), getString(R.string.tutorial_four))
-                                .targetRadius(60)
-                                .dimColor(R.color.inactive)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-                        TapTarget.forView(findViewById(R.id.btn_stats), getString(R.string.stats), getString(R.string.tutorial_five))
-                                .targetRadius(60)
-                                .dimColor(R.color.inactive)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-                        TapTarget.forView(findViewById(R.id.level_btn), getString(R.string.levelsTitle), getString(R.string.tutorial_six))
-                                .targetRadius(30)
-                                .dimColor(R.color.inactive)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true),
-
-                        TapTarget.forView(findViewById(R.id.nav_btn), getString(R.string.options), getString(R.string.tutorial_seven))
-                                .targetRadius(30)
-                                .dimColor(R.color.inactive)
-                                .outerCircleColor(R.color.white)
-                                .targetCircleColor(R.color.white)
-                                .textColor(android.R.color.black)
-                                .transparentTarget(true)
-                                .drawShadow(true)
-
-                ).start();
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
