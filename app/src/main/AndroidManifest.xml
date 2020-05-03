@@ -14,15 +14,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name="com.catchydreams.dreamcatcher.activities.SelectLanguageActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.DreamChoosingActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.LucidDreamingQuestionnaireActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.EditDreamInputActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.LevelsActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.StatsActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.Splash.SplashActivity">
+        <activity android:name="com.catchydreams.dreamcatcher.activities.SelectLanguageActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.DreamChoosingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.LucidDreamingQuestionnaireActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.EditDreamInputActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.LevelsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.StatsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.Splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
@@ -31,10 +40,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.catchydreams.dreamcatcher.activities.Login.SignUp" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.ProfileActivity" />
-        <activity android:name="com.catchydreams.dreamcatcher.activities.Login.LoginActivity">
+        <activity android:name="com.catchydreams.dreamcatcher.activities.Login.SignUp"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.catchydreams.dreamcatcher.activities.Login.LoginActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

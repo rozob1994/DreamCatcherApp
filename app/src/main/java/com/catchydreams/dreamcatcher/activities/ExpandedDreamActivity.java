@@ -110,6 +110,7 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.del_dream, Toast.LENGTH_LONG);
                 NewThread thread = new NewThread();
                 thread.start();
             }

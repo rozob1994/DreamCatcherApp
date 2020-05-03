@@ -251,4 +251,5 @@
     <string name="tutorial_seven">اینجا هم یک سری تنظیمات هست و صفحات اجتماعی ما رو هم می‌تونی از اینجا پیدا کنی. خوشحال می‌شیم فالومون کنی:)</string>
     <string name="add_a_dream">اضافه کردن یک رؤیا</string>
     <string name="dreams_packages_tutorial">هنوز رؤیایی وارد نکردی. اینجا کلیک کن تا اولین رؤیات رو وارد کنی.</string>
+    <string name="del_dream">رؤیای مورد نظر پاک شد.</string>
 </resources>
