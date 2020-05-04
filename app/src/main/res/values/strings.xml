@@ -256,4 +256,5 @@
     <string name="connectionTimerFailed">Connection failed. Please, check your internet connection and try again</string>
     <string name="results_add_to_dream">Results added to the dream.</string>
     <string name="mailUs">Mail Us.</string>
+    <string name="alreadylucid">This dream already has a lucidity rate. Please, choose another dream.</string>
 </resources>

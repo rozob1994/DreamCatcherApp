@@ -27,6 +27,7 @@ import com.catchydreams.dreamcatcher.parameters.postParameters.majorParameters.D
 import com.catchydreams.dreamcatcher.ui.customFont.MoonTextView;
 import com.catchydreams.dreamcatcher.webservice.ApiPostCaller;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -111,45 +112,68 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                 ApiPostCaller postCaller = new ApiPostCaller();
                 sp = context.getSharedPreferences("dreamChoosing", Context.MODE_PRIVATE);
                 if (sp.getBoolean("fromLucidityQuestionnaire", false)) {
-                    postCaller.addPostIdToIdQ(new IResponseMessage() {
+                    ApiPostCaller apiPostCaller = new ApiPostCaller();
+                    apiPostCaller.getQResult(postId1, new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
                             JSONObject jsonObject = new JSONObject(response.toString());
+                            JSONArray jsonArray = jsonObject.getJSONArray("0");
                             boolean status = jsonObject.getBoolean("status");
                             if (status) {
-                                postCaller.addLucidityToDream(new IResponseMessage() {
-                                    @Override
-                                    public void onSuccess(Object response) throws JSONException {
-                                        JSONObject jsonObject = new JSONObject(response.toString());
-                                        boolean status = jsonObject.getBoolean("status");
-                                        if (status) {
-                                            Dream.delDream();
-                                            QuestionnaireEntry.delQuestionnaireEntry();
-                                            Intent intent = new Intent(context, ProfileActivity.class);
-                                            Toast.makeText(context, R.string.results_add_to_dream,
-                                                    Toast.LENGTH_LONG).show();
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            context.startActivity(intent);
-                                        } else {
-                                            Toast.makeText(context, "Error Editing Dream.", Toast.LENGTH_LONG).show();
-                                        }
-                                    }
+                                int result = jsonArray.getJSONObject(0).getInt("result");
+                                if (result>0){
+                                    Toast.makeText(context,context.getString(R.string.alreadylucid),
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    postCaller.addPostIdToIdQ(new IResponseMessage() {
+                                        @Override
+                                        public void onSuccess(Object response) throws JSONException {
+                                            JSONObject jsonObject = new JSONObject(response.toString());
+                                            boolean status = jsonObject.getBoolean("status");
+                                            if (status) {
+                                                postCaller.addLucidityToDream(new IResponseMessage() {
+                                                    @Override
+                                                    public void onSuccess(Object response) throws JSONException {
+                                                        JSONObject jsonObject = new JSONObject(response.toString());
+                                                        boolean status = jsonObject.getBoolean("status");
+                                                        if (status) {
+                                                            Dream.delDream();
+                                                            QuestionnaireEntry.delQuestionnaireEntry();
+                                                            Intent intent = new Intent(context, ProfileActivity.class);
+                                                            Toast.makeText(context, R.string.results_add_to_dream,
+                                                                    Toast.LENGTH_LONG).show();
+                                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                            context.startActivity(intent);
+                                                        } else {
+                                                            Toast.makeText(context, "Error Editing Dream.", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
 
-                                    @Override
-                                    public void onFailure(String errorMessage) {
-                                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                            } else {
-                                Toast.makeText(context, "Error Editing Questionnaire Results.", Toast.LENGTH_LONG).show();
+                                                    @Override
+                                                    public void onFailure(String errorMessage) {
+                                                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                            } else {
+                                                Toast.makeText(context, "Error Editing Questionnaire Results.", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(String errorMessage) {
+                                            Toast.makeText(context, "Connection Error.", Toast.LENGTH_LONG).show();
+                                        }
+                                    }, postId1);
+                                }
                             }
                         }
 
                         @Override
                         public void onFailure(String errorMessage) {
-                            Toast.makeText(context, "Connection Error.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,R.string.connectionTimerFailed,Toast.LENGTH_LONG).show();
                         }
-                    }, postId1);
+                    });
+
 
 
                 } else {
