@@ -23,6 +23,7 @@ public class QuestionnaireEntry {
     private int qEighteen;
     private int qNineteen;
     private int result;
+    private int loadedResult;
 
     private QuestionnaireEntry() {
     }
@@ -278,5 +279,13 @@ public class QuestionnaireEntry {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getLoadedResult() {
+        return loadedResult;
+    }
+
+    public void setLoadedResult(int loadedResult) {
+        this.loadedResult = loadedResult;
     }
 }

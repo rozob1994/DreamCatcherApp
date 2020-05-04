@@ -116,55 +116,60 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                     apiPostCaller.getQResult(postId1, new IResponseMessage() {
                         @Override
                         public void onSuccess(Object response) throws JSONException {
+                            QuestionnaireEntry.getInstance().setLoadedResult(0);
                             JSONObject jsonObject = new JSONObject(response.toString());
-                            JSONArray jsonArray = jsonObject.getJSONArray("0");
                             boolean status = jsonObject.getBoolean("status");
                             if (status) {
+                                JSONArray jsonArray = jsonObject.getJSONArray("0");
                                 int result = jsonArray.getJSONObject(0).getInt("result");
                                 if (result>0){
                                     Toast.makeText(context,context.getString(R.string.alreadylucid),
                                             Toast.LENGTH_LONG).show();
+                                    QuestionnaireEntry.getInstance().setLoadedResult(result);
                                 } else {
-                                    postCaller.addPostIdToIdQ(new IResponseMessage() {
-                                        @Override
-                                        public void onSuccess(Object response) throws JSONException {
-                                            JSONObject jsonObject = new JSONObject(response.toString());
-                                            boolean status = jsonObject.getBoolean("status");
-                                            if (status) {
-                                                postCaller.addLucidityToDream(new IResponseMessage() {
-                                                    @Override
-                                                    public void onSuccess(Object response) throws JSONException {
-                                                        JSONObject jsonObject = new JSONObject(response.toString());
-                                                        boolean status = jsonObject.getBoolean("status");
-                                                        if (status) {
-                                                            Dream.delDream();
-                                                            QuestionnaireEntry.delQuestionnaireEntry();
-                                                            Intent intent = new Intent(context, ProfileActivity.class);
-                                                            Toast.makeText(context, R.string.results_add_to_dream,
-                                                                    Toast.LENGTH_LONG).show();
-                                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                            context.startActivity(intent);
-                                                        } else {
-                                                            Toast.makeText(context, "Error Editing Dream.", Toast.LENGTH_LONG).show();
-                                                        }
-                                                    }
 
-                                                    @Override
-                                                    public void onFailure(String errorMessage) {
-                                                        Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
-                                                    }
-                                                });
-                                            } else {
-                                                Toast.makeText(context, "Error Editing Questionnaire Results.", Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onFailure(String errorMessage) {
-                                            Toast.makeText(context, "Connection Error.", Toast.LENGTH_LONG).show();
-                                        }
-                                    }, postId1);
                                 }
+                            }
+                            if (QuestionnaireEntry.getInstance().getLoadedResult()==0){
+                                postCaller.addPostIdToIdQ(new IResponseMessage() {
+                                    @Override
+                                    public void onSuccess(Object response) throws JSONException {
+                                        JSONObject jsonObject = new JSONObject(response.toString());
+                                        boolean status = jsonObject.getBoolean("status");
+                                        if (status) {
+                                            postCaller.addLucidityToDream(new IResponseMessage() {
+                                                @Override
+                                                public void onSuccess(Object response) throws JSONException {
+                                                    JSONObject jsonObject = new JSONObject(response.toString());
+                                                    boolean status = jsonObject.getBoolean("status");
+                                                    if (status) {
+                                                        Dream.delDream();
+                                                        QuestionnaireEntry.delQuestionnaireEntry();
+                                                        Intent intent = new Intent(context, ProfileActivity.class);
+                                                        Toast.makeText(context, R.string.results_add_to_dream,
+                                                                Toast.LENGTH_LONG).show();
+                                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                        context.startActivity(intent);
+                                                    } else {
+                                                        Toast.makeText(context, "Error Editing Dream.", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailure(String errorMessage) {
+                                                    Toast.makeText(context, "Connection Error", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                        } else {
+                                            Toast.makeText(context, "Error Editing Questionnaire Results.", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(String errorMessage) {
+                                        Toast.makeText(context, "Connection Error.", Toast.LENGTH_LONG).show();
+                                    }
+                                }, postId1);
                             }
                         }
 
