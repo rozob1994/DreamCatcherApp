@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/edit"
-        android:icon="@drawable/ic_edit_black_24dp"
-        android:title="@string/edit_profile"
-        app:showAsAction="always" />
-
 
     <item
         android:id="@+id/language"

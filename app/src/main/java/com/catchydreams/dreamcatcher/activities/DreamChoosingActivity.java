@@ -15,7 +15,6 @@ import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAd
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamChoosingView;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IFinishListener;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
-import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.databinding.ActivityDreamChoosingBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
 import com.catchydreams.dreamcatcher.parameters.postParameters.DreamChoosingItem;
@@ -32,14 +31,13 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityDreamChoosingBinding.inflate(getLayoutInflater());
+        binding = ActivityDreamChoosingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         SharedPreferences languagePrefs = getSharedPreferences("languages", MODE_PRIVATE);
-        Database db = Database.getInstance(this);
         dreamsRecycler = binding.dreamsRecycler;
         DreamChoosingPresenter presenter = new DreamChoosingPresenter(this);
-        presenter.getDescription(db);
+        presenter.getDescription();
         presenter.setLanguage(languagePrefs);
         binding.btnAddDream.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +49,9 @@ public class DreamChoosingActivity extends AppCompatActivity implements IDreamCh
             }
         });
     }
-    public void onBackPressed(){
-        Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
     }
 

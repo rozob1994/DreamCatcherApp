@@ -1,7 +1,5 @@
 package com.catchydreams.dreamcatcher.interactors;
 
-import com.catchydreams.dreamcatcher.database.Database;
-import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.postParameters.DreamChoosingItem;
 import com.catchydreams.dreamcatcher.presenters.presenterInterfaces.IDreamChoosingPresenter;
@@ -20,14 +18,12 @@ public class DreamChoosingInteractor {
         this.iDreamChoosingPresenter = iDreamChoosingPresenter;
     }
 
-    public void getDreamDescription(Database db) {
-        List<PostsEntity> posts = db.postDao().getAllPosts();
-        DreamChoosingItem.getInstance().setLists(posts);
+    public void getDreamDescription() {
         ApiPostCaller apiPostCaller = new ApiPostCaller();
         apiPostCaller.getDreamDescription(new IResponseMessage() {
             @Override
             public void onSuccess(Object response) throws JSONException {
-                extractLists(response, db);
+                extractLists(response);
             }
 
             @Override
@@ -38,8 +34,7 @@ public class DreamChoosingInteractor {
         });
     }
 
-    private void extractLists(Object response, Database db) throws JSONException {
-        List<PostsEntity> posts = db.postDao().getAllPosts();
+    private void extractLists(Object response) throws JSONException {
         DreamChoosingItem item = DreamChoosingItem.getInstance();
 
         JSONArray jsonArray = new JSONArray(response.toString());
@@ -69,35 +64,17 @@ public class DreamChoosingInteractor {
             titles.add(jsonArrays.get(j).getString(0));
             contents.add(jsonArrays.get(j).getString(1));
         }
-        if (posts != null) {
-            if (posts.size() > 0) {
-                if (!item.getPostIds().equals(postIds)) {
-                    item.setPostIds(postIds);
-                    item.setSleepTimes(sleepTimes);
-                    item.setExperiences(experiences);
-                    item.setDays(days);
-                    item.setMonths(months);
-                    item.setYears(years);
-                    item.setTitles(titles);
-                    item.setContents(contents);
-                    iDreamChoosingPresenter.onSuccess();
-                } else {
-                    item.setLists(posts);
-                    iDreamChoosingPresenter.onSuccess();
-                }
-            }
-        } else {
-            item.setPostIds(postIds);
-            item.setSleepTimes(sleepTimes);
-            item.setExperiences(experiences);
-            item.setDays(days);
-            item.setMonths(months);
-            item.setYears(years);
-            item.setTitles(titles);
-            item.setContents(contents);
-            iDreamChoosingPresenter.onSuccess();
+        item.setPostIds(postIds);
+        item.setSleepTimes(sleepTimes);
+        item.setExperiences(experiences);
+        item.setDays(days);
+        item.setMonths(months);
+        item.setYears(years);
+        item.setTitles(titles);
+        item.setContents(contents);
+        iDreamChoosingPresenter.onSuccess();
 
-        }
+
 
 
     }

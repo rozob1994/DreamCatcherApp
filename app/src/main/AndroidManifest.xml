@@ -41,13 +41,15 @@
             </intent-filter>
         </activity>
         <activity android:name="com.catchydreams.dreamcatcher.activities.Login.SignUp"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.ProfileActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.Login.LoginActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
         </activity>
     </application>
 

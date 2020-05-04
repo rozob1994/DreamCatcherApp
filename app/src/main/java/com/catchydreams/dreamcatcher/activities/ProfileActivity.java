@@ -45,6 +45,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;
 
+import de.cketti.mailto.EmailIntentBuilder;
 import maes.tech.intentanim.CustomIntent;
 
 public class ProfileActivity extends AppCompatActivity implements IProfileView {
@@ -63,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     private MoonTextView levelTitle;
     private Typeface tutorialFont, tutorialTitle;
     private boolean firstLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
 
         Database db = Database.getInstance(this);
         if (RefreshChecker.getInstance().isStarted()) {
@@ -210,16 +211,6 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
             }
         });
 
-        binding.levelAnimation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), SleepDreamInputActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         binding.levelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -283,20 +274,11 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
 
                 switch (item.getItemId()) {
 
-                    case R.id.edit:
-
-                        if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                            binding.drawerLayout.closeDrawers();
-                        } else {
-                            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        }
-
-                        break;
 
                     case R.id.contact_us:
-                        Intent intentMail = new Intent(Intent.ACTION_SEND, Uri.parse(Addresses.mail));
-                        startActivity(Intent.createChooser(intentMail, "Mail Us."));
+                        boolean success = EmailIntentBuilder.from(getApplicationContext())
+                                .to(Addresses.mail)
+                                .start();
                         binding.drawerLayout.closeDrawers();
                         break;
 

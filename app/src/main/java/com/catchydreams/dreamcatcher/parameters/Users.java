@@ -19,6 +19,7 @@ public class Users {
     private String email;
     private int uid;
     private int level;
+    private int splashClicked = 0;
     private boolean connected;
     private int newLevel = 0;
     private boolean levelChanged;
@@ -245,5 +246,13 @@ public class Users {
 
     public void setConnected(boolean connected) {
         this.connected = connected;
+    }
+
+    public int getSplashClicked() {
+        return splashClicked;
+    }
+
+    public void setSplashClicked(int splashClicked) {
+        this.splashClicked = splashClicked;
     }
 }

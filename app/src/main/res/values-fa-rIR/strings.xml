@@ -79,14 +79,9 @@
     <string name="title_food">میزان مصرف مواد غذایی</string>
     <string name="hint_food">امروز چقدر غذا خوردی؟</string>
     <string name="hint_dream_description">تعریف کن چه خوابی دیدی؟</string>
-    <string name="signUpHeader">عضویت</string>
-    <string name="password_edt_txt_title">رمز</string>
-    <string name="pass_edtxt_hint">لطفا رمز خود را وارد کنید</string>
     <string name="declineBtn">انصراف</string>
     <string name="taken_username_error" translatable="false">این نام کاربری قبلا انتخاب شده</string>
     <string name="connection_error" translatable="false">خطا در ارتباط</string>
-    <string name="loginTitle" translatable="false">ورود</string>
-    <string name="password_edtxt_title">رمز</string>
     <string name="dream_info_input_two_title">اطلاعات رؤیا</string>
     <string name="enter_dream_title">برای خوابت یه عنوان انتخاب کن</string>
     <string name="enter_interpretation">…</string>
@@ -182,15 +177,8 @@
     <string name="dream_info_mood_hint">حس خوابت رو انتخاب کن.</string>
     <string name="hint_sound">رؤیات رنگی بود یا سیاه و سفید؟</string>
     <string name="hint_time_of_day">صبح خوابیدی یا شب؟</string>
-    <string name="username_input_hint">نام کاربری</string>
-    <string name="username_edtxt_hint">لطفا نام کاربری را وارد کنید</string>
     <string name="acceptBtn">تایید</string>
     <string name="field_not_filled_toast">لطفا همه جاهای خالی را پر کنید</string>
-    <string name="username_or_email_title" translatable="false">نام کاربری</string>
-    <string name="login_username_edtxt_hint" translatable="false">لطفا نام کاربری خود را وارد کنید</string>
-    <string name="signInBtn">ورود</string>
-    <string name="SignUpBtn">ثبت نام</string>
-    <string name="SignInBtn">ورود</string>
     <string name="sleepSaved">رؤیات ثبت شد!</string>
     <string name="dream_title">عنوان</string>
     <string name="title_interpretation">برداشت شما</string>
@@ -242,7 +230,7 @@
     <string name="reload_dreams">اگه می‌خوای رؤیاهات رو ببینی، دوباره وارد این صفحه شو.</string>
     <string name="reloadBtn">ورود مجدد</string>
     <string name="avatar">آواتار</string>
-    <string name="tutorial_one">این آواتار توئه. هر چی رؤیاهای خودت رو بیشتر وارد کنی و پرسشنامه‌های بیشتری پر کنی، سطح رؤیابینیت می‌ره بالاتر و آواتارت هم تغییر می‌کنه. هرجا آواتارت رو دیدی می‌تونی روش کلیک کنی تا رؤیات رو ثبت کنی.</string>
+    <string name="tutorial_one">این آواتار توئه. هر چی رؤیاهای خودت رو بیشتر وارد کنی و پرسشنامه‌های بیشتری پر کنی، سطح رؤیابینیت می‌ره بالاتر و آواتارت هم تغییر می‌کنه.</string>
     <string name="tutorial_two">با کلیک روی این دکمه، می‌تونی رؤیات رو ثبت کنی.</string>
     <string name="tutorial_three">با کلیک روی این دکمه، وارد پرسشنامه‌ای می‌شی که بهت می‌گه چقدر تونستی هشیاری رو در رؤیات تجربه کنی.</string>
     <string name="tutorial_four">با کلیک روی این دکمه، لیستی از رؤیاهات رو می‌بینی که با کلیک روی هر کدوم، می‌تونی جزییات بیشتر رؤیات رو هم ببینی.</string>
@@ -253,4 +241,6 @@
     <string name="dreams_packages_tutorial">هنوز رؤیایی وارد نکردی. اینجا کلیک کن تا اولین رؤیات رو وارد کنی.</string>
     <string name="del_dream">رؤیای مورد نظر پاک شد.</string>
     <string name="connectionTimerFailed">خطا در اتصال به اینترنت. لطفا بعدا دوباره تلاش کنید.</string>
+    <string name="results_add_to_dream">پاسخ پرسشنامه به رؤیا اضافه شد.</string>
+    <string name="mailUs">به ما ایمیل ارسال کنید.</string>
 </resources>

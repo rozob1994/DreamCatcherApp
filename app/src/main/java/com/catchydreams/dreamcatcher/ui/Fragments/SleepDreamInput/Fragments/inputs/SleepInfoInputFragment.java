@@ -196,6 +196,8 @@ public class SleepInfoInputFragment extends Fragment implements SeekBar.OnSeekBa
         return view;
     }
 
+
+
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (seekBar == physicalActivity) {

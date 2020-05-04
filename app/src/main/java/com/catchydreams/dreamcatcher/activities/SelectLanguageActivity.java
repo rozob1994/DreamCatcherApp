@@ -82,6 +82,15 @@ public class SelectLanguageActivity extends AppCompatActivity {
             }
         });
 
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
 

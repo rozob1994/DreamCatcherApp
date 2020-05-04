@@ -126,6 +126,8 @@ public class DreamsPackagesActivityAdapter extends RecyclerView.Adapter<DreamsPa
                                             Dream.delDream();
                                             QuestionnaireEntry.delQuestionnaireEntry();
                                             Intent intent = new Intent(context, ProfileActivity.class);
+                                            Toast.makeText(context, R.string.results_add_to_dream,
+                                                    Toast.LENGTH_LONG).show();
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             context.startActivity(intent);
                                         } else {

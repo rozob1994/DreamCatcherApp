@@ -172,6 +172,14 @@ public class ExpandedDreamActivity extends AppCompatActivity implements IDreamEx
     }
 
     @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     public void showProgressBar() {
         binding.loadingBg.setVisibility(View.VISIBLE);
         binding.loadingBg.setAlpha(0.95f);

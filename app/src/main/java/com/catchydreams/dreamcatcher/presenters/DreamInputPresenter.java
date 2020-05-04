@@ -385,6 +385,11 @@ public class DreamInputPresenter {
                 if (!s.toString().equals("")) {
                     String string = s.toString();
                     List<String> namesList = Arrays.asList(string.split(" "));
+                    for (int i = 0; i < namesList.size(); i++){
+                        if (namesList.get(i).equals(" ")){
+                            namesList.remove(i);
+                        }
+                    }
                     Log.e("","");
                     String hint = context.getString(R.string.hint_feelings);
                     DreamPeople.getInstance().setPeopleCount(namesList.size());
@@ -475,9 +480,13 @@ public class DreamInputPresenter {
             public void afterTextChanged(Editable s) {
                 String string = s.toString();
                 List<String> namesList = Arrays.asList(string.split(" "));
+                for (int i = 0; i < namesList.size(); i++){
+                    if (namesList.get(i).equals(" ")){
+                        namesList.remove(i);
+                    }
+                }
                 int prevCount = DreamPeople.getInstance().getCount();
                 if (namesList.size() < prevCount) {
-                    Log.e("","");
                     List<Integer> disposables = new ArrayList<>();
                     for (int i = 0; i <= prevCount; i++) {
                         if (i >= namesList.size()){

@@ -73,7 +73,7 @@
     <string name="dreams_package_description_input" translatable="false">testing the description layout testing the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layouttesting the description layout</string>
     <string name="dream_info_mood_hint">Slide the slider to choose between nightmare, bad dream, neutral, good dream and happy dream</string>
     <string name="hint_people">Did your dream include familiar (or unfamiliar) faces?</string>
-    <string name="hint_names">Write down the Names of the people in your dream.</string>
+    <string name="hint_names">Write down the Names of the people in your dream. Separate the names with commas (,) between them.</string>
     <string name="title_people_feelings">Feelings towards these People:</string>
     <string name="hint_feelings">How would you describe your feelings when you encountered them in your dream?</string>
     <string name="hint_sound">Did you see colors or was it all grayed-out?</string>
@@ -242,7 +242,7 @@
     <string name="reload_dreams">Please reload the page to see your dreams.</string>
     <string name="reloadBtn">reload</string>
     <string name="avatar">Avatar</string>
-    <string name="tutorial_one">this is your Avatar. It shows your level and changes as you enter your dreams. You can also click on it to start adding a Dream.</string>
+    <string name="tutorial_one">this is your Avatar. It shows your level and changes as you enter your dreams.</string>
     <string name="tutorial_two">You can click on this button to start adding a dream</string>
     <string name="tutorial_three">You can answer this Questionnaire to figure out the degree of lucidity in your dream</string>
     <string name="tutorial_four">You can click this button to view a list of your Dreams. You can also click on each dream to see its details</string>
@@ -254,4 +254,6 @@
     <string name="dreams_packages_tutorial">You have no dreams yet, click here to start adding dreams.</string>
     <string name="del_dream">Dream Deleted.</string>
     <string name="connectionTimerFailed">Connection failed. Please, check your internet connection and try again</string>
+    <string name="results_add_to_dream">Results added to the dream.</string>
+    <string name="mailUs">Mail Us.</string>
 </resources>

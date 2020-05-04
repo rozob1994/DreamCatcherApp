@@ -14,8 +14,8 @@ public class DreamChoosingPresenter implements IDreamChoosingPresenter {
         this.iDreamChoosingView = iDreamChoosingView;
     }
 
-    public void getDescription(Database db) {
-        interactor.getDreamDescription(db);
+    public void getDescription() {
+        interactor.getDreamDescription();
     }
 
     public void setLanguage(SharedPreferences languagePrefs) {

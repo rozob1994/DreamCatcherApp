@@ -28,145 +28,164 @@
         android:text="@string/signUpHeader"
         android:textColor="@color/white"
         android:textSize="@dimen/header_title_size" />
-
-    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
-        android:id="@+id/username_edt_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/signUp_title"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/username_input_hint"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_username"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/username_edt_txt_title"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/username_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size" />
-
-    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
-        android:id="@+id/password_edt_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edt_txt_username"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/password_edt_txt_title"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/password_edt_txt_title"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/pass_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:inputType="textPassword"/>
-
-    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
-        android:id="@+id/password_edt_txt_title_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edt_txt_password"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/repeat_password"
-        android:textColor="@color/txt_glow"
-        android:textSize="@dimen/edt_title_size" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_txt_password_two"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/password_edt_txt_title_two"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/password"
-        android:hint="@string/pass_edtxt_hint"
-        android:paddingLeft="30dp"
-        android:paddingTop="2dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/edt_text_color"
-        android:textSize="@dimen/edt_txt_size"
-        android:inputType="textPassword"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_txt_password_two"
-        android:layout_marginTop="40dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_signUp_accept"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/button_accept" />
-
-            <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
-                android:id="@+id/signUpBtnTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_signUp_accept"
-                android:layout_centerHorizontal="true"
-                android:text="@string/SignUpBtn"
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/signUp_title"
+        android:layout_marginTop="50dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_signUp_decline"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/button_decline" />
-
             <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
-                android:id="@+id/signinBtnTitle"
+                android:id="@+id/username_edt_txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_signUp_decline"
-                android:layout_centerHorizontal="true"
-                android:text="@string/SignInBtn"
-                android:textColor="@color/white" />
+                android:layout_below="@id/signUp_title"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/username_input_hint"
+                android:textColor="@color/txt_glow"
+                android:textSize="@dimen/edt_title_size" />
 
-        </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_txt_username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:lines="1"
+                android:layout_below="@+id/username_edt_txt_title"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/password"
+                android:hint="@string/username_edtxt_hint"
+                android:paddingLeft="30dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/edt_text_color"
+                android:textSize="@dimen/edt_txt_size" />
+
+            <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                android:id="@+id/password_edt_txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edt_txt_username"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/password_edt_txt_title"
+                android:textColor="@color/txt_glow"
+                android:textSize="@dimen/edt_title_size" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/password_edt_txt_title"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/password"
+                android:hint="@string/pass_edtxt_hint"
+                android:maxLines="1"
+                android:lines="1"
+                android:paddingLeft="30dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/edt_text_color"
+                android:textSize="@dimen/edt_txt_size"
+                android:inputType="textPassword"/>
+
+            <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                android:id="@+id/password_edt_txt_title_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edt_txt_password"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/repeat_password"
+                android:textColor="@color/txt_glow"
+                android:textSize="@dimen/edt_title_size" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_txt_password_two"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/password_edt_txt_title_two"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/password"
+                android:hint="@string/pass_edtxt_hint"
+                android:paddingLeft="30dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/edt_text_color"
+                android:textSize="@dimen/edt_txt_size"
+                android:inputType="textPassword"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_txt_password_two"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="200dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_signUp_accept"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_accept" />
+
+                    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                        android:id="@+id/signUpBtnTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signUp_accept"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/SignUpBtn"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_signUp_decline"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_decline" />
+
+                    <com.catchydreams.dreamcatcher.ui.customFont.MoonTextView
+                        android:id="@+id/signinBtnTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_signUp_decline"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/SignInBtn"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
 
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <RelativeLayout
         android:id="@+id/loadingBg"

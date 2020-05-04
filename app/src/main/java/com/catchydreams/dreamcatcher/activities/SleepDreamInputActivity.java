@@ -1,6 +1,5 @@
 package com.catchydreams.dreamcatcher.activities;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,8 +11,6 @@ import com.catchydreams.dreamcatcher.databinding.ActivitySleepDreamInputBinding;
 import com.catchydreams.dreamcatcher.ui.Fragments.SleepDreamInput.Adapters.SleepDreamInputAdapter;
 
 import java.util.Locale;
-
-import maes.tech.intentanim.CustomIntent;
 
 public class SleepDreamInputActivity extends AppCompatActivity {
     private ActivitySleepDreamInputBinding binding;
@@ -40,10 +37,7 @@ public class SleepDreamInputActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), DreamsPackagesActivity.class);
-        CustomIntent.customType(SleepDreamInputActivity.this,"fadein-to-fadeout");
-        finish();
-        startActivity(intent);
+
     }
     protected void onDestroy(){
         super.onDestroy();

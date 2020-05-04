@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ import maes.tech.intentanim.CustomIntent;
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding binding;
-    boolean clickState = false;
     private SharedPreferences sharedPreferences;
 
 
@@ -36,15 +35,40 @@ public class SplashActivity extends AppCompatActivity {
         LocaleManager.getLanguage(getApplicationContext());
         LocaleManager.setLocale(getApplicationContext(), LocaleManager.getLanguage(getApplicationContext()));
         setLocale();
-
+        Users.getInstance().setSplashClicked(0);
         RefreshChecker.getInstance().setStarted(true);
+        binding.splash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Users.getInstance().setSplashClicked(1);
+                sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                if (sharedPreferences.getBoolean("logged", false)) {
+                    Users user = Users.getInstance();
+                    user.setUid(sharedPreferences.getInt("uid", 0));
+                    user.setEmail(sharedPreferences.getString("username", ""));
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
+            }
+        });
 
+        new CountDownTimer(10000, 1000){
 
-        if (clickState){
-            new Handler().postDelayed(new Runnable() {
+            @Override
+            public void onTick(long millisUntilFinished) {
 
-                @Override
-                public void run() {
+            }
+
+            @Override
+            public void onFinish() {
+                if (Users.getInstance().getSplashClicked()==0){
+
                     sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
                     if (sharedPreferences.getBoolean("logged", false)) {
                         Users user = Users.getInstance();
@@ -58,36 +82,15 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(i);
                         finish();
                     }
-
                 }
-            }, 10000);
+            }
+        }.start();
 
-        } else {
 
-            binding.splash.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickState = true;
-                    sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-                    if (sharedPreferences.getBoolean("logged", false)) {
-                        Users user = Users.getInstance();
-                        user.setUid(sharedPreferences.getInt("uid", 0));
-                        user.setEmail(sharedPreferences.getString("username", ""));
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                    CustomIntent.customType(SplashActivity.this, "fadein-to-fadeout");
-                }
-            });
+
+
         }
 
-
-    }
 
     private void setLocale() {
         Locale locale = new Locale(LocaleManager.getLanguage(getApplicationContext()));
