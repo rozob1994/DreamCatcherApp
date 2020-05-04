@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity implements IConnectionChecker {
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences, loginInput;
     private ActivityLoginBinding binding;
     private RelativeLayout loadingBg;
     private ProgressBar progressBar;
@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements IConnectionCheck
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
-
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("logged", false)) {
             Users user = Users.getInstance();
@@ -68,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements IConnectionCheck
                 progressBar.setVisibility(View.VISIBLE);
                 String username = binding.edtTxtUsername.getText().toString();
                 String pass = binding.edtTxtPassword.getText().toString();
+
                 ApiCaller apiCaller = new ApiCaller();
                 ApiPostCaller postCaller = new ApiPostCaller();
                 apiCaller.login(username, pass, new IResponseMessage() {
