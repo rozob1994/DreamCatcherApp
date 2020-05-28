@@ -3,6 +3,7 @@ package com.catchydreams.dreamcatcher.activities.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,6 +57,15 @@ public class SignUp extends AppCompatActivity implements IConnectionChecker {
             startActivity(intent);
             finish();
         }
+        binding.privacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "http://catchydreams.com/echo/privacy-policy/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
         binding.btnSignUpAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
