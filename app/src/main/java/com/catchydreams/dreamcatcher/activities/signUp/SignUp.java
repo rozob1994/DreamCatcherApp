@@ -1,4 +1,4 @@
-package com.catchydreams.dreamcatcher.activities.Login;
+package com.catchydreams.dreamcatcher.activities.signUp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
 import com.catchydreams.dreamcatcher.activities.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
 import com.catchydreams.dreamcatcher.constants.ConnectionChecker;

@@ -40,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.catchydreams.dreamcatcher.activities.Login.SignUp"
+        <activity android:name="com.catchydreams.dreamcatcher.activities.signUp.SignUp"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity"
