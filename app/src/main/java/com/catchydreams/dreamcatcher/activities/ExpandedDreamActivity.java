@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.catchydreams.dreamcatcher.activities.dreamsPackages.DreamsPackagesActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;
 import com.github.mikephil.charting.data.PieData;
 import com.catchydreams.dreamcatcher.R;

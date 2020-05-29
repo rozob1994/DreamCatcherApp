@@ -1,4 +1,4 @@
-package com.catchydreams.dreamcatcher.activities.signUp;
+package com.catchydreams.dreamcatcher.activities.profile;
 
 import android.app.Application;
 import android.os.AsyncTask;
@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import com.catchydreams.dreamcatcher.activities.signUp.SignUpRepository;
 import com.catchydreams.dreamcatcher.database.Database;
 import com.catchydreams.dreamcatcher.database.user.UserDao;
 import com.catchydreams.dreamcatcher.database.user.UserEntity;
@@ -16,53 +17,31 @@ import com.catchydreams.dreamcatcher.webservice.ApiCaller;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignUpRepository {
+public class ProfileRepository {
     private UserDao userDao;
-    private LiveData<UserEntity> userEntity;
-    private ISignUpViewModel iSignUpViewModel;
     private LiveData<Boolean> isUploaded;
-    SignUpRepository(Application application, ISignUpViewModel iSignUpViewModel) {
+    private SignUpRepository signUpRepository;
+    ProfileRepository(Application application) {
         Database database = Database.getInstance(application);
         userDao = database.userDao();
-        this.iSignUpViewModel = iSignUpViewModel;
-        this.isUploaded = userDao.isUploaded();
+        isUploaded = userDao.isUploaded();
+
     }
 
-    public LiveData<UserEntity> getUserEntity(int uid) {
-        this.userEntity = userDao.retrieveUserByUid(uid);
-        return userEntity;
-    }
-
-    public void register(UserEntity userEntity) {
-        RegisterUser register = new RegisterUser(userEntity);
-        register.execute();
+    public void uploadUserFun(){
         UploadUser uploadUser = new UploadUser();
         uploadUser.execute();
     }
 
-    public LiveData<Boolean> isUploaded(){
+    public void deleteUser(UserEntity userEntity) {
+        DeleteUser deleteUser = new DeleteUser(userEntity);
+        deleteUser.execute();
+    }
+
+    public LiveData<Boolean> getIsUploaded(){
         return this.isUploaded;
     }
-
-    class RegisterUser extends AsyncTask<Void, Void, UserEntity>{
-        private UserEntity userEntity;
-        RegisterUser(UserEntity userEntity){
-            this.userEntity = userEntity;
-        }
-
-        @Override
-        protected UserEntity doInBackground(Void... voids) {
-            userDao.insertUser(userEntity);
-            return userEntity;
-        }
-        @Override
-        protected void onPostExecute(UserEntity userEntity){
-            super.onPostExecute(userEntity);
-            iSignUpViewModel.onSuccess();
-        }
-
-    }
-    class UploadUser extends AsyncTask<Void, Void, Void>{
+    class UploadUser extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -95,4 +74,15 @@ public class SignUpRepository {
         }
     }
 
+    class DeleteUser extends AsyncTask<Void, Void, Void>{
+        UserEntity userEntity;
+        DeleteUser(UserEntity userEntity){
+            this.userEntity = userEntity;
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+            userDao.deleteUser(userEntity);
+            return null;
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.catchydreams.dreamcatcher.managersAndFilters;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.parameters.postParameters.dreamParameters.DreamDate;
 import com.catchydreams.dreamcatcher.parameters.postParameters.dreamParameters.DreamPeople;
 import com.catchydreams.dreamcatcher.parameters.postParameters.majorParameters.Dream;
@@ -10,9 +11,17 @@ import com.catchydreams.dreamcatcher.parameters.postParameters.majorParameters.S
 
 public class SharedPreferencesManager implements ISharedPreferencesManager {
     public SharedPreferencesManager() {
-
     }
 
+    public void loadUserFromPrefs(Context context){
+        SharedPreferences spLogin =  context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        Users.delUser();
+        Users user = Users.getInstance();
+        user.setUid(spLogin.getInt("uid", 1));
+        user.setEmail(spLogin.getString("username", ""));
+        user.setPassword(spLogin.getString("pass",""));
+        user.setLevel(spLogin.getInt("level", 1));
+    }
 
     public void delDreamFromSp(Context context) {
         SharedPreferences sp = context.getSharedPreferences("dream", Context.MODE_PRIVATE);

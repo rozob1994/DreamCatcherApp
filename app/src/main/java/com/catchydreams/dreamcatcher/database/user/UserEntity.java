@@ -8,7 +8,7 @@ import com.catchydreams.dreamcatcher.parameters.Users;
 
 @Entity(tableName = "user")
 public class UserEntity {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name = "uid")
@@ -20,17 +20,14 @@ public class UserEntity {
     @ColumnInfo(name = "email")
     public String username;
 
-    @ColumnInfo(name = "language")
-    public String language;
+    @ColumnInfo
+    private boolean uploaded;
 
-    public UserEntity(){}
-
-    public UserEntity(String language){
+    public UserEntity(){
         Users user = Users.getInstance();
         this.uid = user.getUid();
         this.level = user.getLevel();
         this.username = user.getEmail();
-        this.language = language;
     }
 
     public int getUid(){
@@ -45,8 +42,12 @@ public class UserEntity {
         return this.username;
     }
 
-    public String getLanguage(){
-        return this.language;
+
+    public boolean isUploaded() {
+        return uploaded;
     }
 
+    public void setUploaded(boolean uploaded) {
+        this.uploaded = uploaded;
+    }
 }

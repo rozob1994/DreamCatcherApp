@@ -18,11 +18,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.catchydreams.dreamcatcher.R;
-import com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity;
+import com.catchydreams.dreamcatcher.activities.dreamsPackages.DreamsPackagesActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamInfoInput;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
-import com.catchydreams.dreamcatcher.database.Database;
-import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.FragmentDreamInfoInputTwoBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.parameters.Users;
@@ -124,10 +122,10 @@ public class DreamInfoInputTwoFragment extends Fragment implements IDreamInfoInp
                 dreamToLuciditySp.edit().putBoolean("fromDream", false).apply();
                 Users user = Users.getInstance();
                 user.checkSetLevelChange(getContext());
-                if(user.isLevelChanged()) {
+                /**if(user.isLevelChanged()) {
                     Database db = Database.getInstance(getContext());
                     db.userDao().updateUser(new UserEntity(languagePrefs.getString("language","en")));
-                }
+                }**/
 
                 sleepPrefs.edit().clear().apply();
                 presenter.saveCompleteDream(new IConnectionChecker() {

@@ -10,7 +10,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.databinding.ActivitySplashBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.LocaleManager;
 import com.catchydreams.dreamcatcher.managersAndFilters.RefreshChecker;

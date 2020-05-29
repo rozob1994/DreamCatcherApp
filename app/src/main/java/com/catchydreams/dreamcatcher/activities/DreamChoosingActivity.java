@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.catchydreams.dreamcatcher.activities.Adapter.DreamsPackagesActivityAdapter;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IDreamChoosingView;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IFinishListener;
 import com.catchydreams.dreamcatcher.constants.PersianFont;

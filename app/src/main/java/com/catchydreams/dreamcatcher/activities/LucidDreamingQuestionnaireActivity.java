@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IQuestionnaire;
 import com.catchydreams.dreamcatcher.databinding.ActivityLucidDreamingQuestionnaireBinding;
 import com.catchydreams.dreamcatcher.presenters.QuestionnairePresenter;

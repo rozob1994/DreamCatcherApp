@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.catchydreams.dreamcatcher.databinding.ActivityStatsBinding;
 import com.catchydreams.dreamcatcher.ui.Fragments.SleepDreamInput.Adapters.StatsTabsAdapter;

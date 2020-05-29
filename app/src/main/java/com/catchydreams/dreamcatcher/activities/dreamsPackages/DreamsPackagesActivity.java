@@ -1,4 +1,4 @@
-package com.catchydreams.dreamcatcher.activities;
+package com.catchydreams.dreamcatcher.activities.dreamsPackages;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.ActivityDreamsPackagesBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;

@@ -28,7 +28,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.StatsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity"
+        <activity android:name="com.catchydreams.dreamcatcher.activities.dreamsPackages.DreamsPackagesActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.Splash.SplashActivity"
             android:screenOrientation="portrait">
@@ -45,7 +45,7 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.catchydreams.dreamcatcher.activities.ProfileActivity"
+        <activity android:name="com.catchydreams.dreamcatcher.activities.profile.ProfileActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.catchydreams.dreamcatcher.activities.Login.LoginActivity"
             android:screenOrientation="portrait"

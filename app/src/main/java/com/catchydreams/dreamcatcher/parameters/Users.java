@@ -23,6 +23,7 @@ public class Users {
     private boolean connected;
     private int newLevel = 0;
     private boolean levelChanged;
+    private boolean uploaded = false;
     int gender;
     String username;
     private Dream dream;
@@ -254,5 +255,13 @@ public class Users {
 
     public void setSplashClicked(int splashClicked) {
         this.splashClicked = splashClicked;
+    }
+
+    public boolean isUploaded() {
+        return uploaded;
+    }
+
+    public void setUploaded(boolean uploaded) {
+        this.uploaded = uploaded;
     }
 }

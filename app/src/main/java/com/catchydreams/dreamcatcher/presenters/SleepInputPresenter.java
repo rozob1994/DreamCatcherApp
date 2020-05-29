@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.ISleepInfoInputFragment;
 import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.OperationResults;

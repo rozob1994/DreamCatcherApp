@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.catchydreams.dreamcatcher.R;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.Splash.SplashActivity;
 import com.catchydreams.dreamcatcher.activities.signUp.SignUp;
 import com.catchydreams.dreamcatcher.constants.ConnectionChecker;

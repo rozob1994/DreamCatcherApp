@@ -1,4 +1,4 @@
-package com.catchydreams.dreamcatcher.activities;
+package com.catchydreams.dreamcatcher.activities.profile;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +20,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MotionEventCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.dreamsPackages.DreamsPackagesActivity;
+import com.catchydreams.dreamcatcher.activities.LevelsActivity;
 import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
+import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
+import com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.IProfileView;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.database.Database;
@@ -64,7 +70,8 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
     private MoonTextView levelTitle;
     private Typeface tutorialFont, tutorialTitle;
     private boolean firstLogin;
-
+    private ProfileViewModel viewModel;
+    private Boolean isUploaded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +80,18 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
         View view = binding.getRoot();
         setContentView(view);
 
+        viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        viewModel.getIsUploaded().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                isUploaded = aBoolean;
+            }
+        });
+        if (!isUploaded) {
+            SharedPreferencesManager manager = new SharedPreferencesManager();
+            manager.loadUserFromPrefs(getApplicationContext());
+            viewModel.uploadUser();
+        }
         Database db = Database.getInstance(this);
         if (RefreshChecker.getInstance().isStarted()) {
             recreate();
@@ -295,10 +314,12 @@ public class ProfileActivity extends AppCompatActivity implements IProfileView {
                         break;
 
                     case R.id.log_out:
-                        UserEntity userEntity = new UserEntity(
+                        /**UserEntity userEntity = new UserEntity(
                                 languagePrefs.getString("language", "en"));
                         db.userDao().deleteUser(userEntity);
-                        db.postDao().deleteAllPosts();
+                        db.postDao().deleteAllPosts();**/
+                        UserEntity userEntity = new UserEntity();
+                        viewModel.delUser(userEntity);
                         Users.delUser();
                         sharedPreferences.edit().putBoolean("logged", false).apply();
                         sp2.edit().putBoolean("signedUp", false).apply();

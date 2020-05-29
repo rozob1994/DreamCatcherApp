@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.catchydreams.dreamcatcher.R;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.viewInterfaces.ISleepInfoInputFragment;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.databinding.FragmentSleepInfoInputBinding;

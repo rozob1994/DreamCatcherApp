@@ -5,40 +5,40 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.activities.Login.LoginActivity;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
-import com.catchydreams.dreamcatcher.activities.SelectLanguageActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.constants.ConnectionChecker;
+import com.catchydreams.dreamcatcher.database.user.UserEntity;
 import com.catchydreams.dreamcatcher.databinding.ActivitySignUp2Binding;
 import com.catchydreams.dreamcatcher.managersAndFilters.IConnectionChecker;
 import com.catchydreams.dreamcatcher.managersAndFilters.SharedPreferencesManager;
-import com.catchydreams.dreamcatcher.parameters.IResponseMessage;
 import com.catchydreams.dreamcatcher.parameters.Users;
 import com.catchydreams.dreamcatcher.presenters.SignUpPresenter;
-import com.catchydreams.dreamcatcher.webservice.ApiCaller;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Locale;
 
 public class SignUp extends AppCompatActivity implements IConnectionChecker {
     ActivitySignUp2Binding binding;
     SignUpPresenter presenter;
+    private SignUpViewModel viewModel;
     private SharedPreferences sharedPreferences, spLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUp2Binding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        viewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
+
         ConnectionChecker connection = new ConnectionChecker(this);
 
         Locale locale = new Locale("en");
@@ -49,11 +49,10 @@ public class SignUp extends AppCompatActivity implements IConnectionChecker {
                 getBaseContext().getResources().getDisplayMetrics());
 
         presenter = new SignUpPresenter();
-        ApiCaller apiCaller = new ApiCaller();
         SharedPreferencesManager.clearDreamSleepQuest(getApplicationContext());
         sharedPreferences = getSharedPreferences("signUp", MODE_PRIVATE);
         spLogin = getSharedPreferences("login", MODE_PRIVATE);
-        if ((sharedPreferences.getBoolean("signedUp", false))||(spLogin.getBoolean("logged", false))){
+        if ((sharedPreferences.getBoolean("signedUp", false)) || (spLogin.getBoolean("logged", false))) {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
             finish();
@@ -71,49 +70,24 @@ public class SignUp extends AppCompatActivity implements IConnectionChecker {
             @Override
             public void onClick(View v) {
                 Users.getInstance().setConnected(false);
-                binding.loadingBg.setVisibility(View.VISIBLE);
-                binding.loadingBg.setAlpha(0.5f);
-                binding.progressBar.setVisibility(View.VISIBLE);
                 if ((binding.edtTxtUsername.getText().toString() != "") & (binding.edtTxtPassword.getText().toString() != "")) {
                     Users user = Users.getInstance();
                     user.generateUid();
-                    spLogin.edit().putInt("uid",user.getUid()).apply();
+                    spLogin.edit().putInt("uid", user.getUid()).apply();
                     String mail = binding.edtTxtUsername.getText().toString();
                     String pass = binding.edtTxtPassword.getText().toString();
                     String secPass = binding.edtTxtPasswordTwo.getText().toString();
                     if (secPass.equals(pass)) {
-                        apiCaller.signUp(mail, pass, user.getUid(), new IResponseMessage() {
-                            @Override
-                            public void onSuccess(Object response) throws JSONException {
-                                Users.getInstance().setConnected(true);
-                                JSONObject jsonObject = new JSONObject(response.toString());
-                                boolean status = jsonObject.getBoolean("status");
-                                String message = jsonObject.getString("message");
-                                Log.e("", "");
-                                if (status) {
-                                    sharedPreferences.edit().putBoolean("signedUp", true).apply();
-                                    user.setEmail(mail);
-                                    spLogin.edit().putBoolean("logged", true).apply();
-                                    spLogin.edit().putString("username", mail).apply();
-                                    spLogin.edit().putInt("level", 1).apply();
-                                    user.setPassword(pass);
-                                    Intent intent = new Intent(getApplicationContext(), SelectLanguageActivity.class);
-                                    intent.putExtra("firstLogin", true);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                        user.setEmail(mail);
+                        user.setPassword(pass);
+                        user.setLevel(1);
+                        sharedPreferences.edit().putBoolean("signedUp", true).apply();
+                        spLogin.edit().putBoolean("logged", true).apply();
+                        spLogin.edit().putString("username", mail).apply();
+                        spLogin.edit().putString("pass", pass).apply();
+                        spLogin.edit().putInt("level", 1).apply();
 
-                            }
-
-                            @Override
-                            public void onFailure(String errorMessage) {
-                                binding.loadingBg.setVisibility(View.GONE);
-                                binding.progressBar.setVisibility(View.GONE);
-                                Users.getInstance().setConnected(false);
-
-                            }
-
-                        });
+                        viewModel.register(new UserEntity());
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.pass_not_match,
                                 Toast.LENGTH_LONG).show();
@@ -143,7 +117,7 @@ public class SignUp extends AppCompatActivity implements IConnectionChecker {
         super.onBackPressed();
 
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
     }

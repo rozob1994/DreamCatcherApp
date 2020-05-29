@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_night_blur"
-    tools:context="com.catchydreams.dreamcatcher.activities.DreamsPackagesActivity">
+    tools:context="com.catchydreams.dreamcatcher.activities.dreamsPackages.DreamsPackagesActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"

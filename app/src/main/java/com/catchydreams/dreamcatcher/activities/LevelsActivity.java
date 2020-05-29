@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.catchydreams.dreamcatcher.R;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.databinding.ActivityLevelsBinding;
 import com.catchydreams.dreamcatcher.managersAndFilters.LocaleManager;
 

@@ -10,7 +10,7 @@ import com.catchydreams.dreamcatcher.database.posts.PostsEntity;
 import com.catchydreams.dreamcatcher.database.user.UserDao;
 import com.catchydreams.dreamcatcher.database.user.UserEntity;
 
-@androidx.room.Database(entities = {UserEntity.class, PostsEntity.class}, version = 1)
+@androidx.room.Database(entities = {UserEntity.class, PostsEntity.class}, version = 3)
 public abstract class Database extends RoomDatabase {
     private static Database instance;
     public static String Db = "DreamCatcher";

@@ -15,7 +15,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.catchydreams.dreamcatcher.activities.DreamChoosingActivity;
 import com.catchydreams.dreamcatcher.activities.ExpandedDreamActivity;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.R;
 import com.catchydreams.dreamcatcher.constants.PersianFont;
 import com.catchydreams.dreamcatcher.parameters.postParameters.majorParameters.Dream;

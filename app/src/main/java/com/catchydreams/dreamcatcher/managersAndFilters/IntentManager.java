@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.catchydreams.dreamcatcher.activities.LucidDreamingQuestionnaireActivity;
-import com.catchydreams.dreamcatcher.activities.ProfileActivity;
+import com.catchydreams.dreamcatcher.activities.profile.ProfileActivity;
 import com.catchydreams.dreamcatcher.activities.SleepDreamInputActivity;
 
 import maes.tech.intentanim.CustomIntent;

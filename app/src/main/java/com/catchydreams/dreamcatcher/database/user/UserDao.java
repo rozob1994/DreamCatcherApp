@@ -1,5 +1,6 @@
 package com.catchydreams.dreamcatcher.database.user;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,10 +13,16 @@ public interface UserDao {
     void insertUser(UserEntity user);
 
     @Query("Select * from user where email = :username")
-    UserEntity retrieveUserByUsername(String username);
+    LiveData<UserEntity> retrieveUserByUsername(String username);
 
     @Query("Select * from user where uid = :uid")
-    UserEntity retrieveUserByUid(int uid);
+    LiveData<UserEntity> retrieveUserByUid(int uid);
+
+    @Query("Select uploaded from user")
+    LiveData<Boolean> isUploaded();
+
+    @Query("UPDATE user SET uploaded=:uploaded WHERE uid = :uid")
+    void setUploaded(boolean uploaded, int uid);
 
     @Update
     void updateUser(UserEntity userEntity);
